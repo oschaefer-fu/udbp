@@ -1,0 +1,172 @@
+﻿Semantik
+
+
+
+
+Tabelle Lehrer
+
+LNr 
+ID Nummer des betreuenden Lehrers
+
+LName	
+Name betreuender Lehrer mit Angabe von Frau / Mann ...
+
+LFach1
+1. Fach, das betreuender Lehrer unterrichtet
+
+LFach2
+2. Fach, das betreuender Lehrer unterrichtet
+
+LPLZ
+Postleitzahl des Wohnorts des Lehrers
+
+
+
+
+Tabelle Schüler
+
+SNr
+ID Nummer des teilnehmenden SuS
+
+SName
+Nachname des SoS der / die am Praktikum teilgenommen hat
+
+SVorname
+Vorname des SoS der / die am Praktikum teilgenommen hat
+
+SGeb
+Geburtsdatum des SoS der / die am Praktikum teilgenommen hat
+
+STel
+Telefonnummer des SoS der / die am Praktikum teilgenommen hat
+
+LNr
+ID des Lehrers der SoS betreut hat
+
+FNr
+ID der Firma, die Praktikumsplatz anbietet
+
+PNr
+ID des Praktikums, das SoS absolvierte
+
+LBewertung
+Bewertung des Praktikums durch den LoL
+
+SBewertung
+Bewertung des Praktikums durch SuS
+
+Schuljahr
+Schuljahr, in dem das Praktikum absolviert wurde
+
+
+
+
+Tabelle Firma
+
+FNr
+ID Nummer der Firma, die Praktikumsplatz anbietet
+
+FName
+Name der Firma, die Praktikumsplatz anbietet
+
+Kontakttel
+Telefonnummer der Firma, die Praktikumsplatz anbietet
+
+Kontaktmail
+Emailadresse der Firma, die Praktikumsplatz anbietet
+
+Entfernung
+Entfernung (in km) von der Schule zum Praktikumsort
+
+Arbeitsbeginn
+Beginn (Uhrzeit) der Arbeitszeit
+
+Arbeitsende
+Ende (Uhrzeit) der Arbeitszeit
+
+MItarbeiterzahl
+Anzahl der Mitarbeiter in der Firma
+
+FStrasseHNr
+Straße und Hausnummer des Praktikumsorts
+
+FPLZ
+Postleitzahl des Praktikumsorts
+
+
+
+
+
+Tabelle Praktikum
+
+PNr
+ID Nummer des Praktikums, das SoS absolvierte
+
+Pname
+Bezeichnung des Berufs in dem das Praktikum ausgeübt wird
+
+
+
+
+Tabelle Tätigkeitsbereich
+
+TNr
+ID Nummer der ausgeübten Tätigkeit
+
+Arbeitsumfeld
+Tätigkeit wird entweder drinnen oder draußen ausgeübt
+
+Schulfachnähe
+welchem Schulfach ist die Tätigkeit am nächsten
+
+TArt
+allgemeine Bezeichnung der Tätigkeit unabhängig vom Beruf
+
+Anforderung
+was sollte ich gut können oder gerne tun, um Tätigkeit auszuüben
+
+
+
+
+Tabelle Einsatzbereich
+PNr
+ID Nummer des Praktikums, das SoS absolvierte
+
+TNr
+ID Nummer der ausgeübten Tätigkeit während des Praktikums
+
+
+
+
+Tabelle Angebot
+
+PNr
+ID Nummer des Praktikums, das SoS absolvierte
+
+FNr
+ID Nummer der Firma, die Praktikumsplatz anbietet
+
+LName
+Name betreuender Lehrer mit Angabe von Frau / Mann ...
+
+
+
+
+Tabelle Bewerbung
+
+BNr
+ID Nummer der Bewerbung
+
+BArt
+Erfolgt die Bewerbung schriftlich, muendlich, per Email oder direkt
+
+Frist
+gibt es eine Bewerbungsfrist
+
+Ansprechpartner
+Ansprechpartner der Firma für Praktika
+
+FNr
+ID Nummer der Firma, die Praktikumsplatz anbietet
+
+

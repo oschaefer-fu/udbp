@@ -1,0 +1,34 @@
+﻿Transformation von Entitaetstypen
+
+Transformation 1:n-Beziehungen: 
+„wird betreut von“ kann aufgeloest werden, LNr an Schuelerliste
+„arbeitet bei“ kann aufgeloest werden, FNr an Schuelerliste 
+„wählt“ kann aufgeloest werden und PNr kommt mit Schuljahr an Schuelerliste ran
+„verlangt“ kann aufgeloest werden (einseitig optional) und der Fremdschluessel FNr kommt an die Bewerbung mit hinzu) 
+ 
+Transformation m:n-Beziehungen:
+„bietet an“ wird neue Entitaet Angebot und erhält die Fremdschluessel PNr und FNr 
+„deckt ab“ wird neue Entitaet Einsatzbereich und erhaelt die Fremdschluessel PNr und TNr
+
+
+Lehrer (LNr, LName, LFach1, LFach2, LPLZ) 
+
+Schueler (SNr, SVornamen, SNamen, STel, SGeb, LNr, FNr, LBewertung, Sbewertung, PNr, Schuljahr) 
+
+Firma (FNr, FName, KontaktTel, KontaktMail, Entfernung, Arbeitsbeginn, Arbeitsende, Mitarbeiterzahl, FStraßeHNr, FPLZ)
+
+Bewerbung (BNr, Art, Frist, Ansprechpartner, FNr)
+
+Praktikum (PNr, PName)
+
+Tätigkeitsbereich (TNr, Arbeitsumfeld, Schulfachnaehe, TArt, Anforderung)
+
+Angebot (PNr, FNr, Betreuer)
+
+Einsatzbereich (PNr, TNr)
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+﻿Konsistenzbedingungen
+
+Die Postleitzahlen sind in Deutschland immer fünfstellig und dürfen nur Ziffern enthalten.
+Die Telefonnummern müssen achtstellig sein, sie dürfen keine Buchstaben enthalten.
+Emailadressen müssen die Stuktur <name(n)@<anbieter>.de haben.
+Jedem Schüler muss zwingend ein betreuender Lehrer, ein Praktikumsplatz in einer Firma und ein Praktikumsbetreuer zugewiesen werden.
+Bei den Schülervornamen wird nur der Rufname erfasst, sodass  das Merkmal „SVorname“ genau einen Eintrag pro Datensatz enthält.
+In der Lehrertabelle werden für jeden Lehrer genau zwei (verschiedene) Fächer erfasst.
+Jedem Lehrernamen wird die Anrede „Frau“ oder „Herr“ vorangestellt.
+Bei den Lehrebewertungen dürfen ebenso wie bei den Schülerbewertungen nur die Werte 1 bis 5 (Schulnoten) enthalten sein.
+In der Firma muss der Arbeitsbeginn  zeitlich von dem Arbeitsende liegen.
+Die Entfernung der Firma zur Schule muss in km angegeben werden. In der Tabelle wird nur die Maßzahl (ohne Einheit) als Wert erfasst.
+Die Bewerbungsfrist muss zeitlich vor dem Praktikumsbeginn liegen. Dieses Konsistenzbedingung spielt in unserer Welt keine Rolle, da der Praktikumszeitraum nicht als Merkmal erfasst wurde. Bei einer Erweiterung der Welt ist jedoch darauf zu achten.
+Bei den Bewerbungen darf das Merkmal „Art“ nur die Werte „schriftlich“ , „telefonisch“, „direkt“ und „Email“ annehmen.
+Das Merkmal „Bewerbungsfrist“ darf nur einee Wahrheitswert (Ja , nein) enthalten.
+Der Ansprechpartner für die Bewerbung muss eindeutig einer Firma zugeordnet sein.
+Das Merkmal „Arbeitsumfeld“ in der Tabelle „Tätigkeitsbereich“ darf nur die Werte „drinnen“ oder „draußen“ annehmen.
+Das Merkmal „Art der Tätigkeit“ in der Tabelle „Tätigkeitsbereich“ darf nur die Werte „ Computer“, „Büro“, „Handwerk“, „Pflege“ , „Kaufmännisch“ annehmen.
+Das Merkmal „Anforderung“  in der Tabelle „Tätigkeitsbereich“ darf nur die Werte „Tierliebe“, „Kreativität“, „Computerkenntnisse“, „Sozialkompetenz“ enthalten.
+Das Merkmal „Schulfachnähe“  in der Tabelle „Tätigkeitsbereich“ darf nur die Werte annehmen, die in der Lehrertabelle als Lehrerfächer gespeichert sind.
+

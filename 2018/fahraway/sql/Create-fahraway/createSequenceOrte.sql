@@ -1,0 +1,4 @@
+CREATE SEQUENCE IF NOT EXISTS orteSeq 
+	INCREMENT BY  1 
+    START 600 
+    OWNED BY ort.o_id;

@@ -1,0 +1,17 @@
+﻿Zusammenfassende Ausarbeitung
+
+In den Berliner Rahmenplaenen der Sekundarstufe I und II ist das Thema „Datenbanken“ verbindlich vorgeschrieben.
+Daher haben wir im Rahmen unserer Lehrerweiterbildung (Informatikstudium) eine Datenbank zum Thema „Schuelerpraktikum“ entwickelt. Ziel war es, ein unterrichtsrelevantes, rahmenplankonformes Produkt zu erstellen, welches nahe an der Lebenswelt der Schueler*innen liegt. 
+An allen Berliner Schulen wird von jedem Schueler mindestens ein Schuelerpraktikum absolviert. Die dort gemachten Erfahrungen sind den Schueler*innen noch in guter Erinnerung, sodass sich jeder im Unterricht einbringen kann. 
+Die im Internet kursierende Musterdatenbanken sind oft nicht mehr zeitgemaess (z.B. Videodatenbank). Es war uns wichtig ein Thema zu finden, welches nicht an Aktualitaet verliert. 
+
+Unsere Datenbank „Schuelerpraktikum“ wurde mit dem Ziel entwickelt, ein kleines, ueberschaubares Modell zu erhalten. Deshalb ging es nicht darum, wirklich alle Aspekte der Realitaet abzubilden. Ausgehend vom ER-Modell und einer kurzen Beschreibung der Miniwelt haben wir das Relationenmodell bis zu den fertigen Tabellen in 3NF erarbeitet und im Ordner „modell“ hinterlegt. Diese Dateien dienen als Orientierungshilfe und Loesungsvorschlag, vor allem fuer die Schueler*innen der Sekundarstufe II, die diese Arbeit  weitgehend selbststaendig  erbringen sollen. Aber auch mit Schueler*innen der Sekundarstufe I koennen auf dieser Basis in gemeinsamer Unterrichtsarbeit Attribute, Typen und Werte zu den Entitaeten entwickelt werden (wie der Rahmenlehrplan es vorgibt).
+
+Den Schwerpunkt unserer Entwicklungsarbeit haben wir auf  die Erstellung der Datensaetze und die Konstruktion der Aufgabensequenzen gelegt. Wir haben versucht, eine breite Vielfalt zu erreichen, um moeglichst viele Konzepte von SQL demonstrieren zu koennen. Außerdem war es uns wichtig, dass leistungsstaerkeren Schuelern die Moeglichkeit geboten wird, eigene SQL-Anfragen zu kreieren. 
+Die Datensaetze sind im Ordner „modell“ unter dem Dateinamen „Schuelerpraktikum-Daten.txt“ zu finden. Alle von uns entwickelten Anfragen sind (aufsteigend nach Schwierigkeitsgrad) im gleichen Ordner unter dem Dateinamen „Schuelerpraktikum-query.txt“hinterlegt. Die zugehoerigen Ergebnisse sind im Ordner „sql“ gespeichert.
+Diese Anfragen sind fuer den Unterricht in der Sekundarstufe II vorgesehen. 
+Mit Schuelern der Sekundarstufe I koennen Datensaetze gesucht werden. Dazu haben wir eine Suchmaske in der Programmiersprache Go entwickelt. Die zugehoerige Datei „Praktikum-SuS-Sicht.go“ ist im „View“-Ordner mit weiteren tragenden Erwaegungen gespeichert.
+
+
+Emil Groth, Heidi Priebe, Michael Reichelt und Tanya Schoeniger
+Berlin, den 11.06.2018

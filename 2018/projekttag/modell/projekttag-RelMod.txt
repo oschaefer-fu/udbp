@@ -1,0 +1,16 @@
+Autor: Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum: 04.06.2018
+Zweck: Relationenmodell
+
+Primärschlüssel sind mit spitzen Klammern <...> notiert. 
+Fremdschlüssel markieren wir hier mit einem Stern.
+
+Schueler(<sID>, sName, sVname, sGeschlecht, sAlter, sNote, *pID, *kID)
+Projekt(<pID>, pName, pBeschr, pKosten, pMinTNZahl, pMaxTNZahl, pMinAlter, *s1ID, *s2ID)
+Raum(<rID>, rPlaetze, rName)
+Ausstattung(<aID>, aArt)
+Lehrkraft(<lID>, lName, lAnrede)
+Klasse(<kID>, kStufe, kName, *lID)
+Aufsicht(<*lID>,<*pID>)
+Raumausstattung(<*rID>, <*aID>)
+Raumbelegung(<vStunde>, <vMinute>, bStunde, bMinute, <*rID>, <*pID>)

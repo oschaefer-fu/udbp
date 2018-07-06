@@ -1,0 +1,132 @@
+﻿Datenbankanfragen und SQL-Befehle, DES-Befehle
+
+
+Nr	DB-Abfrage  					SQL									DES
+1.	Welche Praktika gibt es? 		SELECT PName						project pname (praktikum);
+									FROM Praktikum;				
+ 
+2.	Name und Vorname aller			SELECT SName, SVorname				project SName,SVorname (select Schuljahr=2015 (Schueler));
+	Schüler, die im Jahr 2015 		FROM Schueler				
+	ein Praktikum gemacht haben		WHERE Schuljahr = '2015';
+ 
+3.	Wie lautet die EMail-Adresse 	SELECT Kontaktmail					project  Kontaktmail (select FName = ‘Fahrradwerkstatt‘ (Firma));
+	der Fahrradwerkstatt?			FROM Firma					
+									WHERE FName = 'Fahrradwerkstatt';
+
+4.	Wo befindet sich das 			SELECT FStrasseHNr, FPLZ			project  FStrasseHNr,FPLZ (select FName = ‘Medienhaus‘ (Firma));
+	Medienhaus?						FROM Firma					
+									WHERE FName = 'Medienhaus';	
+
+5.	Welche Firmen haben mehr 		SELECT FName						project  FName (select Mitarbeiterzahl > 100  (Firma));
+	als 100 Angestellte?			FROM Firma					
+								svorname (schueler);	WHERE Mitarbeiterzahl > 100;	
+
+6.	Welcher betreuender Lehrer 		SELECT LName				
+	unterrichtet ein MINT-Fach 		FROM Lehrer					
+	(Bio, Phy, Che, Ma, Inf)		WHERE LFach1 = 'Biologie' 		
+									LFach1 = 					
+									OR LFach1 = 'Chemie' 
+									OR LFach1 = 'Physik‘ 
+									OR LFach1 = 'Mathematik‘ 
+									OR LFach1 = 'Informatik‘ 
+									OR LFach2 = 'Biologie' 
+									OR LFach2 = 'Chemie' 
+									OR LFach2 = 'Physik‘ 
+									OR LFach2 = 'Mathematik‘ 
+									OR LFach2 = 'Informatik‘;
+
+7.	Welche Firmen bieten 			SELECT FName AS "Firma", 	 	project FName,Pname (select Firma.FNr = Angebot.FNr and 
+	welche Praktikumsstellen an		Pname AS "Praktikum"			Praktikum.PNr=Angebot.PNr (Firma njoin Praktikum njoin Angebot))
+	(alphabetisch nach Firmenname 	FROM Firma 
+	geordnet)?						NATURAL JOIN Praktikum 				
+									NATURAL JOIN Angebot		
+									ORDER BY FName ASC;			
+
+8.	Bei welcher Firma kann man 		SELECT DISTINCT FName  
+	sich nicht schriftlich 			AS "Firma"
+	bewerben?						FROM Firma
+									NATURAL JOIN Bewerbung
+									WHERE NOT BArt = 'schriftlich';
+
+9. 	Gibt es Lehrer, die nie 		SELECT LName AS "Lehrer"
+	einen Schüler betreut haben?	FROM Schueler
+									RIGHT OUTER JOIN Lehrer 
+									ON Schueler.LNr = Lehrer.LNr 
+									WHERE Schueler.LNr IS NULL;
+
+10.	Bei welchen Firmen gibt es 		SELECT DISTINCT FName  AS "Firma"
+	keine Bewerbungsfrist?			FROM Firma NATURAL JOIN Bewerbung
+									WHERE Frist = 'nein';
+
+
+11. Wo werden Praktika angeboten, 	SELECT FName
+	die mit Computer zu tun haben?	FROM Firma
+									NATURAL JOIN Taetigkeitsbereich 
+									NATURAL JOIN Praktikum 
+									NATURAL JOIN Einsatzbereich  
+									NATURAL JOIN Angebot
+									WHERE Anforderung = 'Computerkenntnisse'
+									ORDER BY Firma.FName ASC;
+
+12.	Welcher Lehrer hat 2015 		SELECT LName, SName, PName
+	Praktika betreut, die mit 		FROM Lehrer
+	Pflege zu tun haben? 			NATURAL JOIN Paktikum
+	Welche Schüler und welche 		NATURAL JOIN Taetigkeitsbereich
+	Praktika waren das?				NATURAL JOIN Einsatzbereich
+									NATURAL JOIN Schueler
+									WHERE TArt = 'Pflege' AND Schuljahr = '2015'
+
+13.	Bei welcher Firma kann man 		SELECT FName
+	sich als 						FROM Firma
+	Verwaltungsangestellter 		NATURAL JOIN Praktikum
+	bewerben, sortiert nach 		NATURAL JOIN Einsatzbereich
+	Anfangsarbeitszeit.				WHERE PName = 'Verwaltungsangestellter'
+									ORDER BY Arbeitsbeginn ASC
+
+14.	Wie viele Lehrer gibt es, 		SELECT COUNT LName
+	die mehr als einen Schüler 		FROM Lehrer NATURAL JOIN Schüler
+	betreut haben?					WHERE COUNT LNR > 1
+ 
+15.	Welche Lehrer haben die 		SELECT DISTINCT LName
+	meisten Schüler 2018 betreut 	FROM Lehrer NATURAL JOIN Schüler
+	(sortiert von meist zu wenig)	WHERE Schuljahr = '2018'
+ 									ORDER BY COUNT LName DSC
+
+16.	Welche Firmen haben die besten	SELECT DISTINCT NFirma,
+	Schülerbewertungen bekommen 	FROM Firma NATURAL JOIN Schueler
+	(Durchschnitt), sortiert von 	ORDER BY AVG (SBewertung)
+	gut zu schlecht (Schüler)?		
+
+17.	Liste nach Entfernung Lehrer 	SELECT LFirma
+	Durstenberg zu 					FROM Firma, Lehrer
+	Praktikumsstellen				ORDER BY (FPLZ – LPLZ)*(FPLZ – LPLZ) ASC 
+									WHERE LName = 'Durstenberg'
+
+18.	Welcher Lehrer hat welche 		SELECT LName,  SName, SVorname, Schuljahr
+	Schüler in welchem Jahr 		FROM Lehrer NATURAL JOIN Schueler
+	besucht? (sortiert nach 		ORDER BY LNAME ASC, Schuljahr DSC		
+	Jahrgang, Lehrer)				
+
+19.	Welche Schüler muss Frau 		SELECT SName, SVorname, STel, FName, FStrasseHNr, FPLZ, Kontakttel, Kontaktmail
+	Meisenbusch  2018 besuchen? 	FROM Firma 
+	Lass eine Liste ausgeben 		NATURAL JOIN Schueler
+	mit den für die Lehrerin 		NATURAL JOIN Lehrer
+	wichtigen Informationen.		WHERE LName = 'Frau Meisenbusch'
+
+20.	Emil interessiert sich für 		SELECT FName
+	Arbeiten, die kreativ sind. 	FROM Taetigkeitsbereich
+	Wo sollte er sich bewerben? 	NATURAL JOIN Einsatzbereich
+	Sortiere die Liste nach 		NATURAL JOIN Angebot
+	Entfernung zur Schule 			NATURAL JOIN Firma
+	aufsteigend.					WHERE Anforderung = 'Kreativität'
+									ORDER BY Entfernung ASC
+   
+21.	Otto möchte draußen 			SELECT Ansprechpartner, FName, Kontakttel
+	arbeiten und nicht vor 9:00 Uhr	FROM Taetigkeitsbereich
+	beginnen. Welche Telefonnummern NATURAL JOIN Einsatzbereich
+	welcher Firmen würde er wählen 	NATURAL JOIN Angebot
+	um mit welchem Betreuer zu 		NATURAL JOIN Firma
+	sprechen?						NATURAL JOIN Bewerbung
+									WHERE Arbeitsumfeld = 'draußen' AND Arbeitsbeginn >=09:00 
+
+

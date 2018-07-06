@@ -1,0 +1,36 @@
+Relationenmodell
+
+
+Tabelle Lehrer 	
+LNr		LName		LFach1			LFach2		LPLZ
+
+
+
+Tabelle Schueler
+SNr		SName		SVorname		SGeb		STel		LNr		FNr		PNr		LBewertung		SBewertung		Schuljahr
+
+
+
+Tabelle Firma
+FNr	FName		KontaktTel		KontaktMail			Entfernung		Arbeitsbeginn		Arbeitsende		Mitarbeiterzahl		FStrasseHNr		FPLZ	
+
+
+Tabelle Praktikum
+PNr	Pname
+
+
+Tabelle Taetigkeitsbereich
+TNr		Arbeitsumfeld		Schulfachnaehe		TArt		Anforderung
+
+
+Tabelle Einsatzbereich
+PNr		TNr
+
+
+Tabelle Angebot
+PNr	FNr	Betreuer
+
+
+Tabelle Bewerbung
+BNr		BArt			Frist		Ansprechpartner		FNr
+

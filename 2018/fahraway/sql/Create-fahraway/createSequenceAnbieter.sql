@@ -1,0 +1,4 @@
+CREATE SEQUENCE IF NOT EXISTS anbieterSeq 
+	INCREMENT BY  1 
+    START 1200 
+    OWNED BY anbieter.an_id;

@@ -1,0 +1,26 @@
+﻿Query
+(1)	*Wann wurde welcher Publisher gegründet?
+(2)	**Wann wurde ‚505Games‘ gegründet?
+(3)	**Welche Spiele kannst du mit Freunden spielen?
+(4)	**Ausgabe einer Liste von Spielen mit Erscheinungsjahr, Publisher und FSK.  
+(5)	**Welche Spiele dürfen erst ab dem 18 Lebensjahr/ 21. Lebensjahr gespielt werden?
+(6)	***Welche Spieler spielen momentan kein Spiel?
+(7)	***Welches Spiel ist noch keinen Eigenschaften zugeordnet?
+(8)	***Auf wie vielen Plattformen laufen die Spiele jeweils? 
+(9)	***Welche durchschnittliche Bewertung haben die Spiele?
+(10)	***Welche durchschnittliche Bewertung haben die Publisher?  
+(11)	*** Welche Spieler besitzen das Spiel ‘Fair Cry 5‘?
+(12)	***Welche Spiele werden momentan gespielt?
+(13)	***Welche(s) Computerpiel(e) wurde(n) in dem Jahr veröffentlicht, indem auch ein von 
+Nintendo veröffentlichte Spiel raus kam?
+(14)	***Wie alt sind die männlichen Nutzer?
+(15)	***Welche Spieler (BName und E-Mailadresse) besitzen ‚Fair Cry‘, aber nicht ‘Dad in 
+Vinland‘? 
+(16)	**** Mit wem ist under-aged-freek alles befreundet?
+(17)	****Welche Computerspiele sind sowohl ‘Beat them Ups‘ als auch ‘Echtzeit‘-Spiele?
+(18)	****Welches sind die Top-3 Spiele?
+(19)	****Welche(r) Spieler darf das Spiel aus dem Jahr 2018 nicht spielen?
+(20)	****Welcher Spieler ist mit Spielern über 18 befreundet?
+(21)	****Welcher Spieler gibt im Durchschnitt die schlechtesten Bewertungen?
+(22)	****Welche Spiele lassen sich sowohl auf der XBox, auf dem PC und auf der PS spielen?
+(23)	*****Welches Spiel(e) wurde(n) am häufigsten verkauft?

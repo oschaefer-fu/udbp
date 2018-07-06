@@ -1,0 +1,15 @@
+Autoren: Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum: 	04.06.2018
+Zweck:	Hinweise zur Datenbank der Miniwelt 'Projekttag' 
+
+Dieses Projekt wurde für einen Oberstufenkurs (GK/LK) erstellt. Die Thematik ist schülernah und erfordert kein tiefes Weltwissen und keine tiefen Einblicke in Schulstrukturen. Nachdem im WPU 9/10 bzw. Z-Kurs Grundlagen gelegt wurden, wird in in/IN-1/2 eine vertiefte Auseinandersetzung mit dem Thema „Datenbanken“ gefordert und daher ist dieses Projekt ein unverzichtbarer Bestandteil des Informatikunterrichts.
+
+Es wurde begrenzt didaktisch reduziert: Alle Lehrer sind voll einsetzbar, der Projekttag wird auf einen Tag beschränkt und die Anzahl an Schüler pro Klasse, die Anzahl an Klassen und Lehrer sind begrenzt.
+
+Das von uns entworfene ER-Modell ist nur eine Lösung zu verstehen. Andere Schülerergebnisse könnten möglicherweise komplexer sein (z.B. könnte jeder Klasse ein Klassenleiter zugeordnet werden, als is-a-Beziehung).
+
+Die Kardinalitäten im ER-Modell bilden die Realität ab. So sind in einer Klasse mindestens 17 Schüler (die Datensätze sind reduziert und spiegeln dies deshalb nicht wieder). Mit insgesamt 9 Relationen sind sowohl Anfragen auf einzelne Tabellen sowie komplexere Anfragen mit Joins realisierbar.
+
+Es empfiehlt sich, die SQL-Anfragen in der gegebenen Reihenfolge im Unterricht einzusetzen, da eine Progression angelegt ist. Die in den Kommentaren aufgeführten Sprachmittel zu den einzelnen Anfragen geben daher lediglich an, welche Sprachmittel neu hinzukommen. 
+
+Der geplante Entwurf kann zeitlich flexibel eingesetzt werden. Es kann semesterbegleitend den Unterricht unterstützen, aber auch als Schülerprojekt den Schülern vollständig in Eigenarbeit übergeben werden.

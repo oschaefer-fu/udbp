@@ -1,0 +1,4 @@
+CREATE SEQUENCE IF NOT EXISTS lehrerSeq 
+	INCREMENT BY  1 
+    START 500 
+    OWNED BY lehrer.l_id;

@@ -1,0 +1,52 @@
+﻿Transformation vom ER- in das Relationenmodell
+
+1. Schritt: Transformation der Entitätstypen
+Alle Entitäten (Entitätstypen) des ER-Modells mit ihren Attributen werden 1 : 1 in Relationen (Relationstypen) des Relationenmodells transformiert. Daraus entstehen zuerst einmal folgende Relationen:
+
+• Computerspiel (SID, SName, FSK, Ejahr, MP)
+• Publisher (PID, PName, Gjahr)
+• Schlagwort (WID, WName)
+• Plattform (PlaID, PlaName)
+• Benutzer (BID, BName, Geschlecht, Gebdatum, EMail)
+• Kommentar (KID, KText, KNote)
+
+2. Schritt: Transformation der Beziehungstypen
+Bei der Transformation der Beziehungen (Beziehungstypen) müssen die beteiligten Komplexitäten berücksichtigt werden. Nicht alle Beziehungen werden zu eigenen Relationen im Relationenmodell, manche werden in bestehende transformierte Entitäten durch Hinzunahme der Attribute integriert.
+
+beschrieben_durch: Es handelt sich um einen einseitig optionalen m : n Beziehungstyp und wird in eine die Entität Eigenschaften transformiert (substantivische Verwendung), die die Fremdschlüssel der beteiligten Entitäten enthält.
+
+• Eigenschaften (WID, SID)
+
+läuft_auf, genau wie in beschrieben_durch: Der m : n Beziehungstyp (Computerspiel – Plattform) wird in die neue Entität Kompatibilität überführt, die die Fremdschlüssel der beteiligten Entitäten sowie als zusätzliches Attribut den Preis enthält. 
+ 
+• Kompatibilität (PlaID, SID, Preis)
+
+besitzt, analog zu beschrieben_durch und läuft_auf: Der m : n Beziehungstyp (Computerspiel – Benutzer) wird in die neue Entität Besitz transformiert. 
+
+• Besitz (SID, BID)
+
+published_by, der n : 1 Beziehungstyp (Publisher – Computerspiel) wird in die Relation Computerspiel durch Hinzunahme der PID integriert.
+
+• Computerspiel (SID, SName, FSK, Ejahr, MP, PID)
+
+gibt_ab, der ternäre Beziehungstyp wird in die Relation Kommentar durch Hinzunahme der Schlüssel BID und SID integriert.
+
+• Kommentar (KID, KText, KNote, SID, BID)
+
+befreundet_mit, dieser reflexive Beziehungstyp wird in eine neue Entität Befreundet transformiert. Diese enthält den Schlüssel der beteiligten Entität daher zweimal. 
+• Befreundet (BID1, BID2)
+
+3. Schritt: Transformationsergebnis
+Als Ergebnis erhält man die folgenden zehn Relationen im Relationenmodell:
+
+• Computerspiel (SID, SName, FSK, Ejahr, MP, PID)
+• Publisher (PID, PName, Gjahr)
+• Schlagwort (WID, WName)
+• Plattform (PlaID, PlaName)
+• Benutzer (BID, BName, Geschlecht, Gebdatum, EMail)
+• Kommentar (KID, KText, KNote, SID, BID)
+• Eigenschaften (WID, SID)
+• Kompatibilität (PlaID, SID, Preis)
+• Befreundet (BID1, BID2)
+• Besitz (SID, BID)
+

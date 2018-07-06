@@ -1,0 +1,11 @@
+Autor:	Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum: 	11.06.2018
+Zweck: 	Semantische Bezüge
+
+1. Räume dürfen nicht zeitgleich von verschiedenen Projekte belegt werden.
+2. Ein Raum muss mindestens so viele Plätze wie die Anzahl an tatsächlich am Projekt teilnehmenden Schülern haben.
+3. Eine Note 0 bedeutet, dass der Schüler an der Evaluation nicht teilgenommen hat.
+4. Alle Räume in der Schule haben im Namen den Bestandteil „Raum“, alle externen Lokalitäten nicht.
+5. Jeder Schüler bewertet nur das Projekt, an dem er teilgenommen hat.
+6. Jeder Schüler, der ein Projekt leitet, nimmt an diesem teil und leitet genau dieses auch.
+7. Die Uhrzeit wird in einzelnen Stunden und Minuten als Integer angegeben.

@@ -1,0 +1,10 @@
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (160, 'Winklmoosalm', 'Pension', 'Reisebus', 19.00, 8, 104);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (101, 'Kiez Hölzerner See', 'Jugendherberge', 'ÖPNV', 10.00, 14, 105);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (201, 'JUFA-Hotel', 'Hotel', 'ÖPNV', 18.00, 2, 202);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (401, 'Tomato Backpackers Hotel', 'Jugendherberge', 'ÖPNV', 16.00, 0, 402);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (411, 'Hostel Malti', 'Jugendherberge', 'ÖPNV', 23.00, 3, 410);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (421, 'Kalithea', 'Jugendherberge', 'ÖPNV', 12.00, 4, 420);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (102, 'Jugendherberge Trier', 'Jugendherberge', 'per pedes', 10.00, 1, 103);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (506, 'Ostsee Hostel', 'Hostel', 'per pedes', 16.00, 2, 507);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (507, 'Zum Kiepenkerl', 'Pension', 'per pedes', 19.00, 2, 509);
+INSERT INTO unterkunft (u_id, u_name, typ, errbar, kosten, entfkern, u_ort) VALUES (509, 'Moin Moin', 'Pension', 'ÖPNV', 19.00, 5, 513);

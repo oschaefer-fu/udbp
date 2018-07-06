@@ -1,0 +1,228 @@
+﻿Datenbankpraktikum FU Berlin	LWB 2016/18 - O. Schäfer
+
+
+
+
+Datenbank FahrAway
+
+
+
+
+von Manfred Bertuch, Aiko Czetö, Björn Woltering
+
+
+Textuelle Beschreibung:
+
+Die Miniwelt FahrAway modelliert Klassen- und Kursfahrten an einer Schule mit SEKI- und SEK-II-Schülern.
+
+
+
+
+
+Entitätstypen und Relationen
+
+FahrAway umfasst die folgenden sieben Entitäts-Typen:
+
+1. - Fahrt
+
+2. - Ort
+3. - Unterkunft
+
+4. - Schüler
+5. - Lehrer
+
+6. - Aktivitäten
+7. - Anbieter (von Aktivitäten)
+
+Zusätzlich gibt es sechs verknüpfende, ausschließlich binäre Relationen, hier zusammen mit den beteiligten
+
+Entitäts-Typen gelistet:
+
+        verknüpfende Relation
+
+1.
+Schüler
+nimmt Teil
+
+Fahrt
+2.
+Lehrer
+begleitet
+
+Fahrt
+3.
+Fahrt
+bezieht
+
+Unterkunft
+4.
+Unterkunft
+ist in
+
+Ort
+5.
+Aktivität
+wird angeboten (auf) 
+Fahrt      
+ 6.
+Anbieter
+bietet an 
+Aktivität
+Datenbankpraktikum FU Berlin	LWB 2016/18 - O. Schäfer
+
+
+
+Entwurfsentscheidungen:
+
+Ein erster Entwurf sah Fahrt lediglich als trinäre Beziehung zwischen Schülern, Lehrern und Ort vor. Dadurch erhält man im Relationen-Modell allerdings unerwünschte Wiederholungen der Fahrten- Attribute für jeden Teilnehmer. Daher ist Fahrt jetzt ein eigener Entitätstyp, der mit allen anderen Entitätstypen entweder direkt oder indirekt über Schlüssel-Paare in Beziehung tritt.
+
+Eine andere Entwurfsentscheidung betrifft die Beziehungs-Reihenfolge Fahrt, Unterkunft, Ort. Hängt man an Fahrt zuerst den Ort und dann die Unterkunft, und sind pro Ort mehr als eine Unterkunft erfasst, ist es nicht mehr möglich, zu ermitteln, in welcher Unterkunft ein bestimmter Schüler untergebracht ist. Daher steht Fahrt zuerst in Beziehung zur Unterkunft und diese in Beziehung zu Ort.
+
+Von der Möglichkeit, Anbieter – Aktivität als n..m-Beziehung zu modellieren, wurde abgesehen, um die Komplexität der Datenbank zu begrenzen.
+
+
+Die Attribute
+
+Lehrer werden mit Name, Schüler zusätzlich mit Klasse, Geschlecht und Alter erfasst.
+Die Fahrt erhält lediglich den Namen, den Zeitraum „von … bis“, die Angabe welche Klasse/Kurs gefahren ist und den Fremdschlüssel der Unterkunft.
+
+Die Unterkunft erhält die Attribute Typ, Kosten, Erreichbarkeit und Entfernung zum Stadtkern. Beim Ort unterscheiden wir zwischen „urban, rural“ (städtisch, ländlich), Entfernung, Geografie, Sprache, Transportmittel und dem Schickfaktor. Letzterer spiegelt das lokale Preisniveau des Ortes wider.
+
+Anbieter einer Aktivität werden mit Name, Post- / Internet-Adresse und Ansprechperson erfasst. Aktivitäten sind spezifiziert mit Kategorie und Bezeichnung (wie zum Beispiel Sport , Schi-Fahren) sowie deren Bezug zu einem Schulfach. Weitere Kenngrößen sind Mindestalter, Kosten, Jahreszeit, das Mindestalter sowie weitere Voraussetzungen seitens des Schülers, geeignete Jahreszeit und eine Bewertung.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Relationen-Modell
+
+Im Relationen-Modell entfallen drei Beziehungs-Relationen (1..1- bzw. 1..n-Typ)
+
+3.  „bezieht“ 	: jede Fahrt bezieht genau eine Unterkunft  (1..1 – Typ)
+4. „ist in“ 	: jede Unterkunft befindet sich in nur einem Ort (1..n – Typ)
+6.  „bietet an“	: jede Aktivität hat nur einen Anbieter (1..n - Typ)
+
+Datenbankpraktikum FU Berlin	LWB 2016/18 - O. Schäfer
+
+
+
+Überlegungen und Motivation in Hinblick auf ableitbare Aufgaben:
+
+Diese Attribut-Menge ist sicher eine Maximalversion, die sich auch reduzieren lässt. So sind vor allem in Aktivität Spezialitäten wie Jahreszeit, Voraussetzung und Bewertung verzichtbar. Auch die Orte lassen sich deutlich knapper charakterisieren. Mit den jetzt gewählten Attributen ist es aber sehr einfach, einen umfangreichen Aufgaben-Pool zu Abfragen in SQL und anderen Sprachen zu generieren.
+
+Die Relationen Fahrt, Ort und vor allem Aktivität liefern bereits jede für sich genügend Möglichkeiten für Abfragen, die an eine einzelne Tabelle gerichtet sind. Durch die vier boolschen Jahreszeit-Attribute in Aktivität kann man anspruchsvolle boolsche Ausdrücke zur Einschränkung im Where-Zweig von Anfragen plausibel machen.
+
+Einfache Abfragen auf bis zu fünf Tabellen sind durch die Kette Schüler-nimmtteil-fahrt-begleitet-lehrer möglich. Alle Schlüssel und Fremdschlüssel sind gleich benannt, wodurch ein maximal vierfaches Natural Join möglich ist. (postgresql schien bei einigen Versuchen jedoch nur ein bis zu dreifaches natural join zu akzeptieren).
+
+Und mit den Übernachtungskosten sowie der Dauer der Fahrt in Verbindung mit dem Schickfaktor in Ort lassen sich auch umfangreich berechnete Attribute in der Ergebnistabelle vorführen. Die Datenbank erlaubt zum Beispiel die Abschätzung der endgültigen Kosten mit dem „Schick-Faktor“ in Ort. Dadurch kann man die pauschalen Kosten in „Aktivität“ und einen pauschalen Posten für Taschengeld auf das lokale Preisniveau extrapolieren.
+
+Zur Demonstration von Aggregat-Funktionen auch in Verbindung mit Group-By und Having bieten sich an:
+Die von 1 bis 10 reichende Bewertung für jede Aktivität
+die numerischen Attribute Entfng, Einwohnerzahl, Schickfaktor und Kosten in Ort und Unterkunft
+
+
+(9.6.2018, M. Bertuch)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Das PHP-Frontend
+
+Das Frontend mit dem auf die Daten des oben beschriebenen Datenbankschemas zugegriffen werden kann, wurde mittels php-Skripten realisiert. Insgesamt wurden zur Realisierung von mir elf Dateien angelegt. Der Einstieg in die grafische Benutzeroberfläche erfolgt über die Datei index.html (Abb.: 1). 
+
+Mit dem Klick auf den Bus wird eine Übersicht über die bereits eingetragenen Klassenfahrten angezeigt (siehe Abb.: 2 ). Die Tabelle mit den Klassenfahrten ist Ankerpunkt der Anwendung. Nur von hier können Schüler, Lehrer, Aktivitäten und Unterkünfte für die einzelnen Klassenfahrten hinzugefügt bzw. gelöscht werden.  Zudem wird im oberen Bereich der Html-Seite ein Menü angezeigt, von dem aus direkt via Links die Daten der Relationen (anbieter, aktivitaet, fahrt, unterkunft, ort, schueler und lehrer) angezeigt werden könnenn.
+
+Der Reiter "Fahrten" im Menüfenster hat einen größeren Funktionsumfang als die Reiter für die anderen Relationen. Von hier aus ist es möglich eine Fahrt anzulegen, zu bearbeiten und zu löschen. Zudem ist eine einfache Suchfunktion implementiert, mit der nach Primary Keys der Relation "fahrt" gesucht werden kann. Die Funktionen der anderen Reiter sind Anzeigen und Bearbeiten der jeweiligen Relation (anbieter, aktivitaet, unterkunft, ort, schueler, lehrer). Mit der hier vorgestellten Anwendung "Fahraway" können gut horizontale Suchen vorgenommen werden. 
+Diese erfolgen dann über die AUGEN-Links. Folgendes Szenario wäre vorstellbar.
+
+Auswahl der Schülerin Anja Potter durch Anklicken des AUGEN-Links.
+
+
+ 
+
+
+
+
+
+
+
+
+
+Jetzt wird/en die dazugehörige/n Fahrt/en angezeigt. 
+
+
+
+Von hier aus besteht die Möglichkeit alle weiteren relevanten Informationen zu Fahrt einzuholen.
+Folgende Lehrer fuhren mit (Anklicken des AUGEN-Links in Spalte Lehrer).
+
+
+
+
+
+
+
+
+
+
+Folgende Mitschüler fuhren mit (Anklicken des AUGEN-Links in Spalte Schueler).
+
+
+
+
+
+
+
+
+
+
+
+Die Klasse war in folgender Unterkunft untergebracht (Anklicken des AUGEN-Links in Spalte Unterkunft).
+
+
+
+
+
+
+Folgende Aktivitäten wurden von der Klasse unternommen (Anklicken des AUGEN-Links in Spalte Aktivitäten).
+
+Weiter Informationen zum Anbieter Freak Event (Anklicken des AUGEN-Links in Spalte Anbieter) sind folgende:
+
+
+
+
+Insgesamt sind eine Vielzahl von SQL-Select-Statements in den unterschiedlichen php-Skripten 
+verwendet worden. Hier bietet es sich an, diese mit den Schülern genauer zu analysieren. Da die 
+Statements bei der Ausführung der php-Skripte dynamisch erzeugt werden, bietet es sich an, die Funktion print_r() vorzustellen (debugging etc. ) und damit die generierten Statements anzuzeigen. Für die Schüler dürfte das orte.php Skript am zugänglichsten sein. Hier könnten bspw. über ein zusätzliches Suchfenster (siehe fahrt.php) weitere Suchfunktionen von den Schülern entwickelt werden. 
+Insgesamt wurden in die einzelnen Relationen Tuple eingefügt und verlinkt, die sinnvolle Zusammenhänge ergeben. 

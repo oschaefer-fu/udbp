@@ -1,0 +1,180 @@
+1
+
+ lid |     lname     | lanrede 
+-----+---------------+---------
+   0 | Münchmeyer    | Frau
+   1 | Rheinbote     | Frau
+   2 | Stöckl        | Herr
+   3 | Graf          | Frau
+   4 | Grünwaldt     | Herr
+   5 | Herbst        | Frau
+   6 | Wünsch-Hecker | Herr
+   7 | Hornburg      | Frau
+(8 Zeilen)
+
+2
+    sname     |     svname     
+--------------+----------------
+ Schulz       | Norina
+ Meyer        | Hans
+ Kowatzki     | Jennifer
+ Wegner       | Richard
+ Puck         | Felicitas
+ Ötztürk      | Mohammed
+ Famulla      | Kim
+ Schmidt      | Torben-Leander
+ Levi         | Magdalena
+ Schäfer      | Linus
+ Schäfer      | Lena
+ Horst        | Johannes
+ Kluge        | Isabella
+ Schmitt      | Kevin
+ Özil         | Ayshe
+ Herera       | Ramón
+ Kellenbauer  | Maike
+ Jonas        | Justus
+ von Hoffmann | Louisa
+ Kim          | Mundo
+(20 Zeilen)
+
+3
+ rplaetze 
+----------
+        5
+(1 Zeile)
+
+4
+ salter 
+--------
+     14
+(1 Zeile)
+
+5
+  sname   |  svname   
+----------+-----------
+ Kowatzki | Jennifer
+ Levi     | Magdalena
+ Horst    | Johannes
+ Herera   | Ramón
+(4 Zeilen)
+
+6
+      rname      
+-----------------
+ Klassenraum 10d
+ Klassenraum 9c
+ Klassenraum 8b
+ Klassenraum 7a
+ Chemiefachraum
+ Computerraum
+(6 Zeilen)
+
+7
+ lanrede |     lname     
+---------+---------------
+ Frau    | Münchmeyer
+ Frau    | Rheinbote
+ Herr    | Grünwaldt
+ Frau    | Herbst
+ Herr    | Wünsch-Hecker
+ Frau    | Hornburg
+(6 Zeilen)
+
+8
+  sname  | svname 
+---------+--------
+ Schäfer | Linus
+ Schäfer | Lena
+ Herera  | Ramón
+ Kim     | Mundo
+(4 Zeilen)
+
+9
+ rid |     rname      
+-----+----------------
+   3 | Klassenraum 8b
+   6 | Computerraum
+(2 Zeilen)
+
+10
+  sname  | svname 
+---------+--------
+ Schäfer | Linus
+ Schäfer | Lena
+(2 Zeilen)
+
+11
+        rname         
+----------------------
+ BuMi f. Landwirtsch.
+ Klassenraum 8b
+(2 Zeilen)
+
+
+12
+ lanrede | lname  
+---------+--------
+ Herr    | Stöckl
+ Frau    | Graf
+(2 Zeilen)
+
+
+13
+ rid |      rname      
+-----+-----------------
+   4 | Klassenraum 7a
+   5 | Chemiefachraum
+   1 | Klassenraum 10d
+(3 Zeilen)
+
+14
+ count 
+-------
+     3
+(1 Zeile)
+
+15
+ kname | count 
+-------+-------
+ 7a    |     5
+ 9c    |     6
+ 10d   |     5
+ 8b    |     4
+(4 Zeilen)
+
+
+16
+ max  
+------
+ 5.00
+(1 Zeile)
+
+17
+                    pname                     |        avg         
+----------------------------------------------+--------------------
+ Ernährungspolitik                            | 2.0000000000000000
+ Ernährungsvorschriften in den Weltreligionen | 2.0000000000000000
+ Alltag auf dem Bauernhof                     | 1.3333333333333333
+ Hunger in der Welt                           | 3.7500000000000000
+ Ernährungsatlas für unseren Kiez             | 1.3333333333333333
+(5 Zeilen)
+
+18
+              pname               |        avg         
+----------------------------------+--------------------
+ Alltag auf dem Bauernhof         | 1.3333333333333333
+ Ernährungsatlas für unseren Kiez | 1.3333333333333333
+(2 Zeilen)
+
+19
+                    pname                     
+----------------------------------------------
+ Ernährungsvorschriften in den Weltreligionen
+(1 Zeile)
+
+20
+       pname        |        avg         
+--------------------+--------------------
+ Hunger in der Welt | 3.7500000000000000
+(1 Zeile)
+

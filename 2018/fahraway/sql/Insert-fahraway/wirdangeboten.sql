@@ -1,0 +1,17 @@
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (23, 101);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (13, 133);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (4, 134);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (5, 134);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (113, 103);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (114, 103);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (115, 134);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (24, 101);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (11, 103);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (99, 119);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (116, 133);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (12, 134);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (125, 103);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (126, 102);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (127, 102);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (3, 135);
+INSERT INTO wirdangeboten (ak_id, f_id) VALUES (15, 135);

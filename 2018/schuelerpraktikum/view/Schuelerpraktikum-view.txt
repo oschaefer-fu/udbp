@@ -1,0 +1,11 @@
+﻿Sicht auf die erstellten Daten der Datenbank „Schuelerpraktikum“
+
+Schueler, die einen Praktikumsplatz finden wollen, haben in der Regel  nur vage Vorstellungen davon, was  genau sie suchen. Aus diesem Grund haben wir eine Suchmaske in der Programmiersprache „Go“ entwickelt, die ihnen die Suche aus ihrer Sicht erleichtern soll. Ausserdem stellen die Schueler*innen das Gros von Personen dar,  die sich mit dem Thema auseinandersetzen muessen. 
+
+Unseren Erfahrungen nach ist fuer Schueler*innen ohne konkrete Vorstellungen (von ihrem Praktikum) ein Bezug zu ihrem Lieblings-Unterrichtsfach oder zu einem Fach, welches sie moegen, ein ausschlaggebender Punkt. Denkbar ist auch, ein Praktikum bei einer bestimmten Firma  absolvieren zu wollen, weil diese aus dem Bereich ihrer Bezugspersonen (Eltern, Nachbarn, Verwandtschaft) bekannt ist. Fuer viele Schueler*innen ist es ebenso wichtig, einen „guten“ Platz zu bekommen. Solche Schueler*innen orientieren sich an der Bewertung anderer Schueler*innen. 
+
+Abgeleitet daraus haben wir in der Suchmaske die Felder „Fach“,  „Firma“ und  „Schuelerbewertung“ zur Eingabe bereit gestellt.  Es ist dabei auf Rechtschreibung und Korrektheit der Begriffe zu achten. So darf nicht „Mathe“ oder „ma“ statt „Mathematik“ eingegeben werden.  Es spielt  jedoch keine Rolle, ob ein, zwei oder alle drei Felder benutzt werden.  
+
+In der Ausgabe sehen die Schueler*innen dann die Felder „Praktikum“, (Praktikumsstelle) „Schulfachnaehe“, „Schuelerbewertung“, „Firma“ und „Betreuer“( betreuender Lehrer). Bei mehreren Datensaetzen kann geblaettert werden(Benutzung der ENTER-Taste). Es koennen beliebig viele Suchanfragen gestellt werden.
+
+

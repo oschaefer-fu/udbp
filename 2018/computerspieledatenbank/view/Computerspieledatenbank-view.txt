@@ -1,0 +1,32 @@
+Begründung und Motivation der PHP-Sicht
+
+Allgemein motiviert es die Schüler_innen sehr, wenn sie Datenbankabfragen
+über ein webbasiertes Formular mit einer GUI vollziehen können.
+Diese Sicht sind sie im alltäglichen Gebrauch gewohnt, wenn sie bspw.
+bei einem großen Onlinekaufhaus einen oder mehrere Suchbegriffe eingeben.
+Die Anbindung der Beispieldatenbank "Computerspiele" an eine PHP-Sicht wird im
+Lauf einer Reihe in der Oberstufe zu Datenbanken eher am Ende angesiedelt sein, 
+da der zu implementierende Code sehr komplex ist. 
+Ein Leistungskurs oder ein starker Grundkurs sollte aber 
+die Möglichkeit und Herausforderung erhalten, zu verstehen,
+mit welchem grundsätzlichen Prinzip eine Datenbank
+über PHP angesprochen werden kann.
+
+Das vorbereite Formular lässt nur einen eingeschränkten Zugriff auf die Datenbasis zu.
+Bspw. können keine Informationen zu den Benutzern oder Angaben zum Freundschaftsstatus oder Besitz 
+abgefragt werden. Dies kann man lebenspraktisch auch damit begründen, dass diese Informationen
+wegen des Datenschutzes mit einem Passwort geschützt werden müssten.
+
+Das vorbereite Formular zeigt den Schüler_innen also nur die grundsätzliche Funktionsweise von mit PHP an eine Datenbank 
+angebundene Formularen und bietet ihnen ein Drop-Downmenü, aus dem
+sie ein in der Datenbank eingestelltes Spiel auswählen können.
+
+Tickboxen, die darunter liegen, ermöglichen eine Auswahl über die anzuzeigenden Attribute zum Spiel.
+Es handelt sich dabei, relationenalgebraisch gesprochen, um eine Projektion.
+Nach einem Klick auf den Suchen-Button wird die Anfrage gesendet und 
+anschließend die Datei ausgabe.php geöffnet, in der die gewünschten
+Informationen in Tabellenform erscheinen.
+
+Andere DML-Operationen wie Löschen oder Einfügen sind hier nicht vorgesehen.
+
+

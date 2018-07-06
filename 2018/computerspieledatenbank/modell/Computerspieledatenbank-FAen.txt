@@ -1,0 +1,57 @@
+Angabe der funktionalen Abhängigkeiten der Relationen
+
+Relation: Publisher
+
+PID -> PName, GJahr
+
+PName -> GJahr
+
+
+Relation: Computerspiel:
+
+SID -> SName, FSK, EJahr, MP, PID
+SName -> EJahr, FSK, MP, PID
+
+
+Relation: Schlagwort
+
+WID -> WName
+
+
+Relation: Plattform
+
+PlaID - > PlaName
+
+
+Relation: Benutzer
+
+BID -> BName, Geschlecht, EMail, GebDatum
+
+Bemerkung: In unserer Population gibt es keine identischen Namen oder Geburtsdaten. Deshalb gilt für unsere Population auch:
+BName    -> Geschlecht, EMail, GebDatum
+GebDatum -> Bname, Geschlecht, EMail
+
+
+Relation: Kommentar
+
+KID -> KText, KNote, SID, BID
+
+
+Relation: Eigenschaften
+
+SID,WID->SID,WID
+
+
+Relation: Kompatiblität
+
+PlaID, SID -> Preis
+
+
+Relation: Befreundet
+
+BID1, BID2 -> BID1, BID2
+
+
+Relation: Besitz
+
+SID, BID - > SID, BID

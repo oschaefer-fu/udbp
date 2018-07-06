@@ -1,0 +1,11 @@
+Autor:	Frank Möbius, Iris Münzner
+Datum:	04.06.2018
+Zweck:	Beschreibung und Motivation des Views in PHP
+
+Zur graphischen Darstellung wurde PHP zur Abfrage eines psql-Datenbankabfrage genutzt. Die Zugangsdaten sind in der Datei verbindung.inc.php zusammengefasst. 
+In der index.php findet sich eine Übersicht über die Aufgaben. Die Umsetzung ist verlinkt.
+
+Die drei Aufgaben steigen vom Schwierigkeitsgrad her an. 
+Die erste Aufgabe ist eine rein statische Abfrage. 
+Die zweite Abfrage erfordert die Eingabe einer ID-Nummer im Eingabefeld und gibt dynamisch die beteiligten SchülerInnen im Projekt aus.
+Die dritte Aufgabe erzeugt dynamisch aus den vorhandenen Klassen ein Drop-Down-Menü und nach Auswahl einer (oder mehrerer) Klasse(n) werden die SchülerInnen dieser Klasse(n) mit ihren gewählten Projekten tabellarisch ausgegeben.

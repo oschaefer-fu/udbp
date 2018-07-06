@@ -1,0 +1,12 @@
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (105, 40, 'Königs Wusterhausen', 'Zug', 'Wald', 36468, 'deutsch', 4, false);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (100, 340, 'Sankt Peter-Ording', 'Zug/Bus', 'Marschland', 4101, 'deutsch', 3, false);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (507, 400, 'Binz', 'Zug', 'Ostsee', 10000, 'deutsch', 4, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (509, 500, 'Münster', 'Zug/Flug', 'Flachland', 250000, 'deutsch', 8, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (513, 600, 'Neuharlingersiel', 'Zug', 'Nordsee', 5000, 'deutsch', 3, false);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (101, 460, 'Gallnacht', 'Bus', 'Mittelgebirge', 640, 'deutsch', 2, false);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (103, 705, 'Trier', 'Zug/Flug', 'Flachland', 110000, 'deutsch', 4, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (104, 696, 'Ruhpolding', 'Zug/Flug', 'Hochgebirge', 6904, 'deutsch', 4, false);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (202, 723, 'Bregenz', 'Zug/Flug', 'Hochgebirge', 29500, 'deutsch', 4, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (420, 1850, 'Athen', 'Flug', 'Mittelmeer', 664000, 'griechisch', 3, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (402, 1140, 'Turin', 'Flug', 'Voralpen', 883000, 'italienisch', 4, true);
+INSERT INTO ort (o_id, entfng, o_name, trprtm, geograf, ewzahl, sprache, schickf, urb_rur) VALUES (410, 1850, 'Valetta', 'Flug', 'Mittelmeer', 5700, 'maltesisch', 5, true);

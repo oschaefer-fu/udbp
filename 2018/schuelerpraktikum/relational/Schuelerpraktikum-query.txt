@@ -1,0 +1,21 @@
+﻿Datenbankanfragen DES-Befehle
+
+
+1.	Welche Praktika gibt es?
+	project Pname (Praktikum);			
+ 
+2.	Name und Vorname aller Schüler, die im Jahr 2015 ein Praktikum gemacht haben		
+	project SName,SVorname (select Schuljahr=2015 (Schueler));
+	
+3.	Wie lautet die Email-Adresse der Fahrradwerkstatt?	
+	project  Kontaktmail (select FName = ‘Fahrradwerkstatt‘ (Firma));
+	
+4.	Wo befindet sich das Medienhaus?	
+	project  FStrasseHNr,FPLZ (select FName = ‘Medienhaus‘ (Firma));
+						
+5.	Welche Firmen haben mehr als 100 Angestellte?
+	project  FName (select Mitarbeiterzahl > 100  (Firma));
+
+7.	Welche Firmen bieten welche Praktikumsstellen an	(alphabetisch nach Firmenname geordnet)?
+	project  FName,Pname (select Firma.FNr. = Angebot.FNr. and Pname AS "Praktikum"	Praktikum.PNr=Angebot.PNr (Firma njoin Praktikum njoin Angebot))
+	

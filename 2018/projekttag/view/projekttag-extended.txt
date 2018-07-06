@@ -1,0 +1,15 @@
+Autor:	Frank Möbius, Iris Münzner
+Datum: 	04.06.2018
+Zweck:  Erweitere Möglichkeiten
+
+Niveau 1:
+Ausgabe aller teilnehmenden Lehrer und Projekte
+
+Niveau 2:
+Abfrage, in welchem Raum sich ein Lehrer gerade befindet
+
+Niveau 3:
+Abfrage, ob ein Raum zu einer bestimmten Uhrzeit belegt ist.
+
+Niveau 4:
+Erstellung einer Abfrage mit Mehrfach-Auswahl (mit Checkboxen) und entsprechender Erzeugung einer Anfrage (Bsp.: Stellen Sie alle Projekte in einer Checkboxen-Liste dar. Nach Auswahl eines (oder mehrerer Projekte) wird die Anzahl der Teilnehmer in dem jeweiligen Projekt tabellarisch dargestellt.)

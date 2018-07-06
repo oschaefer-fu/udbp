@@ -1,0 +1,11 @@
+Autor: Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum: 11.06.2018
+Zweck: Beschreibung der Mini-Welt
+
+Eine Schule führt Projekttage durch. Jede(r) SchülerIn hat ein Alter und ein Geschlecht und ist einer Klasse mit einem Klassenleiter zugeordnet. 
+Sie/er nimmt an einem Projekt teil. Jedes Projekt wird von zwei SchülerInnen geleitet und von mindestens einer Lehrkraft betreut. 
+
+Die leitenden SchülerInnen müssen ein Mindestalter für ihr Projekt, die Mindest- und Maximalanzahl an Teilnehmern und die Kosten angeben.
+Jedes Projekt findet zu bestimmten Zeiten in bestimmten Räumen statt. 
+Die Räume besitzen verschiedene Ausstattungsmerkmale und haben eine maximale Anzahl an Plätzen.
+Im Anschluss an die Projekttage können die SchülerInnen ihre besuchten Projekte bewerten.

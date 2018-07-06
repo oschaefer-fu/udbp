@@ -1,0 +1,7 @@
+﻿Miniwelt der Computerspiele
+Eine Gruppe von spielebegeisterten Menschen möchte ihre Spiele in einer Datenbank verwalten. Ein Spiel zeichnet sich durch seinen Namen, seine FSK-Freigabe, sein Erscheinungsjahr und die eventuelle Multiplayerfähigkeit aus. 
+Ein Spiel verfügt über mindestens ein Schlagwort, um es näher zu beschreiben, z.B. sein Genre oder Typus des Spiels. Spiele werden exklusiv von einem Publisher, der in einem bestimmten Jahr gegründet wurde, entwickelt.
+Spiele, die auf verschiedenen Plattformen laufen können (PC, X-Box, PS-Games), variieren jeweils auch in ihrem Preis.  
+In der Datenbank gibt es Benutzer. Diese können mehrere Spiele besitzen. Ein Benutzer hat mindestens einen Benutzernamen, Email, ein Geburtsdatum und ein Geschlecht. Er kann mit beliebig vielen weiteren Benutzern befreundet sein.
+Jeder Benutzer hat die Möglichkeit, zu einem Spiel einen Kommentar abzugeben. Dieser besteht aus einer Schulnote und einem freien Text.
+

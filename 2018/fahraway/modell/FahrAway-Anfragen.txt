@@ -1,0 +1,79 @@
+-- Anfragen an die Datenbank Fahraway
+-- M. Bertuch (1.-16.), Aiko Czetö (41./42./43.)
+
+-- 1. Frage nach allen Daten von Fahrt.
+
+-- 2. Frage nach den Attributen bezng, art und katgrie  von Aktivitaet.
+
+-- 3. Frage nach den Attributen bezng, art und katgrie von Aktivitaet als Bezeichnung, Art und Kategorie.
+
+-- 4. Frage nach bezng, art und kosten von allen Aktivitäten, die nicht mehr als 15 Euro kosten.   
+
+-- 5. Frage nach dem Namen aller Unterkünfte als Unterkunft, der Entfernung vom Ortskern und den Kosten von allen Unterkünften in 
+
+-- 6. Frage nach Name und Kategorie aller Aktivitaeten, die man nur im Sommer oder Herbst durchfuehren kann'
+
+-- 7. Frage nach den Vor- und Nachnamen aller Schüler und Schülerinnen, die mindestens 16 Jahre alt sind. 
+
+-- 8. Frage nach der Anzahl aller erfassten Fahrten.
+
+-- 9. Frage nach der Anzahl aller Orte bis zu einer Entfernung von 400 km.
+
+-- 10. Frage nach der durchschnittlichen Entfernung aller Orte.
+
+-- 11. Frage nach der Anzahl der städtischen und ländlichen Orte.
+
+-- 12. Frage nach der Anzahl der städtischen und ländlichen Orte mit mehr als 100.000 Einwohnern.
+
+-- 13. Frage nach der Anzahl der städtische und ländliche Orte mit einer Häufigkeit größer vier.
+
+-- 14. Frage nach der Anzahl der Aktivitäten pro Kategorie in absteigender Reihenfolge.
+
+-- 15. Frage nach der Anzahl aller Anbieter pro Ort in aufsteigender Reihenfolge. 
+
+-- 16. Frage nach allen Fahrten mit ihrer Dauer in Tagen. 
+
+-- 17. Frage nach Name, Bewertung und Preis der beliebtesten Aktivitaet.
+
+-- Anfragen an mehrere Tabellen:
+
+-- 20. Frage nach allen Unterkünften mit ihrem Ort ohne explizit JOIN zu verwenden 
+
+-- 21. Frage nach allen Unterkünften mit ihrem Ort. Verwende JOIN .. ON.
+
+-- 22. Frage nach Anrede und Name von Lehrer (einmaliges Auftreten), die schon Fahrten begleitet haben. 
+
+-- 23.  Frage nach den Lehrern, die die Fahrt Turin-LK_2017 begleiten ohne JOIN.
+
+-- 24.  Frage nach den Lehrern, die die Fahrt Turin-LK_2017 begleiten mit NATURAL JOIN.
+
+-- 25. Frage nach allen Fahrten mit ihrer Dauer in Tagen und den Übernachtungskosten pro Schüler.
+
+-- 26. Frage nach den Taschengeld_Kosten aller Fahrten bei pauschal 5 € pro Tag mal Schickfaktor des Ortes für die Dauer der Fahrten 
+
+-- 27. Teste, ob es wirklich nach allen eingetragenen Orten Fahrten gegeben hat, durch eine Anfrage nach nicht besuchten Orten. 
+
+-- 28. Frage von allen fahrenden Schuelern nach Unterkunft, dem begleitenden Lehrer und dessen Telefon-Nummer, geordnet nach Schueler-Nachname (verwende kein explizites NATURAL JOIN).
+
+-- 29. Frage von allen fahrenden Schuelern nach Unterkunft, dem begleitenden Lehrer und dessen Telefon-Nummer mit dreimal NATURAL JOIN 
+
+-- 30. Wie 29, aber alternative Verkettung in umgekehrter Reihenfolge (vierter NATURAL JOIN wird wieder nicht akzeptiert)
+
+-- 31. Frage von allen in 2017 fahrenden Schuelern nach Unterkunft, dem begleitenden Lehrer und dessen Telefon-Nummer mit dreimal NATURAL JOIN geordnet nach Schueler-Nachname.
+
+-- 32. Frage nach allen Lehrern und den IDs der eventuell begleitetet Fahrten mit einem OUTER JOIN.
+
+
+-- 40. Frage nach Schueler-ID, Schueler-Nach-/Vorname, Ortsname und Fahrtenname, aller Schueler, die noch nie weiter als 400km gereist sind.
+
+-- 41. wie 40, aber als geschachtelte Struktur
+
+-- 42. Frage nach der Anzahl der SuS, die noch nie weiter als 400km gereist sind.
+
+-- 43. Aufgabe: erstelle eine Anfrage, die die Ausgabe des php-scripts "Klassenfahrt.php" liefert
+
+
+
+
+
+

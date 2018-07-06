@@ -1,0 +1,11 @@
+Autor: Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum: 04.06.2018
+Zweck: Transformation vom ER-Modell zum Relationenmodell
+
+1. Alle Entitäten werden zu einer eigenen Relation.
+2. 1:1/1:n-Relationen werden als Attribute der bestehenden Relation hinzugefügt.
+	- Die Beziehung „nimmt teil“ wird im Relationenmodell der Relation „Schüler“ als Fremdschlüssel pID hinzugefügt.
+	- Die Beziehung „ist in“ wird im Relationenmodell der Relation „Schüler“ als Fremdschlüssel kID hinzugefügt.
+	- Die Beziehung „ist Klassenlehrer“ wird im Relationenmodell der Relation „Klasse“ als Fremdschlüssel lID hinzugefügt. 
+3. Ebenso wird die Beziehung „leitet“ im Relationenmodell in Fremdschlüsselattribute sID1, sID2 der Relation „projekt“ überführt, da es sich immer um zwei Schüler handelt.
+4. Alle anderen (optionalen) Beziehungen bilden eigene Relationen mit Fremdschlüsselbezügen zu den beteiligten Entitäten.

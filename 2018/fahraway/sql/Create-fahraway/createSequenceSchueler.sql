@@ -1,0 +1,4 @@
+CREATE SEQUENCE IF NOT EXISTS schuelerSeq 
+	INCREMENT BY  1 
+    START 400 
+    OWNED BY schueler.s_id;

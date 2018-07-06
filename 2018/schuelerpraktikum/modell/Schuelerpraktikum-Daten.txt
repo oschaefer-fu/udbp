@@ -1,0 +1,135 @@
+﻿Datensätze
+
+Tabelle Lehrer 	
+LNr	LName				LFach1			LFach2			LPLZ
+1	Frau Adam			Chemie			Biologie		13125
+2	Herr Durstenberg	Mathe			Informatik		13127
+3	Herr Flieger		Englisch		Musik			10409
+4	Frau Hausmann		Kunst			Deutsch			10439
+5	Frau Meister		Sport			Geographie		10409
+6	Frau Meisenbuch		Ethik			Französisch		10407
+7	Frau Sinistra		Mathe			Chemie			10439
+8	Herr Sicherlich		Physik			Chinesisch		19385
+9 	Herr Sichernich		Physik			Chinesisch		10385
+
+
+Tabelle Schueler
+SNr	SName				SVorname		SGeb		STel		LNr		FNr		PNr		LBewertung		SBewertung		Schuljahr
+1	Aster				Hartmut			31.07.2000	93748151	1		6		7		3				1				2015
+2	Austen				Tom				19.09.2000	79435732	8		2		5		3				3				2015
+3	Bernbaum			Ronald			01.03.2004	35672263	8		2		5		3				5				2018
+4	Buschmann			Ginny			11.08.2003	45673463	6		1		8		3				2				2017
+5	Dierenfeld			Luna			13.02.2004	75889444	4		5		4		2				1				2018
+6	Eichenbaum			Nina			30.07.2003	46478905	4		5		3		1				3				2017
+7	Erdmann				Damian			05.07.2004	12437905	4		5		9		2				2				2018
+8	Droscher			Anna			13.10.2000	98224795	6		4		6		5				5				2015
+9	Droscher			Adam			13.10.2000	98224795	8		1		2		3				2				2015
+10	Ernst				Lina			06.12.2003	12386457	1		3		1		3				4				2017
+11	Erhardt				Karl			12.04.2004	56481227	6		4		6		3				1				2018		
+12	Haferkorn			Maria			13.08.2004	56481122	4		5		3		1				2				2018
+13	Hartmann			Anna-Maria		13.05.2004	98214789	6		5		3		1				3				2018
+14	Hartmann			Nina			01.01.2004	12347911	1		6		9		4				3				2018
+15	Maurer				Maria			28.06.2004	19375489	6		4		9		3				2				2018
+16	Nickelfritz			Clemens			16.09.2003	93751212	3		6		9		2				3				2017
+17	Oswald				Paul			24.10.2002	93714178	5		2		5		3				1				2016
+18	Otter				Nils			19.11.2002	12127563	5		5		4		1				1				2016
+19	Paul				Oswald			24.10.2003	46489982	2		1		2		3				4				2017
+20	Schultz				Marco			17.03.2004	79435771	5		4		2		1				2				2018
+21	Schulz				Maria			18.03.2002	79434111	1		4		6		3				1				2016
+22	Schulze				Matthias		14.03.2004	47536441	7		6		7		2				1				2018
+23	Timmendorf			Sebastian		07.02.2004	47537891	1		6		7		3				2				2018
+24	Zabel				Ariane			03.12.2003	93746565	1		6		9		3				2				2017
+
+
+Tabelle Firma
+FNr	FName				KontaktTel	KontaktMail				Entfernung		Arbeitsbeginn		Arbeitsende		Mitarbeiterzahl		FStrasseHNr				FPLZ	
+1	Einkaufscenter		49400398	center@berlin.de		2 				10:00				16:00			870					Kaiserstr.1				3189
+2	Fahrradwerkstatt	47535555	schrauber@web.de		12 				10:00				16:00			12					Stargarderstr.24		10041
+3	Kindergarten		49406647	hellesonne@gmx.de		3 				07:00				13:00			18					Kavalierstr. 9			13187
+4	Krankenhaus			98564777	helios@berlin.de		16				07:00				13:00			1000				Bucher Chaussee 57		10049
+5	Medienhaus			49493333	flottefeder@yahoo.de	20				13:00				19:00			250					Heidelberger Platz 34	11235
+6	Zoo					87315599	zoo@berlin.de			14				09:00				15:00			478					Lichtenberger Str.78	11414
+
+
+Tabelle Praktikum
+PNr	Pname
+1	Erzieher			
+2	Handwerker
+3	Journalist
+4	Mediengestalter
+5	Monteur
+6	Krankenpfleger
+7	Tierpfleger
+8	Verkäufer
+9	Verwaltungsangestellter
+
+
+Tabelle Taetigkeitsbereich
+TNr		Arbeitsumfeld	Schulfachnaehe	TArt			Anforderung
+100		draußen			Biologie		Pflege			Tierliebe
+200		drinnen			Ethik			Pflege			Sozialkompetenz
+300		drinnen			Deutsch			Büro			Kreativität
+400		drinnen			Englisch		Büro			Kreativität
+500		drinnen			Deutsch			Büro			Computerkenntnisse
+600		draußen			Physik			Handwerk		Kreativität
+700		drinnen			Deutsch			Verwaltung		Computerkenntnisse
+800		drinnen			Mathematik		kaufmännisch	Sozialkompetenz
+900		drinnen			Biologie		Pflege			Tierliebe
+
+
+
+Tabelle Einsatzbereich
+PNr	TNr
+1	200
+2	600
+3	300
+3	400
+3	500
+4	300
+4	400
+4	500
+5	600
+6	200
+7	100
+7	900
+8	800
+9	700
+
+
+Tabelle Angebot
+PNr	FNr	Betreuer
+1	3	Frau Schöning
+2	1	Herr Meister
+2	4	Frau Pauling
+3	5	Frau Sauer
+4	5	Herr Stein
+5	2	Herr Grothe
+6	4	Herr Reichelt
+7	1	Frau Löwe
+7	6	Frau Pauling
+8	1	Frau Löwe
+8	2	Herr Grothe
+9	1	Frau Schulz
+9	4	Frau Bertram
+9	5	Herr Paster
+
+
+
+Tabelle Bewerbung
+BNr		BArt			Frist	Ansprechpartner		FNr
+1111	schriftlich		ja		Frau Lepsius		1
+1112	schriftlich		ja		Herr Schreiber		3
+1113	schriftlich		ja		Frau Moke			4
+1114	schriftlich		nein	Herr Can			6
+1115	telefonisch		nein	Herr Ulzan			2
+1116	telefonisch		ja		Frau Moke			4
+1117	Email			ja		Frau Lepsius		1
+1118	Email			ja		Herr Schreiber		3
+1119	Email			ja		Frau Moke			4
+1120	Email			ja		Frau Uzdemir		5
+1121	Email			nein	Herr Can			6
+1122	direkt			nein	Herr Ulzan			2
+1123	direkt			nein	Herr Can			6
+
+
+

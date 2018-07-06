@@ -1,0 +1,60 @@
+% Anfragen an Datenbank Fahraway in Relationaler Algebra DES-RA  (M. Bertuch)
+%(ohne Gewähr)
+
+% 1. Frage nach allen Daten von Fahrt.
+select true (fahrt);
+
+% 2. Frage nach den Attributen bezng, art und katgrie  von aktivitaet.
+project bezng, art, katgrie (aktivitaet);
+
+% 3. Frage nach den Attributen bezng, art und katgrie von aktivitaet als Bezeichnung, Art und Kategorie.
+select true (T) 
+   (rename T (Bezeichnung, Art, Kategorie) (projekt bezng, art, katgrie (aktivitaet)) 
+);  
+
+% 4. Frage nach bezng, art und kosten von aktivitaet, die nicht mehr als 15 Euro kosten.   
+project bezng, art, akpreis (
+   select akpreis <= 15 (aktivitaet) 
+);
+
+% 5. Frage nach den Namen aller Unterkünfte in einer Entfernung von maximal 1 km vom Ortskern und Übernachtungs-Kosten von maximal 20 €.
+
+select entfkern <= 1 and kosten <= 20 (
+    project u_name, entfkern, kosten (unterkunft)
+);
+
+
+% 6. Frage nach Name und Kategorie aller Aktivitaeten, die man nur im Sommer oder Herbst durchfuehren kann.
+
+project bezng, katgrie (aktivitaet) (
+   select (jahrz2 OR jahrz3) AND NOT (jahrz1 OR jahrz4);
+
+% 7. Frage nach den Namen aller Schüler und Schülerinnen, die mindestens 16 Jahre alt sind. 
+
+project vname, nname  (
+    select (current_date - gebdat) >= 16*365-4 (schueler)
+);
+
+
+% 21. Frage nach allen Unterkünften mit ihrem Ort. 
+project u_name, o_name (
+      (unterkunft) ZJOIN u_ort = o_id  (ort)
+);
+
+% 23.  Frage nach den Lehrern, die die Fahrt Turin-LK_2017 begleiten mit NATURAL JOIN.
+
+project anrede, vname, nname (
+   select f_name = 'Turin-LK_2017' (
+       lehrer njoin begleitet njoin fahrt  
+   )
+);
+
+% 24. Frage nach allen Fahrten mit ihrer Dauer in Tagen und den Übernachtungskosten pro Schüler.
+
+project f_name, bis-von+1 , (bis-von) * unterkunft.kosten (
+  (fahrt) zjoin fahrt.f_unterkunft = u_id (unterkunft)
+);
+
+
+
+

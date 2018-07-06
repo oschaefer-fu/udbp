@@ -1,0 +1,118 @@
+Tabelle: Publisher
+
+	Primärschlüssel PID nicht 0
+	PID		INTEGER NOT NULL
+	
+	Primärschlüssel PID
+	CONSTRAINT publ_key PRIMARY KEY (PID)
+	
+	Gründungsjahr des Publishers nach 1955
+	GJahr		INTEGER CHECK (GJahr > 1955),
+	
+
+Tabelle: Computerspiel
+
+	FSK erlaubt nur folgende Angaben: 0,6,12,16,18
+	FSK		INTEGER CHECK (FSK IN (0,6,12,16,18)),
+
+	Erscheinungsjahr ist nicht 0
+	EJahr		INTEGER NOT NULL,
+	
+	Fremdschlüssel des Publishers PID
+	PID		INTEGER REFERENCES Publisher (PID)
+	
+	Primärschlüssel der Tabelle SID nicht 0
+	SID		INTEGER NOT NUL
+	CONSTRAINT games_key PRIMARY KEY (SID)
+	
+
+Tabelle: Schlagwort
+
+	Schlagwort ID nicht 0
+	WID		INTEGER NOT NULL,
+	
+	Primärschlüssel des Schlagworts WID
+	CONSTRAINT sw_key PRIMARY KEY (WID)
+
+	
+Tabelle: Plattform
+
+	Plattform ID nicht 0
+	PlaID     INTEGER NOT NULL
+	
+	Erlaubte Plattformen: Xbox, PC, PS4, Web
+	PlaName   VARCHAR (20)  CHECK (PlaName in ('Xbox', 'PC', 'PS4', 'Web')
+	
+	Primärschlüssel der Plattform PID
+	CONSTRAINT pla_key PRIMARY KEY (PlaID)
+	
+	
+Tabelle Benutzer:
+
+	Benutzer ID nicht 0
+	BID		  INTEGER NOT NULL
+	
+	Als Geschlecht kann w oder m gewählt werden.
+	Geschlecht  VARCHAR (1) CHECK (Geschlecht in ('m','w'))
+
+	Primärschlüssel BID
+	CONSTRAINT user_key PRIMARY KEY (BID)
+	
+	
+Tabelle Kommentar:
+
+	Kommentar ID nicht 0.
+	KID		INTEGER NOT NULL
+	
+	Primärschlüssel KID
+	CONSTRAINT komm_key PRIMARY KEY (KID)
+	
+	Note kann nur 1,2,3,4,5 oder 6 sein
+	KNote		INTEGER CHECK (KNote IN (1,2,3,4,5,6))
+	
+	Fremdschlüsselreferenz SID und BID
+	SID		INTEGER REFERENCES Computerspiel (SID),
+	BID		INTEGER REFERENCES Benutzer (BID),
+	
+
+Tabelle: Eigenschaften
+
+	Fremdschlüsselreferenz Computerspiele und Schlagwörter
+	SID       INTEGER REFERENCES Computerspiel (SID),
+    WID       INTEGER REFERENCES Schlagwort (WID),
+	
+	Primärschlüssel ist das Tupel aus beiden Attributen.
+	CONSTRAINT eigen_key PRIMARY KEY (SID, WID)
+	
+
+Tabelle: Kompatibilitaet
+
+	Fremdschlüsselreferenz Plattform und Computerspiel
+	PlaID 	INTEGER REFERENCES Plattform (PlaID),
+	SID	 	INTEGER REFERENCES Computerspiel (SID),
+	
+	Preisangabe ist formatiert mit vier Vorkomma- und zwei Nachkommastellen.
+	Preis		NUMERIC (4,2),
+	
+	
+Tabelle: Befreundet
+
+	Fremdschlüsselreferenz Benutzer 1 und Benutzer 2
+
+	BID1     INTEGER REFERENCES Benutzer (BID),
+	BID2     INTEGER REFERENCES Benutzer (BID),
+	
+	Primärschlüssel ist das Tupel aus beiden Attributen
+	CONSTRAINT friend_key PRIMARY KEY (BID1,BID2)
+	
+
+Tabelle Besitz:
+
+	Fremdschlüsselreferenz Computerspiel und Benutzer
+	SID		INTEGER REFERENCES Computerspiel (SID),
+	BID		INTEGER REFERENCES Benutzer (BID),
+	
+	Primärschlüssel ist das Tupel aus beiden Attributen
+	CONSTRAINT bes_key PRIMARY KEY (SID,BID)
+	
+	

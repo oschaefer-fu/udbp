@@ -1,0 +1,4 @@
+﻿SELECT FName
+FROM Firma NATURAL JOIN Schueler 
+GROUP BY FName 
+ORDER BY AVG (SBewertung);

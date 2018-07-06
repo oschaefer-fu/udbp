@@ -1,0 +1,66 @@
+% 1. Aufgabe:
+% Listen Sie alle Publisher mit ihrem Erscheinungsjahr auf.
+
+% einfache Projektion auf einer Relation
+project pname, gjahr (publisher).
+
+
+% 2. Aufgabe:
+% Wann wurde '505Games' gegründet?
+
+% einfache Projektion mit einer einfachen select-Anweisung
+project gjahr (select pname = '505Games' (publisher)).
+
+
+% 3. Aufgabe: 
+% Welches Computerspiel hat die Eigenschaften 'Echtzeit' und 'Beat them Ups'?
+
+% Die Schnittmenge aller Spiele die einerseits die Eigenschaft 'Echtzeit' oder andererseits die 
+% Eigenschaft 'Beat them Ups' besitzen.
+project sname (select wname = 'Echtzeit' (computerspiel njoin eigenschaften njoin schlagwort)) 
+intersect 
+project sname (select wname = 'Beat them Ups' (computerspiel njoin eigenschaften njoin schlagwort)).
+
+
+% 4. Aufgabe:
+% Welche Spieler besitzen das Spiel 'Fair Cry V'?
+
+% Eine select- und project-Anweisung auf einem doppelten natural join.
+project bname ( select sname = 'Fair Cry V' (computerspiel njoin besitz njoin benutzer)).
+
+
+% 5. Aufgabe: 
+% Welche Spiele werden momentan gespielt?
+
+% Alle Spiele (über natural join der Name), die in der Relation Besitz auftauchen
+project sname (computerspiel njoin besitz).
+
+
+% 6. Aufgabe:
+% Welche  Spiele  dürfen  erst  ab  dem  18  Lebensjahr/  21.  Lebensjahr  gespielt  werden? 
+
+% Eine project-Anweisung und zwei select-Anweisungen mit einer or-Anweisung 
+% (Vereinfachung gegenüber SQL)
+project sname (select fsk = 18 or fsk = 21 (computerspiel)).
+
+
+% 7. Aufgabe:
+% Ausgabe  einer  Liste  von  Spielen  mit  Erscheinungsjahr,  Publisher  und  FSK.  
+
+% Mehrfache Auswahl aus einem natural join
+project sname, ejahr, pname, fsk (computerspiel njoin publisher).
+
+
+% 8. Aufgabe:
+% Welches  Spiel  ist  noch  keinen  Eigenschaften  zugeordnet?
+
+% Die Differenz wird genutzt um alle Computerspiele, die in der Eigenschaften-Relation
+% auftauchen aus der Liste aller Computerspiele zu filtern
+project sname (computerspiel) difference project sname (computerspiel njoin eigenschaften).
+
+
+% 9. Aufgabe:
+% Welche  Spiele  kannst  du  mit  Freunden  spielen?  
+
+% einfache Kombination mit Select und Project.
+project sname (select mp = 1 (computerspiel)).

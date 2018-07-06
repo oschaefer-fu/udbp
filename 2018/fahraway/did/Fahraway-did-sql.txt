@@ -1,0 +1,99 @@
+Didaktische Überlegungen zum SQL-Aufgaben-Pool 
+für die Datenbank Fahraway (Fahraway-query.sql):  (M. Bertuch)
+
+Die Abfolge der Aufgaben demonstriert SQL-Aspekte 
+mit ansteigender Schwierigkeit und steigender Komplexität 
+
+Die Aufgabentexte wurden überwiegend im Schema SELECT, FROM, WHERE formuliert.
+z.Bsp: Frage nach Name, TelNummer und Ort aller Fahrten und Orte 
+in einer Entfernung von maximal 200 km.
+Also in der Reihenfolge Attribute, Tabellen, einschränkende Bedingung.
+Das sollte den Schülern die Umsetzung in ein SQL-Konstrukt erleichtern. 
+
+Die Anfragen 1. bis 17. beziehen lediglich eine Tabelle ein.
+Ab Aufgabe 20 erhält man das gewünschte Ergebnis nur 
+durch Verknüpfung von zwei bis sechs Tabellen. 
+
+Die ersten drei Anfragen fragen nach (ausgewählten) Attributen
+und verlangen die Vergabe neuer Bezeichner für die Ergebnis-Attribute.  
+
+nur SELECT ... FROM                                         Schwierigkeitsgrad
+
+1. Einfachst mögliche Abfrage: Unmodifizierte Ausgabe einer         *
+   Tabelle in Original-Gestalt.                 
+2. Ausgabe ausgewählter Attribut-Werte                              *
+3. Dito mit Umbennung der Attribut-Bezeichner                       *
+
+Einschränkungen mit WHERE
+
+4. einfaches <= auf ein numerisches Attribut                        *
+5. zwei mit AND verknüpfte Bedingungen                              *
+6. noch komplexerer boolscher Ausdruck: geschachtelt OR / AND NOT   **
+7. WHERE mit aus Geburtstag berechneten Schülern mit Alter = 15 Jahre   **
+  (einfach bei 15 Jahren: Zeitraum enthält immer 3 Schaltjahre)
+  
+Aggregat-Funktionen auch mit GROUP BY:
+Aufgaben 12 und 13 zeigen den Unterschied bei Einschränkungen:
+12.: WHERE : Einschränkung abhängig von Attribut-Werten
+13.: HAVING: Einschränkung auf dem Ergebnis der Aggregat-Funktion 
+
+8. COUNT(*)                                                         *
+9. COUNT(*) kombiniert mit Bedingung in WHERE                       *
+10. AVG                                                             *
+11. COUNT(*) mit GROUP BY                                           **
+12. Einschränkung des gezählte Wertes mit Bedingung in WHERE        **
+13. Einschränkung gebunden an die Aggregat-Funktion mit HAVING      **
+14./15. GROUP BY mit absteigender/aufsteigender Reihenfolge         **
+
+Ausgabe von im SELECT-Statement berechneten Werten 
+
+16. SELECT mit Ausgabe von aus Attribut-Werten                      **
+    berechneten Ergebnissen
+
+Einschränkung durch Berechnung eines Vorergebnisses 
+durch Schachtelung mit WHERE IN ( SELECT ... )
+    
+17. Schachtelung mit WHERE IN ( SELECT ...                          ***
+
+-------- Anfragen an zwei bis sechs Tabellen
+-------- Gleichverbünde
+
+postgresql verlangt kein explizites Join, sondern akzeptiert
+auch eine Liste von Tabellen-Bezeichnern, was aber die 
+Art der Verknüpfung und den JOIN-Typ verdeckt bzw. undeutlich macht.
+Die Aufgaben-Sequenz verlangt daher immer auch eine Variante mit 
+explizit angegebenem JOIN-Statement 
+
+20. Einfache Verknüpfung geschachtelter Tabellen                    **
+    mit implizitem JOIN 
+21. dito mit JOIN ON                                                **
+22. Alle Lehrer, die schon einmal gefahren sind mit DISTINCT        **
+23. Gleichverbund dreier Tabellen mit implizitem JOIN               **  
+    und expliziter Angabe der drei Gleichheiten
+24. wie 22, aber Gleichverbund dreier Tabellen mit NATURAL JOIN     **
+25. SELECT mit komplexen Rechentermen über zwei Tabellen            ***
+26. dito über drei Tabellen                                         ***
+27. Frage nach noch nichht benotzten Orten mit NOT EXIST            **
+28. dito über sechs Tabellen                                        ***
+29. 3faches NATURAL JOIN                                            **
+    (NATURAL-JOIN-Limit bei psql bei vier Tabellen ?)
+30. wie 27 aber umgekehrte Reihenfolge -> gleiches Ergebnis         **  
+
+31. dito, aber eingeschränkt auf 2017
+
+------- OUTER JOIN
+---- Ergebnis mit leeren Feldern bei Lehrern, die keine
+---- Fahrten begleitet haben. 
+
+32. welche Lehrer haben überhaupt Fahrten begleitet ?               **
+
+------ stark geschachtelte Anfragen ---
+
+40. Schüler, die weiter als 400 km gefahren sind                    ***
+41. dito, stark geschchteltes SQL-Konstrukt                         *** 
+41. Anzahl der Schüler, die weiter als 400 km gefahren sind         ***
+
+to do:
+
+ANY, ALL
+  

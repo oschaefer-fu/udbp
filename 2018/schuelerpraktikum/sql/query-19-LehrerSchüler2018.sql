@@ -1,0 +1,5 @@
+﻿SELECT LName ,COUNT( LName)
+FROM Lehrer NATURAL JOIN Schueler
+WHERE Schuljahr = 2018
+GROUP BY LName 
+ORDER BY COUNT( LName ) DESC;

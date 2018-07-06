@@ -1,0 +1,6 @@
+Autor:	Frank Möbius, Iris Münzner
+Datum: 	04.06.2018
+Zweck:  Basismöglichkeiten der Anwendung
+
+
+s. projekttag-view.txt

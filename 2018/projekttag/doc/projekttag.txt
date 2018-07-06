@@ -1,0 +1,9 @@
+Autoren:	Frank Möbius, Fabian Weber, Ricarda Galler, Iris Münzner
+Datum:		04.06.2018
+Zweck:		Zusammenfassende Darstellung des Projekts
+
+Dieses Projekt entwirft eine Projekttagsdatenbank für SchülerInnen. Eine knappe textuelle Beschreibung der Mini-Welt befindet sich im Ordner „modell“ > „projekttag-Welt.txt“.
+
+Die vorliegende Datenbank „Projekttag“ ist für eine Arbeit im Grund- oder Leistungskurs Informatik konzipiert. Der Lebenswelt- und Schülerbezug ist damit gegeben, dass Projekttage an Schulen allgemein durchgeführt werden und häufiger auch unter Schülerorganisation stattfinden. Daraus ergibt sich für die Schüler die transparente Notwendigkeit, die Daten geordnet zu verwalten. Auch stößt man in der Komplexität dieser Datenbestände an die Grenzen eines Tabellenkalkulationsprogramms.
+
+Die zur Verfügung gestellten Dokumente ermöglichen einen schrittweisen Aufbau einer einfachen Datenbank, angefangen von der Planung über die Implementierung bis zur Arbeit mit dem Datenbestand (Abfragen, Views). Im Bereich der Abfragesprachen werden neben einfachen Abfragen auch solche mit Aggregatfunktionen, mit Durchschnitt und Differenz sowie mit Quantoren zur Verfügung gestellt. Im Bereich der Views wird die Scriptsprache PHP verwendet.

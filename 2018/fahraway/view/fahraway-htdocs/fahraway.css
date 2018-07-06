@@ -1,0 +1,145 @@
+body{
+	/*background-color:#00CC66; ODER*/
+	background-color:rgb(0,204,102);
+	height:	98%		;
+	width: 	98%		;
+	margin: 0 auto	;
+}
+html{
+	height:	100%	;
+	width:	100%	;
+	
+}
+
+.dunkelbraun{
+	background-color	: #8b4513			;
+	text-align			: center			;
+}
+.gelb{
+	background-color	: #ffb90f;
+	text-align			: center			;
+}
+.dunkelgrau{
+	background-color	: #a4a4a4			;
+	text-align			: center			;
+}
+.grau{
+	background-color	: #bdbdbd			;
+	text-align			: center			;
+}
+.hellgrau{
+	background-color	: #d8d8d8			;
+	text-align			: center			;
+}
+.rot{
+	background-color	: #FF0000			;
+	text-align			: center			;
+}
+
+/*>>>>>>>>>>Markierungen>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.rosa{
+	background-color	: #ffc1c1			;
+	text-align			: center			;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+/*>>>>>>>>>>Rahmen in dem die ganzen Navigationslinks stehen>>*/
+#navigation{
+	margin				: 10px auto 10px auto		;
+	background-color	: #66ccff					;	 
+	border				: solid 2px black			;
+	height				: 25%						;
+	width				: 100%						;
+	line-height			: 1.8						;
+}
+#intro{
+	font-size			: 5em						;
+	text-align			: center					;
+}
+#suche{
+	margin				: 10px auto 10px auto		;
+	background-color	: #66ccff					;	 
+	border				: solid 2px black			;
+	height				: 25%						;
+	width				: 100%						;
+	line-height			: 1.8						;
+}
+
+
+
+.naviInline{
+	margin:0px;
+	padding:0px;
+	line-height: 90%;
+}
+
+.ankerNavi{
+	font-size: 12px;
+	margin:0px;
+	padding:0px;
+}
+
+.naviBox{
+	float			: left		;
+	border-style	: solid		; 
+	border-width	: 2px		; 
+	border-radius	: 10%		;
+	margin			: 4px		;
+	padding			: 4px		;
+	background-color: #F0F0F0	;
+	width			: 9%		;
+	height			: 80%		;
+}
+.naviBoxSelect{
+	float			: left		;
+	border-style	: solid		; 
+	border-radius	: 10%		;
+	border-width	: 2px		; 
+	margin			: 4px		;
+	padding			: 4px		;
+	width			: 9%		;
+	height			: 80%		;
+	background-color: #8B5A2B	;
+}
+#navi{
+	height			: 20%		;
+	margin-left		: 30px		;
+}
+#bus{
+	display			: block		;
+    margin-left		: auto		;
+    margin-right	: auto		;
+	position		: relative	;
+	top				: 50%		;
+	-webkit-transform: translateY(-50%)	;
+	-ms-transform	: translateY(-50%)	;
+	transform		: translateY(-50%)	;
+}
+/*============================================================*/
+#rahmen_3,.rahmen_4 {
+	margin				: 10px auto 10px auto		;
+	background-color	: #66ccff					; 
+	border				: solid 2px black			;
+	height				: 70%						;
+	width				: 100%						;
+	overflow-x			: auto						;
+}
+.rahmen_4{
+	height				: 70%						;
+}
+
+td,th{
+	border				: solid #E0E0E0 2px	;
+	font-size			: 12px				;
+	padding				: 3px				;	
+	background-color	: white				;
+	border-radius		: 1%				;
+	line-height			: 0.8				;
+	
+}
+table{
+	border				: solid black 2px	;
+	margin				: 10px			; 
+}
+
+

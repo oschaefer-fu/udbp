@@ -1,0 +1,36 @@
+﻿Alle RALG Anfragen und Ergebnisse
+
+1. Welche Praktika gibt es? 
+project pname (praktikum);
+
+
+answer(praktikum.pname:varchar(255)) ->
+{
+  answer('Erzieher'),
+  answer('Handwerker'),
+  answer('Journalist'),
+  answer('Krankenpfleger'),
+  answer('Mediengestalter'),
+  answer('Monteur'),
+  answer('Tierpfleger'),
+  answer('Verkäufer'),
+  answer('Verwaltungsangestellter')
+}
+Info: 9 tuples computed.    
+
+
+
+2. Gibt es bei schriftlichen Bewerbungen immer Fristen?
+project frist (select bart ='schriftlich' (bewerbung));
+
+answer(bewerbung.frist:varchar(255)) ->
+{
+  answer(ja),
+  answer(nein)
+}
+Info: 2 tuples computed.   
+
+
+
+
+Wegen bestimmter Datentypen u.a. in den Tabellen Schueler und Firma (Datum, Arbeitsbeginn, …) konnten weitere Abfragen die in der Datei Schuelerpraktikum-queryDES.txt im Ordner „modell“ nicht ueberprueft werden.

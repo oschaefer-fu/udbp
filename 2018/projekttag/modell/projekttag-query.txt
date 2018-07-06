@@ -1,0 +1,5 @@
+Autoren: Fabian Weber, Ricarda Galler
+Datum: 	04.06.2018
+Zweck:	Text zu Anfrage
+
+s. projekttag-query.sql

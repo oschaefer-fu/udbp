@@ -1,0 +1,12 @@
+Autor: Ricarda Galler
+Datum: 04.06.2018
+Zweck: Aufzeigen funktionaler Abhängigkeiten in der Datenbasis der Miniwelt „Projekttage“
+
+Beim Entwurf des ER-Modells haben wir bereits jeder Entität ein abstraktes 
+Schlüsselattribut aus dem kleinen Anfangsbuchstaben der Entität und dem
+Suffix ~ID zugeordnet. Diese ID-Attribute identifizieren ihre zugehörigen
+Tupel eindeutig und sind folglich Primärschlüssel. Das Schlüsselattribut 
+wurde ins Relationenmodell übernommen und bestimmt also dort jeweils alle anderen Attribute funktional.
+
+Weitere nichttriviale funktionalen Abhängigkeiten lassen sich in unserem Modell
+nicht finden.

@@ -1,0 +1,328 @@
+------------------------------------------------------------------------------
+--1. Aufgabe: Wann wurde welcher Publisher gegründet?
+
+gjahr |    pname    
+-------+-------------
+  1960 | Sega
+  2002 | Deep Silver
+  1989 | Nintendo
+  2006 | 505Games
+(4 Zeilen)
+
+
+------------------------------------------------------------------------------
+--2. Aufgabe: Wann wurde '505Games' gegründet?
+
+ gjahr 
+-------
+  2006
+(1 Zeile)
+
+
+------------------------------------------------------------------------------
+--3. Aufgabe: Welche Spiele kannst du mit Freunden spielen?
+
+
+     sname      
+----------------
+ Pony Bridge
+ Fair Cry V
+ Call of Beauty
+ School Rocks
+ Codename Curie
+ Scream Buble
+(6 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--4. Aufgabe: Ausgabe einer Liste von Spielen mit Erscheinungsjahr, Publisher
+--und FSK.
+
+
+      sname      |    pname    | fsk 
+-----------------+-------------+-----
+ Pony Bridge     | Deep Silver |  12
+ Dad in Vinland  | 505Games    |  18
+ Fair Cry V      | 505Games    |  18
+ Call of Beauty  | Nintendo    |  16
+ School Rocks    | Nintendo    |   0
+ Final Year      | Sega        |   0
+ Holiday Land    | Nintendo    |   0
+ Purple Survival | Sega        |   6
+ Codename Curie  | Nintendo    |  21
+ Scream Buble    | Nintendo    |  16
+(10 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--5. Aufgabe: Welche Spiele dürfen erst ab dem 18. Lebensjahr/ 21. Lebensjahr
+--gespielt werden?
+
+
+     sname      
+----------------
+ Dad in Vinland
+ Fair Cry V
+ Codename Curie
+(3 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--6. Aufgabe: Welche Spieler spielen momentan kein Spiel?
+
+
+      bname       
+------------------
+ Leg3ndAry
+ The Art of Crime
+ Morpheus xXx
+ König von Berlin
+ Destroya
+(5 Zeilen)
+
+
+------------------------------------------------------------------------------
+--7. Aufgabe: Welches Spiel ist noch keinen Eigenschaften zugeordnet?
+
+
+      sname      
+-----------------
+ Pony Bridge
+ Fair Cry V
+ Dad in Vinland
+ Purple Survival
+(4 Zeilen)
+
+
+------------------------------------------------------------------------------
+--8. Aufgabe: Auf wie vielen Plattformen laufen die Spiele jeweils?
+
+
+    sname     | anzahl 
+--------------+--------
+ Scream Buble |      1
+ Holiday Land |      2
+ Pony Bridge  |      3
+ Fair Cry V   |      3
+(4 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--9. Aufgabe: Welche durchschnittliche Bewertung haben die Spiele?	
+
+
+     sname      |          avg           
+----------------+------------------------
+ Scream Buble   |     4.5000000000000000
+ Call of Beauty |     3.0000000000000000
+ Codename Curie |     3.0000000000000000
+ Holiday Land   |     2.5000000000000000
+ School Rocks   |     2.0000000000000000
+ Fair Cry V     | 1.00000000000000000000
+ Dad in Vinland |     2.0000000000000000
+(7 Zeilen)
+
+
+
+
+------------------------------------------------------------------------------
+--10. Aufgabe: Welche durchschnittliche Bewertung haben die Publisher?
+--Also der Durchschnitt über ihre Spiele.
+
+
+
+  pname   |        avg         
+----------+--------------------
+ Nintendo | 2.9090909090909091
+ 505Games | 1.5000000000000000
+(2 Zeilen)
+
+
+
+
+------------------------------------------------------------------------------
+--11. Aufgabe: Welche Spieler besitzen das Spiel 'Fair Cry 5'?
+
+
+      bname       
+------------------
+ under-aged-freek
+ GOD of Peace
+ Thunder
+ Spamlord
+(4 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--12. Aufgabe: Welche Spiele werden momentan gespielt?
+
+
+
+     sname      
+----------------
+ Scream Buble
+ Holiday Land
+ School Rocks
+ Fair Cry V
+ Dad in Vinland
+(5 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--13. Aufgabe: Welche(s) Computerpiel(e) wurde(n) in dem Jahr veröffentlicht, indem auch
+--ein von Nintendo veröffentlichte Spiel raus kam?
+
+
+     sname      
+----------------
+ Dad in Vinland
+(1 Zeile)
+
+
+
+
+------------------------------------------------------------------------------
+--14. Aufgabe: Wie alt sind die männlichen Nutzer?
+
+
+      bname       |           age           
+------------------+-------------------------
+ under-aged-freek | 5 years 11 mons 24 days
+ GOD of Peace     | 34 years 4 mons 22 days
+ Thunder          | 28 years 26 days
+ König von Berlin | 20 years 9 mons 26 days
+ Leg3ndAry        | 42 years 5 mons 25 days
+ Morpheus xXx     | 47 years 9 mons 22 days
+(6 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--15. Aufgabe: Welche Spieler (BName und E-Mailadresse) besitzen 'Fair Cry V‘,
+--aber nicht ‘Dad in Vinland‘? 
+
+
+
+      bname       |          email          
+------------------+-------------------------
+ under-aged-freek | underagedfreak@yahoo.de
+ Spamlord         | spamlord@gmail.co.uk
+ Thunder          | thunder@googlemail.com
+(3 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--16. Aufgabe: Mit wem ist 'under-aged-freek' alles befreundet?
+
+
+
+   bname   
+-----------
+ babychief
+ Thunder
+(2 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--17. Aufgabe: Welches Computerspiel hat die Eigenschaften 'Echtzeit' und 'Beat them Ups'
+
+
+
+     sname      
+----------------
+ Call of Beauty
+(1 Zeile)
+
+
+
+------------------------------------------------------------------------------
+--18. Aufgabe: Welches sind die Top-3 Spiele?
+
+
+
+    sname     | count 
+--------------+-------
+ School Rocks |     4
+ Fair Cry V   |     4
+ Scream Buble |     2
+(3 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--19. Aufgabe: Welche(r) Spieler darf das Spiel aus dem Jahr 2018 nicht spielen?
+
+
+
+      bname       
+------------------
+ babychief
+ under-aged-freek
+ Spitney Brears
+(3 Zeilen)
+
+
+------------------------------------------------------------------------------
+--20. Aufgabe: Welcher Spieler ist mit Spielern über 18 befreundet?
+
+
+
+      bname       
+------------------
+ Morpheus xXx
+ GOD of Peace
+ Spitney Brears
+ König von Berlin
+ Leg3ndAry
+ under-aged-freek
+ Thunder
+(7 Zeilen)
+
+
+
+------------------------------------------------------------------------------
+--21. Aufgabe: Welcher Spieler gibt im Durchschnitt die schlechtesten Bewertungen?
+
+
+  bname   |        avg         
+----------+--------------------
+ Destroya | 6.0000000000000000
+(1 Zeile)
+
+
+
+------------------------------------------------------------------------------
+--22. Aufgabe: Welche Spiele lassen sich sowohl auf der Xbox, auf dem PC und auf
+--der PS spielen?
+
+
+    sname    
+-------------
+ Pony Bridge
+(1 Zeile)
+
+
+
+------------------------------------------------------------------------------
+--23. Aufgabe: Welches Spiel(e) wurde(n) am häufigsten verkauft?
+-- 2 Versionen, daher doppelte Antwort
+
+    sname     
+--------------
+ School Rocks
+ Fair Cry V
+(2 Zeilen)
+
+    sname     
+--------------
+ School Rocks
+ Fair Cry V
+(2 Zeilen)

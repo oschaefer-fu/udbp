@@ -1,0 +1,20 @@
+﻿Didaktische Hinweise
+
+Das vorgestellte Projekt gehört zum Themenfeld „4.1 Datenbanken“ (RLP S. 19) und ist im 1. Kurshalbjahr „Datenbanken und Softwareentwicklung I“ sowohl im Grund- als auch im Leistungskurs (RLP S. 25 bzw. 27) einsetzbar. Alternativ kann das Projekt auch im 3. Kurshalbjahr genutzt werden. Für den Einsatz im Zusatzkurs bietet sich ebenfalls das 3. Kurshalbjahr (RLP S. 24) an.
+
+Die vorgestellte Miniwelt der Computerspiele ist modular aufgebaut. D.h., Umfang und Schwierigkeitsgrad können an die jeweilige Schülerklientel angepasst werden. Die präsentierte Datenbank orientiert sich thematisch an der Erfahrungswelt der Schüler*innen und versucht den Spagat zwischen Aktualität und Zeitlosigkeit im Einsatz. Z.B. sind die Namen der Computerspiele an bekannte Spiele bewusst nur angelehnt. Auch die Namen und ergänzenden Angaben der Computerspieler sind erfunden, orientieren sich aber strukturell an realitätsnahen Vorbildern. Gleiches gilt für die vorgeschlagenen Kommentare und Plattformen.
+
+Der zeitliche Umfang des Projektes richtet sich natürlich nach der Lerngruppe. Die Datenbank erlaubt Schüleraktivitäten auf unterschiedlichen Niveaustufen. Vollumfänglich eingesetzt scheint eine Unterrichtsreihe von bis zu drei oder gar vier Wochen realistisch. Das Paket enthält:
+
+• Miniwelt (unverzichtbar)
+• ER-Modell (inkl. Attributierung, Schlüsselangabe und Komplexitäten) (unverzichtbar)
+• Relationenmodell (inkl. der Schlüssel, Fremdschlüssel sowie der angewandten Transformationsregeln) (fakultativ)
+• Integritätsbedingungen (unverzichtbar) und funktionale Abhängigkeiten (fakultativ)
+• SQL-Datenbank und Beispielpopulationen in Tabellenform(unverzichtbar)
+• Aufgabensequenzen in RA und SQL inkl. der Musterlösungen und ggf. Alternativen (fakultativ)
+• Interaktive Anwendung in PHP (fakultativ)
+
+Die Aufgaben sind mittels Sternen (*: leicht - *****: herausfordernd) verschiedenen Schwierigkeitsgraden zugeordnet und erlauben die gezielte und binnendifferenzierende Adressierung der jeweiligen Schülerklientel. Da in allen Fällen Aufgaben und Lösungen angeboten werden, kann der Einsatz wunschgemäß angepasst werden. Z.B. können alternativ auch fertige SQL-Abfragen verbalisiert werden, RA-Abfragen in SQL überführt werden etc.
+
+Methodisch bietet sich die Umsetzung als unterrichtsbegleitendes Projekt in Gruppenarbeit an. Alternativ ist auch der durchgehende Einsatz an Projekttagen möglich. Die angebotene Population bietet lediglich einen Ansatz. Aus Gründen der Motivation, aber z.B. auch des besseren Kennenlernens der Datenbank bietet es sich in jedem Fall an, die Schüler*innen aufzufordern, die Datenbank mit eigenen Einträgen zu vervollständigen und zu aktualisieren. Der Umfang des angebotenen Materials lässt es günstig erscheinen, das die benötigten theoretischen Grundlagen projektbegleitend in Form einer Lerntheke oder eines Lernpfades der Lerngruppe zur Verfügung gestellt werden.
+Weiterführend ist es überlegenswert, die angebotene Datenbank online zur Verfügung zu stellen.

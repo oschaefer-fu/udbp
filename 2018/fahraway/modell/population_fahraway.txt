@@ -1,0 +1,201 @@
+
+AKTIVITAET
+ ak_id | bewert |          bezng           |       art       |    katgrie    |   fabezg    |         ort         |         vorstzg         | jahrz1 | jahrz2 | jahrz3 | jahrz4 | mialt | dauer | akpreis | anbietr 
+-------+--------+--------------------------+-----------------+---------------+-------------+---------------------+-------------------------+--------+--------+--------+--------+-------+-------+---------+---------
+     1 |      6 | Surfen4Fun               | Surfen          | Sport         | Sport       | Sankt Peter-Ording  | Schwimmabzeichen Bronze | f      | t      | t      | f      |    14 |    14 |  249.00 |       1
+    99 |      5 | Surfen24/7               | Surfen          | Sport         | Sport       | Binz                | Schwimmabzeichen Silber | f      | t      | t      | f      |    14 |    10 |  222.00 |       1
+    14 |      6 | Ashram Yoga              | Yoga            | Sport         | Religion    | Ahaus               | keine                   | t      | t      | t      | t      |     6 |     2 |   29.00 |      11
+    13 |      5 | JesuitenKloster          | Meditation      | Geist & Seele | Religion    | Bocholt             | keine                   | t      | t      | t      | t      |     8 |     3 |    0.00 |      10
+     4 |      7 | Theater an Rand          | Theater         | Kunst/Kultur  | Diverse     | Leipzig             | keine                   | t      | t      | t      | t      |     0 |     3 |   15.00 |       4
+     5 |      5 | Puppen & Co              | Theater         | Kunst/Kultur  | Diverse     | Halle               | keine                   | t      | t      | t      | f      |     0 |     3 |   18.00 |       5
+    24 |      6 | Arkaden-Tour             | Museales        | Kunst/Kultur  | Geschichte  | Turin               | keine                   | t      | t      | t      | t      |    11 |     4 |    0.00 |     999
+     3 |      9 | Surfonauten              | Surfen          | Sport         | Sport       | Neuharlingersiel    | Schwimmabzeichen Bronze | f      | t      | t      | f      |    12 |    15 |  259.00 |      13
+    15 |      8 | North-Kiten              | Kitesurfen      | Sport         | Sport       | Neuharlingersiel    | Schwimmabzeichen Bronze | f      | t      | t      | f      |    14 |    14 |  249.00 |      13
+     9 |      8 | Kletterparadies          | Klettern        | Sport         | Sport       | ajksfksjfb          | Mindesgröße 1.4 m       | f      | t      | t      | f      |    10 |     3 |   24.00 |     999
+    23 |      6 | Mole Antonelliana        | Museales        | Kunst/Kultur  | Italienisch | Turin               | keine                   | t      | t      | t      | t      |     6 |     2 |    0.00 |      13
+    10 |      3 | Schachzenter             | Schach          | Sport         | Sport       | Bocholt             | keine                   | t      | t      | t      | t      |     4 |     3 |   12.00 |      10
+     7 |      7 | Kletterparadies          | Klettern        | Sport         | Sport       | Königs Wusterhausen | Mindesgröße 1.3 m       | f      | t      | t      | f      |    10 |     4 |   32.00 |     999
+     8 |      6 | Naturfelsen              | Klettern        | Sport         | Sport       | Garmisch            | Mindesgröße 1.4 m       | f      | t      | t      | f      |    10 |     5 |   27.00 |     999
+    11 |      9 | Full Metall Jacket       | Paint Ball      | Militaer      | Diverse     | Berlin              | Mindesgröße 1.5 m       | t      | t      | t      | t      |    12 |     4 |   49.00 |     999
+    12 |      7 | Nightknight              | Paint Ball      | Militaer      | Diverse     | Taucha              | Mindesgröße 1.6 m       | t      | t      | t      | f      |    14 |     5 |   57.00 |     999
+   116 |      6 | Religöse Besinnungstage  | Meditation      | Religion      | Religion    | Ahaus               | keine                   | t      | t      | t      | t      |     6 |     2 |   29.00 |      10
+   114 |      7 | Badminton für Anfänger   | Badminton       | Sport         | Sport       | Königs Wusterhausen | keine                   | t      | t      | t      | t      |    10 |    10 |   50.00 |     999
+   126 |      8 | Wettpaddeln              | Paddeln         | Sport         | Sport       | Königs Wusterhausen | Schwimmabzeichen Bronze | f      | t      | t      | f      |     8 |     3 |   10.00 |     999
+   127 |      5 | Like ice in the sunshine | Beachvolleyball | Sport         | Sport       | Königs Wusterhausen | keine                   | t      | t      | t      | f      |     8 |     3 |    0.00 |     999
+(20 rows)
+
+ 
+ANBIETER
+ an_id |         an_name          |      strasse       | hausnr |        ort         |  plz  |              url              |                 email                  |     telefon      |  ansprechperson  
+-------+--------------------------+--------------------+--------+--------------------+-------+-------------------------------+----------------------------------------+------------------+------------------
+     1 | Wassersport Schimmel     | Heckenweg          |     21 | Ostseebad Binz     | 18609 | www.wassersport-schimmel.de   | mario.schimmel@waschispo.de            | +49-38393-221221 | Mario Schimmel
+     2 | Neptunsport              | Birkenallee        |     99 | Ostseebad Binz     | 18609 | www.neptunsport.de            | hans.kafka@neptunsport.de              | +49-38393-98229  | Hans Kafka
+     3 | Nemo-Wassersport         | Korallweg          |     23 | Sylt               | 25980 | www.nemo-wassersport.de       | doris.alzher@nemo-wassersport.de       | +49-4651-34556   | Doris Alzher
+     5 | Puppentheater Halle      | Bernahdystr.       |     89 | Halle              |  6110 | www.puppentheater-halle.de    | peggy.winter@puppen-theater-halle.de   | +49-345-8978909  | Peggy Winter
+     7 | Kletterparadies          | Hexenwall          |     66 | Goslar             | 38640 | www.kletterparadies-goslar.de | helge.raider@kletterparadies-goslar.de | +49-5325-99821   | Helge Raider
+     8 | Naturfelsen              | Randstr.           |     24 | Dresden            |  1067 | www.naturfelsen.de            | sylvio.brand@naturfelsen.de            | +49-351-561849   | Silvio Brandt
+    10 | Jesuiten Kloster Bochelt | Jesuitenstr.       |      2 | Bocholt            | 46395 | www.jkb.de                    | bruder.josef@jkb.de                    | +49-2874-822671  | Bruder Josef
+    11 | Yoga Vidya Gemeinschaft  | Hessenweg          |     58 | Ahaus              | 48683 | www.yvg.de                    | sudeta.Yaivaschi@yvg.de                | +49-2561-5709    | Sudeta Yaivaschi
+     4 | Off-Theater-Leipzig      | Rödelstr.          |     21 | Leipzig            |  4229 | www.off-theater-leipzig.de    | mandy.bohne@off-theater-leipzig.de     | +49-341-566578   | Mandy Bohne
+    13 | Windloop                 | Edo-Edzards-Straße |      1 | Neuharlingersiel   | 26427 | windloop.de                   | contact@windloop.de                    | +49 1797884844   | "Fabbel"
+   999 | selbstorga               | nostreet           |     99 | noplace            | 99999 | selbstorga.com                | nomail                                 | nophone          | self
+    21 | Museo del cinema         | Via Montebello     |     20 | Turin              | 10124 | museocinema.it                | prenotazioni@museocinema.it            | +39-011-8138516  | n.n
+    12 | Wassersportcenter X-H2O  | Wohldweg           |     47 | Sankt Peter-Ording | 25826 | x-h2o.de                      | online-Formular                        | +49-48-63478800  | Janice Gutson
+(13 rows)
+
+
+FAHRT
+ f_id |    f_name     |    von     |    bis     | kl_ku | f_unterkunft 
+------+---------------+------------+------------+-------+--------------
+  101 | Turin-LK_2017 | 2017-03-05 | 2017-03-15 | IT-Q3 |          401
+  102 | Kennlern-7a   | 2017-09-01 | 2017-09-03 | 7a    |          101
+  134 | Bach & Co     | 2018-06-07 | 2018-06-14 | 8f    |          201
+  103 | Berlin        | 2015-09-03 | 2015-09-10 | 9b    |             
+  135 | Nordsee       | 2014-05-23 | 2014-05-27 | 10a   |          509
+  119 | Ich Binz      | 2013-03-06 | 2013-03-13 | 9a    |          506
+  133 | Münsterland   | 2014-03-04 | 2014-03-10 | 8b    |          507
+(7 rows)
+
+
+LEHRER
+ l_id | anrede | vname |   nname    |   telnr    
+------+--------+-------+------------+------------
+  302 | Herr   | Tim   | Taler      |   30827364
+  304 | Herr   | Max   | Loewe      | 1512098470
+  312 | Frau   | Katja | Egger      |  302987425
+  321 | Herr   | Alex  | Austerlitz |  301234567
+  333 | Frau   | Fiona | Eisenhauer |  306834623
+  334 | Frau   | Silke | Schmid     |   30947250
+  336 | Herr   | Erkan | Aki        |   30173025
+  337 | Frau   | Tim   | Taler      |  302836139
+  342 | Herr   | Elias | Barek      |   30256825
+  344 | Frau   | Herta | Herzog     |   14168923
+(10 rows)
+
+
+SCHUELER
+ s_id |   vname   |   nname   |   gebdat   | m_w 
+------+-----------+-----------+------------+-----
+  100 | Franz     | Fuchs     | 2003-07-27 | m
+  102 | Linda     | List      | 2003-03-04 | w
+  105 | Mesut     | Mezul     | 2002-11-30 | m
+  106 | Susi      | Sorglos   | 2003-01-21 | w
+  111 | Rudi      | Ratlos    | 2003-07-02 | m
+  115 | Fiona     | Schulz    | 2004-01-01 | w
+  121 | Anja      | Potter    | 2004-07-22 | w
+  122 | Sylwester | Symanski  | 2004-03-10 | m
+  132 | Maik      | Theiss    | 2005-09-10 | m
+  143 | Juliana   | Selnava   | 2005-05-06 | w
+  151 | Luca      | Freud     | 2002-11-30 | w
+  152 | Radojka   | Vuckovic  | 2002-11-30 | w
+  155 | Tim       | Gersten   | 2002-11-30 | m
+  167 | Max       | Thalberg  | 2001-11-30 | m
+  169 | Madonna   | Swift     | 2001-11-30 | w
+  170 | Dominik   | Pfeifer   | 2001-11-30 | m
+  230 | Martin    | Fiedler   | 2002-11-30 | m
+  233 | Camelia   | Beneventi | 2001-11-30 | w
+  243 | Sascha    | Amani     | 2001-11-30 | w
+  113 | Deniz     | Özer      | 2003-11-30 | m
+(20 rows)
+
+
+ORT
+ o_id | entfng |       o_name        |  trprtm  |    geograf    | ewzahl |   sprache   | schickf | urb_rur 
+------+--------+---------------------+----------+---------------+--------+-------------+---------+---------
+  100 |    340 | Sankt Peter-Ording  | Zug/Bus  | Marschland    |   4100 | deutsch     |       3 | f
+  101 |    460 | Gallnacht           | Bus      | Mittelgebirge |    640 | deutsch     |       2 | f
+  103 |    705 | Trier               | Zug/Flug | Flachland     | 110000 | deutsch     |       4 | t
+  104 |    696 | Ruhpolding          | Zug/Flug | Hochgebirge   |   6904 | deutsch     |       4 | f
+  202 |    723 | Bregenz             | Zug/Flug | Hochgebirge   |  29500 | deutsch     |       4 | t
+  402 |   1140 | Turin               | Flug     | Voralpen      | 883000 | italienisch |       4 | t
+  410 |   1850 | Valetta             | Flug     | Mittelmeer    |   5700 | maltesisch  |       5 | t
+  420 |   1850 | Athen               | Flug     | Mittelmeer    | 664000 | griechisch  |       3 | t
+  105 |     40 | Königs Wusterhausen | Zug      | Wald          |  36468 | deutsch     |       4 | f
+  507 |    400 | Binz                | Zug      | Ostsee        |  10000 | deutsch     |       4 | t
+  509 |    500 | Münster             | Zug/Flug | Flachland     | 250000 | deutsch     |       8 | t
+  513 |    600 | Neuharlingersiel    | Zug      | Nordsee       |   5000 | deutsch     |       3 | f
+(12 rows)
+
+
+UNTERKUNFT
+ u_id |          u_name          |      typ       |  errbar   | kosten | entfkern | u_ort 
+------+--------------------------+----------------+-----------+--------+----------+-------
+  102 | Jugendherberge Trier     | Jugendherberge | per pedes |  10.00 |        1 |   103
+  160 | Winklmoosalm             | Pension        | Reisebus  |  19.00 |        8 |   104
+  101 | Kiez Hölzerner See       | Jugendherberge | ÖPNV      |  10.00 |       14 |   105
+  201 | JUFA-Hotel               | Hotel          | ÖPNV      |  18.00 |        2 |   202
+  401 | Tomato Backpackers Hotel | Jugendherberge | ÖPNV      |  16.00 |        0 |   402
+  411 | Hostel Malti             | Jugendherberge | ÖPNV      |  23.00 |        3 |   410
+  421 | Kalithea                 | Jugendherberge | ÖPNV      |  12.00 |        4 |   420
+  506 | Ostsee Hostel            | Hostel         | per pedes |  16.00 |        2 |   507
+  507 | Zum Kiepenkerl           | Pension        | per pedes |  19.00 |        2 |   509
+  509 | Moin Moin                | Pension        | ÖPNV      |  19.00 |        5 |   513
+(10 rows)
+
+
+NIMMTTEIL
+ s_id | f_id 
+------+------
+  102 |  101
+  132 |  101
+  233 |  101
+  151 |  102
+  152 |  102
+  155 |  102
+  151 |  119
+  152 |  119
+  155 |  119
+  105 |  103
+  106 |  103
+  111 |  103
+  115 |  134
+  121 |  134
+  122 |  134
+  105 |  133
+  111 |  133
+  106 |  133
+  152 |  135
+  151 |  135
+  155 |  135
+(21 rows)
+
+
+BEGLEITET
+ l_id | f_id 
+------+------
+  342 |  101
+  344 |  101
+  321 |  119
+  334 |  101
+  336 |  101
+  336 |  103
+  333 |  103
+  336 |  102
+  302 |  135
+  333 |  135
+  337 |  133
+  334 |  119
+  333 |  133
+  334 |  134
+  321 |  134
+(15 rows)
+
+
+WIRDANGEBOTEN
+ak_id | f_id 
+-------+------
+    23 |  101
+     4 |  134
+     5 |  134
+    24 |  101
+    11 |  103
+    12 |  134
+    13 |  133
+   114 |  103
+    99 |  119
+   116 |  133
+   126 |  102
+   127 |  102
+     3 |  135
+    15 |  135
+(14 rows)

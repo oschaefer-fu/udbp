@@ -1,0 +1,148 @@
+Datenbankanfragen und SQL-Befehle, sortiert nach Schwierigkeitsgrad
+
+(*) Sehr leicht: Anfragen mit Auflistung
+ 
+1.	Welche Praktika gibt es? 
+
+	SELECT PName 
+	FROM Praktikum; 
+ 
+
+(**) Leicht: Anfragen mit einer Bedingung (WHERE...)
+
+2.	Name und Vorname aller Schueler, die im Jahr 2015 ein Praktikum 	gemacht haben	
+
+ 	SELECT SName, SVorname
+	FROM Schueler
+	WHERE Schuljahr = '2015';
+
+3.	Wie lautet die EMail-Adresse der Fahrradwerkstatt?							
+	SELECT Kontaktmail								
+	FROM Firma	
+	WHERE FName = 'Fahrradwerkstatt';
+
+4.	Wo befindet sich das Medienhaus?
+					
+	SELECT FStrasseHNr, FPLZ	
+	FROM Firma					
+	WHERE FName = 'Medienhaus';	
+
+5.	Welche Firmen haben mehr als 100 Angestellte?	
+		
+	SELECT FName
+	FROM Firma					
+	WHERE Mitarbeiterzahl > 100;	
+
+
+
+(***) Mittelschwer: Anfragen mit Join von 2-3 Tabellen und/oder 	 	 	
+	 Verneinung bzw. Ordnung (ORDER BY)
+
+6.	Bei welchen Firmen gibt es keine Bewerbungsfrist? 
+ 
+	SELECT DISTINCT FName AS "Firma"
+ 	FROM Firma NATURAL JOIN Bewerbung
+ 	WHERE Frist = 'nein';
+
+7.	Bei welcher Firma kann man sich nicht schriftlich bewerben? 
+ 
+	SELECT DISTINCT FName AS "Firma"
+ 	FROM Firma NATURAL JOIN Bewerbung
+ 	WHERE NOT BArt = 'schriftlich';
+
+8.	Welche Firmen bieten welche Praktikumsstellen an (alphabetisch nach 	Firmenname geordnet)? 
+ 
+	SELECT FName AS "Firma", Pname AS "Praktikum"
+ 	FROM Firma NATURAL JOIN Praktikum NATURAL JOIN Angebot 
+ 	ORDER BY FName ASC; 
+
+9.	Bei welcher Firma kann man sich als Verwaltungsangestellter bewerben 	(sortiert nach Anfangsarbeitszeit)? 
+ 
+	SELECT FName
+	FROM Firma NATURAL JOIN Praktikum NATURAL JOIN Angebot
+	WHERE PName = 'Verwaltungsangestellter'
+	ORDER BY Arbeitsbeginn ASC;
+
+10.	Welcher Lehrer hat welche Schüler in welchem Jahr besucht? 	(sortiert nach 	Jahrgang, Lehrer)
+	
+	SELECT LName, SName, SVorname, Schuljahr
+	FROM Lehrer NATURAL JOIN Schueler
+	ORDER BY LNAME ASC, Schuljahr DESC;
+
+11.	Welche Schüler muss Frau Meisenbuch 2018 besuchen? 
+ 	Lasse eine Liste ausgeben mit den für die Lehrerin wichtigen 	Informationen.
+
+	SELECT SName, SVorname, STel, FName, FStrasseHNr, FPLZ, Kontakttel, 	Kontaktmail
+	FROM Firma NATURAL JOIN Schueler NATURAL JOIN Lehrer
+	WHERE LName = 'Frau Meisenbuch' AND Schuljahr = 2018;
+
+
+(****) Schwer: komplexe Anfragen (JOIN mehrerer Tabellen; mehrere Befehle wie 	ORDER BY ASC/DESC, GROUP BY;...)
+
+12.	Welcher betreuender Lehrer unterrichtet ein MINT-Fach (Bio, Phy, 	Che, Ma, Inf)		
+
+	SELECT LName
+	FROM Lehrer
+	WHERE LFach1 = 'Biologie' OR LFach1 = 'Chemie' OR LFach1 = 	'Physik' OR 	LFach1 = 'Mathematik' OR LFach1 = 'Informatik' 
+	OR LFach2 = 'Biologie' OR LFach2 = 'Chemie' OR LFach2 = 'Physik' OR 	LFach2 = 'Mathematik' OR LFach2 = 'Informatik';
+
+13. 	Wo werden Praktika angeboten, die mit Computer zu tun haben? 
+ 
+	SELECT FName
+	FROM Firma NATURAL JOIN Taetigkeitsbereich NATURAL JOIN Praktikum 	NATURAL JOIN Einsatzbereich NATURAL JOIN Angebot
+ 	WHERE Anforderung = 'Computerkenntnisse'
+ 	ORDER BY FName ASC;
+
+14.	Welche Firmen haben die besten Schülerbewertungen bekommen 	(Durchschnitt), 	sortiert von gut zu schlecht (Schüler)?
+
+	SELECT FName
+	FROM Firma NATURAL JOIN Schueler 
+	GROUP BY FName 
+	ORDER BY AVG (Sbewertung);
+
+15.	Emil interessiert sich für Arbeiten, die kreativ sind. Wo sollte er 	sich 	bewerben? Sortiere die Liste nach Entfernung zur Schule 	aufsteigend!
+					
+	SELECT FName
+	FROM Taetigkeitsbereich NATURAL JOIN Einsatzbereich NATURAL JOIN 	Angebot NATURAL JOIN Firma
+	WHERE Anforderung = 'Kreativität'
+	GROUP BY FName, Entfernung
+	ORDER BY Entfernung ASC;
+
+16. 	Welcher Lehrer hat 2015 Praktika betreut, die mit Pflege zu tun 	haben? 	Welche Schüler und welche Praktika waren das?
+
+	SELECT DISTINCT LName, SName, PName
+	FROM Lehrer NATURAL JOIN Praktikum NATURAL JOIN Taetigkeitsbereich 	NATURAL JOIN Einsatzbereich NATURAL JOIN Schueler
+	WHERE TArt = 'Pflege' AND Schuljahr = 2015;
+
+17.	Otto möchte draußen arbeiten und nicht vor 9:00 Uhr beginnen. 	Welche 	Telefonnummern welcher Firmen würde er wählen um mit welchem
+ 	Betreuer zu sprechen?
+
+	SELECT Ansprechpartner, FName, Kontakttel
+	FROM Taetigkeitsbereich NATURAL JOIN Einsatzbereich NATURAL JOIN 	Angebot NATURAL JOIN Firma NATURAL JOIN Bewerbung  NATURAL JOIN 	Praktikum
+	WHERE Arbeitsumfeld = 'draußen' AND Arbeitsbeginn >= '09:00' ;
+
+18.	Gibt es Lehrer, die nie einen Schüler betreut haben? 
+ 
+	SELECT LName AS "Lehrer"
+ 	FROM Schueler RIGHT OUTER JOIN Lehrer ON Schueler.LNr = Lehrer.LNr 
+ 	WHERE Schueler.LNr IS NULL;
+
+
+(*****) Sehr schwer: Anfragen mit Aggregatfunktionen
+
+
+19.	Welche Lehrer haben die meisten Schüler 2018 betreut (sortiert von 	meist zu wenig) 
+ 
+	SELECT LName ,COUNT( LName)
+	FROM Lehrer NATURAL JOIN Schueler
+	WHERE Schuljahr = 2018
+	GROUP BY LName 
+	ORDER BY COUNT( LName ) DESC;
+
+20.	Wie viele Lehrer gibt es, die mehr als einen Schüler betreut haben?					
+	SELECT COUNT( LName ), LName 
+	FROM Schueler NATURAL JOIN Lehrer 
+	GROUP BY LName HAVING ( ( COUNT( LName ) > 1 ) ) 
+	ORDER BY COUNT( LName ) DESC;
+
+

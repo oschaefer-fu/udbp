@@ -1,0 +1,123 @@
+%-----------------------------------------------------------------------
+% 1. Aufgabe:
+% Listen Sie alle Publisher mit ihrem Erscheinungsjahr auf.
+
+answer(publisher.pname:varchar(255),publisher.gjahr:int) ->
+{
+  answer('505Games',2006),
+  answer('Deep Silver',2002),
+  answer('Nintendo',1989),
+  answer('Sega',1960)
+}
+Info: 4 tuples computed. 
+
+%-----------------------------------------------------------------------
+% 2. Aufgabe:
+% Wann wurde '505Games' gegründet?
+
+answer(publisher.gjahr:int) ->
+{
+  answer(2006)
+}
+Info: 1 tuple computed.     
+
+%-----------------------------------------------------------------------
+% 3. Aufgabe: 
+% Welches Computerspiel hat die Eigenschaften 'Echtzeit' und 'Beat them Ups'?
+
+answer(sname:varchar(255)) ->
+{
+  answer('Call of Beauty')
+}
+Info: 1 tuple computed.         
+
+%-----------------------------------------------------------------------
+% 4. Aufgabe:
+% Welche Spieler besitzen das Spiel 'Fair Cry V'?
+
+answer(bname:varchar(180)) ->
+{
+  answer('GOD of Peace'),
+  answer('Spamlord'),
+  answer('Thunder'),
+  answer('under-aged-freek')
+}
+Info: 4 tuples computed.     
+
+%-----------------------------------------------------------------------
+% 5. Aufgabe: 
+% Welche Spiele werden momentan gespielt?
+
+answer(sname:varchar(255)) ->
+{
+  answer('Dad in Vinland'),
+  answer('Fair Cry V'),
+  answer('Holiday Land'),
+  answer('School Rocks'),
+  answer('Scream Buble')
+}
+Info: 5 tuples computed.          
+
+%-----------------------------------------------------------------------
+% 6. Aufgabe:
+% Welche  Spiele  dürfen  erst  ab  dem  18  Lebensjahr/  21.  Lebensjahr  gespielt  werden? 
+
+answer(computerspiel.sname:varchar(255)) ->
+{
+  answer('Codename Curie'),
+  answer('Dad in Vinland'),
+  answer('Fair Cry V')
+}
+Info: 3 tuples computed.         
+
+%-----------------------------------------------------------------------
+% 7. Aufgabe:
+% Ausgabe  einer  Liste  von  Spielen  mit  Erscheinungsjahr,  Publisher  und  FSK.  
+
+answer(sname:varchar(255),ejahr:int,pname:varchar(255),fsk:int) ->
+{
+  answer('Call of Beauty',2017,'Nintendo',16),
+  answer('Codename Curie',2034,'Nintendo',21),
+  answer('Dad in Vinland',2017,'505Games',18),
+  answer('Fair Cry V',2018,'505Games',18),
+  answer('Final Year',1985,'Sega',0),
+  answer('Holiday Land',1999,'Nintendo',0),
+  answer('Pony Bridge',2016,'Deep Silver',12),
+  answer('Purple Survival',1984,'Sega',6),
+  answer('School Rocks',1990,'Nintendo',0),
+  answer('Scream Buble',2015,'Nintendo',16)
+}
+Info: 10 tuples computed.          
+
+%-----------------------------------------------------------------------
+% 8. Aufgabe:
+% Welches  Spiel  ist  noch  keinen  Eigenschaften  zugeordnet?
+
+answer(computerspiel.sname:varchar(255)) ->
+{
+  answer('Dad in Vinland'),
+  answer('Fair Cry V'),
+  answer('Pony Bridge'),
+  answer('Purple Survival')
+}
+Info: 4 tuples computed.          
+
+%-----------------------------------------------------------------------
+% 9. Aufgabe:
+% Welche  Spiele  kannst  du  mit  Freunden  spielen?  
+
+answer(computerspiel.sname:varchar(255)) ->
+{
+  answer('Call of Beauty'),
+  answer('Codename Curie'),
+  answer('Fair Cry V'),
+  answer('Pony Bridge'),
+  answer('School Rocks'),
+  answer('Scream Buble')
+}
+Info: 6 tuples computed.      
+
+%-----------------------------------------------------------------------
+
+
+

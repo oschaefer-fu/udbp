@@ -1,0 +1,165 @@
+﻿(ii) Beschreibung der interaktiven Basismöglichkeiten
+Menü: 	
+Im oberen Teil der Webseite befindet sich das Menü, von dem aus interaktiv auf die einzelnen Relationen zugegriffen werden kann.Das Menü hat folgende Reiter.
+--------------------------------------------------------------------------------
+Anbieter/Zeige:	
+		
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "Anbieter" werden als Spaltenüberschrift 	lesbar angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link 	mit dem alle Werte der Relation Anbieter sortiert nach dem jeweilig  	angeklickten Attribut sortiert werden. Außer der AnbieterID werden hier 	alle Attributwerte der Relation Anbieter angezeigt. Die Spalte der 	AnbieterID wird als Spalte Aktivität/en bezeichnet. Hier wird für jedes
+	Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken eines 	Auges werden alle Datensätze der Relation Aktivitaeten zur jeweilen 	AnbieterID angezeigt. 
+
+	Tupel:		
+	Alle Tupel werden ausgegeben.	
+
+Anbieter/Bearbeiten:	
+
+Beim Anklicken des  Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spaltenüberschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der
+"EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die AnbieterID können nun alle Attributwerte des ausgewählten Tupels verändert werden. Mit dem Drücken des  "Update"-Button ganz rechts neben den geänderten Attributwerten werden die Änderungen in der Relation Anbieter abgespeichert.Es 
+erscheint wieder die Ausgabe wie unter "Zeige".
+
+HINWEIS Löschen: Ein Anbieter wird indirekt gelöscht, wenn in der Relation "Aktivitaet" die letzte Aktivität eines Anbieters gelöscht wird. Löschen eines Tupels der Relation "Aktivität" siehe Reiter "Fahrten". 
+--------------------------------------------------------------------------------
+				
+Aktivitäten/Zeige:	
+	
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+
+	Attribute: 	
+	Alle Attribute der Relation "Aktivitaet" werden als Spaltenüberschrift 	lesbar angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link 	mit dem alle Werte der Relation Aktivitaet sortiert nach dem jeweilig 	angeklickten Attribut sortiert werden. Außer der AktivitaetID werden hier 	alle Attributewerte der Relation Aktivitaet angezeigt. Die Spalte der 	AktivitaetID wird als Spalte Fahrt/en bezeichnet. Hier wird für jedes
+	Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken eines 	AUGEs werden alle Datensätze der Relation Aktivitaeten zur jeweilen 	AktivitaetID angezeigt. 
+
+ 	BESONDERHEIT: 
+	In der Spalte Anbieter werden die einzelnen AnbieterID's aufgelöst, so 	dass der Name des Anbieters angezeigt wird. Rechts und links neben dem 	Anbietername erscheinen zwei anklickbare Links im Form eines AUGEs und 	eines MINUSZEICHENs. Wird das AUGE angeklick, so wird der Anbieter zu 	einer Aktivitaet angezeigt. Dieser kann nun bearbeitet werden (siehe 	Anbieter/Bearbeiten).Wird das MINUSZEICHEN angeklickt, wird der Link 	zwischen der gewählten Aktivität und einem Anbieter gelöscht. Sollte der 	Anbieter nicht mit weiteren Aktivitäten verknüpft sein, so wird auch der 	Anbieter indirekt gelöscht.Sollte mit einer Aktivität noch kein Anbieter 	verknüpft sein, so erscheint ein Link in Form eines PLUSZEICHENS. Wird 	dieser Link angeklickt, so kann entweder ein bestehender Anbieter mit der 	Aktivität via Radio- und Select-Button verknüpft werden, oder einer neuer 	Anbieter via Eingabefelder und einem ADD-Button angelegt werden. Dieser 	neue Anbieter ist dann mit der ausgewählten Aktivität verknüpft.
+
+	Tupel:		
+	Alle Tupel werden ausgegeben.	
+
+Aktivitäten/Bearbeiten:	
+
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spaltenüberschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der
+"EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die AktivitaetID können nun alle Attributwerte des ausgewählten Tupels verändert werden. Mit dem Drücken des  "Update"-Button ganz rechts neben den geänderten Attributewerten werden die Änderungen in der Relation "Aktivitaet" abge-speichert.Es erscheint wieder die Ausgabe wie unter "Zeige".
+
+HINWEIS Löschen: Eine Aktivität wird über den Reiter Fahrten gelöscht. Siehe Fahrten/Zeige
+
+--------------------------------------------------------------------------------
+
+Fahrten/Zeige:		
+	
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "Fahrten" werden als Spaltenüberschrift lesbar 	angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link mit dem 	alle Werte der Relation Fahrten sortiert nach dem jeweilig angeklickten 	Attribut sortiert werden.  
+
+ 	BESONDERHEIT: 
+	In der Spalte Unterkunft werden die einzelnen UnterkunftID's aufgelöst, so 	dass der Name des Unterkunft angezeigt wird. Rechts und links neben dem 	Unterkunftsnamen erscheinen zwei anklickbare Links im Form eines AUGEs und 	eines MINUSZEICHENs. Wird das AUGE angeklick, so wird das Tupel aus der 	Relation "Unterkunft" zu der ausgewählten Fahrten angezeigt. Der Datensatz 	kann jetzt via Radio- und Edit-Button und im zweiten Schritt via dem 	Update-Button bearbeitet werden (siehe Unterkunft/Bearbeiten).Wird das 	MINUSZEICHEN angeklickt, wird der Link zwischen der gewählten Fahrt und 	der dazugehörigen Unterkunft gelöscht. Sollte die ausgewählte Unterkunft
+	nicht ein weiteres Mal mit einer Fahrt verknüpft sein, so wird auch das 	Unterkunftstuple gelöscht.Sollte zudem der zur Unterkunft dazugehörige Ort 	nicht mit weiteren Unterkünften verknüpft sein, so wird auch das Ort-Tupel 	gelöscht. Ist eine Fahrten noch mit keiner Unterkunft verknüpft, erscheint 	ein Link in Form eines PLUSZEICHENS. Wird dieser Link angeklickt, so kann 	entweder eine bestehende Unterkunft mit der Fahrten via Radio- und Select-	Button verknüpft werden, oder eine neue Unterkunft via Eingabefelder und 	einem ADD-Button angelegt werden. Diese alte/neue Unterkunft ist dann mit 	der ausgewählten Fahrt verknüpft.Bei der Eingabe einer neuen Unterkunft 	muss auch ein neuer Ort oder ein bereits vorhandener Ort (via Auswahlenü) 	angegeben werden. Für einen neuen Ort wird ein Tupel in der Relation "Ort" 	angelegt. 
+
+
+														DUMMY-Attribute: 
+	Hiermit sind Attribute gemeint, die nicht zur Relation "Fahrten" gehören 	aber trotzdem angezeigt werden. Dazu gehören die "Attribute"/ Spalten-	bezeichner Orte,Schueler Aktivitäten und Lehrer. Für Attributwerte des 	Attributs Orte gibt es keine 	weiteren interaktive Elemente. Bei den 	Attributen Schueler und Lehrer gibt es die bereits bekannten Links 	AUGE, MINUSZEICHEN und das PLUSZEICHEN. Folgende Erläuterungen gelten 	für 	die Attribute Aktivitäten Schueler und Lehrer. Wird das PLUSZEICHEN 	angeklickt, so kann ein bereits bestehendes Tupel aus der Relation 	Schueler/Lehrer via Radio- und Select-Button mit der ausgewählten 	Fahrt verlinkt werden. Zudem kann ein neues Schüler/Lehrer-Tupel via 	Eingabefelder und Updatebutton angelegt werden. Es wir dann automatisch 	mit dem  ausgewählten Tupel der Relation "Fahrten" verlinkt.
+
+	Tupel:		
+	Alle Tupel werden ausgegeben.	
+
+Fahrten/Bearbeiten:	
+	
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spaltenüberschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der "EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die FahrtenID können nun alle Attributwerte des ausgewählten Tupels verändert werden. Mit dem Drücken des  "Update"-Button ganz rechts neben den geänderten Attributwerten, werden die Änderungen in der Relation Fahrten abgespeichert.Es erscheint wieder die Ausgabe wie unter "Zeige".
+
+Fahrten/Suche:
+
+Beim Anklicken des Links "Suche" wird ein weiterer Rahmen angezeigt. Hier erscheinen mehrere Auswahlelemente, mit denen nach FahrtID's gesucht werden kann. Es besteht die Möglichkeit die Operatoren >, >=, = ,<=, und > auf die vorhandenen FahrtID's anzuwenden. Eine FahrtID kann entweder mittels Auswahlmenü ausgewählt werden oder in ein Eingabefenster eingegeben werden. Es gibt noch ein weiteres Auswahlmenü, mit dem die beiden Verknüpfungsglieder AND und OR ausgewählt werden können. Die Auswahl eines der beiden Verknüpfungsglieder hat zur Zeit keine Auswirkung auf das Suchergebnis. Mit dem Drücken des Suche-Buttons werden die Suchergebnisse im unteren Rahmen angezeigt. Es werden alle Attribute und die selektierten Tupel angezeigt.
+
+Fahrten/Neu:
+Beim Anklicken des Links "Neu" werden im unteren Rahmen alle Attribute und Tupel der Relation "Fahrt" angezeigt. Zusätzlich erscheint über dem ersten Tupel eine Eingabezeile. Hier können in mehreren Eingabefenster neue Attributwerte eingegeben werden. Für die Attribute "von" und "bis" gibt es zwei Links, mit denen das Datum ausgewält werden kann. Zum einen ist es der anklickbare Text "Datum Auswählen" und zum anderen ein kleines anklickbares Kalender-Icon. Beim Anklicken des Textes bzw. des Icon popt ein Kalender auf, mit dem jeweils das passende Datum ausgewählt wird. Durch Drücken des ADD-Buttons wird nun ein neues Tupel angelegt und die Attribute und Tupel wie unter "Fahrten/Zeige" angezeigt. 
+
+Fahrten/Bearbeiten:
+Beim Anklicken des Links "Bearbeiten" werden im unteren Rahmen alle Attribute und Tupel der Relation "Fahrt" angezeigt. Zusätzlich erscheint hinter den Spaltenüberschriften ein Edit-Button und hinter jedem Tupel ein Radio-Button.
+Mittels des Radio-Button wird ein Tupel ausgewählt. Nach dem Drücken des Edit-Button kann das ausgewählte Tupel mittels Eingabefenster und dem bereits unter Fahrten/Neu beschriebenen Datumsfunktion bearbeitet werden. Nach dem Drücken des Update-Buttons werden die Änderungen des Tupels abgespeichert und alle Tupel und Attribute wie unter "Fahrten/Zeige" angezeigt. 
+
+
+
+
+
+Fahrten/Lösche:
+Beim Anklicken des Links "Lösche" werden im unteren Rahmen alle Attribute und Tupel der Relation "Fahrt" angezeigt. Zusätzlich erscheint hinter den Spaltenüberschriften ein DELETE-Button und hinter jedem Tupel ein Radio-Button.
+Mittels des Radio-Button wird ein Tupel ausgewählt. Nach dem Drücken des DELETE-Buttons wird das ausgewählte Tupel gelöscht. VORAUSSETZUNG für die Löschung ist,
+dass mit dem zu löschenden Fahrten-Tupel keine Tupel anderer Relationen (aktivitaet, unterkunft, schueler, lehrer, aktivitaet) verlinkt sind. Diese müssen vorher entlinkt bzw. gelöscht werden. Das kann mittels des MINUSZEICHEN in den Spalten Aktivitäten, Unterkunft, Schueler Lehrer geschehen. Sollte trotz
+Verlinkung versucht werden ein Fahrt-Tupel zu löschen, erscheint eine Fehlermeldung. Das gewählte Tupel wird dann nicht gelöscht.
+--------------------------------------------------------------------------------
+
+Unterkünfte/Zeige:
+
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "Unterkunft" werden als Spaltenüberschrift 	lesbar angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link 	mit dem alle Werte der Relation Unterkunft sortiert nach dem jeweilig 	angeklickten Attribut sortiert werden. Außer der UnterkunftID werden hier 	alle Attributwerte der Relation "unterkunft" angezeigt. Die Spalte der 	UnterkunftID wird als Spalte Fahrt bezeichnet. Hier wird für jedes
+	Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken eines 	AUGEs werden alle Datensätze der Relation "fahrt" zur jeweilen 	UnterkunftID angezeigt.
+
+	Besonderheiten:
+	Die OrtID in der Relation "unterkunft" wird aufgelöst und es werden unter 	dem Spaltenbezeichner Ort die Ortsnamen angezeigt. Zusätzlich erscheint 	das schon bekannte AUGE, mit dem das mit dem aktuellen Unterkunf-Tupel	 	verlinkte Orts-Tupel angezeigt wird. Hier besteht die Möglichkeit das 
+	Orts-Tupel zu editieren. (siehe auch "Orte/Bearbeiten"). Mit dem Anklicken 	eines AUGEs in der Spalte "Fahrt", werden ALLE Fahrten angezeigt, die die 	aktuelle Unterkunft gebucht hatten.  
+
+
+	Tupel:		
+	Alle Tupel werden ausgegeben.	
+
+
+Unterkünfte/Bearbeiten:
+
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spaltenüberschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der "EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die FahrtID können nun alle Attributwerte des ausgewählten Tupels verändert werden. Mit dem Drücken des  "Update"-Button ganz links neben den geänderten Attributwerten, werden die Änderungen in der Relation "fahrt" abgespeichert.Es erscheint wieder die Ausgabe wie unter "Unterkünfte/Zeige".
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+Orte/Zeige:
+			
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "Orte" werden als Spaltenüberschrift lesbar 	angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link mit dem 	alle Werte der Relation Orte sortiert nach dem jeweilig angeklickten 	Attribut sortiert werden. Außer der OrteID werden hier alle Attributwerte 	der Relation "ort" angezeigt. 
+
+	Besonderheit:
+	Die Spalte der OrtID wird als Spalte Unterkunft bezeichnet. Hier wird für 	jedes Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken 	eines AUGEs werden ALLE Datensätze der Relation "unterkunft" zur jeweilen 	OrtID angezeigt.
+
+
+
+Orte/Bearbeiten:
+
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spaltenüberschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der "EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die OrtID können nun alle Attributwerte des ausgewählten Tupels verändert werden. Mit dem Drücken des  "Update"-Button ganz links neben den geänderten Attributwerten, werden die Änderungen in der Relation "ort" abgespeichert.Es erscheint wieder die Ausgabe wie unter "Orte/Zeige".
+
+-------------------------------------------------------------------------------
+
+
+Schüler/Zeige:
+			
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "schueler" werden als Spaltenüberschrift 	lesbar angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link 	mit dem alle Werte der Relation "schueler" sortiert nach dem jeweilig 	angeklickten Attribut sortiert werden. Außer der SchuelerID werden hier 	alle Attributwerte der Relation "schueler" angezeigt. 
+
+	Besonderheit:
+	Die Spalte der SchuelerID wird als Spalte Fahrt bezeichnet. Hier wird für 	jedes Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken 	eines AUGEs werden ALLE Datensätze der Relation "fahrt" zur jeweilen 	SchuelerID angezeigt.
+
+Schüler/Bearbeiten:
+
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Schüler/Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spalten-überschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der "EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die SchuelerID können nun alle Attributwerte des ausgewählten Tupels über Eingabe-felder verändert werden. Mit dem Drücken des  "Update"-Button ganz links neben den geänderten Attributwerten, werden die Änderungen in der Relation "schueler" abgespeichert.Es erscheint wieder die Ausgabe wie unter "Schueler/Zeige".
+------------------------------------------------------------------------------
+
+Lehrer/Zeige:
+			
+Unter dem Menürahmen befindet sich ein Rahmen in dem die Inhalte der einzelnen Relationen ausgegeben werden.Die Ausgabe ist folgende:
+											
+	Attribute: 	
+	Alle Attribute der Relation "lehrer" werden als Spaltenüberschrift 	lesbar angezeigt.Hinter jeder Spaltenüberschrift verbirgt sich ein Link 	mit dem alle Werte der Relation "lehrer" sortiert nach dem jeweilig 	angeklickten Attribut sortiert werden. Außer der SchuelerID werden hier 	alle Attributwerte der Relation "lehrer" angezeigt. 
+
+	Besonderheit:
+	Die Spalte der LehrerID wird als Spalte Fahrt bezeichnet. Hier wird für 	jedes Tupel ein Link in der Form eines AUGEs angezeigt. Beim Anklicken 	eines AUGEs werden ALLE Datensätze der Relation "fahrt" zur jeweilen 	LehrerID angezeigt.
+
+Schüler/Bearbeiten:
+
+Beim Anklicken des Links "Bearbeiten" erhält man die gleiche Ausgabe wie unter "Lehrer/Zeige" s.o. Zusätzlich erscheint rechts neben der letzten Spalten-überschrift der Button "EDIT" und rechts hinter dem letzten Attributwert eines Tupels ein Radio-Element zur Auswahl des Tupels. Wurde ein Tupel ausgewählt und der "EDIT"-Button gedrückt, kann nun das Tupel bearbeitet werden. Bis auf die LehrerID können nun alle Attributwerte des ausgewählten Tupels über Eingabe-felder verändert werden. Mit dem Drücken des  "Update"-Button ganz links neben den geänderten Attributwerten, werden die Änderungen in der Relation "lehrer" abgespeichert.Es erscheint wieder die Ausgabe wie unter "Lehrer/Zeige".

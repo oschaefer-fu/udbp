@@ -1,0 +1,7 @@
+In der Grundfunktion kann die Sicht Informationen zu einem Computerspiel aus der Datenbank liefern.
+
+Dabei greift die php-Datei nur auf Spiele zu (Auswahlliste), die auch tatsächlich in der
+Datenbank vorhanden sind. Der Nutzer kann auswählen welche Informationen er erhalten möchte.
+
+Die Anzeige der Informationen passt sich den gewünschten Informationen an, d.h. überflüssige
+Tabellenspalten werden gar nicht erst generiert und somit nicht angezeigt.

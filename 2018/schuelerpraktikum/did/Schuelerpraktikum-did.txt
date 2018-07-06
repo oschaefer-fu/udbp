@@ -1,0 +1,21 @@
+Didaktisch-Methodisches
+
+Das Thema Datenbanken ist laut Rahmenlehrplan der Sekundarstufe I (Thema 3.7 ) in Berliner Schulen als Pflichtthema zu behandeln. In der EBR-Klasse  und in der FOR-Klasse des kooperativen Modells ist auf Niveastufe G , am Gymnasium  auf Niveaustufe H zu unterrichten. 
+Ein inhaltlicher Schwerpunkt liegt auf der Beschreibung von lebensweltlichen Datensammlungen. Ausgehend davon haben wir uns für das Thema "Schuelerpraktikum" entschieden. Die Schueler des zehnten Jahrgangs haben in der Regel ein Jahr zuvor ein Schuelerpraktikum absolviert. An manchen Schulen ist ein weiteres Praktikum im zehnten Jahrgang moeglich.In anderen Schulen berichten Schueler der zehnten Klasse den Schuelern der neunten Klasse von ihren Erfahrungen waehrend kleiner workshop-Runden.Wir koennen folglich davon ausgehen, dass das Thema den Schuelern vertraut ist und gegebenenfalls noch relevant sein wird. 
+Auch im Rahmenlehrplan der Sekundarstufe II ist das Thema 4.1. Datenbanken sowohl im Grund- als auch im Leistungskurs zu behandeln. Die SuS wenden Datenbanksysteme als Werkzeug zum Beschreiben, Bearbeiten, Speichern, Wiedergewinnen und Auswerten umfangreicher Datenbestaende an. Am Beispiel eines Datenbanksystems sollen die SuS alle Phasen der Entwicklung selbsstaendig durchfuehren.
+
+Sekundarstufe I:
+Eine Rekapitulation der mit dem Schuelerpraktikum verbundenen Prozeduren, Anforderungen, Probleme u.a. sollte am Anfang im gemeinsamen Gespraech erfolgen.
+Das Aufstellen des ER-Modells wird den SuS  noch nicht gelingen. Neben Entitaeten wie Lehrer, Schueler, Firma usw. ist eine abstrakte Entitaet Praktikum zu erzeugen, an dieser Stelle sollte im gemeinsamen Gespraech zielfuehrend gearbeitet werden.
+Hier muss also didaktische Reduktion auf ausgewaehlte Entitaeten getroffen werden. Denkbar ist auch, unter Vorgabe der Entitaeten durch den Lehrer das Beschreiben der Attribute mit Namen, Typ und Wert durch die den SuS vornehmen zu lassen. Da im weiteren  Verlauf mit der Datenbank gearbeitet werden soll, empfiehlt es sich, die von uns verarbeitete Vorlage des ER-Modells zu verwenden. Differenzierungen in Bezug auf Menge und Schwierigkeitsgrad sind moeglich, wenn die Gruppen arbeitsteilig (mit verschiedenen  Entitaeten) arbeiten und Ergebnisse anschließend zusammen getragen werden.
+
+Datensätze sollen laut Rahmenlehrplan gesucht, eingefuegt, geloescht oder veraendert werden. Um das Suchen zu ermoeglichen, haben wir in der Programmiersprache go eine Maske gebaut (siehe Ordner view im Verzeichnisbaum), so dass bei  Wahl verschiedener Kriterien  Suchergebnisse aus unserer erstellten Datenbank  angezeigt werden. Hier sollte man auf jeden Fall thematisieren, wie sich Rechtschreibung (Gross- und Kleinschreibung), Abkuerzungen wie Ma bzw. Mathe statt Mathematik  auf Suchergebnisse auswirken koennen und wie Programmierer solche Fehler abfangen.
+Will man Datensaetze selbst einfuegen bzw. loeschen und veraendern, so empfiehlt sich doch eher der Aufbau eines eigenen Datenbestandes.
+Um Datenbanken mit Standardsoftware als Tabellen zu planen und zu realisieren, sollte nur Software verwendet werden, die die SuS auch zuhause als Freeware installieren koennen.
+
+Sekundarstufe II
+Nach gruendlicher Analyse des Kontextes werden aus der Anforderungsliste die Entitaeten, Merkmale, Beziehungen und Antzahlangaben ermittelt und weitgehend selbst im ER-Modell  umgesetzt. 
+Das Erstellen der Tabellen kann wieder teamweise arbeitsteilig erfolgen. Hat man dasselbe Datenbankschema im Jahr zuvor besprochen, koennen die Beschreibungen der Attribute mit Namen, Typ und Wert uebernommen werden.
+
+Fuer unsere Datenbank haben wir Suchanfragen in PostgreSQL und in ausgewaehlten Faellen in DES vorbereitet und nach Schwierigkeitsgrad geordnet, so dass auf verschiedenen Niveaustufen gearbeitet werden kann. Abfragen mit Projektion, Selekttion und Join (zwei oder mehrerer Tabellen) sind moeglich.
+

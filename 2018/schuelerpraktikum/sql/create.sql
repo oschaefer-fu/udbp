@@ -1,0 +1,135 @@
+﻿--  Miniwelt Praktikum
+-- 
+--  (Priebe,Schöniger,Groth,Reichelt, 23.04.2018).
+
+CREATE TABLE Lehrer (
+  LNr INTEGER
+    NOT NULL,
+  LName VARCHAR (50)
+    NOT NULL,
+  LFach1 VARCHAR (100)
+	NOT NULL,
+  LFach2 VARCHAR (100)
+	NOT NULL,
+  LPLZ VARCHAR (5)
+	NOT NULL,
+  CONSTRAINT Lehr_key PRIMARY KEY (LNr)
+);
+
+
+CREATE TABLE Firma (
+  FNr INTEGER
+    NOT NULL,
+  FName VARCHAR (50)
+    NOT NULL,
+  Kontakttel INTEGER
+    NOT NULL,
+  Kontaktmail VARCHAR (50)
+    NOT NULL,
+  Entfernung INTEGER
+    NOT NULL,
+  Arbeitsbeginn TIME
+    NOT NULL,
+  Arbeitsende TIME
+    NOT NULL,
+  Mitarbeiterzahl INTEGER
+    NOT NULL,
+  FStrasseHNr VARCHAR (100),
+  FPLZ VARCHAR (5),
+  CONSTRAINT co_key PRIMARY KEY (FNr)
+);
+
+
+CREATE TABLE Praktikum (
+  PNr INTEGER
+    NOT NULL,
+  Pname VARCHAR (50)
+    NOT NULL,
+ CONSTRAINT p_key PRIMARY KEY (PNr)
+);
+
+
+CREATE TABLE Schueler (
+  SNr INTEGER
+    NOT NULL,
+  SName VARCHAR (50)
+    NOT NULL,
+  SVorname VARCHAR (50)
+    NOT NULL,
+  SGeb DATE
+    NOT NULL,  
+  STel INTEGER
+    NOT NULL,
+  LBewertung INTEGER
+    NOT NULL,
+  Sbewertung INTEGER
+    NOT NULL,
+  Schuljahr INTEGER
+    NOT NULL,
+  LNr INTEGER REFERENCES Lehrer (LNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  FNr INTEGER REFERENCES Firma (FNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  PNr INTEGER REFERENCES Praktikum (PNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+ CONSTRAINT sch_key PRIMARY KEY (SNr)
+);
+
+
+CREATE TABLE Bewerbung (
+  BNr INTEGER
+    NOT NULL,
+  Ansprechpartner VARCHAR (50)
+    NOT NULL,
+  Frist VARCHAR (50)
+    NOT NULL,
+  BArt VARCHAR (50)
+    NOT NULL,
+  FNr INTEGER REFERENCES Firma (FNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+ CONSTRAINT b_key PRIMARY KEY (BNr)
+);
+
+
+CREATE TABLE Taetigkeitsbereich (
+  TNr INTEGER
+    NOT NULL,
+  Arbeitsumfeld VARCHAR (50)
+    NOT NULL,
+  Schulfachnaehe VARCHAR (50)
+    NOT NULL,
+  TArt VARCHAR (50)
+    NOT NULL,
+  Anforderung VARCHAR (50)
+    NOT NULL,
+ CONSTRAINT t_key PRIMARY KEY (TNr)
+);
+
+CREATE TABLE Angebot (
+  PNr INTEGER REFERENCES Praktikum (PNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  FNr INTEGER REFERENCES Firma (FNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  BName VARCHAR (50)
+    NOT NULL,
+ CONSTRAINT a_key PRIMARY KEY (PNr,FNr)   
+);    
+    
+CREATE TABLE Einsatzbereich (
+  PNr INTEGER REFERENCES Praktikum (PNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  TNr INTEGER REFERENCES Taetigkeitsbereich (TNr)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+ CONSTRAINT e_key PRIMARY KEY (PNr,TNr)   
+);        
+    
+
+

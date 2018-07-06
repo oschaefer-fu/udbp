@@ -1,0 +1,194 @@
+
+
+DES-RA> %Einfache Anfragen auf einer Tabelle
+
+
+DES-RA> % Frage 1: Welche Datensätze enthält die Tabelle Lehrkraft?
+
+
+DES-RA> select true (Lehrkraft);
+
+Info: RA expression compiled to:
+
+answer(A,B,C) :-
+  'Lehrkraft'(A,B,C).
+
+answer(Lehrkraft.lID:int,Lehrkraft.lName:string,Lehrkraft.lAnrede:string) ->
+{
+  answer(0,'MÃ¼nchmeyer','Frau'),
+  answer(1,'Rheinbote','Frau'),
+  answer(2,'StÃ¶ckl','Herr'),
+  answer(3,'Graf','Frau'),
+  answer(4,'GrÃ¼nwaldt','Herr'),
+  answer(5,'Herbst','Frau'),
+  answer(6,'WÃ¼nsch-Hecker','Herr'),
+  answer(7,'Hornburg','Frau')
+}
+Info: 8 tuples computed.          
+
+DES-RA> % Frage 2: Wie lauten die Namen und Vornamen aller Schüler/innen?
+
+
+DES-RA> % Sprachmittel: Projektion
+
+
+DES-RA> project sName, sVname (Schueler);
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Schueler'(_C,A,B,_D,_E,_F,_G,_H).
+
+answer(Schueler.sName:string,Schueler.sVname:string) ->
+{
+  answer('Famulla','Kim'),
+  answer('Herera','RamÃ³n'),
+  answer('Horst','Johannes'),
+  answer('Jonas','Justus'),
+  answer('Kellenbauer','Maike'),
+  answer('Kim','Mundo'),
+  answer('Kluge','Isabella'),
+  answer('Kowatzki','Jennifer'),
+  answer('Levi','Magdalena'),
+  answer('Meyer','Hans'),
+  answer('Puck','Felicitas'),
+  answer('Schmidt','Torben-Leander'),
+  answer('Schmitt','Kevin'),
+  answer('Schulz','Norina'),
+  answer('SchÃ¤fer','Lena'),
+  answer('SchÃ¤fer','Linus'),
+  answer('Wegner','Richard'),
+  answer('von Hoffmann','Louisa'),
+  answer('Ã–tztÃ¼rk','Mohammed'),
+  answer('Ã–zil','Ayshe')
+}
+Info: 20 tuples computed.          
+
+DES-RA> % Frage 3: Wie viele Plätze hat der Computerraum?
+
+
+DES-RA> % Sprachmittel: Selektion, Projektion
+
+
+DES-RA> project rPlaetze (select rName = 'Computerraum' (Raum));
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Raum'(_B,A,'Computerraum').
+
+answer(Raum.rPlaetze:int) ->
+{
+  answer(5)
+}
+Info: 1 tuple computed.          
+
+DES-RA> % Frage 4: Wie alt ist Norina Schulz?
+
+
+DES-RA> % Sprachmittel: Selektion mit UND-Verknüpfung, Projektion
+
+
+DES-RA> project sAlter (select sName = 'Schulz' and sVname = 'Norina' (Schueler));
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Schueler'(_B,'Schulz','Norina',_C,A,_D,_E,_F).
+
+answer(Schueler.sAlter:int) ->
+{
+  answer(14)
+}
+Info: 1 tuple computed.          
+
+DES-RA> % Frage 5: Welche Schüler/innen (Name, Vorname) sind 15 oder 16 Jahre alt?
+
+
+DES-RA> % Sprachmittel: Selektion mit OR-Verknüpfung, Projektion
+
+
+DES-RA> project sName, sVname (select sAlter = 15 or sAlter = 16 (Schueler));
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Schueler'(_C,A,B,_D,E,_F,_G,_H),
+  or(E=15,E=16).
+
+answer(Schueler.sName:string,Schueler.sVname:string) ->
+{
+  answer('Herera','RamÃ³n'),
+  answer('Horst','Johannes'),
+  answer('Kowatzki','Jennifer'),
+  answer('Levi','Magdalena')
+}
+Info: 4 tuples computed.          
+
+DES-RA> % Frage 7: Welche Lehrer (Anrede, Nachname) betreuten ein Projekt?
+
+
+DES-RA> % Sprachmittel: Natural Join
+
+
+DES-RA> project lAnrede, lName (Lehrkraft njoin Aufsicht);
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Lehrkraft'(C,B,A),
+  'Aufsicht'(C,_D).
+
+answer(lAnrede:string,lName:string) ->
+{
+  answer('Frau','Herbst'),
+  answer('Frau','Hornburg'),
+  answer('Frau','MÃ¼nchmeyer'),
+  answer('Frau','Rheinbote'),
+  answer('Herr','GrÃ¼nwaldt'),
+  answer('Herr','WÃ¼nsch-Hecker')
+}
+Info: 6 tuples computed.          
+
+DES-RA> % Frage 8: Welche Schüler (Name, Vorname) haben am Projekt „Ernährungspolitik“ teilgenommen?
+
+
+DES-RA> % Sprachmittel: Natural Join
+
+
+DES-RA> project Schueler.sName, Schueler.sVname (select pName = 'Ernährungspolitik' (Schueler njoin Projekt));
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Schueler'(_C,A,B,_D,_E,_F,G,_H),
+  'Projekt'(G,'Ernährungspolitik',_I,_J,_K,_L,_M,_N,_O).
+
+answer(Schueler.sName:string,Schueler.sVname:string) ->
+{
+  answer('Herera','RamÃ³n'),
+  answer('Kim','Mundo'),
+  answer('SchÃ¤fer','Lena'),
+  answer('SchÃ¤fer','Linus')
+}
+Info: 4 tuples computed.          
+
+DES-RA> % Frage 9: Welche Räume (rID, Name) besitzen ein Smartboard?
+
+
+DES-RA> project rID, rName (select aArt = 'Smartboard' (Raum njoin Ausstattung njoin Raumausstattung));
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Raum'(A,_C,B),
+  'Ausstattung'(D,'Smartboard'),
+  'Raumausstattung'(A,D).
+
+answer(rID:int,rName:string) ->
+{
+  answer(3,'Klassenraum 8b'),
+  answer(6,'Computerraum')
+}
+Info: 2 tuples computed.          
+

@@ -1,0 +1,39 @@
+﻿Lehrer (LNr, LName, LFach1, LFach2, LPLZ) 
+
+LNr → {LName, LFach1, LFach2, LPLZ}
+LFach1, LFach2 → LName
+
+
+Schueler (SNr, SVorname, SName, STel, SGeb, LNr, FNr, LBewertung, SBewertung, PNr, Schuljahr) 
+
+SNr → {SVorname, SName, SGeb, STel }
+SNr → {LNr, FNr}
+
+
+Firma (FNr, FName, FPLZ, FStraßeHNr, KontaktTel, KontaktMail, Entfernung, Arbeitsbeginn, Arbeitsende, Mitarbeiterzahl)
+
+FNr → {FName, FPLZ, FStraßeHNr, KontaktTel, KontaktMail, Entfernung, Arbeitsbeginn, Arbeitsende, Mitarbeiterzahl}
+FStraßeHNr → {Entfernung}
+
+
+Bewerbung (BNr, Art, Frist, Ansprechpartner, FNr)
+
+BNr → {Art, Frist, Ansprechpartner, FNr}
+
+
+Praktikum (PNr, PName)
+
+PNr → PName 
+
+
+Taetigkeitsbereich (TNr, Arbeitsumfeld , Schulfachnaehe , TArt, Anforderung)
+
+TNr → {Arbeitsumfeld, Schulfachnaehe, TArt, Anforderung}
+
+
+Angebot (PNr, FNr, Betreuer)
+PNr, FNr → Betreuer
+
+
+Einsatzbereich (PNr, TNr)
+keine FAen

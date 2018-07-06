@@ -1,0 +1,49 @@
+﻿Alle Datenbankanfragen
+
+Anfragen zur Datenbank "Schuelerpraktikum" als Text
+ 					
+1.	Welche Praktika gibt es? 		
+
+2.	Name und Vorname aller Schüler, die im Jahr 2015 ein Praktikum gemacht haben		
+ 
+3.	Wie lautet die EMail-Adresse der Fahrradwerkstatt?	
+
+4.	Wo befindet sich das Medienhaus?							
+
+5.	Welche Firmen haben mehr als 100 Angestellte?				
+
+6.	Welcher betreuender Lehrer unterrichtet ein MINT-Fach (Bio, Phy, Che, Ma, Inf)?	
+
+7.	Welche Firmen bieten welche Praktikumsstellen an (alphabetisch nach Firmenname geordnet)?							
+
+8.	Bei welcher Firma kann man sich nicht schriftlich bewerben?						
+
+9. 	Gibt es Lehrer, die nie einen Schüler betreut haben?	
+									
+10.	Bei welchen Firmen gibt es keine Bewerbungsfrist?			
+
+11. Wo werden Praktika angeboten, die mit Computer zu tun haben?	
+
+12.	Welcher Lehrer hat 2015 Praktika betreut, die mit Pflege zu tun haben? 			
+	Welche Schüler und welche Praktika waren das?				
+
+13.	Bei welcher Firma kann man sich als Verwaltungsangestellter bewerben, sortiert nach Anfangsarbeitszeit.				
+
+14.	Wie viele Lehrer gibt es, die mehr als einen Schüler betreut haben?					
+ 
+15.	Welche Lehrer haben die meisten Schüler 2018 betreut (sortiert von meist zu wenig)?
+
+16.	Welche Firmen haben die besten Schülerbewertungen bekommen (Durchschnitt), sortiert von gut zu schlecht (Schüler)?		
+
+17.	Liste nach Entfernung Lehrer Durstenberg zu Praktikumsstellen				
+
+18.	Welcher Lehrer hat welche Schüler in welchem Jahr besucht? (sortiert nach Jahrgang, Lehrer)				
+
+19.	Welche Schüler muss Frau Meisenbusch 2018 besuchen? Lass eine Liste ausgeben mit den für die Lehrerin wichtigen Informationen.		
+
+20.	Emil interessiert sich für Arbeiten, die kreativ sind. Wo sollte er sich bewerben? Sortiere die Liste nach Entfernung zur Schule 
+	aufsteigend.					
+   
+21.	Otto möchte draußen arbeiten und nicht vor 9:00 Uhr	beginnen. 
+	Welche Telefonnummern welcher Firmen würde er wählen um mit welchem Betreuer zu sprechen?						
+

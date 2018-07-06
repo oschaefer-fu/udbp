@@ -1,0 +1,12 @@
+﻿Miniwelt Praktikum  
+
+In einer Schule muss jeder Schueler des neunten Jahrgangs ein Praktikum absolvieren. Die Schulleitung moechte für die Planung ein Datenbanksystem erstellen. Dazu sollen Angaben zu Schuelern, Lehrern, zu den Praktika selbst und zu Firmen, die Praktika anbieten gespeichert werden.
+
+Jeder Schueler entscheidet sich fuer ein Praktikum und sucht sich eine Firma, die einen Platz anbietet. Einige dieser Firmen verlangen eine Bewerbung und haben dafuer geschulte Mitarbeiter als Ansprechpartner.
+Haeufig bieten Firmen  verschiedene Praktika an. So kann beispielsweise in einem Krankenhaus ein Praktikum als Pflegekraft, in der Verwaltung oder als Handwerksgehilfe absolviert werden. Daher koennen die Arbeitszeiten  variieren.
+Jeder Praktikant hat vor Ort seinen eigenen Betreuer, der ihn anweist und unterstuetzt. Außerdem  besucht jeder Fachlehrer der Klasse  einen Teil seiner Schueler an deren jeweiligem Arbeitsplatz. In der Regel finden die Besuche der Lehrer in den Unterrichtsstunden statt, die durch das Praktikum entfallen.  Aus diesem Grund sollten die Firmen in der Naehe der Lehrerwohnorte  liegen. Wenn moeglich, versucht Schulleitung Lehrer in die Firmen zu schicken, die zu einem seiner Unterrichtsfaecher einen Bezug haben.
+Um kuenftigen Praktikanten die Suche nach einem geeigneten Praktikumsplatz zu erleichtern, soll außerdem erfasst werden, welche  Taetigkeitsbereiche ein Praktikum abdeckt, z.B.  ob das Arbeitsumfeld eher drinnen oder draußen ist. Auch Anforderungen die ein Schueler erfuellen muss, oder die Art der Taetigkeit (z.B. Computerarbeit, Reinigungsarbeiten, handwerkliche Taetigkeiten) sollen als Orientierung fuer die kuenftigen Praktikanten erfasst werden.
+
+Nach Absolvierung des Praktikums wird die Stelle von Schueler und Lehrer unabhaengig voneinander bewertet.
+
+

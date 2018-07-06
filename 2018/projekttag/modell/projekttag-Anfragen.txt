@@ -1,0 +1,104 @@
+-- Autoren: 	Ricarda Galler, Fabian Weber
+-- Datum: 	04.06.2018
+-- Zweck:	Anfragen zum Projekttag-Datenbank-Projekt
+
+
+-- ############  Einfache Anfragen auf einer Tabelle ############
+
+-- 1
+-- Frage: Welche Datensätze enthält die Tabelle Lehrkraft?
+-- Sprachmittel: SELECT, FROM
+
+-- 2
+-- Wie lauten die Namen und Vornamen aller Schüler/innen?
+-- Sprachmittel: Auswahl einzelner Spalten/Attribute
+
+-- 3
+-- Frage: Wie viele Plätze hat der Computerraum?
+-- Sprachmittel: WHERE-Bedinung
+
+-- 4
+-- Frage:Wie alt ist Norina Schulz?
+-- Sprachmittel: WHERE-Bedingung mit AND-Verknüpfung
+
+-- 5
+-- Frage: Welche Schüler/innen (Name, Vorname) sind 15 oder 16 Jahre alt?
+-- Sprachmittel: WHERE-Bedingung mit OR-Verknüpfung
+
+-- 6
+-- Frage: Welche Räume der Schule wurden für die Projekttage genutzt (sie enthalten den Namensbestandteil raum)?
+-- Sprachmittel: WHERE-Bedingung mit LIKE-Operator	
+	
+	
+
+-- ############  Anfragen über mehrere Tabellen (JOIN) ############
+
+-- 7
+-- Frage:Welche Lehrer/innen (Anrede, Nachname) betreuten ein Projekt?
+-- Sprachmittel: NATURAL JOIN, Alias
+
+-- 8
+-- Frage:Welche Schüler (Name, Vorname) haben am Projekt 'Ernährungspolitik' teilgenommen?
+-- Sprachmittel: NATURAL JOIN mit WHERE-Bedingung
+
+-- 9
+-- Frage:Welche Räume (rID, Name) besitzen ein Smartboard?
+-- Sprachmittel: NATURAL JOIN über drei Tabellen
+
+-- 10
+-- Frage: Welche Schüler/innen haben Geschwister an derselben Schule (gleicher Nachname)?
+-- Sprachmittel: Cartesisches Produkt, Negation
+
+-- 11
+-- Frage: In welchen Räumen hielt sich Mundo Kim während des Projekttages auf?
+-- Sprachmittel: NATURAL JOIN über drei Tabellen mit WHERE-Bedingung und AND-Verknüpfung
+	
+	
+	
+-- ##############   Anfragen mit Durchschnitt und Differenz  ###########
+-- 12
+-- Frage: Welche Lehrer/innen (Anrede, Nachname) betreuten kein Projekt?
+-- Sprachmittel: EXCEPT
+
+-- 13
+-- Frage:Welche Räume besitzen sowohl eine Kreidetafel als auch ein Waschbecken?
+-- Sprachmittel: INTERSECT
+
+
+-- ############   Anfragen mit Aggregatfunktionen  #####################
+-- 14
+-- Frage: Wie viele Schüler/innen haben am Projekt 1 teilgenommen ?
+-- Sprachmittel: COUNT
+	
+	
+-- 15
+-- Frage: Wie viele Schueler haben die einzelnen Klassen der Schule
+-- Sprachmittel: COUNT, GROUP BY
+
+	
+-- 16
+-- Frage: Wie groß waren die höchsten durch ein Projekt veraursachten Kosten?
+-- Sprachmittel: MAX
+
+-- 17
+-- Frage: Wie wurden die Projekte im Durchschnitt benotet?
+-- Sprachmittel: AVG
+
+-- 18
+-- Frage: Welche Projekte wurden im Durchschnitt besser als 2 benotet?
+-- Sprachmittel: AVG, HAVING
+
+
+-- ##################### Anfragen mit Quantoren ############################
+
+-- 19
+-- Frage: In welchen Projekten wurde die Note 0 (=o. B.) vergeben?
+-- Sprachmittel: EXISTS
+
+
+-- 20
+-- Frage: Welches Projekt wurde im Durchschnitt schlechter bewertet als alle anderen?
+-- Sprachmittel: ALL
+
+
+

@@ -1,0 +1,145 @@
+\documentclass[a4paper,landscape]{article}
+
+\usepackage{tikz}
+\usepackage[margin=1cm]{geometry}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz-er2}
+
+
+
+\begin{document}
+
+%================================================================================================================================
+% grundlegende Formatdinge
+%================================================================================================================================
+
+\thispagestyle{empty}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\tikzstyle{every entity} = [top color=white, bottom color=red!30, 
+                            draw=red!50!black!100, drop shadow]
+\tikzstyle{every weak entity} = [drop shadow={shadow xshift=.7ex, 
+                                 shadow yshift=-.7ex}]
+\tikzstyle{every attribute} = [top color=white, bottom color=yellow, 
+                               draw=yellow, node distance=1cm, drop shadow]
+\tikzstyle{every relationship} = [top color=white, bottom color=green, 
+                                  draw=green!50!black!100, drop shadow]
+\tikzstyle{every isa} = [top color=white, bottom color=green, 
+                         draw=green!50!black!100, drop shadow]
+
+%================================================================================================================================
+% eigentliches Dokument
+%================================================================================================================================
+
+
+
+\centering
+\scalebox{.87}{
+\begin{tikzpicture}[node distance=2cm, every edge/.style={link}]
+
+  \node[entity] (spiel) {Computerspiel};
+  \node[relationship] (abgabe) [below right= of spiel] {gibt ab};
+  \path (spiel) edge node[above,near start] {n} (abgabe);
+  \node[relationship] (besitzt) [left=1.2cm of abgabe] {besitzt};
+  \path (spiel) edge node[left,near start] {n} (besitzt);
+  \node[entity] (komm) [right= of abgabe] {Kommentar};
+  \path (komm) edge node[above,near start] {1} (abgabe);
+  \node[entity] (ben) [below left= of abgabe] {Benutzer};
+  \path (ben) edge node[above,near start] {m} (abgabe);
+  \path (ben) edge node[left,near start] {m} (besitzt);
+  
+  \node[attribute] (s1) [above left= of spiel] {\underline{SID}} edge (spiel);
+  \node[attribute] (s2) [below left= of spiel] {FSK} edge (spiel);
+  \node[attribute] (s3) [right= of spiel] {SName} edge (spiel);
+  \node[attribute] (s4) [right= of spiel, yshift=9mm] {Erscheinungsjahr} edge (spiel);
+  \node[attribute] (s5) [right= of spiel, yshift=-9mm] {Multiplayer?} edge (spiel);
+  
+  \node[attribute] (k1) [right= of komm] {\underline{KID}} edge (komm);
+  \node[attribute] (k2) [above right= of komm] {KText} edge (komm);
+  \node[attribute] (k3) [below right= of komm] {KNote} edge (komm);
+  
+  \node[attribute] (b1) [right= of ben] {\underline{BID}} edge (ben);
+  \node[attribute] (b2) [below right= of ben] {BName} edge (ben);
+  \node[attribute] (b3) [above left= of ben] {Email} edge (ben);
+  \node[attribute] (b4) [left= of ben] {Geb.-Dat.} edge (ben);
+  \node[attribute] (b5) [below left= of ben] {Geschlecht} edge (ben);
+
+  \node[relationship] (freund) [below= of ben] {befreundet mit};
+  \path [double] (ben) edge[xshift=10pt] node[left,near start] {n} (freund);
+  \path [double] (ben) edge[xshift=-10pt] node[right,near start] {m} (freund);
+  
+  \node[relationship] (zugeh) [left= of spiel] {beschrieben durch};
+  \path (spiel) edge node[above,near start] {n} (zugeh);
+  \node[entity] (eigen) [left= of zugeh] {Schlagwort} edge (zugeh);
+  \path (eigen) edge node[above,near start] {m} (zugeh);
+  \node[attribute] (e1) [below= of eigen] {\underline{WID}} edge (eigen);
+  \node[attribute] (e2) [above= of eigen] {WName} edge (eigen);
+
+  \node[relationship] (hergestellt) [above= of spiel] {published by};
+  \path (spiel) edge node[left,near start] {1} (hergestellt);
+  \node[entity] (publ) [above= of hergestellt] {Publisher} edge (hergestellt);
+  \path (publ) edge node[left,near start] {n} (hergestellt);
+  \node[attribute] (p1) [left= of publ] {\underline{PID}} edge (publ);
+  \node[attribute] (p2) [above= of publ] {PName} edge (publ);
+  \node[attribute] (p3) [right= of publ] {Gründungsjahr} edge (publ);
+
+  \node[relationship] (lauf) [above right= of spiel] {läuft auf};
+  \path (spiel) edge node[above,near start] {m} (lauf);
+  \node[attribute] (l1) [above= of lauf] {Preis} edge (lauf);
+  \node[entity] (platt) [above right= of lauf] {Plattform};
+  \path (platt) edge node[above,near start] {n} (lauf);
+  \node[attribute] (p4) [below right= of platt] {\underline{PlaID}} edge (platt);
+  \node[attribute] (p5) [below= of platt] {PlaName} edge (platt);
+
+\end{tikzpicture}
+}
+
+\end{document}
+
+
+
+\node[relationship] (nimmt) [right=of emp] {nimmt teil} edge (emp);
+  \node[entity] (ein) [right=of nimmt] {Einsatz} edge (nimmt);
+  \node[relationship] (loest) [right=of ein] {löst aus} edge (ein);  
+  \node[entity] (auftrag) [right=of loest] {Auftrag} edge (loest);
+  \node[relationship] (erteilt) [right=of auftrag] {erteilt} edge (auftrag);
+  \node[entity] (kunde) [right=of erteilt] {Kunde} edge (erteilt);
+  
+  \node[attribute] (datum) [above left=0.5cm of ein] {Datum} edge (ein);
+  \node[attribute] (kosten) [above right=0.5cm of ein] {Kosten} edge (ein);
+  \node[attribute] (enr) [above=1cm of ein] {\key{Einsatznr.}} edge (ein);
+
+  \node[%ident
+        relationship] (faehrt) [below=1cm of emp] {fährt} edge (emp);
+  \node[%weak 
+        entity] (fahrzeug) [below=1cm of faehrt] {Fahrzeug} edge (faehrt);
+  
+  \node[isa] (isa1) [above=1cm of emp] {} edge (emp);
+  \node[entity] (fest) [above left=1cm of isa1] {Festangestellt} edge (isa1);
+  \node[entity] (teil) [aove right=1cm of isa1] {Teilzeit} edge (isa1)
+  
+  \node[isa] (isa2) [above=1cm of auftrag] {} edge (auftrag);
+  \node[entity] (dauer) [above right=1cm of isa2] {Einzelauftrag} edge (isa2);  
+  \node[entity] (einzel) [above left=1cm of isa2] {Dauerauftrag} edge (isa2);  
+  \node[attribute] (pb) [below left=1cm of auftrag] {Personalbedarf} edge (auftrag);
+  \node[attribute] (fb) [below right=1cm of auftrag] {Fahrzeugbedarf} edge (auftrag);
+  \node[attribute] (anr) [below=1cm of auftrag] {\key{Auftragsnr.}} edge (auftrag);
+  
+  \node[attribute] (knr) [below=1cm of kunde] {\key{Kundennr.}} edge (kunde);
+  
+  \node[attribute] (pnr) [above left=1cm of emp] {\key{Personalnr.}} edge (emp);
+  \node[multi attribute] (adresse) [below left=1cm of emp] {Adresse} edge (emp);
+  
+  \path  (kunde) -- (erteilt) node[draw=none, midway, above] {0..*};
+  
+  \node[relationship] (hat) [below right=1cm of emp] {hat} edge (emp);
+  \node[entity] (qual) [below right=1cm of hat] {Qualifikation} edge (hat);
+  \node[attribute] (qnr) [above right=0.5cm of qual] {Q.Nr.} edge (qual);
+  \node[attribute] (qb) [right=0.5cm of qual] {Beschr.} edge (qual);
+
+  \draw[link] (fahrzeug) -| (ein) (ein) edge (ein);  
+  \node[relationship] (fm) [below=2.95cm of ein] {fährt mit};

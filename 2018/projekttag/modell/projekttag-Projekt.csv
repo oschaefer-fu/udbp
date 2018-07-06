@@ -1,0 +1,6 @@
+pID,pName,pBeschr,pKosten,pMinTNZahl,pMaxTNZahl,pMinAlter,s1ID,s2ID
+0,„Ernährungsatlas für unseren Kiez“,„Wir analysieren das Ernährungsangebot in Restaurants und Gaststätten in unserem Kiez.“,0,2,10,8,7,8
+1,„Ernährungsvor-schriften in den Weltreligionen“,„Wir lesen einschlägige Texte aus den heiligen Schriften verschiedener Weltreligionen und bereiten Speisen nach diesen Regeln zu.“,5,3,5,12,5,11
+2,„Ernährungspolitik“,„Wir besuchen das Bundesministerium für Landwirtschaft und führen dann ein Planspiel durch.“,1,4,10,14,9,10
+3,„Alltag auf dem Bauernhof“,„Wir fahren auf einen Biobauernhof und helfen den Bauern.“,0,2,6,8,3,4
+4,„Hunger in der Welt“,„Wir betrachten unterschiedliche Lösungsansetze vom Chemielabor bis zur Weltbank.“,3,2,5,13,0,17

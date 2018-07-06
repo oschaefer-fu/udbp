@@ -1,0 +1,359 @@
+Antworten der Datenbank Fahraway
+
+1. alle Daten von fahrt: 
+
+ f_id |    f_name     |    von     |    bis     | kl_ku | f_unterkunft 
+------+---------------+------------+------------+-------+--------------
+  135 | Nordsee       | 2014-05-23 | 2014-05-27 | 10a   |          509
+  101 | Turin-LK_2017 | 2017-03-05 | 2017-03-15 | IT-Q3 |          401
+  102 | Kennlern-7a   | 2011-09-01 | 2011-09-03 | 7a    |          101
+  134 | Bach & Co     | 2018-06-07 | 2018-06-14 | 8f    |          201
+  119 | Ich Binz      | 2013-03-06 | 2013-03-13 | 9a    |          506
+  133 | Münsterland   | 2014-03-04 | 2014-03-10 | 8b    |          507
+  103 | Berlin        | 2015-09-03 | 2015-09-10 | 9b    |             
+(7 Zeilen)
+
+
+2. die Attribute bezng, art und katgrie von aktivitaet:
+
+          bezng           |       art        |    katgrie    
+--------------------------+------------------+---------------
+ Naturfelsen              | Klettern         | Sport
+ Surfen4Fun               | Surfen           | Sport
+ Ligaspiel                | Fussball         | Sport
+ Kletterparadies          | Klettern         | Sport
+ Schachzenter             | Schach           | Sport
+ Surfen24/7               | Surfen           | Sport
+ Religöse Besinnungstage  | Meditation       | Religion
+ Freak Show               | Theater          | Kunst/Kultur
+ JesuitenKloster          | Meditation       | Geist & Seele
+ Badminton für Anfänger   | Badminton        | Sport
+ Cat in the Bag           | Live Escape Game | Spiel
+ Wettpaddeln              | Paddeln          | Sport
+ Mole Antonelliana        | Museales         | Kunst/Kultur
+ Full Metall Jacket       | Paint Ball       | Militaer
+ Puppe & Co               | Theater          | Kunst/Kultur
+ Theater am Rand          | Theater          | Kunst/Kultur
+ Kletterparadies          | Klettern         | Sport
+ Nightknight              | Paint Ball       | Militaer
+ Arkaden-Tour             | Museales         | Kunst/Kultur
+ Surfonauten              | Surfen           | Sport
+ Like ice in the sunshine | Beachvolleyball  | Sport
+ North-Kiten              | Kitesurfen       | Sport
+(22 Zeilen)
+
+
+3. die Attribute bezng, art und katgrie von aktivitaet unter den Überschriften Bezeichnung, Art und Kategorie:
+
+       bezeichnung        |       art        |   kategorie   
+--------------------------+------------------+---------------
+ Naturfelsen              | Klettern         | Sport
+ Surfen4Fun               | Surfen           | Sport
+ Ligaspiel                | Fussball         | Sport
+ Kletterparadies          | Klettern         | Sport
+ Schachzenter             | Schach           | Sport
+ Surfen24/7               | Surfen           | Sport
+ Religöse Besinnungstage  | Meditation       | Religion
+ Freak Show               | Theater          | Kunst/Kultur
+ JesuitenKloster          | Meditation       | Geist & Seele
+ Badminton für Anfänger   | Badminton        | Sport
+ Cat in the Bag           | Live Escape Game | Spiel
+ Wettpaddeln              | Paddeln          | Sport
+ Mole Antonelliana        | Museales         | Kunst/Kultur
+ Full Metall Jacket       | Paint Ball       | Militaer
+ Puppe & Co               | Theater          | Kunst/Kultur
+ Theater am Rand          | Theater          | Kunst/Kultur
+ Kletterparadies          | Klettern         | Sport
+ Nightknight              | Paint Ball       | Militaer
+ Arkaden-Tour             | Museales         | Kunst/Kultur
+ Surfonauten              | Surfen           | Sport
+ Like ice in the sunshine | Beachvolleyball  | Sport
+ North-Kiten              | Kitesurfen       | Sport
+(22 Zeilen)
+
+
+
+4. bezng, art und kosten von aktivitaet, die nicht mehr als 15 Euro kosten:
+
+    bezeichnung    |    art     |   kategorie   | kosten 
+-------------------+------------+---------------+--------
+ JesuitenKloster   | Meditation | Geist & Seele |   0.00
+ Theater an Rand   | Theater    | Kunst/Kultur  |  15.00
+ Arkaden-Tour      | Museales   | Kunst/Kultur  |   0.00
+ Mole Antonelliana | Museales   | Kunst/Kultur  |   0.00
+ Schachzenter      | Schach     | Sport         |  12.00
+
+5. die Namen aller Unterkünfte als Unterkunft in einer Entfernung von maximal 1 km vom Ortskern und Übernachtungs-Kosten von maximal 20 €:
+
+        unterkunft        | entfkern | kosten 
+--------------------------+----------+--------
+ Jugendherberge Trier     |        1 |  10.00
+ Tomato Backpackers Hotel |        0 |  16.00
+
+
+6. Aktivitaeten, die man nur im Sommer oder Herbst durchfuehern kann
+
+      bezng      | katgrie 
+-----------------+---------
+ Surfen4Fun      | Sport
+ Surfen24/7      | Sport
+ Surfonauten     | Sport
+ North-Kiten     | Sport
+ Kletterparadies | Sport
+ Naturfelsen     | Sport
+ Kletterparadies | Sport
+
+7. die Namen aller Schüler und Schülerinnen, die mindestens 16 Jahre alt sind: 
+
+  vname  |   nname   
+---------+-----------
+ Max     | Thalberg
+ Madonna | Swift
+ Dominik | Pfeifer
+ Camelia | Beneventi
+ Sascha  | Amani
+
+
+8. die Anzahl aller erfassten Fahrten: 
+
+ count 
+-------
+     2
+
+9. die Anzahl aller Orte bis zu einer Entfernung von 400 km:
+
+ count 
+-------
+     2
+
+10. die durchschnittliche Entfernung der erfassten Orte: 
+
+
+ durchschnittliche Entfernung 
+------------------------------
+         867.1111111111111111
+
+
+
+11. Anzahl der städtischen und ländlichen Orte
+
+ urb_rur | count 
+---------+-------
+ f       |     4
+ t       |     5
+
+
+12. 12. Anzahl der städtischen und ländlichen Orte mit mehr als 100000 Einwohnern
+
+ urb_rur | count 
+---------+-------
+ t       |     3
+
+
+13. Anzahl der städtischen und ländlichen Orte mit Häufigkeit größer 4
+
+ urb_rur | count 
+---------+-------
+ t       |     5
+
+
+
+14. die Anzahl der Aktivitäten pro Kategorie in absteigender Reihenfolge:
+
+    katgrie    | count 
+---------------+-------
+ Sport         |     9
+ Kunst/Kultur  |     4
+ Militaer      |     2
+ Geist & Seele |     1 
+
+
+15. die Anzahl aller Anbieter pro Ort in aufsteigender Reihenfolge
+
+ count |        ort         
+-------+--------------------
+     1 | Dresden
+     1 | Sankt Peter-Ording
+     1 | noplace
+     1 | Ahaus
+     1 | Sylt
+     1 | Bocholt
+     1 | Neuharlingersiel
+     1 | Goslar
+     1 | Halle
+     1 | Leipzig
+     1 | Turin
+     2 | Ostseebad Binz
+
+
+16. Frage nach allen Fahrten mit ihrer Dauer in Tagen 
+    f_name     | dauer 
+---------------+-------
+ Turin-LK_2017 |    11
+ Kennlern-7a   |     3
+
+
+17. Name, Bewertung und Preis der beliebtesten Aktivitaet:
+
+       bezng        | bewert | akpreis 
+--------------------+--------+---------
+ Surfonauten        |      9 |  259.00
+ Full Metall Jacket |      9 |   49.00
+
+
+no 18./19.
+
+
+20./21. Alle Unterkünfte mit ihrem Ort:
+
+         u_name          |       o_name        
+--------------------------+---------------------
+ Jugendherberge Trier     | Trier
+ Winklmoosalm             | Ruhpolding
+ Kiez Hölzerner See       | Königs Wusterhausen
+ JUFA-Hotel               | Bregenz
+ Tomato Backpackers Hotel | Turin
+ Hostel Malti             | Valetta
+ Kalithea                 | Athen
+
+
+22. Welche Lehrer begleiten die Fahrt 'Turin-LK_2017 ?'
+
+ anrede | vname | nname  
+--------+-------+--------
+ Herr   | Elias | Barek
+ Frau   | Herta | Herzog
+
+
+23. Welche Lehrer begleiten die Fahrt Turin-LK_2017 mit NATURAL JOIN
+
+ anrede | vname | nname  
+--------+-------+--------
+ Herr   | Elias | Barek
+ Frau   | Herta | Herzog
+
+
+24. von allen Fahrten die Dauer in Tagen und die Übern_Kosten pro Schueler
+
+    f_name     | dauer | Übern_kosten 
+---------------+-------+--------------
+ Turin-LK_2017 |    11 |       160.00
+ Kennlern-7a   |     3 |        20.00
+
+25. Taschengeld_Kosten aller Fahrten bei pauschal 5 € pro Tag mal Schickfaktor des Ortes für die Dauer der Fahrten'
+
+    f_name     |       o_name        | schickf | taschengeld_ges 
+---------------+---------------------+---------+-----------------
+ Turin-LK_2017 | Turin               |       4 |             200
+ Kennlern-7a   | Königs Wusterhausen |       4 |              40
+
+
+
+26. -28. von allen fahrenden Schuelern Name, Unterkunft, begleitender Lehrer und dessen Telefon-Nummer geordnet nach Schüler-Nachname
+
+   nname   |   vname   |          u_name          | anrede |    nname    |   telnr   
+-----------+-----------+--------------------------+--------+-------------+-----------
+ Beneventi | Camelia   | Tomato Backpackers Hotel | Frau   | Schmid      |  30947250
+ Beneventi | Camelia   | Tomato Backpackers Hotel | Herr   | Aki         |  30173025
+ Beneventi | Camelia   | Tomato Backpackers Hotel | Frau   | Frost       |  77766321
+ Freud     | Luca      | Ostsee Hostel            | Frau   | Schmid      |  30947250
+ Freud     | Luca      | Moin Moin                | Herr   | Mahler      |  30827364
+ Freud     | Luca      | Moin Moin                | Frau   | Eisenhauner | 306834623
+ Freud     | Luca      | Ostsee Hostel            | Herr   | Austerlitz  | 901234567
+ Freud     | Luca      | Kiez Hölzerner See       | Herr   | Aki         |  30173025
+ Freud     | Luca      | Kiez Hölzerner See       | Frau   | Frost       |  77766321
+ Gersten   | Tim       | Moin Moin                | Herr   | Mahler      |  30827364
+ Gersten   | Tim       | Kiez Hölzerner See       | Herr   | Aki         |  30173025
+ Gersten   | Tim       | Kiez Hölzerner See       | Frau   | Frost       |  77766321
+ Gersten   | Tim       | Ostsee Hostel            | Frau   | Schmid      |  30947250
+ Gersten   | Tim       | Ostsee Hostel            | Herr   | Austerlitz  | 901234567
+ Gersten   | Tim       | Moin Moin                | Frau   | Eisenhauner | 306834623
+ Liste     | Linda     | Tomato Backpackers Hotel | Frau   | Frost       |  77766321
+ Liste     | Linda     | Tomato Backpackers Hotel | Herr   | Aki         |  30173025
+ Liste     | Linda     | Tomato Backpackers Hotel | Frau   | Schmid      |  30947250
+ Mezul     | Mesut     | Zum Kiepenkerl           | Frau   | Eisenhauner | 306834623
+ Mezul     | Mesut     | Zum Kiepenkerl           | Herr   | Taler       | 302836139
+ Potter    | Anja      | JUFA-Hotel               | Frau   | Schmid      |  30947250
+ Potter    | Anja      | JUFA-Hotel               | Herr   | Austerlitz  | 901234567
+ Ratlos    | Rudi      | Zum Kiepenkerl           | Herr   | Taler       | 302836139
+ Ratlos    | Rudi      | Zum Kiepenkerl           | Frau   | Eisenhauner | 306834623
+ Schulz    | Fiona     | JUFA-Hotel               | Frau   | Schmid      |  30947250
+ Schulz    | Fiona     | JUFA-Hotel               | Herr   | Austerlitz  | 901234567
+ Sorglos   | Susi      | Zum Kiepenkerl           | Frau   | Eisenhauner | 306834623
+ Sorglos   | Susi      | Zum Kiepenkerl           | Herr   | Taler       | 302836139
+ Symanski  | Sylwester | JUFA-Hotel               | Frau   | Schmid      |  30947250
+ Symanski  | Sylwester | JUFA-Hotel               | Herr   | Austerlitz  | 901234567
+ Theiss    | Maik      | Tomato Backpackers Hotel | Frau   | Frost       |  77766321
+ Theiss    | Maik      | Tomato Backpackers Hotel | Frau   | Schmid      |  30947250
+ Theiss    | Maik      | Tomato Backpackers Hotel | Herr   | Aki         |  30173025
+ Vuckovic  | Radojka   | Ostsee Hostel            | Frau   | Schmid      |  30947250
+ Vuckovic  | Radojka   | Ostsee Hostel            | Herr   | Austerlitz  | 901234567
+ Vuckovic  | Radojka   | Moin Moin                | Frau   | Eisenhauner | 306834623
+ Vuckovic  | Radojka   | Moin Moin                | Herr   | Mahler      |  30827364
+ Vuckovic  | Radojka   | Kiez Hölzerner See       | Herr   | Aki         |  30173025
+ Vuckovic  | Radojka   | Kiez Hölzerner See       | Frau   | Frost       |  77766321
+(39 Zeilen)
+
+
+
+- 28b. Frage von allen in 2017 fahrenden Schuelern nach Unterkunft, dem begleitenden Lehrer und dessen Telefon-Nummer mit dreimal NATURAL JOIN geordnet nach Schueler-Nachname
+
+   nname   |  vname  |          u_name          | anrede | nname  |  telnr   
+-----------+---------+--------------------------+--------+--------+----------
+ Beneventi | Camelia | Tomato Backpackers Hotel | Frau   | Frost  | 77766321
+ Beneventi | Camelia | Tomato Backpackers Hotel | Herr   | Aki    | 30173025
+ Beneventi | Camelia | Tomato Backpackers Hotel | Frau   | Schmid | 30947250
+ Liste     | Linda   | Tomato Backpackers Hotel | Frau   | Schmid | 30947250
+ Liste     | Linda   | Tomato Backpackers Hotel | Herr   | Aki    | 30173025
+ Liste     | Linda   | Tomato Backpackers Hotel | Frau   | Frost  | 77766321
+ Theiss    | Maik    | Tomato Backpackers Hotel | Frau   | Frost  | 77766321
+ Theiss    | Maik    | Tomato Backpackers Hotel | Herr   | Aki    | 30173025
+ Theiss    | Maik    | Tomato Backpackers Hotel | Frau   | Schmid | 30947250
+(9 Zeilen)
+
+
+29. Alle Lehrern und die IDs der eventuell begleiteten Fahrten mit einem OUTER JOIN
+
+ anrede | vname |    nname    | f_id 
+--------+-------+-------------+------
+ Herr   | Alex  | Austerlitz  |  119
+ Frau   | Silke | Schmid      |  101
+ Herr   | Erkan | Aki         |  101
+ Frau   | Cora  | Frost       |  102
+ Herr   | Erkan | Aki         |  103
+ Frau   | Cora  | Frost       |  101
+ Frau   | Fiona | Eisenhauner |  103
+ Herr   | Erkan | Aki         |  102
+ Herr   | Tim   | Mahler      |  135
+ Frau   | Fiona | Eisenhauner |  135
+ Herr   | Tim   | Taler       |  133
+ Frau   | Silke | Schmid      |  119
+ Frau   | Fiona | Eisenhauner |  133
+ Frau   | Silke | Schmid      |  134
+ Herr   | Alex  | Austerlitz  |  134
+ Herr   | Max   | Loewe       |     
+ Frau   | Katja | Eggern      |     
+
+
+
+
+
+40. Alle SuS, die noch nie weiter als 400km gereist sind:
+
+ s_id |  nname   |  vname  
+------+----------+---------
+  152 | Vuckovic | Radojka
+  151 | Freud    | Luca
+  155 | Gersten  | Tim
+(3 Zeilen)
+
+
+
+41. Anzahl der SuS, die noch nie weiter als 400km gereist sind:
+
+ count 
+-------
+     3
+(1 Zeile)
+
+
