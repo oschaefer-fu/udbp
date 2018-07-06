@@ -1,0 +1,4 @@
+Funktionale Abhängigkeiten
+
+Bis auf die in der Dokumentation beschriebenen Schlüsselbeziehungen
+treten keine weiteren funktionalen ABhängigkeiten auf.

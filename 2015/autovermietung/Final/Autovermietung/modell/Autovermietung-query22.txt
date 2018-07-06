@@ -1,0 +1,2 @@
+﻿Aufgabe 22
+Wie viele Mietverträge für Oberklasse gibt es in Berlin?

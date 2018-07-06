@@ -1,0 +1,2 @@
+﻿Aufgabe 14
+Wie viele Autos gibt es mit 2 Sitzplätzen?	

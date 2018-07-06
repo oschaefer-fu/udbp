@@ -1,0 +1,16 @@
+ vnr |     kname      |   mort    
+-----+----------------+-----------
+ 1   | Kleinwagen     | Bergheim
+ 2   | Kompaktklasse  | Nauen
+ 3   | Kompaktklasse  | Chemnitz
+ 4   | Cabrio         | Bergheim
+ 5   | Mittelklasse   | Leipzig
+ 6   | Mittelklasse   | Lengriess
+ 7   | obMittelklasse | Lengriess
+ 8   | Oberklasse     | Freiberg
+ 9   | Oberklasse     | Leipzig
+ 10  | Kleinwagen     | Bergheim
+ 11  | Kleinbus       | Dresden
+ 12  | Oberklasse     | Bergheim
+ 14  | Kleinbus       | Leipzig
+(13 Zeilen)

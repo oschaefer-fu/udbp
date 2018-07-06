@@ -1,0 +1,5 @@
+In dem View geht es um eine Kostenaufstellung der in Anspruch genommenen Nachhilfestunden. 
+Die Ergebnisse können individuell für jeden Schüler und für jedes Jahr ausgegeben werden. 
+Gibt es keine Einschränkung in der Anfrage, werden Listen aller Schüler für alle Jahre erstellt. 
+Dabei werden in der ersten Tabelle betreffenden Stunden ausgegeben. 
+In der zweiten Tabelle wird dann der Gesamtpreis pro Schüler dargestellt. 

@@ -1,0 +1,105 @@
+﻿Aufgabe 01
+Gib die Daten der Tabelle Auto aus.	
+
+Aufgabe 02
+Gib alle Auto mit Kennzeichen an, die 2 Sitzplätze haben.	
+
+Aufgabe 03
+Gib alle Autos mit Kennzeichen an, die mehr als 4 Sitzplätze haben.	
+
+Aufgabe 04
+Gib alle Autos mit Kennzeichen an, die zwischen 2 und 4 Sitzplätze haben.	
+
+Aufgabe 05
+Gib alle Autos mit Kennzeichen an, die 2 Sitzplätze haben und in Station Nr. 1 stehen.	
+
+Aufgabe 06
+Gib alle Auto mit Kennzeichen an, die Mittelklasse oder obMittelklasse sind und in Station Nr. 1 stehen.	
+
+Aufgabe 07
+Gib die Kategorie an bei der der Tagespreis zwischen 30,00€ und 100,00€ liegt.
+
+Aufgabe 08
+Welche Automodelle werden zu einem Tagespreis zwischen 30,00€ und 100,00€ angeboten?
+
+Aufgabe 09
+In welchen Kennzeichen kommt der Buchstabe F vor?	
+
+Aufgabe 10
+Welche Autos haben eine Berliner Kennzeichen?	
+
+Aufgabe 11
+Gib alle VW mit Kennzeichen aus.	
+
+Aufgabe 12
+Gib alle Auto mit Kennzeichen an, sortiert nach den Stationen aus.	
+
+Aufgabe 13
+Gib alle Auto mit Kennzeichen an, die in der Station Nr. 1 stehen aufsteigend sortiert nach Sitzplatznummer aus.	
+
+Aufgabe 14
+Wie viele Autos gibt es mit 2 Sitzplätzen?	
+
+Aufgabe 15
+Wie viele Sitzplätze gibt es in Station 3?	
+
+Aufgabe 16
+Gib den durchschnittlichen Tagespreis über alle Kategorien an.	
+
+Aufgabe 17
+Gib den Standort (Adresse) aller Mercedes C-KLasse an.	
+
+Aufgabe 18
+Gib das Zubehör aufsteigend sortiert nach Pauschalpreis an. Jeder Name soll nur einmal auftreten.	
+
+Aufgabe 19
+Zu welcher Kategorie gehört der Opel Astra?	
+
+Aufgabe 20
+Welches Winterzubehör ist in Köln verfügbar?
+
+Aufgabe 21
+Wie viele Kleinwagen gibt es in Berlin?
+(Dieselbe Anfrage mit Köln läuft wegen des Umlautes übrigens ins Leere!)
+
+Aufgabe 22
+Wie viele Mietverträge für Oberklasse gibt es in Berlin?
+
+Aufgabe 23
+Anzahl der Verträge pro Kunde, absteigend sortiert.
+
+Aufgabe 24
+Gib den Namen des Kunden der die meisten Verträge abgeschlossen hat?
+
+Aufgabe 25
+Gesamtmietzeit der Kunden absteigend sortiert?
+
+Aufgabe 26
+Welcher Kunde mit Vor- und Nachname  hat die meisten Tage gebucht?
+
+Aufgabe 27 - ab hier sind die Aufgaben eher auf Relationenalgebrazugeschnitten
+Ort und PLZ aller Stationen und Mieter (UNION ALL in psql = doppelte werden nicht entfernt)
+
+Aufgabe 28
+Orte aller Mieter die nicht in einem Ort mit Station wohnen
+
+Aufgabe 29
+Vertragsnummer, Kategoriename und Ort aller Mieter die nicht in einem Ort mit Station wohnen
+
+Aufgabe 30
+Alle Mieternamen mit den von ihnen gebuchten Zubehör.
+
+Aufgabe 31
+Alle Mieternamen und ihre Stationsnummer der Mieter, die in einem Ort mit Station wohnen 
+
+Aufgabe 32
+Vertragsnummern und Namen aller Mieter, die einen Vertrag abgeschlossen haben
+
+Aufgabe 33
+Alle Mieternamen die Kindersitze gebucht hatten. 
+
+Aufgabe 34
+Für welche Vertragsnummern sind mindestens zweimal Zubehör gebucht worden?
+
+Aufgabe 35 - spezielle Datums SQL Anfrage
+Welche Kategorien sind am 2015-05-10 an der Station Nr. 3 noch frei

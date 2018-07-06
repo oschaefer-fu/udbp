@@ -1,0 +1,2 @@
+﻿Aufgabe 03
+Gib alle Autos mit Kennzeichen an, die mehr als 4 Sitzplätze haben.	

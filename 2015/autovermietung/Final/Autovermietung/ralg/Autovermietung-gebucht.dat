@@ -1,0 +1,25 @@
+% Versionsdatum:	17.6.2015
+% Autor: 		von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 		Miniwelt Autovermietung
+
+/output off
+/multiline on
+
+CREATE TABLE gebucht (VNr varchar, ZNr varchar);
+INSERT INTO gebucht VALUES ('1','104');
+INSERT INTO gebucht VALUES ('2','203');
+INSERT INTO gebucht VALUES ('5','301');
+INSERT INTO gebucht VALUES ('5','302');
+INSERT INTO gebucht VALUES ('5','303');
+INSERT INTO gebucht VALUES ('7','309');
+INSERT INTO gebucht VALUES ('10','401');
+INSERT INTO gebucht VALUES ('14','201');
+INSERT INTO gebucht VALUES ('14','305');
+
+/ra
+/output on
+/dbschema
+
+
+
+

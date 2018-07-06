@@ -1,0 +1,19 @@
+% Versionsdatum:	17.6.2015
+% Autor: 		von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 		Miniwelt Autovermietung
+
+/output off
+/multiline on
+
+CREATE TABLE Station (SNr varchar, SPLZ	varchar, SOrt varchar, SStr varchar);
+INSERT INTO Station VALUES ('1','10787','Berlin','Budapester Straße 45');
+INSERT INTO Station VALUES ('2','81671','München','Friedensstraße 22a');
+INSERT INTO Station VALUES ('3','50933','Köln','Widdersdorfer Straße 369');
+
+/ra
+/output on
+/dbschema
+
+
+
+

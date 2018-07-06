@@ -1,0 +1,2 @@
+﻿Aufgabe 01
+Gib die Daten der Tabelle Auto aus.	

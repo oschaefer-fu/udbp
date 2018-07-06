@@ -1,0 +1,16 @@
+Didaktisch-Methodisches
+
+Als Motivation für das Datenbanksystem Nachhilfe diente uns vor allem der schülerbezogene Aspekt. Wir wollten eine Datenbank schaffen, deren Nutzen den Schülern schnell klar wird.
+Ein weiteres motivierendes Moment ist, dass es solch eine Datenbank noch nicht gibt, zumindest den Schülern nicht bekannt ist. 
+Daraus ergeben sich auch die Chancen und Schwierigkeiten beim Erstellen der Miniwelt: Man kann ist frei in der Gestaltung, hat aber auch keinerlei Vorlagen, an denen man sich orientieren kann. 
+Bevor es an die informatorischen Lösungen geht, muss erstmal geklärt werden, wie das System funktionieren soll. Dabei stießen wir immer wieder auf neue Probleme und Fragestellungen, mussten aber in endlicher Zeit zu Entscheidungen kommen. Die Wirtschaftlichkeit des Unternehmens hängt nicht zuletzt davon ab, dass Aufwand und Nutzen in einem ausgeglichenen Verhältnis stehen. 
+Das ist eine Kompetenz, die auch für die Schule eine nicht zu unterschätzende Rolle spielt und deshalb auch ein Lernziel darstellt. 
+Ebenso müssen wirtschaftliche Fragen des Modells diskutiert werden: Welche Preise sind Schüler, bzw. deren Eltern bereit für eine Nachhilfestunde zu zahlen? Welchen Preisvorteil muss man bei Gruppenstunden zugestehen?
+Wie hoch darf die Marge für die Schülerfirma sein? 
+Für ein vollständig einsatzbereites Datenbanksystem Nachhilfe müssten zudem alle nötigen Einfügeformulare und die wichtigsten Views implementiert sein.
+Es stellt sich heraus, dass ein vollständig implementiertes Datenbanksystem Nachhilfe die Kapazitäten des ordinären Informatikunterrichtes weit übersteigen würden. 
+Eine Alternative wäre die Schülerfirma selbst, die hauptsächlich an die Informatik angebunden ist und sich im ersten Jahr ausschließlich um die Organisation und Implementierung der Plattform kümmert.
+Bei einem Einsatz im Informatikunterricht muss die Miniwelt noch weiter vereinfacht werden. Zum Beispiel könnte auf die flexible Stundenbuchung verzichtet werden. Stattdessen werden 
+halbjährlich Kursgruppen und Termine vereinbart. Außerdem könnte vorerst der ganze Abrechnungszweig wegfallen, so dass das Stundenbuchungssystem den Kern bildet.
+Fazit: Das Datenbanksystem Nachhilfe bietet eine hohe Motivation und Flexibilität in der Umsetzung und bietet sich dadurch für den schulischen Einsatz an.
+

@@ -1,0 +1,40 @@
+Schueler (_SNr#_, Vorname, Name, Ortsteil, Mail, Klasse, EltOK)
+
+Vor- und Nachnamen kennzeichnen Schüler nicht eindeutig, deshalb wird eine Schülernummer vergeben. Der Ortsteil kennzeichnet den Wohnort der Schüler, enthält aber keine Postleitzahl, da er nur zur Orientierung bei der Auswahl von potenziellen Tutoren dienen soll. Mail ist die E-Mail-Adresse und Klasse die aktuelle Klassenstufe des Schülers. EltOK ist bei vorliegender Einverständniserklärung der Eltern auf den Wert „True“ gesetzt.
+
+
+Fach (_FNr#_, FName, Stufe)
+
+Fächer beschreiben den Inhalt (das Themengebiet) der angebotenen Nachhilfestunde. Dazu wird eine fortlaufende Fachnummer (FNr) vergeben
+
+
+Ort (_RNr#_, RName)
+
+Eine Stunde findet in einem Raum statt, dieser ist durch eine fortlaufende Raumnummer eindeutig gekennzeichnet. Raumname (RName) enthält die offizielle Bezeichnung des Raums.
+Zusätzliche Integritätsbedingung: Es muss sichergestellt werden, dass ein Raum nicht doppelt belegt wird.
+
+
+Slot (_SlotNr#_, Schuljahr, KW, Tag, Stunde)
+
+Der Zeitraum für eine Nachhilfestunde wird durch eine fortlaufende Nummer (SlotNr) beschrieben. Schuljahr, Kalenderwoche (KW) sind numerische Werte mit der üblichen Bedeutung. Tag ist eine eindeutige Abkürzung für den Wochentag und Stunde die Schulstunde aus der Stundentafel.
+
+
+Typ (_TypName#_, Preis)
+
+Jede Stunde ist  von genau einem Typ, der durch TypName eindeutig gekennzeichnet ist. Preis ist der Preis in Euro.
+
+
+istTutor (_SNr#_,_FNr#_)
+
+Tutoren sind ebenfalls Schüler. Der Status wird in der Relation istTutor erfasst. Schülernummer und angebotenes Fach (bzw. Fächer) sind hier verknüpft.
+
+
+verfuegbar (_SNr#_,_SlotNr#_)
+
+Die Relation verfuegbar enthält die Schülernummer des Tutors und die Nummer des Zeitraumes in dem er Nachhilfe anbietet.
+
+
+Stunde (_StdNr#_,_SNr_, SlotNr, TNr, FNr, RNr, TypName, Bewertung, Status)
+
+Jede Stunde wird von genau einem Tutor (TNr), zu genau einem Thema (FNr) in einem Raum (RNr) gehalten. Es können bis zu vier Schüler (SNr) teilnehmen. Die Nummer des Zeitrahmens (SlotNr) ermöglicht eine zeitliche Einordnung. Jeder Schüler hat die Möglichkeit eine tatsächlich besuchte Stunde (Status) mit einem numerischen Wert (Bewertung) aus einer Notenskala von eins bis sechs zu bewerten.
+Zusätzliche Integritätsbedingung: Anzahl der Schüler je Stunde <= 4.

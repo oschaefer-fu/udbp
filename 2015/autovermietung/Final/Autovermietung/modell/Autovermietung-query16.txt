@@ -1,0 +1,2 @@
+﻿Aufgabe 16
+Gib den durchschnittlichen Tagespreis über alle Kategorien an.	

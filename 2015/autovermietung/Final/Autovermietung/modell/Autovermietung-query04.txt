@@ -1,0 +1,2 @@
+﻿Aufgabe 04
+Gib alle Autos mit Kennzeichen an, die zwischen 2 und 4 Sitzplätze haben.	

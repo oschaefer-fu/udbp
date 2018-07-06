@@ -1,0 +1,2 @@
+﻿Aufgabe 35 - spezielle Datums SQL Anfrage
+Welche Kategorien sind am 2015-05-10 an der Station Nr. 3 noch frei

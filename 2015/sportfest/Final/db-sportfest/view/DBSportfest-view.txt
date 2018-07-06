@@ -1,0 +1,29 @@
+Implementierung einer Sicht webbasiert in PHP
+
+Begründung und Motivation der Sicht
+
+Aus Schülersicht erschien es uns attraktiv, die Möglichkeit des Internets zu nutzen und eine webbasierte Abfrage zu gestalten.
+Um webbasiert Abfragen zu gestalten, wird in vielen Fällen PHP benutzt. PHP ist schnell erlernbar, ist kostenlos und besitzt 
+Weiterentwicklungsmöglichkeiten und Differenzierungspotential.\\
+
+Eine schülerrelevante Anfrage an die Datenbank wäre die nach den zu absolvierenden Wettkämpfen inklusive Zeiten und Orten.
+Diese Anfrage bietet eine Wiederholung von SQL-Abfragen und deren übersichtlichen Darstellung auf der WEB-Seite.
+
+
+Beschreibung der interaktiven Basismöglichkeiten}
+
+Folgende Suchmöglichkeiten enthält unsere Abfrageseite
+- Eingabe des Vornamens
+- Eingabe des Nachnamens,
+- Eingabe von Vor- und Nachnamen
+- keine Eingabe
+
+Als Ergebnis wird die jeweilige Antwort auf die Suchanfrage tabellarisch ausgegeben, wobei keine Eingabe die Ausgabe aller Schüler
+mit ihren Wettkämpfen nach sich zieht.\\
+
+
+Optionale Möglichkeiten
+
+Als Weiterführung könnte die Übersichtlichkeit der WEB-Seite mit einem Menü erweitert werden, welches beispielsweise
+Datenbankeingaben und weitere Abfragen per Knopfdruck zulässt.
+

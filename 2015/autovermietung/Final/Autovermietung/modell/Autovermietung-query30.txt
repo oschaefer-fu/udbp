@@ -1,0 +1,2 @@
+﻿Aufgabe 30
+Alle Mieternamen mit den von ihnen gebuchten Zubehör.

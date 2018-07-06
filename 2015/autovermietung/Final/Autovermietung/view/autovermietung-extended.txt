@@ -1,0 +1,10 @@
+Die Erweiterungen sind als vier (index1.php - index4.php) einzelne Dateien angelegt. Diese werden aufsteigend anspruchsvoller. Es geht bei diesen darum, Grundfunktionen zu implementieren, welche zusammen auf einer gemeinsamen Website das Grundgerüst der  Startseite einer Autovermietung bilden könnten. Auch hier wird bewusst nur das notwendigste Design eingesetzt. Die Integration in einer gemeinsamen Webseite und deren Gestaltung bleibt der Motivation und Fähigkeiten der Schüler überlassen.
+1) index1.php und auto1.php  geben die Preise für die gewünschte  Kategorie an.
+2) index2.php und auto2.php  geben an, ob eine Kategorie in der Station verfügbar ist.
+3) index3.php und auto3.php  geben an,  ob zu einem bestimmten Datum eine Kategorie in einer gewählten Station verfügbar ist.
+4) index4.php und auto4.php  geben an, geben das verfügbare Zubehör an einer gewählten Station an.
+Auf die Möglichkeit die Verbindung zur Datenbank in einer externen Datei unterzubringen wurde verzichtet. 
+
+
+
+

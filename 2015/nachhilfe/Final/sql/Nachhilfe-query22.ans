@@ -1,0 +1,8 @@
+22) "Alle Nachhilfestunden für Mathematik in der 6.KW (Tutorname, Tag, Stunde, Jahr)"
+  name   | tag | stunde | schuljahr 
+---------+-----+--------+-----------
+ Grell   | Don |      9 |      2015
+ Grell   | Don |      8 |      2015
+ Meinike | Don |      9 |      2015
+(3 Zeilen)
+

@@ -1,0 +1,534 @@
+1.Welcher Lehrer bereut die Klasse 7A?
+
+SELECT LName,LVorname
+FROM Lehrer
+WHERE KlName='7A';
+  lname  | lvorname 
+---------+----------
+ Bauer   | Bernd
+ Schmidt | Anke
+ 
+2.Welcher Lehrer ist ein Stationsleiter?
+
+SELECT LName,LVorname
+lewein-> FROM Lehrer
+lewein-> WHERE Funktion='Stationsleiter';
+ lname  | lvorname 
+--------+----------
+ Becker | Petra
+ Meier  | Juergen
+ Meier  | Anja
+ Schulz | Klaus
+(4 Zeilen)
+
+3. Welche Klasse gewann das Basketballturnier der Jungen?
+
+SELECT KlName
+FROM Schueler NATURAL JOIN nimmtteil NATURAL JOIN Wettkampf
+WHERE Wettname='Basketball' AND Geschlecht='m'  AND Platz=1;
+ klname 
+--------
+ 9A
+(1 Zeile)
+
+4. Nenne alle weiblichen Schülerinnen.
+
+ SELECT SchName,SchVorname from Schueler
+lewein-> WHERE SchGeschlecht = 'w';
+ schname | schvorname 
+---------+------------
+ Braun   | Monika
+ Franke  | Lina
+ Koch    | Kristin
+ Weber   | Chantal
+ Fiebich | Simona
+ Radig   | Luise
+ Mader   | Leonie
+(7 Zeilen)
+
+5. Ordne alle männlichen Schüler nach Klassen.
+
+SELECT KlName,SchName,SchVorname           
+FROM Schueler
+WHERE SchGeschlecht = 'm'
+ORDER BY KlName;
+ klname | schname | schvorname 
+--------+---------+------------
+ 10A    | Meier   | Julian
+ 10A    | Meyer   | Tom
+ 10A    | Meier   | Julian
+ 11     | Wolf    | Simon
+ 11     | Scholz  | Werner
+ 12     | Zimmer  | Erik
+ 13     | Mutz    | Gregor
+ 7A     | Becker  | Julian
+ 8A     | Klein   | Christian
+ 8A     | Keller  | Lukas
+ 8A     | Merten  | Paul
+ 8A     | Kaiser  | Lukas
+ 9A     | Lorenz  | Anton
+ 9A     | Lange   | Manuel
+(14 Zeilen)
+
+6. Wie viele Goldmedaillen werden benötigt?
+
+SELECT COUNT(Platz)
+lewein-> FROM nimmtTeil
+lewein-> WHERE Platz=1;
+ count 
+-------
+     9
+(1 Zeile)
+
+7. Wie viele Krankmeldungen gibt es?
+
+SELECT COUNT(Funktion)
+lewein-> FROM nimmtTeil
+lewein-> WHERE Funktion = 'krank'
+lewein-> ;
+ count 
+-------
+     3
+(1 Zeile)
+
+8. Wie viele Schüler sind zum 100m-Lauf gemeldet?
+
+SELECT COUNT(WettID)
+from (Wettkampf NATURAL JOIN nimmtTeil)
+where WettName='100m';
+ count 
+-------
+     6
+(1 Zeile)
+
+9. Wie viele Schüler nehmen am 100-m-Lauf teil?
+
+SELECT COUNT(WettID)
+from (Wettkampf NATURAL JOIN nimmtTeil)
+where WettName='100m' AND Funktion='Teilnehmer';
+ count 
+-------
+     5
+(1 Zeile)
+
+10. Welche Materialien werden benötigt?
+
+SELECT DISTINCT MatName
+from Material NATURAL JOIN benoetigt
+;
+   matname   
+-------------
+ Pfeife
+ Fussball
+ Stoppuhr
+ 5 kg Kugel
+ Startklappe
+ Massband
+ Basketball
+(7 Zeilen)
+
+11. Wie viele Pfeifen werden benötigt?
+
+SELECT SUM(Anzahl)
+from Material NATURAL JOIN benoetigt
+WHERE MatName='Pfeife'
+;
+ sum 
+-----
+   6
+(1 Zeile)
+
+12. Wie viele der jeweiligen Materialien werden benötigt?
+
+SELECT MatName,SUM(Anzahl)
+from Material NATURAL JOIN benoetigt
+GROUP BY MatName;         
+   matname   | sum 
+-------------+-----
+ Pfeife      |   6
+ Fussball    |   2
+ Stoppuhr    |   6
+ 5 kg Kugel  |   5
+ Startklappe |   2
+ Massband    |   4
+ Basketball  |   2
+(7 Zeilen)
+
+13. Welcher Lehrer leitet den Wettkampf Weitsprung 7/8 w?
+
+SELECT LName,LVorname
+from Lehrer NATURAL JOIN Wettkampf
+WHERE Wettname='Weitsprung' AND Wettklasse='7/8' AND Geschlecht='w' 
+AND Funktion='Stationsleiter'
+;
+ lname  | lvorname 
+--------+----------
+ Becker | Petra
+(1 Zeile)
+
+14. Welche Disziplinen wurden am Sportfest angeboten?
+
+SELECT DISTINCT Wettname 
+FROM Wettkampf;
+  wettname  
+------------
+ Kugel
+ Basketball
+ Weitsprung
+ 100m
+ Fußball
+(5 Zeilen)
+
+
+15. An welchem Wettkämpfen nimmt Julian Becker teil?
+
+SELECT WettName
+FROM Schueler NATURAL JOIN nimmtTeil NATURAL JOIN Wettkampf
+WHERE SchName='Becker' AND SchVorname='Julian;
+  wettname  
+------------
+ Weitsprung
+ Fußball
+(2 Zeilen)
+
+16. Welcher Schüler hilft beim Wettkampf Weitsprung 7/8 w?
+
+SELECT SchName, SchVorname
+FROM (Wettkampf NATURAL JOIN nimmtTeil)
+NATURAL JOIN SCHUELER
+WHERE Wettname='Weitsprung' AND Wettklasse='7/8' AND Geschlecht='w' AND Funktion='Helfer';
+ schname | schvorname 
+---------+------------
+ Radig   | Luise
+(1 Zeile)
+
+17. Welche Sportanlagen werden benötigt?
+
+SELECT *
+FROM Sportanlage
+WHERE Sportanlage.AnlagenID in (
+SELECT AnlagenID 
+FROM findetStatt);
+ anlagenid |   anlagenname    
+-----------+------------------
+        10 | Weitsprung 1
+        11 | Weitsprung 2
+        12 | Kugelstoss 1
+        13 | Rasenplatz 1
+        14 | Laufbahn 1
+        15 | Laufbahn2
+        16 | Ballspielplatz 1
+        17 | Ballspielplatz 2
+(8 Zeilen)
+
+18. Welche Sportanlagen werden nicht benötigt?
+
+SELECT *
+FROM Sportanlage
+WHERE Sportanlage.AnlagenID NOT in (
+SELECT AnlagenID 
+FROM findetStatt);
+ anlagenid |   anlagenname    
+-----------+------------------
+        18 | Turnhalle Feld 1
+(1 Zeile)
+
+19. Auf welchen Sportanlagen beginnt um 09:00 ein Wettkampf?
+ SELECT AnlagenName
+from (Wettkampf NATURAL JOIN findetStatt)
+NATURAL JOIN Sportanlage
+WHERE Termin='09:00';
+ anlagenname 
+-------------
+ Laufbahn 1
+ Laufbahn2
+(2 Zeilen)
+
+20. Welche Wettkämpfe haben die Schüler der 10A zu welcher Zeit und wo?
+
+SELECT SchName,SchVorname,KlName,
+WettName,WettKlasse,Geschlecht,Termin,AnlagenName
+FROM Schueler
+NATURAL JOIN nimmtTeil
+NATURAL JOIN Wettkampf
+NATURAL JOIN findetStatt
+NATURAL JOIN Sportanlage
+WHERE KlName = '10A'
+ORDER BY SchID;
+ schname | schvorname | klname |  wettname  | wettklasse | geschlecht | termin |   anlagenname    
+---------+------------+--------+------------+------------+------------+--------+------------------
+ Meier   | Julian     | 10A    | 100m       | 9/10       | m          | 09:00  | Laufbahn 1
+ Meier   | Julian     | 10A    | Basketball | 9/10       | m          | 10:00  | Ballspielplatz 2
+ Meier   | Julian     | 10A    | 100m       | 9/10       | m          | 09:00  | Laufbahn 1
+ Meier   | Julian     | 10A    | Basketball | 9/10       | m          | 10:00  | Ballspielplatz 2
+ Meyer   | Tom        | 10A    | 100m       | 9/10       | m          | 09:00  | Laufbahn 1
+ Meyer   | Tom        | 10A    | Basketball | 9/10       | m          | 10:00  | Ballspielplatz 2
+(6 Zeilen)
+
+21. Welche Klassen haben 1. Plätze bei Wettkämpfen?
+
+SELECT KlName, WettName, WettKlasse, Geschlecht, Platz
+FROM Schueler
+NATURAL JOIN nimmtTeil
+NATURAL JOIN Wettkampf
+WHERE Platz = 1
+ORDER BY KlName;
+ klname |  wettname  | wettklasse | geschlecht | platz 
+--------+------------+------------+------------+-------
+ 11     | Kugel      | 11/12      | w          |     1
+ 11     | Kugel      | 11/12      | m          |     1
+ 12     | Kugel      | 11/12      | w          |     1
+ 7A     | Weitsprung | 7/8        | m          |     1
+ 7A     | Fussball   | 7/8        | m          |     1
+ 7A     | Fussball   | 7/8        | w          |     1
+ 9A     | Basketball | 9/10       | w          |     1
+ 9A     | 100m       | 9/10       | m          |     1
+ 9A     | Basketball | 9/10       | m          |     1
+(9 Zeilen)
+
+22. Wie viele Schüler waren beim Sportfest als Helfer tätig?
+
+SELECT COUNT(SchID)
+FROM nimmtTeil
+WHERE Funktion='Helfer';
+  count 
+-------
+     3
+(1 Zeile)
+
+
+23. Wie viel Meter sprang der beste Schüler ?
+
+SELECT MAX(Ergebnis)
+From nimmtTeil NATURAL JOIN Wettkampf 
+WHERE WettName='Weitsprung';
+ max 
+-----
+ 450
+(1 Zeile)
+
+24. Welche Materialien muss ein Lehrer besorgen?
+
+SELECT LName,LVorname,MatName,SUM(Anzahl)
+FROM Lehrer NATURAL JOIN Wettkampf
+NATURAL JOIN findetStatt NATURAL JOIN benoetigt
+NATURAL JOIN Material
+GROUP BY LName,LVorname,MatName
+;
+  lname  | lvorname  |   matname   | sum 
+---------+-----------+-------------+-----
+ Bauer   | Bernd     | Massband    |   4
+ Becker  | Petra     | Massband    |   2
+ Engel   | Bernd     | Startklappe |   1
+ Engel   | Bernd     | Stoppuhr    |   3
+ Fuchs   | Sebastian | Startklappe |   1
+ Fuchs   | Sebastian | Stoppuhr    |   3
+ Hofman  | Conrad    | 5 kg Kugel  |   5
+ Hofmann | Constanze | 5 kg Kugel  |   5
+ Meier   | Anja      | Basketball  |   2
+ Meier   | Anja      | Pfeife      |   2
+ Meier   | Juergen   | Fussball    |   2
+ Meier   | Juergen   | Pfeife      |   2
+ Schmidt | Anke      | Massband    |   4
+ Schulz  | Klaus     | 5 kg Kugel  |   5
+(14 Zeilen)
+
+25. An welchen Wettkämpfen, wo und wann, nehmen alle Schüler mit dem Vor-
+namen 'Julian' teil?
+
+SELECT SchID,SchName,SchVorname,KlName,
+WettNAme,WettKlasse,Geschlecht,Termin,AnlagenName
+From Schueler NATURAL JOIN nimmtTeil
+NATURAL JOIN Wettkampf
+NATURAL JOIN findetStatt
+NATURAL JOIN Sportanlage
+WHERE SchVorname = 'Julian'
+ORDER BY SchID;
+ schid | schname | schvorname | klname |  wettname  | wettklasse | geschlecht | termin |   anlagenname    
+-------+---------+------------+--------+------------+------------+------------+--------+------------------
+  1000 | Becker  | Julian     | 7A     | Weitsprung | 7/8        | m          | 08:00  | Weitsprung 1
+  1000 | Becker  | Julian     | 7A     | Weitsprung | 7/8        | m          | 08:00  | Weitsprung 2
+  1000 | Becker  | Julian     | 7A     | Fußball   | 7/8        | m          | 10:30  | Rasenplatz 1
+  1010 | Meier   | Julian     | 10A    | 100m       | 9/10       | m          | 09:00  | Laufbahn 1
+  1010 | Meier   | Julian     | 10A    | Basketball | 9/10       | m          | 10:00  | Ballspielplatz 2
+  1011 | Meier   | Julian     | 10A    | Basketball | 9/10       | m          | 10:00  | Ballspielplatz 2
+  1011 | Meier   | Julian     | 10A    | 100m       | 9/10       | m          | 09:00  | Laufbahn 1
+(7 Zeilen)
+
+26. Welche Sportanlage ist um 9:00 Uhr frei?
+
+SELECT AnlagenID,AnlagenName
+FROM Sportanlage
+WHERE AnlagenID NOT IN (SELECT AnlagenID 
+FROM Wettkampf
+NATURAL JOIN findetStatt
+WHERE Termin = '09:00');
+ anlagenid |   anlagenname    
+-----------+------------------
+        10 | Weitsprung 1
+        11 | Weitsprung 2
+        12 | Kugelstoss 1
+        13 | Rasenplatz 1
+        16 | Ballspielplatz 1
+        17 | Ballspielplatz 2
+        18 | Turnhalle Feld 1
+(7 Zeilen)
+Nur durch die Unterabfrage erhält man auch die Turnhalle.
+
+27. Welche Sportanlagen sind um 10 Uhr noch frei/nutzbar?
+
+SELECT AnlagenName
+From Sportanlage
+WHERE Sportanlage.AnlagenID NOT In (
+	Select AnlagenID
+	FROM findetStatt NATURAL JOIN Wettkampf 
+	WHERE  Termin= '10:00');
+   anlagenname    
+------------------
+ Weitsprung 1
+ Weitsprung 2
+ Kugelstoss 1
+ Rasenplatz 1
+ Laufbahn 1
+ Laufbahn2
+ Turnhalle Feld 1
+(7 Zeilen)
+
+28. Welche Klassen belegten im Fußball den 2. Platz?
+
+SELECT DISTINCT KlName, WettName, WettKlasse, Geschlecht, Platz
+FROM Schueler NATURAL JOIN nimmtTeil
+NATURAL JOIN Wettkampf
+WHERE WettName = 'Fußball' AND Platz = 2
+;
+ klname | wettname | wettklasse | geschlecht | platz 
+--------+----------+------------+------------+-------
+ 7A     | Fußball | 7/8        | w          |     2
+ 8A     | Fußball | 7/8        | m          |     2
+(2 Zeilen)
+
+29. Welche Schüler nehmen nur an einem Wettkampf teil und sind nicht krank?
+
+SELECT SchID, SchName, SchVorname, COUNT (WettID)
+FROM Schueler NATURAL JOIN nimmtTeil WHERE Funktion != 'krank'
+GROUP BY SchID, SchName,SchVorname
+HAVING COUNT (WettID) = 1
+;
+ schid | schname | schvorname | count 
+-------+---------+------------+-------
+  1013 | Scholz  | Werner     |     1
+  1006 | Klein   | Christian  |     1
+  1019 | Radig   | Luise      |     1
+  1017 | Fiebich | Simona     |     1
+  1020 | Mader   | Leonie     |     1
+  1018 | Mutz    | Gregor     |     1
+  1014 | Weber   | Chantal    |     1
+  1015 | Wolf    | Simon      |     1
+(8 Zeilen)
+
+
+29. Wie war die Reihenfolge beim 100m Lauf der Jungen aus Klasse 9/10?
+
+SELECT SchName,SchVorname,Platz
+FROM Schueler NATURAL JOIN nimmtTeil NATURAL JOIN Wettkampf
+Where WettName='100m' AND Geschlecht='m' AND Funktion='Teilnehmer'
+ORDER BY Platz;
+ schname | schvorname | platz 
+---------+------------+-------
+ Lorenz  | Anton      |     1
+ Meier   | Julian     |     2
+ Meier   | Julian     |     3
+ Meyer   | Tom        |     4
+(4 Zeilen)
+
+30. Gib eine nach Wettkämpfen und Platzierungen sortierte Tabelle
+aller Schüler heraus.
+
+SELECT WettID,WettName, SchName, Schvorname, Platz, Ergebnis
+FROM Schueler NATURAL JOIN nimmtTeil NATURAL JOIN Wettkampf 
+WHERE Funktion != 'krank' AND Funktion != 'Helfer'
+ORDER BY WettID,Platz;
+ wettid |  wettname  | schname | schvorname | platz | ergebnis 
+--------+------------+---------+------------+-------+----------
+    100 | Weitsprung | Becker  | Julian     |     1 |      450
+    100 | Weitsprung | Kaiser  | Lukas      |     2 |      440
+    100 | Weitsprung | Merten  | Paul       |     3 |      415
+    100 | Weitsprung | Klein   | Christian  |     4 |      390
+    101 | Weitsprung | Franke  | Lina       |     2 |      365
+    101 | Weitsprung | Braun   | Monika     |     3 |      340
+    102 | 100m       | Lorenz  | Anton      |     1 |      122
+    102 | 100m       | Meier   | Julian     |     2 |      130
+    102 | 100m       | Meier   | Julian     |     3 |      132
+    102 | 100m       | Meyer   | Tom        |     4 |      133
+    103 | 100m       | Koch    | Kristin    |     2 |      130
+    104 | Kugel      | Scholz  | Werner     |     1 |      830
+    104 | Kugel      | Wolf    | Simon      |     2 |      812
+    105 | Kugel      | Fiebich | Simona     |     1 |      655
+    105 | Kugel      | Weber   | Chantal    |     1 |      655
+    106 | Fussball   | Becker  | Julian     |     1 |        0
+    106 | Fussball   | Merten  | Paul       |     2 |        0
+    106 | Fussball   | Kaiser  | Lukas      |     2 |        0
+    107 | Fussball   | Franke  | Lina       |     1 |        0
+    107 | Fussball   | Braun   | Monika     |     2 |        0
+    108 | Basketball | Lorenz  | Anton      |     1 |        0
+    108 | Basketball | Meyer   | Tom        |     2 |        0
+    108 | Basketball | Meier   | Julian     |     2 |        0
+    108 | Basketball | Meier   | Julian     |     2 |        0
+    109 | Basketball | Koch    | Kristin    |     1 |        0
+(25 Zeilen)
+
+31. Welche Schüler liefen die 100m zwischen 130 und 132 Zehntelsekunden?
+
+SELECT SchID,SchName, SchVorname,Wettname, Ergebnis
+FROM Schueler NATURAL JOIN nimmtTeil NATURAL JOIN Wettkampf
+WHERE Wettname = '100m' AND Ergebnis BETWEEN 125 AND 132
+;
+ schid | schname | schvorname | wettname | ergebnis 
+-------+---------+------------+----------+----------
+  1007 | Koch    | Kristin    | 100m     |      130
+  1010 | Meier   | Julian     | 100m     |      130
+  1011 | Meier   | Julian     | 100m     |      132
+(3 Zeilen)
+
+32. Auf  welchen Anlagen findet der 100 m Lauf statt
+
+SELECT AnlagenName
+From findetStatt NATURAL JOIN Wettkampf NATURAL JOIN Sportanlage
+WHERE WettName= '100m';
+ anlagenname 
+-------------
+ Laufbahn 1
+ Laufbahn2
+(2 Zeilen)
+
+33. Wer ist bei einem Wettkampf unter einem falschen Geschlecht eingetragen?
+ 
+SELECT SchName,SchVorname
+From Schueler
+Where Schueler.SchID NOT IN(
+	SELECT SchID
+	From Schueler NATURAL JOIN nimmtTeil NATURAL JOIN Wettkampf
+	Where SchGeschlecht=Geschlecht);
+ schname | schvorname 
+---------+------------
+ Wolf    | Simon
+(1 Zeile)
+
+34. Welche nicht als Helfer eingesetzten Lehrer müssen zu welcher Zeit bei den 
+Wettkämpfen sein und welche Funktion haben sie an der jeweiligen 
+Sportanlage?
+
+Select LName,LVorname,Funktion,AnlagenName,Wettklasse,Termin
+FROM Lehrer NATURAL JOIN Wettkampf NATURAL JOIN findetStatt NATURAL JOIN Sportanlage
+WHERE Funktion='Stationsleiter' OR Funktion= 'Kampfrichter' OR Funktion= 'Schreiber';
+  lname  | lvorname  |    funktion    |   anlagenname    | wettklasse | termin 
+---------+-----------+----------------+------------------+------------+--------
+ Schmidt | Anke      | Schreiber      | Weitsprung 1     | 7/8        | 08:00
+ Schmidt | Anke      | Schreiber      | Weitsprung 2     | 7/8        | 08:00
+ Becker  | Petra     | Stationsleiter | Weitsprung 1     | 7/8        | 08:20
+ Hofmann | Constanze | Kampfrichter   | Kugelstoss 1     | 11/12      | 11:00
+ Schulz  | Klaus     | Stationsleiter | Kugelstoss 1     | 11/12      | 11:15
+ Meier   | Juergen   | Stationsleiter | Rasenplatz 1     | 7/8        | 10:30
+ Meier   | Anja      | Stationsleiter | Ballspielplatz 1 | 7/8        | 10:30
+(7 Zeilen)
+

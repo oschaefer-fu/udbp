@@ -1,0 +1,11 @@
+25) "Namen und E-Mailadressen aller Tutoren sortiert nach Ortsteil" - mit Unterabfrage
+   ortsteil   |  vorname  |  name   |        mail         
+--------------+-----------+---------+---------------------
+ Staaken      | Franziska | Aust    | faust@istdoch.net
+ Siemensstadt | Anna      | Meinike | N.Meinike@web.de
+ Siemensstadt | Michaela  | Schmidt | MSchmidt@mail.de
+ Altstadt     | Andreas   | Depp    | ADepp@here.com
+ Kladow       | Jana      | Dussel  | JD@haha.com
+ Hakenfelde   | Hans      | Grell   | H.Grell@hotmail.com
+(6 Zeilen)
+

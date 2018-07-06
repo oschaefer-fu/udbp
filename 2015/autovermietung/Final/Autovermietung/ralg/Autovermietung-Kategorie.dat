@@ -1,0 +1,23 @@
+% Versionsdatum:	17.6.2015
+% Autor: 		von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 		Miniwelt Autovermietung
+
+/output off
+/multiline on
+
+CREATE TABLE Kategorie (KName varchar, KTagespreis float);
+INSERT INTO Kategorie VALUES ('Kleinwagen',19.99);
+INSERT INTO Kategorie VALUES ('Kompaktklasse',29.99);
+INSERT INTO Kategorie VALUES ('Mittelklasse',49.00);
+INSERT INTO Kategorie VALUES ('obMittelklasse',89.00);
+INSERT INTO Kategorie VALUES ('Oberklasse',149.00);
+INSERT INTO Kategorie VALUES ('Kleinbus',109.00);
+INSERT INTO Kategorie VALUES ('Cabrio',99.00);
+
+/ra
+/output on
+/dbschema
+
+
+
+

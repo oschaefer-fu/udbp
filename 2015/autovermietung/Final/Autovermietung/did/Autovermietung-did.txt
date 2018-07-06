@@ -1,0 +1,9 @@
+Betrachtung der Realitätsnähe der Miniwelt "Autovermietung".
+
+Die Mieterdaten sind stark reduziert, normalerweise würde sicherlich auch noch die Telefonnummer mit erfasst werden, sowie Daten zum Führerschein; dies hätte an dieser Stelle allerdings keinen Mehrwert ergeben. 
+
+Da bei Buchungsanfragen üblicherweise nur eine Kategorie gewählt wird und nur diese letztlich den Mietpreis festlegt, haben wir uns darauf beschränkt, im Vertrag ebenfalls nur die Kategorie zu verwalten. Spätestens bei der Fahrzeugübergabe wird in der Realität selbstverständlich ein konkretes Fahrzeug dem Vertrag zugewiesen. Dabei sollte auch der Kilometerstand erfasst werden.
+
+Normalerweise würde man für einen Mietvertrag den Mietbeginn und das Mietende erfassen; wir haben uns für die Mietdauer in Tagen entschieden, um ein weiteres aggregierungsfähiges Attribut zu erhalten.
+
+Die Annahme, dass Zubehörteile für alle Kategorien passend sind, ist insbesondere bei Winetrreifen und Schneeketten natürlich vollständig realitätsfern.

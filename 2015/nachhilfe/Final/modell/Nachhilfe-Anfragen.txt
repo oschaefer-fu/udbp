@@ -1,0 +1,73 @@
+Übersicht über die Abfragen zur Nachhilfe-Datenbank
+
+01) Die Daten aller Schueler aus Kladow
+
+02) Die Vornamen und Namen aller Schueler, die noch kein OK der Eltern haben
+
+03) Die Namen aller Schueler der 9. Klasse
+
+04) Die Schueler der 8. Klasse mit Ortsteil
+
+05) Die Namen und E-Mailadressen aller Tutoren in der Altstadt
+
+06) Die Daten aller Tutoren für Mathematik der Stufe 7
+
+06a) Die Daten aller Tutoren für Mathematik Stufe 7; realisiert ohne NATURAL JOIN (Kartesisches Produkt => SNr doppelt)
+
+06b) Die Daten aller Tutoren für Mathematik Stufe 7; realisiert mit Unteranfrage
+
+07) Namen, Vornamen, Ortsteile aller Schüler, die keine Tutoren sind; realisert mit EXCEPT
+
+08) Die Nummern aller stattgefundenen Stunden mit dem Namen des unterrichteten Fachs
+
+09) Die Namen aller Tutoren mit der durchschnittlichen Bewertung ihrer Stunden
+
+10) Die Namen und E-Mailadressen aller Tutoren mit ihren Fächern
+
+11) Eine Kostenauflistung (Summen) nach Schülernamen (Teilnehmer)
+
+12) Die Einnahmen (Summen) von Tutorin Meinike (sNr = 13) von ihren Schülern (Namen der Teilnehmer)
+
+13) Alle von Tutor Depp angebotenen Slots (Tag, Stunde, KW, Schuljahr)
+
+14) Die Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots, aufsteigend nach Kalenderwochen
+
+15) Die Namen und E-Mailadressen aller Tutoren die Slots in KW 7, 2015 anbieten mit den entsprechenden Slots, sortiert nach Tagen
+
+16) Die Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots und den angebotenen Fächern (Fachname und Stufe
+
+17) Die Namen aller Tutoren sortiert nach der durchschnittlichen Bewertung ihrer Stunden (absteigend)
+
+18) Die durchschnittliche Bewertung der Stunden von Tutor Aust
+
+18a) Die durchschnittliche Bewertung der Stunden von Tutor Aust; unter Verwendung der View "tutoren" 
+
+19) Alle stattgefundenen Mathe-Stunden mit den Tutorennamen und der Stundenbewertung, sortiert nach Stundennummern
+
+20) Die Teilnehmer (Name) der Mathematikstunde (Fachname) bei Meinike am Donnerstag in der 6.KW (SlotNummer 7).
+
+21) Die Einnahmen (Summe) der Tutorin Meinike von Schülern (Name) nach der 4. KW (Kalenderwoche des Slots)
+
+22) Alle Nachhilfestunden für Mathematik in der 6.KW (Tutorname, Tag, Stunde, Jahr)
+
+23) Alle Nachhilfestunden die von Schüler Arend im Jahr 2015 besucht wurden
+
+23a) Alle Nachhilfestunden die von Schüler Arend im Jahr 2015 besucht wurden - mit Unteranfrage
+
+24) Die Namen und E-Mailadressen aller Tutoren die am Donnerstag, 9. Stunde, 6.KW in 2015 verfügbar sind mit den von ihnen unterrichteten Fächern.
+
+24a) Die Namen und E-Mailadressen aller Tutoren die am Donnerstag, 9. Stunde, 6.KW in 2015 verfügbar sind. - mit Unterabfrage a
+
+24b) Die Namen und E-Mailadressen aller Tutoren die am Donnerstag, 9. Stunde, 6.KW in 2015 verfügbar sind. - mit Unterabfrage b (Alternative)
+
+25) Die Namen und E-Mailadressen aller Tutoren sortiert nach Ortsteil - mit Unterabfrage
+
+26) Die Anzahl aller stattgefundenen Stunden
+
+27) Alle Tutoren
+
+28) Alle Stunden (Stundennummer) mit den Namen der Tutoren, sortiert nach Stundennummern. 
+
+29) Alle Stunden von Meinike, die stattgefunden haben, sortiert nach Stundennummern.
+
+30) Alle Stunden von Meinike

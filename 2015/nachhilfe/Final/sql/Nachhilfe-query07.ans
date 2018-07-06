@@ -1,0 +1,13 @@
+07) " Die Namen, Vornamen, Ortsteile aller Schüler, die keine Tutoren sind"
+   name   | vorname |   ortsteil   
+----------+---------+--------------
+ Bussmann | Stefan  | Kladow
+ Ebert    | Jan     | Altstadt
+ Logo     | Jonas   | Stresow
+ Berend   | Michael | Hakenfelde
+ Ahrend   | Joschua | Staaken
+ Schulz   | Nikolai | Stresow
+ Fink     | Leila   | Siemensstadt
+ Frei     | Bianca  | Gatow
+(8 Zeilen)
+

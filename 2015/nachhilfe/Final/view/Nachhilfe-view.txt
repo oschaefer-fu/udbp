@@ -1,0 +1,4 @@
+Die Nachhilfe Datenbank könnte die Arbeitsgrundlage für eine Schülerfirma sein, die Nachhilfeunterricht vermittelt und durch den Vermittlungsprovisionen Gewinn erwirtschaftet. 
+Für jedes Unternehmen, so auch für Schülerfirmen ist eine gute Buchführung unerlässlich. 
+Man braucht gezielte Möglichkeiten zur Rechnungslegung. 
+Diese Funktion soll mit diesem View realisiert werden. 

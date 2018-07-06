@@ -1,0 +1,13 @@
+Die Grundseite bietet einen Einstieg in HTML und PHP mit einfachen, aber die Möglichkeiten von PHP aufzeigenden Aufgaben, welche für die Schüler überschaubar lösbar sind. Lösungen zu den Aufgaben sind im Netz recherchierbar. Auf gestalterische Elemente im Bereich HTML wird weitgehend verzichtet. Dies kann problemlos durch die Schüler selbst ergänzt werden.
+Die Aufgaben sind:
+1) Titel der Website
+2) Willkommensgruß
+3) Anzeige des Datums
+4) Anzeige des Wochentags in deutscher Sprache
+5) Anzeige der aktuellen Uhrzeit
+6) Aufbau der Verbindung zur Datenbank
+7) Ausgabe aus der Datenbank: Kategorien
+
+
+
+

@@ -1,0 +1,2 @@
+﻿Aufgabe 18
+Gib das Zubehör aufsteigend sortiert nach Pauschalpreis an. Jeder Name soll nur einmal auftreten.	

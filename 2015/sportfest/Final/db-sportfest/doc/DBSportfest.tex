@@ -1,0 +1,752 @@
+\documentclass[pagesize,11pt,twoside]{scrartcl}
+
+\usepackage{geometry}
+\usepackage{layout}
+
+\usepackage[latin1,utf8x]{inputenc}
+
+\usepackage[ngerman]{babel}
+\usepackage[intlimits]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{pst-all}
+\usepackage{pstricks-add}
+\usepackage{graphicx}
+
+\usepackage{ulem}%Durchstreichen mit \xout{} oder \sout{}
+\usepackage{scrpage2}%Kopf und Fu�zeilen
+
+%\usepackage{listings}
+
+\pagestyle{scrheadings}
+%\chead{\automark[section]{section}}
+\chead{Datenbank Miniwelt Sportfest}
+\ohead{FU-Berlin\\LWB Informatik}
+
+\ihead{H. Huth, K. Petri,\\P. Kreißig}
+%\setheadtopline{1pt}
+\setheadsepline{0.4pt}
+\ofoot{SS 2014/15}
+\setfootsepline{0.4pt}
+\ifoot{\pagemark}
+\cfoot{}
+
+\parindent=0cm
+\parskip=1.5ex
+
+\geometry{includehead=true,includefoot=true,height=28.6cm,width=16.5cm,headheight=2.5cm,
+  footskip=10mm,headsep=3mm,inner=2cm}
+
+\definecolor{dschungel}{cmyk}{0.99,0,0.52,0}
+\definecolor{Hinten}{cmyk}{0,0,0,0.2}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\def\FZ#1#2{#1_{\mbox{\footnotesize #2}}}
+\def\E#1{\,\mathrm{#1}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\def\Lsg#1{{\color{blue}#1}}
+\def\OL#1{\overline{#1}}
+\def\rsa{$\rightsquigarrow$}
+
+\definecolor{CEntity}{cmyk}{0,0.32,0.52,0}
+\definecolor{CRelation}{cmyk}{0.26,0,0.76,0}
+\definecolor{CAttribut}{cmyk}{0,0,1,0}
+\def\Entity#1{\rnode{#1}{\psframebox[fillcolor=CEntity,fillstyle=solid]{#1}}}
+\def\Relation#1#2#3#4#5#6{\dianode[fillcolor=CRelation,fillstyle=solid]{#1}{\parbox{1,7cm}{\centering #2}}\ncline{#1}{#3}\ncput*{#4}
+	\ncline{#1}{#5}\ncput*{#6}}
+\def\Attribut#1#2{\ovalnode[fillcolor=CAttribut,fillstyle=solid]{#1}{#1}\ncline{#1}{#2}}
+\def\Key#1#2{\ovalnode[fillcolor=CAttribut,fillstyle=solid]{#1}{\underline{#1}}\ncline{#1}{#2}}
+\def\Trafo#1#2#3{\fbox{\parbox[t]{#1}{\par{\centering\textbf{#2}\par} #3}}} % \par, weil centering nur im Absatz funktioniert
+\def\TabKopf#1#2{\multicolumn{#2}{l}{\rule{1em}{0ex}\rule{0cm}{2.73ex}\textbf{#1}}\\\hline}
+
+\begin{document}
+%\layout
+%\newpage
+\section{Allgemeines}
+Unsere Arbeitsgruppe hat sich für das Modell eines Sportfestes entschieden. In unserer Lehrtätigkeit
+ist zu sehen, dass sich die Sportfeste in der Vergangenheit in ihrer Durchführung stark geändert haben.
+Noch vor einiger Zeit mussten alle Schüler aller Klassen an allen vorgeschriebenen Disziplinen teilnehmen.
+Derzeit erkennen wir einen Trend, dass Schüler die Disziplinen
+nach ihren eigenen Interessen wählen können. 
+Einem solchen Trend folgt unsere Miniwelt eines Schulsporfestes.
+
+\section{Beschreibung der Miniwelt Sportfest in Textform}
+Für ein Schulsportfest der Klassenstufen 5-13 soll eine Datenbank modelliert werden.
+
+Die Wettkämpfe finden in Doppeljahrgangsstufen (5/6, 7/8, 9/10, 11/12) statt.
+Schüler der Klasse 13 und Lehrer stellen Kampfrichter und Helfer für die einzelnen Sportarten.
+Jede Klasse hat einen Lehrer als Betreuer.
+Das Sportfest findet auf verschiedenen Sportanlagen statt.
+Zu einer Anlage gehören verschiedenen Materialien in unterschiedlichen Anzahlen.
+Auf einer Anlage können mehrere Wettkämpfe stattfinden, jedoch nicht zur gleichen Zeit.
+An jeder Anlage wird verschieden lange Sport getrieben.
+Jeder Schüler nimmt an wenigstens 3 und maximal 5 Wettkämpfen teil.
+Es gibt verschiedene Sportarten.
+In jeder Sportart finden Wettkämpfe in verschiedenen Wettkampfklassen getrennt nach 
+Doppeljahrgangsstufe und Geschlecht statt.
+Die Klassenstufe eines Schülers muss zur Wettkampfklasse passen.
+Jeder Schüler wird durch Schülernummer, Name und Vorname charakterisiert.
+Jeder Lehrer wird durch Lehrernummer, Name und Vorname charakterisiert.
+Von vorhandenen Materialien werden Nummer, Bezeichnung und Anzahl erfasst.
+Eine Sportanlage ist durch ihre Nummer und ihre Bezeichnung charakterisiert.
+
+\subsection{Didaktische Reduzierung}
+Der Datenumfang eines realen Sportfestes überschreitet die Übersichtlichkeit.
+Wir werden auf die Doppeljahrgangsstufe 5/6 verzichten und auch die Anzahl der Schüler, 
+Wettkämpfe, Wettkampfteilnahmen und Lehrer
+gering halten.
+
+Dadurch passen alle Daten auf eine DIN A4 Seite und Abfrageergebnisse lassen sich schnell 
+auf ihre Korrektheit kontrollieren.
+Dadurch lassen sich einige Bedingungen der Miniwelt nicht mehr aufrecht erhalten.
+Z.B. nehmen nicht mehr alle Schüler an 3 bis 5 Wettkämpfen teil.
+Die Entität Klasse blieb als Hinweis in der Populationsangabe. Eigentlich müsste jede Klasse
+einen Klassenschlüssel erhalten, dr dann auch beim Schüler steht. Im nächsten Schuljahr würde sich nur der
+Klassenname ändern und der Schüler wäre automatisch versetzt. Hier könnt die Datenbank noch weiter 
+ausgebaut werden. Dann kämme auch die Beziehung gehtIn wieder hinzu.
+
+
+%\end{enumerate}
+
+\newpage
+\section{ER-Modell Sportfest}
+Darstellung unserer Miniwelt im ER-Modell inklusive vollständiger Attributierung, Schlüsselangaben und 
+Komplexitäten.
+
+\psset{unit=0.8cm}
+\begin{pspicture}(-10,-10)(10,10)
+%\rput(5,-6){\Entity{Sportart} %
+%	\rput(2,-0.6){\Attribut{SPName}{Sportart}}
+%	\rput(1.5,0.6){\Key{SpID}{Sportart}}
+%	}
+\rput(-3.5,7.5){\Entity{Sportanlage} %
+	\rput(-5,-0.6){\Key{AnlagenID}{Sportanlage}}
+	\rput(-5.5,0.6){\Attribut{AnlagenName}{Sportanlage}}
+	}
+%\rput(7,-2){\Relation{istAuf}{ist auf}{Sportart}{(1:3)}{Sportanlage}{(0:$\infty$)}}
+\rput(5.5,8){\Entity{Material}
+	\rput(-1.5,1.5){\Attribut{MatAnzahl}{Material}}
+	\rput(1.5,0.8){\Attribut{MatName}{Material}}
+	\rput(1.5,-0.4){\Key{MatID}{Material}}
+	}
+\rput(2,6){\Relation{benoetigt}{benötigt}{Sportanlage}{(1:$\infty$)}{Material}{(0:$\infty$)}
+	\rput(1,-0.5){\Attribut{Anzahl}{benoetigt}}
+	}
+\rput(1,0){\Entity{Wettkampf}
+	\rput(2.5,0){\Attribut{Geschlecht}{Wettkampf}}
+	\rput(2,1){\Attribut{WettKlasse}{Wettkampf}}
+	\rput(-5,0){\Attribut{WettName}{Wettkampf}}
+	\rput(-4.5,1){\Key{WettID}{Wettkampf}}
+	\rput(1,2){\Attribut{Termin}{Wettkampf}}
+	}
+\rput(-3,4){\Relation{findetStatt}{findet statt}{Wettkampf}{(0:3)}{Sportanlage}{(1:$\infty$)}
+	\rput(-6,0){\Attribut{Dauer}{findetStatt}}
+	}
+%\rput(1,-1){\Relation{gehoert}{geh�rt zu}{Wettkampf}{(1:1)}{Sportart}{(1:$\infty$)}}
+\rput(-4,-8){\Entity{Schueler}
+	\rput(-4,2.5){\Attribut{SchGebDatum}{Schueler}}
+	\rput(-4.3,0.5){\Attribut{SchName}{Schueler}}
+	\rput(-4.5,-0.5){\Attribut{SchVorname}{Schueler}}
+	\rput(-4.3,1.5){\Key{SchID}{Schueler}}
+	\rput(-4,-1.5){\Attribut{SchGeschlecht}{Schueler}}
+	}
+\rput(-4.5,-4){\Relation{nimmtTeil}{nimmt teil}{Wettkampf}{(0:$\infty$)}{Schueler}{(3:5)}
+	\rput(-5,1){\Attribut{Platz}{nimmtTeil}}
+	\rput(-5,2){\Attribut{Ergebnis}{nimmtTeil}}
+	}
+
+\rput(6,-8){\Entity{Lehrer}
+	\rput(2,1){\Attribut{LName}{Lehrer}}
+	\rput(2,0){\Attribut{LVorname}{Lehrer}}
+	\rput(2,-1){\Key{LID}{Lehrer}}
+	}
+\rput(1,-14){\Entity{Klasse}
+	\rput(-2.5,-1){\Key{KlName}{Klasse}}
+	}
+\rput(5,-11){\Relation{betreut}{betreut}{Lehrer}{(0:1)}{Klasse}{(1:$\infty$)}}
+
+\rput(7,-4){\Relation{verantw1}{verantw1}{Lehrer}{(0:1)}{Wettkampf}{(1:$\infty$)}
+	\rput(-1.5,1.3){\Attribut{Funktion}{verantw1}}
+	}
+\rput(-3,-11){\Relation{gehtIn}{geht in}{Schueler}{(1:1)}{Klasse}{(1:$\infty$)}}
+
+\rput(1,-5){\Relation{verantw2}{verantw2}{Schueler}{(0:1)}{Wettkampf}{(1:$\infty$)}
+	\rput(-1,-1){\Attribut{Funktion}{verantw2}}
+	}
+\end{pspicture} 
+
+\newpage
+\def\SchuelerTraf{ %
+	\Entity{Schueler}
+				\rput(-4,1.5){\Key{SchID}{Schueler}}
+					\rput(-3.8,-0.5){\Attribut{SchVorname}{Schueler}}
+					\rput(-2,-1.5){\Attribut{SchGebDatum}{Schueler}}
+					\rput(-4,0.5){\Attribut{SchName}{Schueler}}
+					\rput(-0.5,1.5){\Attribut{SchGeschlecht}{Schueler}}
+	}
+\def\WettkampfTraf{
+	\Entity{Wettkampf}
+			\rput(-0.2,1.1){\Attribut{Geschlecht}{Wettkampf}}
+			\rput(1.2,-0.8){\Attribut{WettKlasse}{Wettkampf}}
+			\rput(-0.3,-1.7){\Attribut{WettName}{Wettkampf}}
+			\rput(1.5,0.2){\Key{WettID}{Wettkampf}}
+			\rput(-3,-1.2){\Attribut{Termin}{Wettkampf}}
+	}
+\section{Transformation des ER-Modells in eine Menge von Relationen}
+\vspace{-0.3cm}
+Für die Transformation geben wir als Teilüberschriften die verwendeten Transformationsregeln an.
+ Unter den schematischen Darstellungen erscheinen die resultierenden Relationen.
+\subsection{Transformation von 1:n Beziehungstypen}
+\begin{pspicture}(0,-2.5)(0,0)
+\rput(10,0){ %
+	\rput(-6,0){\Entity{Lehrer}
+		\rput(-2,-1){\Attribut{LName}{Lehrer}}
+		\rput(0,-2){\Attribut{LVorname}{Lehrer}}
+		\rput(2,-1){\Key{LID}{Lehrer}}
+		}
+	\rput(6,0){\Entity{Klasse}
+		\rput(-1,-1){\Key{KlName}{Klasse}}
+		}
+	\rput(0,0){\Relation{betreut}{betreut}{Lehrer}{(0:1)}{Klasse}{(1:$\infty$)}}
+}
+\end{pspicture}
+
+\Trafo{6cm}{Lehrer}{\underline{LID}, LName, LVorname, {\color{red}KlName}}\hfill
+\Trafo{3cm}{Klasse}{\underline{KlName}}
+
+\begin{pspicture}(0,-2.5)(0,1)
+\rput(9,0){ %
+	\rput(-6,0){\Entity{Lehrer}
+			\rput(-2,-1){\Attribut{LName}{Lehrer}}
+			\rput(0,-2){\Attribut{LVorname}{Lehrer}}
+			\rput(2,-1){\Key{LID}{Lehrer}}
+			}
+	\rput(6,0){\WettkampfTraf}
+	\rput(0,0){\Relation{verantw1}{verantw1}{Lehrer}{(0:1)}{Wettkampf}{(1:$\infty$)}
+		\rput(-2.5,-1){\Attribut{Funktion}{verantw1}}
+		}
+}
+\end{pspicture}
+
+\Trafo{6cm}{Lehrer}{\underline{LID}, LName, LVorname, {\color{red}WettID, Funktion}}\hfill
+\Trafo{6cm}{Wettkampf}{\underline{WettID},
+WettKlasse, WettName, Geschlecht, Termin}
+
+\begin{pspicture}(0,-2.5)(0,2.5)
+\rput(10.5,0){ %
+	\rput(-6,0){\SchuelerTraf}
+	\rput(6,0){\WettkampfTraf}
+	\rput(0,0){\Relation{verantw2}{verantw2}{Schueler}{(0:1)}{Wettkampf}{(1:$\infty$)}
+		\rput(-2.5,-1.5){\Attribut{Funktion}{verantw2}}
+		}
+}
+\end{pspicture}
+
+\Trafo{7.5cm}{Schüler}{\underline{SchID}, SchName, SchVorname, SchGeschlecht, SchGebDatum, {\color{red}WettID, Funktion}}\hfill
+\Trafo{6cm}{Wettkampf}{\underline{WettID},
+WettKlasse, WettName, Geschlecht, Termin}
+
+\begin{pspicture}(0,-1)(0,4)
+\rput(11,2){ %
+	\rput(-6,0){\SchuelerTraf}
+	\rput(6,0){\Entity{Klasse}
+		\rput(0,-1){\Attribut{KlName}{Klasse}}
+		}
+	\rput(0,0){\Relation{gehtIn}{gehtIn}{Schueler}{(1:1)}{Klasse}{(1:$\infty$)}
+		}
+}
+\end{pspicture}
+
+\Trafo{7cm}{Schüler}{\underline{SchID}, SchName, SchVorname, SchGeschlecht, SchGebDatum, {\color{red}KlName}}\hfill
+\Trafo{3cm}{Klasse}{\underline{KlName}}
+
+\subsection{Transformation von m:n Beziehungstypen}
+
+\begin{pspicture}(0,-0.8)(0,2.5)
+\rput(9.5,1.5){
+\rput(-6,0){\Entity{Sportanlage} %
+	\rput(-3,-1.5){\Key{AnlagenID}{Sportanlage}}
+	\rput(1.5,-1.5){\Attribut{AnlagenName}{Sportanlage}}
+	}
+\rput(6,0){\Entity{Material}
+	\rput(1.5,-1){\Attribut{MatAnzahl}{Material}}
+	\rput(-0.8,-1.8){\Attribut{MatName}{Material}}
+	\rput(-3,-1){\Key{MatID}{Material}}
+	}
+\rput(0,0){\Relation{benoetigt}{benötigt}{Sportanlage}{(1:$\infty$)}{Material}{(0:$\infty$)}
+	\rput(-1,-1){\Attribut{Anzahl}{benoetigt}}
+	}
+}
+\end{pspicture}
+
+\Trafo{4.5cm}{Sportanlage}{\underline{AnlagenID}, AnlagenName}\hfill
+\Trafo{4.7cm}{benoetigt}{{\color{red}\underline{AnlagenID}, \underline{MatID}}, Anzahl}\hfill
+\Trafo{5.5cm}{Material}{\underline{MatID}, MatName, MatAnzahl}
+
+\begin{pspicture}(0,-0.8)(0,3.8)
+\rput(9.5,1.5){
+\rput(-6,0){\Entity{Sportanlage} %
+	\rput(-3,-1.5){\Key{AnlagenID}{Sportanlage}}
+	\rput(1.5,-1.5){\Attribut{AnlagenName}{Sportanlage}}
+	}
+\rput(6,0){\WettkampfTraf}
+\rput(0,0){\Relation{findetStatt}{findet statt}{Sportanlage}{(1:$\infty$)}{Wettkampf}{(0:3)}
+	\rput(-1,-1.5){\Attribut{Dauer}{findetStatt}}
+	}
+}
+\end{pspicture}
+
+\Trafo{4.5cm}{Sportanlage}{\underline{AnlagenID}, AnlagenName}\hfill
+\Trafo{4.5cm}{findet statt}{{\color{red}\underline{AnlagenID}, \underline{WettID}}, Dauer}\hfill
+\Trafo{5.5cm}{Wettkampf}{\underline{WettID},
+WettKlasse, WettName, Geschlecht, Termin}
+
+\begin{pspicture}(0,-0.8)(0,4.5)
+\rput(9.5,1.5){
+\rput(-5,0){\SchuelerTraf}
+\rput(6,0){\WettkampfTraf}
+\rput(0.5,1){\Relation{nimmtTeil}{nimmt teil}{Schueler}{(3:5)}{Wettkampf}{(0:$\infty$)}
+    \rput(-1,1.4){\Attribut{Platz}{nimmtTeil}}
+    \rput(1.2,0.7){\Attribut{Ergebnis}{nimmtTeil}}
+	}
+\rput(0,-1){\Relation{verantw2}{verantw2}{Schueler}{(0:1)}{Wettkampf}{(1:$\infty$)}
+		\rput(-0.5,-1){\Attribut{Funktion}{verantw2}}
+		}
+}
+\end{pspicture}
+
+\Trafo{5.3cm}{Schüler}{\underline{SchID}, SchName, SchVorname, SchGeschlecht, SchGebDatum, {\color{red}KlName}}\hfill
+\Trafo{3.7cm}{nimmt teil}{{\color{red}\underline{SchID}, \underline{WettID}}, Platz,\\Ergebnis, {\color{red}Funktion}}\hfill
+\Trafo{5cm}{Wettkampf}{\underline{WettID},
+WettKlasse, WettName, Geschlecht, Termin}
+
+Somit entfällt die Transformation der 1:n-Beziehung \textit{Schüler-verantw2-Wettkampf}. Das Attribut
+ \textit{Funktion} wird zur Beziehung \textit{nimmt teil} übernommen.
+\newpage
+\section{Integritätsbedingungen}
+\subsection{Statische Integritätsbedingungen}
+Statische Bedingungen beziehen sich auf einen Datenbankzustand. Sie sind Einschränkungen und
+ werden durch Prädikate bestimmt. In der Tabelle sind mögliche Wertebereiche angegeben. 
+Die Einhaltung dieser Bedingungen wird an den Programmierer des Frontends übergeben.
+
+\begin{tabular}[t]{lll}
+  Attribut & Datentyp & Bedingung\\\hline\hline
+\TabKopf{LEHRER}{3}
+  LID & INTEGER(3) & \\
+  LName & VARCHAR(32)	& \\
+  LVorname & VARCHAR(32)	& \\
+  WettID&INTEGER(3)&\\
+  Funktion&VARCHAR(32)&Stationsleiter, Kampfrichter, Schreiber, Helfer\\
+  KlName&VARCHAR(3)&\\\hline\hline
+\TabKopf{KLASSE}{3}
+  KlName&VARCHAR(3)&\\\hline\hline
+\TabKopf{WETTKAMPF}{3}
+  WettID&INTEGER(3)&\\
+  WettName&VARCHAR(32)&z.B. Weitsprung\\
+  Wettklasse&VARCHAR(32)&z.B. 7/8\\
+  Geschlecht&CHAR&m, w\\
+  Termin&TIMESTAMP&\\\hline\hline
+  Attribut & Datentyp & Bedingung\\\hline\hline
+\TabKopf{SCHUELER}{3}
+  SchID&INTEGER(4)&\\
+  SchName&VARCHAR(32)&\\
+  SchVorname&VARCHAR(32)&\\
+  SchGeschlecht&CHAR&m, w\\
+  SchGebDatum&DATE&\\
+  KlName&VARCHAR(3)&3\\\hline\hline
+\TabKopf{SPORTANLAGE}{3}
+  AnlagenID&INTEGER(2)&\\
+  AnlagenName&VARCHAR(32)&\\\hline\hline
+\TabKopf{MATERIAL}{3}
+  MatID&INTERGER(3)&\\
+  MatName&VARCHAR(32)&\\
+  MatAnzahl&INTEGER(2)&\\\hline\hline
+\end{tabular}\\
+\newpage
+\begin{tabular}[t]{lll}
+\TabKopf{benötigt}{3}
+  AnlagenID&INTEGER(2)&\\
+  MatID&INTERGER(3)&\\
+  Anzahl&INTEGER(3)&\\\hline\hline
+\TabKopf{findet statt}{3}
+  AnlagenID&INTEGER(2)&\\
+  WettID&INTEGER(3)&max. 3 mal\\
+  Dauer&INTEGER(3)&in Minuten\\\hline\hline
+\TabKopf{nimmt teil}{3}
+  SchID&INTEGER(4)&als Teilnehmer mind. 3, max. 5\\
+  WettID&INTEGER(3)&\\
+  Platz&INTEGER(3)&\\
+  Ergebnis&INTEGER&Ergebnis in Meter, Sekunden, Anzahl, \dots \\
+  Funktion&VARCHAR(32)&Stationsleiter, Kampfrichter, Schreiber, Helfer,Teilnehmer
+\end{tabular}\\[3ex]
+
+\subsection{Dynamische Integritätsbedingungen}
+Dynamische Integritätsbedingungen beziehen sich auf Auswirkungen von Datenbankzustandsänderungen.\\
+In unserer Miniwelt müssten beispielsweise alle Wettkampfteilnahmeeintäge gelöscht werden,
+wenn ein Wettkampf gelöscht wird. 
+Man muss auch beim Eintragen selbst darauf achten, dass ein Schüler nur einen
+Wettkampf seiner Altersklasse und seines Geschlechtes absolviert.
+Ähnliche Fragen könnte man bei allen Beziehungen diskutieren.
+Das Setzen entsprechender Trigger würde den Unterrichtsrahmen sprengen 
+und wird somit von uns nicht weiter verfolgt.
+
+\newpage
+\section{Funktionale Abhängigkeiten}
+
+Für die Tabelle des Lehrers haben wir alle funktionalen Abhängigkeiten notiert. Bei der Tabelle 
+Wettkampf haben wir die ein- und zweielementigen FAs notiert, die anderen aber erspart.
+ 
+\begin{tabular}{r>{$}c<{$}l}
+\TabKopf{LEHRER}{3}
+\{LID\} &\rightarrow & \{LName, LVorname\}\\
+
+\{LID, LName\} &\rightarrow & \{LVorname\}\\
+\{LID, LVorname\} &\rightarrow &\{LName\}\\&&\\\hline
+
+\TabKopf{KLASSE}{3}
+\multicolumn{3}{l}{keine FAs}\\&&\\\hline
+
+\TabKopf{WETTKAMPF}{3}
+
+\multicolumn{3}{l}{WettID ist Schlüssel}\\
+
+\{WettID\} &\rightarrow & \{WettName, Wettklasse, Geschlecht, Termin\}\\
+
+\{WettID, WettName\} &\rightarrow & \{Wettklasse, Geschlecht, Termin\}\\
+\{WettID, Wettklasse\} &\rightarrow & \{WettName, Geschlecht, Termin\}\\
+\{WettID, Geschlecht\} &\rightarrow & \{WettName, Wettklasse, Termin\}\\
+\{WettID, Termin\} &\rightarrow & \{WettName, Wettklasse, Geschlecht\}\\
+
+\{WettID, WettName, Wettklasse\} &\rightarrow & \{Geschlecht, Termin\}\\
+\{WettID, WettName, Geschlecht\} &\rightarrow & \{Wettklasse, Termin\}\\
+\{WettID, WettName, Termin\} &\rightarrow & \{Wettklasse, Geschlecht\}\\
+
+\{WettID, Wettklasse, WettName\} &\rightarrow & \{Geschlecht, Termin\}\\
+\{WettID, Wettklasse, Geschlecht\} &\rightarrow & \{WettName, Termin\}\\
+\{WettID, Wettklasse, Termin\} &\rightarrow & \{WettName, Geschlecht\}\\
+
+\{WettID, Geschlecht, WettName\} &\rightarrow & \{Wettklasse, Termin\}\\
+\{WettID, Geschlecht, Wettklasse\} &\rightarrow & \{WettName, Termin\}\\
+\{WettID, Geschlecht, Termin\} &\rightarrow & \{WettName, Wettklasse\}\\
+
+\{WettID, Termin,WettName\} &\rightarrow & \{Wettklasse, Geschlecht\}\\
+\{WettID, Termin, Wettklasse\} &\rightarrow & \{WettName, Geschlecht\}\\
+\{WettID, Termin, Geschlecht\} &\rightarrow & \{WettName, Wettklasse\}\\
+\multicolumn{3}{l}{\dots jetzt mit 4 elementiger Mengen}\\
+
+\TabKopf{SCHUELER}{3}
+\multicolumn{3}{l}{SchID ist Schlüssel}\\
+\{SchID\} &\rightarrow & \{SchName, SchVorname, SchGeschlecht, SchGebDatum\} \\
+\TabKopf{ SPORTANLAGE}{3}
+\multicolumn{3}{l}{AnlagenID ist Schlüssel}\\
+\{AnlagenID\} &\rightarrow & \{AnlagenName\}\\
+\{AnlagenName\} &\rightarrow & \{AnlagenID\}\\
+
+\TabKopf{MATERIAL}{3}
+\multicolumn{3}{l}{MatID ist Schlüssel}\\
+\{MatID\} &\rightarrow & \{MatName, MatAnzahl\}\\
+\end{tabular}
+
+In \glqq benötigt\grqq, \glqq findet statt\grqq\: und \glqq nimmt teil\grqq\: sind keine funtionalen Abhängigeiten enthalten
+
+\newpage
+\section{Konkrete Umsetzung des Relationsentwurfes in einen Datenentwurf}
+\subsection{Implementierung in Relationenalgebra (DES-RA)}
+siehe Datenstruktur Ordner \glqq ralg\grqq
+\subsection{Implementierung in SQL (postgreSQL)}
+siehe Datenstruktur Ordner \glqq SQL\grqq
+\newpage
+\section{Beispielpopulationen}
+\vspace*{-3ex}
+\footnotesize\setlength{\tabcolsep}{2pt}
+\begin{tabular}[t]{cllcll}
+\TabKopf{LEHRER}{5}
+LID&LName&LVorname&WettID&Funktion&KlName\\\hline
+100&Bauer&Bernd		&100&Helfer	&7A\\
+101&Becker&Petra	&101&Stationsleiter&00\\
+102&Engel&Bernd		&102&Helfer	&8A\\
+103&Fuchs&Sebastian	&103&Helfer	&11\\
+104&Hofmann&Constanze	&104&Kampfrichter	&9A\\
+105&Hofman&Conrad	&105&Helfer	&10A\\
+106&Meier&Juergen	&106&Stationsleiter&12\\
+107&Meier&Anja		&107&Stationsleiter&00\\
+108&Schmidt&Anke	&100&Schreiber	&7A\\
+109&Schulz&Klaus	&105&Stationsleiter&13
+\end{tabular}\hfill
+\begin{tabular}[t]{clccc}
+\TabKopf{WETTKAMPF}{5}
+ WettID&WettName&Wettklasse&Geschlecht&Termin\\\hline
+100&Weitsprung&7/8&m&08:00\\
+101&Weitsprung&7/8&w&08:20\\
+102&100m&9/10&m&09:00\\
+103&100m&9/10&w&09:00\\
+104&Kugel&11/12&m&11:00\\
+105&Kugel&11/12&w&11:15\\
+106&Fußball&7/8&m&10:30\\
+107&Fußball&7/8&w&10:30\\
+108&Basketball&9/10&m&10:00\\
+109&Basketball&9/10&w&10:00
+\end{tabular}
+
+\begin{tabular}[t]{cllclc}
+\TabKopf{SCHUELER}{6}
+ SchID&SchName&SchVorname&SchGeschlecht&SchGebDatum&KlName\\\hline
+1000&Becker&Julian&m&2002-08-06&7A\\
+1001&Braun&Monika&w&2002-12-05&7A\\
+1002&Franke&Lina&w&2002-03-08&7A\\
+1003&Kaiser&Lukas&m&2001-03-17&8A\\
+1004&Merten&Paul&m&2001-06-22&8A\\
+1005&Keller&Lukas&m&2001-03-18&8A\\
+1006&Klein&Christian&m&2001-03-17&8A\\\hline
+1007&Koch&Kristin&w&2000-03-17&9A\\
+1008&Lange&Manuel&m&2000-12-22&9A\\
+1009&Lorenz&Anton&m&2000-11-21&9A\\
+1010&Meier&Julian&m&1999-01-01&10A\\
+1011&Meier&Julian&m&1999-08-15&10A\\
+1012&Meyer&Tom&m&1999-08-24&10A\\\hline
+1013&Scholz&Werner&m&1998-05-06&11\\
+1014&Weber&Chantal&w&1998-09-12&11\\
+1015&Wolf&Simon&m&1998-07-15&11\\
+1016&Zimmer&Erik&m&1997-06-23&12\\
+1017&Fiebich&Simona&w&1997-05-25&12\\\hline
+1018&Mutz&Gregor&m&1996-02-13&13\\
+1019&Radig&Luise&w&1996-05-10&13\\
+1020&Mader&Leonie&w&1996-07-20&13
+\end{tabular}\hfill
+\begin{tabular}[t]{r}
+ \begin{tabular}[t]{clc}
+\TabKopf{MATERIAL}{3}
+ MatID&MatName&MatAnzahl\\\hline
+100&Fußball&10\\
+101&Basketball&10\\
+102&Leibchen&30\\
+103&5 kg Kugel&15\\
+105&Maßband&20\\
+106&Startklappen&10\\
+107&Pfeifen&15\\
+108&Schreibertische&20\\
+109&Stühle&50\\
+110&Stoppuhren&30
+\end{tabular}\\
+\begin{tabular}[b]{c}
+\TabKopf{KLASSE}{1}
+ KLName\\\hline
+7A\\
+8A\\
+9A\\
+10A\\
+11\\
+12\\
+13\\
+\end{tabular}
+\begin{tabular}[b]{cl}
+\TabKopf{SPORTANLAGE}{2}
+ AnlagenID&AnlagenName\\\hline
+10&Weitsprung 1\\
+11&Weitsprung 2\\
+12&Kugelstoß 1\\
+13&Rasenplatz 1\\
+14&Laufbahn 1\\
+15&Laufbahn2\\
+16&Ballspielplatz 1\\
+17&Ballspielplatz 2\\
+18&Turnhalle Feld 1
+\end{tabular}
+\end{tabular}
+
+\begin{tabular}[t]{ccccl}
+ \TabKopf{nimmt teil}{3}
+  SchID&WettID&Platz&Ergebnis&Funktion\\\hline
+1000&100&1&450&Teilnehmer\\
+1000&106&1&0&Teilnehmer\\
+1001&101&3&340&Teilnehmer\\
+1001&107&2&0&Teilnehmer\\
+1002&101&2&365&Teilnehmer\\
+1002&107&1&0&Teilnehmer\\
+1003&100&2&440&Teilnehmer\\
+1003&106&2&0&Teilnehmer\\
+1004&100&3&415&Teilnehmer\\
+1004&106&2&0&Teilnehmer\\
+1005&0&0&0&krank\\
+1006&100&4&390&Teilnehmer\\
+1007&103&2&130&Teilnehmer\\
+1007&109&1&0&Teilnehmer\\
+1008&0&0&0&krank\\
+1009&102&1&122&Teilnehmer\\
+1009&108&1&0&Teilnehmer\\
+1010&102&2&130&Teilnehmer\\
+1010&108&2&0&Teilnehmer\\
+1011&102&3&132&Teilnehmer\\
+1011&108&2&0&Teilnehmer\\
+1012&102&4&133&Teilnehmer\\
+1012&108&2&0&Teilnehmer\\
+\end{tabular}
+\hfill
+\begin{tabular}[t]{l}
+\begin{tabular}[t]{ccc}
+ \TabKopf{findet statt}{3}
+  AnlagenID&WettID&Dauer\\\hline
+  10&100&20\\
+  11&100&20\\
+  10&101&20\\
+  14&102&20\\
+  15&103&20\\
+  12&104&15\\
+  12&105&15\\
+  13&106&30\\
+  16&107&20\\
+  17&108&30\\
+  16&109&20
+\end{tabular}\hspace{1cm}
+\begin{tabular}[t]{ccc}
+ \TabKopf{benötigt}{3}
+  AnlagenID&MatID&Anzahl\\\hline
+  10&105&2\\
+11&105&2\\
+12&103&5\\
+13&107&2\\
+13&100&2\\
+14&106&1\\
+15&106&1\\
+14&110&3\\
+15&110&3\\
+16&101&2\\
+16&107&2\\
+17&107&2\\
+\end{tabular}\\
+\begin{tabular}[b]{ccccl}
+ \TabKopf{nimmt teil}{3}
+  SchID&WettID&Platz&Ergebnis&Funktion\\\hline
+1013&104&1&830&Teilnehmer\\
+1014&105&1&655&Teilnehmer\\
+1015&104&2&812&Teilnehmer\\
+1016&0&0&0&krank\\
+1017&105&1&655&Teilnehmer\\
+1018&100&0&0&Helfer\\
+1019&101&0&0&Helfer\\
+1020&107&0&0&Helfer\\
+\end{tabular}
+\end{tabular}
+\newpage
+\normalsize
+\section{Systematischer Test der Datenbank}
+Die Datenbank haben wir systematisch mit einfachen DML-Konstrukten getestet. Die Testdatei liegt im Ordner \glqq SQL\grqq unter dem Namen \glqq DML-in-SQL.sql\grqq
+.
+\section{Aufgabensequenz von einfachen bis sehr schwierigen Anfragen mit Lösungen}
+Die folgenden Abfragen haben wir in DES-RA und in postgreSQL realisiert.
+\begin{enumerate}
+ \item Welcher Lehrer bereut die Klasse 7A?
+ 
+ \item Welcher Lehrer ist ein Stationsleiter?
+
+ \item Welche Klasse gewann das Basketballturnier der Jungen?
+
+ \item Nenne alle weiblichen Schülerinnen.
+ \item Ordne alle männlichen Schüler nach Klassen.
+ \item Wie viele Goldmedaillen werden benötigt?
+ \item Wie viele Krankmeldungen gibt es?
+ \item Wie viele Schüler sind zum 100m-Lauf gemeldet?
+ \item Wie viele Schüler nehmen am 100-m-Lauf teil?
+ \item Welche Materialien werden benötigt?
+ \item Wie viele Pfeifen werden benötigt?
+ \item Wie viele der jeweiligen Materialien werden benötigt?
+ \item Welcher Lehrer leitet den Wettkampf Weitsprung 7/8 w?
+ \item Welche Disziplinen wurden am Sportfest angeboten?
+ \item An welchem Wettkämpfen nimmt Julian Becker teil?
+ \item Welcher Schüler hilft beim Wettkampf Weitsprung 7/8 w?
+ \item Welche Sportanlagen werden benötigt?
+ \item Welche Sportanlagen werden nicht benötigt?
+ \item Auf welchen Sportanlagen beginnt um 09:00 ein Wettkampf?
+ \item Welche Wettkämpfe haben die Schüler der 10A zu welcher Zeit und wo?
+ \item Welche Klassen haben 1. Plätze bei Wettkämpfen?
+ \item Wie viele Schüler waren beim Sportfest als Helfer tätig?
+ \item Wie viel Meter sprang der beste Schüler ?
+ \item  Welche Materialien muss ein Lehrer besorgen?
+ \item An welchen Wettkämpfen, wo und wann, nehmen alle Schüler mit dem Vor-
+namen Julian teil?
+ \item Welche Sportanlage ist um 9:00 Uhr frei?
+ \item Welche Sportanlagen sind um 10 Uhr noch frei/nutzbar?
+ \item Welche Klassen belegten im Fußball den 2. Platz?
+ \item Welche Schüler nehmen nur an einem Wettkampf teil und sind nicht krank?
+ \item Wie war die Reihenfolge beim 100m Lauf der Jungen aus Klasse 9/10?
+ \item Gib eine nach Wettkämpfen und Platzierungen sortierte Tabelle
+aller Schüler heraus.
+ \item  Welche Schüler liefen die 100m zwischen 130 und 132 Zehntelsekunden?
+ \item Auf  welchen Anlagen findet der 100 m Lauf statt
+ \item Wer ist bei einem Wettkampf unter einem falschen Geschlecht eingetragen?
+ \item Welche nicht als Helfer eingesetzten Lehrer müssen zu welcher Zeit bei den 
+Wettkämpfen sein und welche Funktion haben sie an der jeweiligen 
+Sportanlage?
+
+\end{enumerate}
+
+\subsection{Relationenalgebra (DES-RA)}
+Die umgesetzten Anfragen und Anfrageergebnisse findet man im Ordner \glqq ralg\grqq.
+\subsection{SQL (postgreSQL)}
+Die umgesetzten Anfragen und Anfrageergebnisse findet man im Ordner \glqq sql\grqq.
+\section{Implementierung einer Sicht webbasiert in PHP}
+\subsection{Begründung und Motivation der Sicht}
+Aus Schülersicht erschien es uns attraktiv, die Möglichkeit des Internets zu nutzen und eine webbasierte Abfrage zu gestalten.
+Um webbasiert Abfragen zu gestalten, wird in vielen Fällen PHP benutzt. PHP ist schnell erlernbar, ist kostenlos und besitzt 
+Weiterentwicklungsmöglichkeiten und Differenzierungspotential.\\
+
+Eine schülerrelevante Anfrage an die Datenbank wäre die nach den zu absolvierenden Wettkämpfen inklusive Zeiten und Orten.
+Diese Anfrage bietet eine Wiederholung von SQL-Abfragen und deren übersichtlichen Darstellung auf der WEB-Seite.
+\subsection{Beschreibung der interaktiven Basismöglichkeiten}
+Folgende Suchmöglichkeiten enthält unsere Abfrageseite
+\begin{itemize}
+ \item Eingabe des Vornamens
+\item Eingabe des Nachnamens,
+\item Eingabe von Vor- und Nachnamen
+\item keine Eingabe
+\end{itemize}
+Als Ergebnis wird die jeweilige Antwort auf die Suchanfrage tabellarisch ausgegeben, wobei keine Eingabe die Ausgabe aller Schüler
+mit ihren Wettkämpfen nach sich zieht.\\
+
+Das Beispiel befindet sich im Ordner \glqq view\grqq .
+\subsection{Optionale Möglichkeiten}
+Als Weiterführung könnte die Übersichtlichkeit der WEB-Seite mit einem Menü erweitert werden, welches beispielsweise
+Datenbankeingaben und weitere Abfragen per Knopfdruck zulässt.
+\newpage
+\section{Didaktische und methodische Überlegungen}
+Das Thema \glqq Datenbanken\grqq ist ein wesentlicher Bestandteil des Rahmenlehrplanes Informatik der gymnasialen Oberstufe in Berlin.
+Darin steht: \glqq Am Beispiel der Entwicklung eines Datenbaksystems führen die Schüler alle Phasen des Problemlöseprozesses 
+von der Analyse der Ausgangssituation der Daten über die Modellierung einer Datenbank bis hin zu ihrer praktischen Umsetzung in einem
+ Datenbankmanagementsystem selbstständig durch.\grqq
+
+Darüber hinaus werden im Grund- und Leistungskurs (in-1, IN-1) Datenbanken mit Softwareentwicklung, wie z.B. PHP, verknüpft. 
+
+Unsere Miniwelt halten wir als exemplarisches Beispiel geeignet. Insbesondere bietet sie gute Diffenzierungsmöglichkeiten hinsichtlich 
+Verkleinerung oder Vergößerung des gewählten Miniweltausschnittes.\\
+
+Unsere gewählte Miniwelt halten wir vom Schwierigkeitsgrad, Umfang und Zeitbedarf realisierbar im Grund- und Leistungskurs.
+Anhand dieses Beispieles können auch theoretische Aspekte der Datenbankentwicklung vermitelt werden und so der komplette Zeitumfang 
+eines Semesters genutzt werden. \\
+Möglich wäre auch die Vergabe als Projekt nach theoretischer Einführung in das Thema.
+
+Im Grundkurs würden wir DES-RA nicht berücksichtigen und einen größeren Fokus auf die webbasierte Programmierung in PHP legen, jedoch empfinden wir SQL
+ als unverzichtbaren Bestandteil des Themas Datenbanken.
+
+Ausbaupotential bietet vor Allem die PHP-Anbindung. Hier wäre z.B. eine umfängliche WEB-Seite mit Möglichkeiten der Datenmanipulation
+und ergänzender Abfragen denkbar.
+\section{Arbeitsverteilung}
+\begin{tabular}{ll}
+Teile des Datenbankprojektes & Bearbeiter\\\hline
+Beschreibung der Miniwelt&Huth, Kreißig, Petri\\
+ER-Modell&Huth, Kreißig, Petri\\
+Transformation&Kreißig\\
+Integritätsbedingungen&Petri\\
+Funktionale Abhängigkeiten&Huth\\
+Implementierung in DES-RA und postgreSQL&Huth, Kreißig, Petri\\
+Beispielpopulationen&Kreißig, Petri\\
+Systematischer Test mit DML&Huth, Kreißig\\
+Aufgabensequenzen in postgreSQL&Huth, Kreißig, Petri\\
+Adaption an DES-RA&Kreißig\\
+Implementierung in PHP&Huth, Kreißig, Petri\\
+Didaktisch-methodische Überlegungen&Huth, Kreißig, Petri\\
+Bereitstellung in \LaTeX &Kreißig
+\end{tabular}
+
+\end{document}

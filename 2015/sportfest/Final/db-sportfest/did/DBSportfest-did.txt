@@ -1,0 +1,22 @@
+Didaktische und methodische Überlegungen
+
+Das Thema "Datenbanken" ist ein wesentlicher Bestandteil des Rahmenlehrplanes Informatik der gymnasialen Oberstufe in Berlin.
+Darin steht: "Am Beispiel der Entwicklung eines Datenbaksystems führen die Schüler alle Phasen des Problemlöseprozesses 
+von der Analyse der Ausgangssituation der Daten über die Modellierung einer Datenbank bis hin zu ihrer praktischen Umsetzung in einem
+ Datenbankmanagementsystem selbstständig durch."
+
+Darüber hinaus werden im Grund- und Leistungskurs (in-1, IN-1) Datenbanken mit Softwareentwicklung, wie z.B. PHP, verknüpft. 
+
+Unsere Miniwelt halten wir als exemplarisches Beispiel geeignet. Insbesondere bietet sie gute Diffenzierungsmöglichkeiten hinsichtlich 
+Verkleinerung oder Vergößerung des gewählten Miniweltausschnittes.
+
+Unsere gewählte Miniwelt halten wir vom Schwierigkeitsgrad, Umfang und Zeitbedarf realisierbar im Grund- und Leistungskurs.
+Anhand dieses Beispieles können auch theoretische Aspekte der Datenbankentwicklung vermitelt werden und so der komplette Zeitumfang 
+eines Semesters genutzt werden.
+Möglich wäre auch die Vergabe als Projekt nach theoretischer Einführung in das Thema.
+
+Im Grundkurs würden wir DES-RA nicht berücksichtigen und einen größeren Fokus auf die webbasierte Programmierung in PHP legen, jedoch empfinden wir SQL
+ als unverzichtbaren Bestandteil des Themas Datenbanken.
+
+Ausbaupotential bietet vor Allem die PHP-Anbindung. Hier wäre z.B. eine umfängliche WEB-Seite mit Möglichkeiten der Datenmanipulation
+und ergänzender Abfragen denkbar.

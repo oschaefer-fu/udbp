@@ -1,0 +1,8 @@
+06) "Die Daten aller Tutoren für Mathematik Stufe 7"
+ snr | vorname  |  name   |   ortsteil   |        mail         | klasse | eltok | fnr 
+-----+----------+---------+--------------+---------------------+--------+-------+-----
+   8 | Hans     | Grell   | Hakenfelde   | H.Grell@hotmail.com |      9 | t     |   2
+  13 | Anna     | Meinike | Siemensstadt | N.Meinike@web.de    |      8 | t     |   2
+  14 | Michaela | Schmidt | Siemensstadt | MSchmidt@mail.de    |      8 | t     |   2
+(3 Zeilen)
+

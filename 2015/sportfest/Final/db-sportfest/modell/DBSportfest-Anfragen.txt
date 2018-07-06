@@ -1,0 +1,73 @@
+1.Welcher Lehrer bereut die Klasse 7A?
+ 
+2.Welcher Lehrer ist ein Stationsleiter?
+
+3. Welche Klasse gewann das Basketballturnier der Jungen?
+
+4. Nenne alle weiblichen Schülerinnen.
+
+5. Ordne alle männlichen Schüler nach Klassen.
+
+6. Wie viele Goldmedaillen werden benötigt?
+
+7. Wie viele Krankmeldungen gibt es?
+
+8. Wie viele Schüler sind zum 100m-Lauf gemeldet?
+
+9. Wie viele Schüler nehmen am 100-m-Lauf teil?
+
+10. Welche Materialien werden benötigt?
+
+11. Wie viele Pfeifen werden benötigt?
+
+12. Wie viele der jeweiligen Materialien werden benötigt?
+
+13. Welcher Lehrer leitet den Wettkampf Weitsprung 7/8 w?
+
+14. Welche Disziplinen wurden am Sportfest angeboten?
+
+15. An welchem Wettkämpfen nimmt Julian Becker teil?
+
+16. Welcher Schüler hilft beim Wettkampf Weitsprung 7/8 w?
+
+17. Welche Sportanlagen werden benötigt?
+
+18. Welche Sportanlagen werden nicht benötigt?
+
+19. Auf welchen Sportanlagen beginnt um 09:00 ein Wettkampf?
+
+20. Welche Wettkämpfe haben die Schüler der 10A zu welcher Zeit und wo?
+
+21. Welche Klassen haben 1. Plätze bei Wettkämpfen?
+
+22. Wie viele Schüler waren beim Sportfest als Helfer tätig?
+
+23. Wie viel Meter sprang der beste Schüler ?
+
+24. Welche Materialien muss ein Lehrer besorgen?
+
+25. An welchen Wettkämpfen, wo und wann, nehmen alle Schüler mit dem Vor-
+namen 'Julian' teil?
+
+26. Welche Sportanlage ist um 9:00 Uhr frei?
+
+27. Welche Sportanlagen sind um 10 Uhr noch frei/nutzbar?
+
+28. Welche Klassen belegten im Fußball den 2. Platz?
+
+29. Welche Schüler nehmen nur an einem Wettkampf teil und sind nicht krank?
+
+29. Wie war die Reihenfolge beim 100m Lauf der Jungen aus Klasse 9/10?
+
+30. Gib eine nach Wettkämpfen und Platzierungen sortierte Tabelle
+aller Schüler heraus.
+
+31. Welche Schüler liefen die 100m zwischen 130 und 132 Zehntelsekunden?
+
+32. Auf  welchen Anlagen findet der 100 m Lauf statt
+
+33. Wer ist bei einem Wettkampf unter einem falschen Geschlecht eingetragen?
+ 
+34. Welche nicht als Helfer eingesetzten Lehrer müssen zu welcher Zeit bei den 
+Wettkämpfen sein und welche Funktion haben sie an der jeweiligen 
+Sportanlage?

@@ -1,0 +1,25 @@
+Relationenmodell mit Schlüsslen und Fremdschlüsseln
+
+Station
+Schlüssel: SNr
+
+Auto
+Schlüsslen: ANr
+Fremdschlüssel: SNr, KName
+
+Kategorie
+Schlüssel: KName
+
+Mieter
+Schlüssel: MNr
+
+Vertrag
+Schlüssel: VNr
+Fremdschlüssel: SNr, KName, MNr
+
+Zubehoer
+Schlüssel: ZNr
+Fremdschlüssel: SNr
+
+gebucht
+Fremdschlüssel: VNR, ZNr

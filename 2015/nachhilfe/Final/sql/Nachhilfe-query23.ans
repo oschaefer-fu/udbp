@@ -1,0 +1,7 @@
+23) "Alle Nachhilfestunden die von Schüler Arend im Jahr 2015 besucht wurden"
+ snr | slotnr | stdnr | tnr | fnr | rnr | typname | bewertung | status | schuljahr | kw | tag | stunde | vorname |  name  | ortsteil |      mail      | klasse | eltok 
+-----+--------+-------+-----+-----+-----+---------+-----------+--------+-----------+----+-----+--------+---------+--------+----------+----------------+--------+-------
+   1 |      8 |     3 |   8 |   2 |   4 | Einzel  |         3 | t      |      2015 |  6 | Don |      8 | Joschua | Ahrend | Staaken  | JAhrend@web.de |      7 | t
+   1 |      7 |     5 |  13 |   2 |   2 | Gruppe  |         1 | t      |      2015 |  6 | Don |      9 | Joschua | Ahrend | Staaken  | JAhrend@web.de |      7 | t
+(2 Zeilen)
+

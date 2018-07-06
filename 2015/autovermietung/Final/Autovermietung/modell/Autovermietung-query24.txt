@@ -1,0 +1,2 @@
+﻿Aufgabe 24
+Gib den Namen des Kunden der die meisten Verträge abgeschlossen hat?

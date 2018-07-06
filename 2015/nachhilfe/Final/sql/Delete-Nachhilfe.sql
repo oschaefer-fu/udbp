@@ -1,0 +1,9 @@
+DELETE FROM stunde;
+DELETE FROM isttutor;
+DELETE FROM schueler;
+DELETE FROM fach;
+DELETE FROM ort;
+DELETE FROM slot;
+DELETE FROM verfuegbar;
+DELETE FROM typ;
+

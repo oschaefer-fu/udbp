@@ -1,0 +1,14 @@
+10) "Die Namen und E-Mailadressen aller Tutoren mit ihren Fächern"
+  name   |        mail         |   fname    | fnr 
+---------+---------------------+------------+-----
+ Aust    | faust@istdoch.net   | Mathematik |   1
+ Dussel  | JD@haha.com         | Deutsch    |   3
+ Dussel  | JD@haha.com         | Deutsch    |   4
+ Depp    | ADepp@here.com      | Englisch   |   5
+ Grell   | H.Grell@hotmail.com | Mathematik |   2
+ Grell   | H.Grell@hotmail.com | NaWi       |   6
+ Meinike | N.Meinike@web.de    | Mathematik |   2
+ Schmidt | MSchmidt@mail.de    | Deutsch    |   4
+ Schmidt | MSchmidt@mail.de    | Mathematik |   2
+(9 Zeilen)
+

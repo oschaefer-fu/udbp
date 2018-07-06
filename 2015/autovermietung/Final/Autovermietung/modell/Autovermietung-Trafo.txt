@@ -1,0 +1,57 @@
+Transformation des ER-Modells in eine Menge von Relationen (Schlüssel, Fremdschlüssel, abstrakte Wertebereiche für Attribute)
+
+Transformation von 1:n-Beziehungstypen
+Die ER-Relationsattribute werden zusammen mit dem Fremdschlüssel der Entität
+der 1-Seite der transformierten Entität der n-Seite hinzugefügt (mit Semantikverlust).
+
+Auto (1..1) --- steht in --- (0..n) Station
+
+Auto (n) --- steht in --- (1) Station
+
+Auto		Station
+ANr, AModell, ASitzplaetze, SNr		SNr, SPLZ, SOrt, SStr
+
+
+Auto (1..1) --- gehoehrt zu --- (0..n) Kategorie
+
+Auto (n) --- gehoehrt zu --- (1) Kategorie
+
+Auto		Kategorie
+ANr, AModell, ASitzplaetze, SNr, KName		KName, KTagespreis
+
+
+Vertrag (1..1) --- ist beteiligt --- (0..n) Kategorie
+
+Vertrag (n) --- ist beteiligt --- (1) Kategorie
+
+Vertrag		Kategorie
+VNr, MNr, SNr, Beginn, Dauer, KName		KName, KTagespreis
+
+
+Vertrag (1..1) --- schliesst ab --- (1..n) Mieter
+
+Vertrag (n) --- schliesst ab --- (1) Mieter
+
+Vertrag		Mieter
+VNr, SNr, Begin, Dauer, KName, MNr		MNr, MName, MVorname, MPLZ, MOrt, MStr
+
+
+Zubehoer (1..1) --- steht in --- (0..n) Station
+
+Zubehoer (n) --- steht in --- (1) Station
+
+Zubehoehr		Station
+ZNr, ZName, ZPauschale, SNr		SNr, SPLZ, SOrt, SStr
+
+
+Transformation von m:n-Beziehungstypen
+Transformation einer beidseitig obligatorischen m:n-Beziehung (hier ausnahmsweise ohne Semantikverlust). Der ursprüngliche Beziehungstyp taucht im Relationenmodell als eigenständige Relation wieder auf und enthält sowohl die Schlüssel der beteiligten Entitäten als Fremdschlüssel als Attribute als auch die Attribute des alten Beziehungstyps selbst. Als Schlüssel wird die identifizierende Kombination der beteiligten Fremdschlüssel verwendet.
+
+Vertrag (0..n) --- dazu gebucht --- (0..n) Zubehoer
+
+Vertrag (n) --- dazu gebucht --- (m) Zubehoer
+
+Vertrag		gebucht		Zubehoer
+VNr, KNr, SNr, Beginn, Dauer, KName, MNr		VNR, ZNr		ZNr, ZName, ZPauschale, SNr
+
+

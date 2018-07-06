@@ -1,0 +1,45 @@
+% Versionsdatum:	17.6.2015
+% Autor: 		von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 		Miniwelt Autovermietung
+
+/output off
+/multiline on
+
+CREATE TABLE Auto (ANr varchar, AModell varchar, ASitzplaetze integer, KName varchar, SNr varchar);
+INSERT INTO Auto VALUES ('B-T411','Smart Fortwo',2,'Kleinwagen','1');
+INSERT INTO Auto VALUES ('M-CC2856','Smart Fortwo',2,'Kleinwagen','2');
+INSERT INTO Auto VALUES ('K-FU1733','VW Up!',4,'Kleinwagen','3');
+INSERT INTO Auto VALUES ('M-RO9999','Opel Adam',4,'Kleinwagen','2');
+INSERT INTO Auto VALUES ('B-VX5656','VW Polo',5,'Kleinwagen','1');
+INSERT INTO Auto VALUES ('B-Z75483','VW Golf',5,'Kompaktklasse','1');
+INSERT INTO Auto VALUES ('B-VW1234','VW Golf',5,'Kompaktklasse','1');
+INSERT INTO Auto VALUES ('M-Y7625','VW Golf',5,'Kompaktklasse','2');
+INSERT INTO Auto VALUES ('M-UT319','Opel Astra',5,'Kompaktklasse','2');
+INSERT INTO Auto VALUES ('K-LS1487','Opel Astra',5,'Kompaktklasse','3');
+INSERT INTO Auto VALUES ('K-H2457','Ford Focus',5,'Kompaktklasse','3');
+INSERT INTO Auto VALUES ('B-PI314','VW Passat',5,'Mittelklasse','1');
+INSERT INTO Auto VALUES ('B-MT3577','Audi A4',5,'Mittelklasse','1');
+INSERT INTO Auto VALUES ('M-ED6587','BMW 3er',5,'Mittelklasse','2');
+INSERT INTO Auto VALUES ('M-AF1234','Ford Mondeo',5,'Mittelklasse','2');
+INSERT INTO Auto VALUES ('K-RE9805','Mercedes C-Klasse',5,'Mittelklasse','3');
+INSERT INTO Auto VALUES ('K-LJ754','Mercedes C-Klasse',5,'Mittelklasse','3');
+INSERT INTO Auto VALUES ('M-WQ8051','BMW 5er',5,'obMittelklasse','2');
+INSERT INTO Auto VALUES ('K-GH134','Audi A6',5,'obMittelklasse','3');
+INSERT INTO Auto VALUES ('B-EA9623','Mercedes E-Klasse',5,'obMittelklasse','1');
+INSERT INTO Auto VALUES ('K-OP1769','Audi A8',5,'Oberklasse','3');
+INSERT INTO Auto VALUES ('M-BV888','BMW 7er',5,'Oberklasse','2');
+INSERT INTO Auto VALUES ('B-CR6501','Mercedes S-Klasse',5,'Oberklasse','1');
+INSERT INTO Auto VALUES ('B-AR7654','VW Phaeton',5,'Oberklasse','1');
+INSERT INTO Auto VALUES ('M-HG6398','VW Caravelle',8,'Kleinbus','2');
+INSERT INTO Auto VALUES ('B-ZC3761','Mercedes V-Klasse',8,'Kleinbus','1');
+INSERT INTO Auto VALUES ('K-LU2595','Opel Vivaro',9,'Kleinbus','3');
+INSERT INTO Auto VALUES ('M-T7130','BMW Z4',2,'Cabrio','2');
+INSERT INTO Auto VALUES ('B-G9806','VW Eos',4,'Cabrio','1');
+
+/ra
+/output on
+/dbschema
+
+
+
+

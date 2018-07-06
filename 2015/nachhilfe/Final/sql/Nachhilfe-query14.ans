@@ -1,0 +1,21 @@
+14) "Die Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots, aufsteigend nach Kalenderwochen"
+  name   |        mail         | tag | stunde | kw | schuljahr 
+---------+---------------------+-----+--------+----+-----------
+ Dussel  | JD@haha.com         | Die |      7 |  2 |      2015
+ Dussel  | JD@haha.com         | Die |      7 |  2 |      2015
+ Depp    | ADepp@here.com      | Die |      7 |  2 |      2015
+ Depp    | ADepp@here.com      | Mon |      8 |  4 |      2015
+ Meinike | N.Meinike@web.de    | Mon |      0 |  4 |      2015
+ Aust    | faust@istdoch.net   | Don |      9 |  6 |      2015
+ Grell   | H.Grell@hotmail.com | Don |      9 |  6 |      2015
+ Grell   | H.Grell@hotmail.com | Don |      9 |  6 |      2015
+ Grell   | H.Grell@hotmail.com | Don |      8 |  6 |      2015
+ Grell   | H.Grell@hotmail.com | Don |      8 |  6 |      2015
+ Meinike | N.Meinike@web.de    | Don |      9 |  6 |      2015
+ Grell   | H.Grell@hotmail.com | Mit |      9 |  7 |      2015
+ Grell   | H.Grell@hotmail.com | Mit |      9 |  7 |      2015
+ Schmidt | MSchmidt@mail.de    | Mon |      7 | 10 |      2015
+ Schmidt | MSchmidt@mail.de    | Mon |      7 | 10 |      2015
+ Meinike | N.Meinike@web.de    | Die |      9 | 12 |      2015
+(16 Zeilen)
+

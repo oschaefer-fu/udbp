@@ -1,0 +1,2 @@
+﻿Aufgabe 10
+Welche Autos haben eine Berliner Kennzeichen?	

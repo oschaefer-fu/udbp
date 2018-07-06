@@ -1,0 +1,182 @@
+Schriftliche Ausarbeitung zum Datenbankpraktikum Autovermietungvorgelegt von David Fröhlich, Martin Möbius und Ralph Schönfeld am 06.07.2015
+
+Beschreibung der Miniwelt
+Eine Autovermietung stellt verschiedene Autos zur Vermietung zur Verfügung. Bei den Autos handelt es sich um verschiedene Modelle mit individueller Sitzplatzanzahl, die, hinsichtlich des Mietpreises (Tagespreis), in Kategorien eingeteilt sind In den Kategorien sind demnach vergleichbare Automodelle zusammengefasst (z. B. VW Golf, Opel Astra, Ford Focus).
+
+Weiterhin verfügt die Autovermietung über verschiedene Stationen, die über Deutschland verteilt sind. Jedes Auto ist einer Station eindeutig zugewiesen. Personen, die mindestens einmal ein Fahrzeug angemietet haben, werden als „Mieter“ mit ihrem Namen, Vornamen und Wohnort geführt. Das Löschen alter Vertragsdaten ist nicht vorgesehen. Im Zuge einer Fahrzeuganmietung schließt ein Mieter einen Vertrag ab; der Vertrag berücksichtigt, an welcher Station, ab welchem Tag (Anmietdatum) und für welche Dauer (in Tagen) der Mieter
+das Fahrzeug nutzen möchte. Vertragsgegenstand ist dabei nicht ein konkretes Auto
+sondern lediglich die Kategorie.
+
+Weiterhin kann der Mieter bei seinem Vertrag Zubehör (z. B. Kindersitze, Schneeketten,Navigationssystem) zu einem Pauschalpreis hinzubuchen. Das Zubehör, das an den Stationen vorgehalten wird, ist universell für jeden Autotyp einsetzbar, auch wenn dies in manchen Fällen (z. B. Winterreifen oder Schneeketten) unrealistisch erscheint.
+
+Transformation des ER-Modells in eine Menge von Relationen
+(Schlüssel, Fremdschlüssel, abstrakte Wertebereiche für Attribute)
+Transformation von 1:n-Beziehungstypen
+Die ER-Relationsattribute werden zusammen mit dem Fremdschlüssel der Entität
+der 1-Seite der transformierten Entität der n-Seite hinzugefügt (mit Semantikverlust).
+Auto (1..1) --- steht in --- (0..n) Station
+Auto (n) --- steht in --- (1) Station
+Auto Station
+ANr, AModell, ASitzplaetze, SNr SNr, SPLZ, SOrt, SStr
+Auto (1..1) --- gehoehrt zu --- (0..n) Kategorie
+Auto (n) --- gehoehrt zu --- (1) Kategorie
+Auto Kategorie
+ANr, AModell, ASitzplaetze, SNr,
+KName
+KName, KTagespreis
+Vertrag (1..1) --- ist beteiligt --- (0..n) Kategorie
+Vertrag (n) --- ist beteiligt --- (1) Kategorie
+Vertrag Kategorie
+VNr, MNr, SNr, Beginn, Dauer, KName KName, KTagespreis
+Vertrag (1..1) --- schliesst ab --- (1..n) Mieter
+Vertrag (n) --- schliesst ab --- (1) Mieter
+Vertrag Mieter
+VNr, SNr, Begin, Dauer, KName, MNr MNr, MName, MVorname, MPLZ,
+MOrt, MStr
+Zubehoer (1..1) --- steht in --- (0..n) Station
+Zubehoer (n) --- steht in --- (1) Station
+Zubehoehr Station
+ZNr, ZName, ZPauschale, SNr SNr, SPLZ, SOrt, SStr
+LWB Informatik FU Berlin D. Fröhlich / M. Möbius / R. Schönefeld
+Datenbankpraktikum – Autovermietung 06.07.2015
+– Seite 4 von 9 –
+Transformation von m:n-Beziehungstypen
+Transformation einer beidseitig obligatorischen m:n-Beziehung (hier ausnahmsweise ohne
+Semantikverlust). Der ursprüngliche Beziehungstyp taucht im Relationenmodell als
+eigenständige Relation wieder auf und enthält sowohl die Schlüssel der beteiligten Entitäten
+als Fremdschlüssel als Attribute als auch die Attribute des alten Beziehungstyps selbst. Als
+Schlüssel wird die identifizierende Kombination der beteiligten Fremdschlüssel verwendet.
+Vertrag (0..n) --- dazu gebucht --- (0..n) Zubehoer
+Vertrag (n) --- dazu gebucht --- (m) Zubehoer
+Vertrag gebucht Zubehoer
+VNr, KNr, SNr, Beginn, Dauer,
+KName, MNr
+VNR,
+ZNr
+ZNr, ZName, ZPauschale,
+
+Angabe funktionaler Abhängigkeiten
+Station
+SNr, SPLZ, SOrt, SStr
+SNr  SPLZ, SOrt, SStr
+SPLZ  SOrt
+SOrt bestimmt funktional nichts (ein Ort kann mehrere PLZ haben)
+SStr bestimmt funktional nichts(z.B. gleicher Straßenname in verschiedenen PLZ
+und Orten)
+Auto
+ANr, AModell, ASitzplaetze, SNr,
+KName
+ANr  AModell, ASitzplaetze, SNr, KName
+AModell  ASitzplaetze, KName
+ASitzplaetze bestimmt funktional nichts
+SNr bestimmt funktional nichts
+KName bestimmt funktional nichts
+Kategorie
+KName, KTagespreis
+KName  KTagespreis
+KTagespreis bestimmt funktional nichts(unterschiedliche Kategorien könnten denselben
+Preis haben)
+Mieter
+MNr, MName, MVorname, MPLZ,
+MOrt, MStr
+MNr  MName, MVorname, MPLZ, MOrt, MStr
+MName bestimmt funktional nichts
+MVorname bestimmt funktional nichts
+MPLZ  MOrt
+MOrt bestimmt funktional nichts
+MStr bestimmt funktional nichts
+Vertrag
+VNr, SNr, Beginn, Dauer, KName,
+MNr
+VNr  KNr, SNr, Beginn, Dauer, MNr
+KName bestimmt funktional nichts
+SNr bestimmt funktional nichts(derselbe Kunde bei unterschiedlichen Stationen)
+VBeginn bestimmt funktional nichts
+VDauer bestimmt funktional nichts
+MNr bestimmt funktional nichts
+LWB Informatik FU Berlin D. Fröhlich / M. Möbius / R. Schönefeld
+Datenbankpraktikum – Autovermietung 06.07.2015
+– Seite 6 von 9 –
+Zubehoer
+ZNr, ZName, ZPauschale, SNr
+ZNr  ZName, ZPauschale
+ZName  ZNr, ZPauschale
+ZPauschale bestimmt funktional nichts
+gebucht
+VNR, ZNr
+VNr  ZNr
+ZNr  VNr
+
+Entwicklung der Populationen
+Es wurde auf eine möglichst abwechslungsreiche Gestaltung geachtet:
+Auto:
+ES gibt gleiche Modelle, die an einer Station vorkommen, es gibt gleiche Modelle, die an
+verschiednen Stationen und es gibt Stationen, an denen nicht alle Kategorien vorhanden
+sind. Es wurde auf eine breite Streuung der Sitzplatzanzahl geachtet.
+Station:
+Es gibt drei Stationen, dabei liegen nie zwei an einem Ort.
+Kategorie:
+Es gibt insgesamt sieben Kategorien, die sich im Tagespreis alle voneinander unterscheiden.
+Mieter:
+Bei den Mietern wurde darauf geachtet, dass es Personen gibt, die am selben Ort wohnen.
+Auch tauchen Vor- oder Nachnamen mehrfach auf.
+Vertrag:
+Die Verträge sind so gestaltet, dass es Mieter gibt, die mehrfach ein Auto mieten. Auch
+kommt es vor, dass beispielsweise vom 01.05.2015 bis zum 04.05.2015 deutschlandweit
+keine Cabrios mehr verfügbar sind.
+Zubehoer:
+Einige Zubehörteile gibt es an mehreren Stationen, Schneeketten dagegen nur in München.
+gebucht:
+Hier wurde lediglich darauf geachtet, dass die Datenbasis konsistent ist, es also nicht zu
+Mehrfachbuchungen für den selben Zeitraum kommt.
+
+Betrachtung der Realitätsnähe der Miniwelt „Autovermietung“
+Die Mieterdaten sind stark reduziert, normalerweise würde sicherlich auch noch die
+Telefonnummer mit erfasst werden, sowie Daten zum Führerschein; dies hätte an dieser
+Stelle allerdings keinen Mehrwert ergeben.
+Da bei Buchungsanfragen üblicherweise nur eine Kategorie gewählt wird und nur diese
+letztlich den Mietpreis festlegt, haben wir uns darauf beschränkt, im Vertrag ebenfalls nur die
+Kategorie zu verwalten. Spätestens bei der Fahrzeugübergabe wird in der Realität
+selbstverständlich ein konkretes Fahrzeug dem Vertrag zugewiesen. Dabei sollte auch der
+Kilometerstand erfasst werden.
+Normalerweise würde man für einen Mietvertrag den Mietbeginn und das Mietende erfassen;
+wir haben uns für die Mietdauer in Tagen entschieden, um ein weiteres
+aggregierungsfähiges Attribut zu erhalten.
+Die Annahme, dass Zubehörteile für alle Kategorien passend sind, ist insbesondere bei
+Winterreifen und Schneeketten natürlich vollständig realitätsfern.
+Beschreibung der PHP-Views
+Als Anwendungsrichtungen sind im wesentlichen der Internetauftritt und die Büroverwaltung
+denkbar. Wir haben uns für den Internetauftritt entschieden, da dieser näher an der
+Lebenswelt der Schüler ist. Auch wenn sie wahrscheinlich noch kein Fahrzeug gemietet
+haben, so sind doch z. B. Preis- bzw. Verfügbarkeitsabfragen im Netz ein vertrautes
+Handeln. Außerdem sind entsprechende Webseiten als Anregung leicht verfügbar. Die
+Webseiten wurden gestalterisch sehr sparsam angelegt. Somit können die Schüler hier ihre
+eigenen Gestaltungsideen und Erfahrungen einbringen.
+Die Grundseite bietet einen Einstieg mit dem Notwendigsten: Titel, Texteingabe. Zeit und
+Datum zeigen dann schon Möglichkeiten und insbesondere die Dynamik von PHP sehr
+schön auf. Mit der SQL-Abfrage wird die Anbindung an eine Datenbank dargestellt, inkl.
+einer Andeutung der Fähigkeiten durch die "DISTINCT"-Einschränkung. Die Erweiterungen
+sind so gewählt und angelegt, dass sie sich als Grundbausteine eines Internetaustritts
+benutzen lassen. Wir haben uns für eine Trennung der Einzelteile entschlossen, um die
+notwendige Übersicht und somit Korrekturmöglichkeit zu behalten. Die ersten Aufgaben
+stellen Grundfunktionen von HTML und PHP dar, welche für die Schüler überschaubar
+lösbar sind. Lösungen zu den Aufgaben sind im Netz recherchierbar. Auf gestalterische
+Elemente im Bereich HTML wird weitgehend verzichtet. Dies kann problemlos durch die
+Schüler selbst ergänzt werden. Die Aufgaben sind:
+Titel der Website – Willkommensgruß – Anzeige des Datums – Anzeige des Wochentags in
+deutscher Sprache – Anzeige der aktuellen Uhrzeit – Aufbau der Verbindung zur Datenbank
+– Ausgabe aus der Datenbank: Kategorien
+Die Erweiterungen sind als vier (index1.php - index4.php) einzelne Dateien angelegt. Diese
+werden aufsteigend anspruchsvoller. Es geht bei diesen darum, Grundfunktionen zu
+implementieren, welche zusammen auf einer gemeinsamen Website das Grundgerüst der
+Startseite einer Autovermietung bilden könnten. Auch hier wird bewusst nur das
+notwendigste Design eingesetzt. Die Integration in einer gemeinsamen Webseite und deren
+Gestaltung bleibt der Motivation und Fähigkeiten der Schüler überlassen.
+1) index1.php und auto1.php geben die Preise für die gewünschte Kategorie an.
+2) index2.php und auto2.php geben an, ob eine Kategorie in der Station verfügbar ist.
+3) index3.php und auto3.php geben an, ob zu einem bestimmten Datum eine Kategorie in
+einer gewählten Station verfügbar ist.
+4) index4.php und auto4.php geben an, geben das verfügbare Zubehör an einer gewählten
+Station an.
+Auf die Möglichkeit die Verbindung zur Datenbank in einer externen Datei unterzubringen
+wurde verzichtet.

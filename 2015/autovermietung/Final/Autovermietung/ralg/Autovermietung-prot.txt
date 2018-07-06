@@ -1,0 +1,509 @@
+% Versionsdatum:	23.6.2015
+% Autor: 			von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 			Miniwelt Autovermietung
+
+
+% Aufgabe 01 - Aufgaben sind zum kennenlernen der unterschiedlichen SQL Funktionen
+% Gib die Daten der Tabelle Auto aus.	
+project ANr,AModell,ASitzplaetze,KName,SNr (Auto);
+
+answer(Auto.ANr:string(varchar),Auto.AModell:string(varchar),Auto.ASitzplaetze:number(integer),Auto.KName:string(varchar),Auto.SNr:string(varchar)) ->
+{
+  answer('B-AR7654','VW Phaeton',5,'Oberklasse','1'),
+  answer('B-CR6501','Mercedes S-Klasse',5,'Oberklasse','1'),
+  answer('B-EA9623','Mercedes E-Klasse',5,obMittelklasse,'1'),
+  answer('B-G9806','VW Eos',4,'Cabrio','1'),
+  answer('B-MT3577','Audi A4',5,'Mittelklasse','1'),
+  answer('B-PI314','VW Passat',5,'Mittelklasse','1'),
+  answer('B-T411','Smart Fortwo',2,'Kleinwagen','1'),
+  answer('B-VW1234','VW Golf',5,'Kompaktklasse','1'),
+  answer('B-VX5656','VW Polo',5,'Kleinwagen','1'),
+  answer('B-Z75483','VW Golf',5,'Kompaktklasse','1'),
+  answer('B-ZC3761','Mercedes V-Klasse',8,'Kleinbus','1'),
+  answer('K-FU1733','VW Up!',4,'Kleinwagen','3'),
+  answer('K-GH134','Audi A6',5,obMittelklasse,'3'),
+  answer('K-H2457','Ford Focus',5,'Kompaktklasse','3'),
+  answer('K-LJ754','Mercedes C-Klasse',5,'Mittelklasse','3'),
+  answer('K-LS1487','Opel Astra',5,'Kompaktklasse','3'),
+  answer('K-LU2595','Opel Vivaro',9,'Kleinbus','3'),
+  answer('K-OP1769','Audi A8',5,'Oberklasse','3'),
+  answer('K-RE9805','Mercedes C-Klasse',5,'Mittelklasse','3'),
+  answer('M-AF1234','Ford Mondeo',5,'Mittelklasse','2'),
+  answer('M-BV888','BMW 7er',5,'Oberklasse','2'),
+  answer('M-CC2856','Smart Fortwo',2,'Kleinwagen','2'),
+  answer('M-ED6587','BMW 3er',5,'Mittelklasse','2'),
+  answer('M-HG6398','VW Caravelle',8,'Kleinbus','2'),
+  answer('M-RO9999','Opel Adam',4,'Kleinwagen','2'),
+  answer('M-T7130','BMW Z4',2,'Cabrio','2'),
+  answer('M-UT319','Opel Astra',5,'Kompaktklasse','2'),
+  answer('M-WQ8051','BMW 5er',5,obMittelklasse,'2'),
+  answer('M-Y7625','VW Golf',5,'Kompaktklasse','2')
+}
+Info: 29 tuples computed.          
+
+
+% Aufgabe 02
+% Gib alle Auto mit Kennzeichen an, die 2 Sitzplätze haben.	
+project ANr,AModell (select ASitzplaetze = 2 (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-T411','Smart Fortwo'),
+  answer('M-CC2856','Smart Fortwo'),
+  answer('M-T7130','BMW Z4')
+}
+Info: 3 tuples computed.          
+
+
+% Aufgabe 03
+% Gib alle Auto mit Kennzeichen an, die mehr als 4 Sitzplätze haben.	
+project ANr,AModell (select ASitzplaetze > 4 (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-AR7654','VW Phaeton'),
+  answer('B-CR6501','Mercedes S-Klasse'),
+  answer('B-EA9623','Mercedes E-Klasse'),
+  answer('B-MT3577','Audi A4'),
+  answer('B-PI314','VW Passat'),
+  answer('B-VW1234','VW Golf'),
+  answer('B-VX5656','VW Polo'),
+  answer('B-Z75483','VW Golf'),
+  answer('B-ZC3761','Mercedes V-Klasse'),
+  answer('K-GH134','Audi A6'),
+  answer('K-H2457','Ford Focus'),
+  answer('K-LJ754','Mercedes C-Klasse'),
+  answer('K-LS1487','Opel Astra'),
+  answer('K-LU2595','Opel Vivaro'),
+  answer('K-OP1769','Audi A8'),
+  answer('K-RE9805','Mercedes C-Klasse'),
+  answer('M-AF1234','Ford Mondeo'),
+  answer('M-BV888','BMW 7er'),
+  answer('M-ED6587','BMW 3er'),
+  answer('M-HG6398','VW Caravelle'),
+  answer('M-UT319','Opel Astra'),
+  answer('M-WQ8051','BMW 5er'),
+  answer('M-Y7625','VW Golf')
+}
+Info: 23 tuples computed.          
+
+
+% Aufgabe 04
+% Gib alle Auto mit Kennzeichen an, die zwischen 2 und 4 Sitzplätze 
+% haben.	
+project ANr,AModell (select ASitzplaetze <= 4 and ASitzplaetze >= 2 (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-G9806','VW Eos'),
+  answer('B-T411','Smart Fortwo'),
+  answer('K-FU1733','VW Up!'),
+  answer('M-CC2856','Smart Fortwo'),
+  answer('M-RO9999','Opel Adam'),
+  answer('M-T7130','BMW Z4')
+}
+Info: 6 tuples computed.          
+
+
+% Aufgabe 05
+% Gib alle Autos mit Kennzeichen an, die 2 Sitzplätze haben und in 
+% Station Nr. 1 stehen.	
+project ANr,AModell (select ASitzplaetze = 2 and SNr = '1' (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-T411','Smart Fortwo')
+}
+Info: 1 tuple computed.          
+
+
+% Aufgabe 06
+% Gib alle Auto mit Kennzeichen an, die Mittelklasse oder 
+% obMittelklasse sind und in Station Nr. 1 stehen.	
+project ANr,AModell (select (KName = 'Mittelklasse'  or KName = 'obMittelklasse') and SNr = '1' (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-EA9623','Mercedes E-Klasse'),
+  answer('B-MT3577','Audi A4'),
+  answer('B-PI314','VW Passat')
+}
+Info: 3 tuples computed.          
+
+
+% Aufgabe 07
+% Gib die Kategorie an bei der der Tagespreis zwischen 30,00â‚¬ und 100,00â‚¬ liegt.
+project KName, KTagespreis (select KTagespreis <= 100.00 and KTagespreis >= 30.00  (Kategorie));
+
+answer(KName:string(varchar),KTagespreis:number(float)) ->
+{
+  answer('Cabrio',99.0),
+  answer('Mittelklasse',49.0),
+  answer(obMittelklasse,89.0)
+}
+Info: 3 tuples computed.          
+
+
+% Aufgabe 08
+% Welche Automodelle werden zu einem Tagespreis zwischen 30,00â‚¬ und 100,00â‚¬ angeboten?
+project Auto.AModell, Kategorie.KTagespreis (select Kategorie.KTagespreis >= 30.00 and Kategorie.KTagespreis <= 100.00 (Auto njoin Kategorie));
+
+answer(Auto.AModell:string(varchar),Kategorie.KTagespreis:number(float)) ->
+{
+  answer('Audi A4',49.0),
+  answer('Audi A6',89.0),
+  answer('BMW 3er',49.0),
+  answer('BMW 5er',89.0),
+  answer('BMW Z4',99.0),
+  answer('Ford Mondeo',49.0),
+  answer('Mercedes C-Klasse',49.0),
+  answer('Mercedes E-Klasse',89.0),
+  answer('VW Eos',99.0),
+  answer('VW Passat',49.0)
+}
+Info: 10 tuples computed.          
+
+
+% Aufgabe 09
+% In welchen Kennzeichen kommt der Buchstabe F vor?	
+% SELECT ANr from Auto where ANr like '%F%'
+% es handelt sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 10
+% Welche Autos haben eine Berliner Kennzeichen?	
+% es handelt sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 11
+% Gib alle VW's mit Kennzeichen aus.
+% es handelt sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 12
+% Gib alle Auto mit Kennzeichen an, sortiert nach den Stationen aus.	
+% GROUP BY, ORDER BY ist keine Realationenalgebra, daher nur teilweise umsetzbar
+project ANr, AModell, SNr (Auto); 
+
+answer(Auto.ANr:string(varchar),Auto.AModell:string(varchar),Auto.SNr:string(varchar)) ->
+{
+  answer('B-AR7654','VW Phaeton','1'),
+  answer('B-CR6501','Mercedes S-Klasse','1'),
+  answer('B-EA9623','Mercedes E-Klasse','1'),
+  answer('B-G9806','VW Eos','1'),
+  answer('B-MT3577','Audi A4','1'),
+  answer('B-PI314','VW Passat','1'),
+  answer('B-T411','Smart Fortwo','1'),
+  answer('B-VW1234','VW Golf','1'),
+  answer('B-VX5656','VW Polo','1'),
+  answer('B-Z75483','VW Golf','1'),
+  answer('B-ZC3761','Mercedes V-Klasse','1'),
+  answer('K-FU1733','VW Up!','3'),
+  answer('K-GH134','Audi A6','3'),
+  answer('K-H2457','Ford Focus','3'),
+  answer('K-LJ754','Mercedes C-Klasse','3'),
+  answer('K-LS1487','Opel Astra','3'),
+  answer('K-LU2595','Opel Vivaro','3'),
+  answer('K-OP1769','Audi A8','3'),
+  answer('K-RE9805','Mercedes C-Klasse','3'),
+  answer('M-AF1234','Ford Mondeo','2'),
+  answer('M-BV888','BMW 7er','2'),
+  answer('M-CC2856','Smart Fortwo','2'),
+  answer('M-ED6587','BMW 3er','2'),
+  answer('M-HG6398','VW Caravelle','2'),
+  answer('M-RO9999','Opel Adam','2'),
+  answer('M-T7130','BMW Z4','2'),
+  answer('M-UT319','Opel Astra','2'),
+  answer('M-WQ8051','BMW 5er','2'),
+  answer('M-Y7625','VW Golf','2')
+}
+Info: 29 tuples computed.          
+
+
+% Aufgabe 13
+% Gib alle Auto mit Kennzeichen an, die in der Station Nr. 1 stehen 
+% aufsteigend sortiert nach Sitzplatznummer aus.	
+% ORDER BY ASC ist keine Realationenalgebra, daher nur teilweise umsetzbar
+
+project ANr, AModell (select SNr = '1' (Auto));
+
+answer(ANr:string(varchar),AModell:string(varchar)) ->
+{
+  answer('B-AR7654','VW Phaeton'),
+  answer('B-CR6501','Mercedes S-Klasse'),
+  answer('B-EA9623','Mercedes E-Klasse'),
+  answer('B-G9806','VW Eos'),
+  answer('B-MT3577','Audi A4'),
+  answer('B-PI314','VW Passat'),
+  answer('B-T411','Smart Fortwo'),
+  answer('B-VW1234','VW Golf'),
+  answer('B-VX5656','VW Polo'),
+  answer('B-Z75483','VW Golf'),
+  answer('B-ZC3761','Mercedes V-Klasse')
+}
+Info: 11 tuples computed.          
+
+
+% Aufgabe 14
+% Wie viele Autos gibt es mit 2 Sitzplätzen?	
+% bei COUNT handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 15
+% Wie viele Sitzplätze gibt es in Station 3?	
+% bei SUM handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 16
+% Gib den durchschnittlichen Tagespreis über alle Kategorien an.	
+% bei AVG handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 17
+% Gib den Standort (Adresse) aller Mercedes C-KLasse an.	
+project AModell, SPLZ, SOrt, SStr (select AModell = 'Mercedes C-Klasse' (Auto njoin Station));
+
+answer(AModell:string(varchar),SPLZ:string(varchar),SOrt:string(varchar),SStr:string(varchar)) ->
+{
+  answer('Mercedes C-Klasse','50933','Köln','Widdersdorfer Straße 369')
+}
+Info: 1 tuple computed.          
+
+
+% Aufgabe 18
+% Gib das Zubehör aufsteigend sortiert nach Pauschalpreis an. Jeder
+% Name soll nur einmal auftreten.	
+% DISTINCT, ORDER BY ist keine Realationenalgebra, daher nur teilweise umsetzbar
+project ZName, ZPauschale (Zubehoer);
+
+answer(Zubehoer.ZName:string(varchar),Zubehoer.ZPauschale:number(float)) ->
+{
+  answer('Kindersitz',20.0),
+  answer('Navigationssystem',35.0),
+  answer('Schneeketten',25.0),
+  answer('Winterreifen',30.0)
+}
+Info: 4 tuples computed.          
+
+
+% Aufgabe 19
+% Zu welcher Kategorie gehört der Opel Astra?	
+project KName (select AModell = 'Opel Astra' (Auto));
+
+answer(KName:string(varchar)) ->
+{
+  answer('Kompaktklasse')
+}
+Info: 1 tuple computed.          
+
+
+% Aufgabe 20
+% Welches Winterzubehör ist in Köln verfügbar?
+project ZName (select (ZName = 'Winterreifen' AND SNr = '3') OR (ZName ='Schneeketten' AND SNr = '3') (Zubehoer));
+
+answer(ZName:string(varchar)) ->
+{
+  answer('Winterreifen')
+}
+Info: 1 tuple computed.          
+
+
+% Aufgabe 21
+% Wie viele Kleinwagen gibt es in Berlin?
+% bei COUNT handelt es sich nicht um Realationenalgebra, ist daher nur teilweise umsetzbar
+project ANr, KName, SOrt (select SOrt = 'Berlin' and KName='Kleinwagen' (Auto njoin Station));
+
+answer(ANr:string(varchar),KName:string(varchar),SOrt:string(varchar)) ->
+{
+  answer('B-T411','Kleinwagen','Berlin'),
+  answer('B-VX5656','Kleinwagen','Berlin')
+}
+Info: 2 tuples computed.          
+
+
+% Aufgabe 22
+% Wie viele Mietverträge für Oberklasse gibt es in Berlin?
+% bei COUNT handelt es sich nicht um Realationenalgebra, ist daher nur teilweise umsetzbar
+project MNr, KName, SOrt (select SOrt='Berlin' and KName='Oberklasse' (Vertrag njoin Station));
+
+answer(MNr:string(varchar),KName:string(varchar),SOrt:string(varchar)) ->
+{
+  answer('1','Oberklasse','Berlin'),
+  answer('4','Oberklasse','Berlin')
+}
+Info: 2 tuples computed.          
+
+
+% Aufgabe 23
+% Anzahl der Verträge pro Kunde, absteigend sortiert.
+% bei COUNT, GROUP BY, ORDER BY handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 24
+% Gib den Namen des Kunden der die meisten Verträge abgeschlossen hat?
+% bei COUNT, GROUP BY, ORDER BY handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 25
+% Gesamtmietzeit der Kunden absteigend sortiert?
+% bei SUM, GROUP BY, ORDER BY handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 26
+% Welcher Kunde mit Vor- und Nachname  hat die meisten Tage gebucht?
+% bei SUM, GROUP BY, ORDER BY handelt es sich nicht um Realationenalgebra, ist daher nicht umsetzbar
+
+
+% Aufgabe 27 - ab hier sind die Aufgaben auf eher Relationenalgebra zugeschnitten
+% Ort und PLZ aller Stationen und Mieter (union all in psql = doppelte werden nicht entfernt)
+(project SPLZ, SOrt (Station)) union (project MPLZ, MOrt (Mieter));
+
+answer(Station.SPLZ:string(varchar),Station.SOrt:string(varchar)) ->
+{
+  answer('01139','Dresden'),
+  answer('04103','Leipzig'),
+  answer('04249','Leipzig'),
+  answer('09122','Chemnitz'),
+  answer('09599','Freiberg'),
+  answer('10587','Berlin'),
+  answer('10787','Berlin'),
+  answer('14641','Nauen'),
+  answer('50126','Bergheim'),
+  answer('50933','Köln'),
+  answer('81671','München'),
+  answer('83661','Lengriess')
+}
+Info: 12 tuples computed.          
+
+
+% Aufgabe 28
+% Orte aller Mieter die nicht in einem Ort mit Station wohnen
+(project MOrt (Mieter)) difference (project SOrt (Station));
+
+answer(Mieter.MOrt:string(varchar)) ->
+{
+  answer('Bergheim'),
+  answer('Chemnitz'),
+  answer('Dresden'),
+  answer('Freiberg'),
+  answer('Leipzig'),
+  answer('Lengriess'),
+  answer('Nauen')
+}
+Info: 7 tuples computed.          
+
+
+% Aufgabe 29
+% Vertragsnummer, Kategoriename und Ort aller Mieter die nicht in einem Ort mit Station wohnen
+project VNr, KName, MOrt
+(
+	(project MOrt (Mieter)) difference (project SOrt (Station))
+	njoin
+	Vertrag
+	njoin 
+	Mieter
+);
+
+answer(VNr:string(varchar),KName:string(varchar),MOrt:string(varchar)) ->
+{
+  answer('1','Kleinwagen','Bergheim'),
+  answer('10','Kleinwagen','Bergheim'),
+  answer('11','Kleinbus','Dresden'),
+  answer('12','Oberklasse','Bergheim'),
+  answer('14','Kleinbus','Leipzig'),
+  answer('2','Kompaktklasse','Nauen'),
+  answer('3','Kompaktklasse','Chemnitz'),
+  answer('4','Cabrio','Bergheim'),
+  answer('5','Mittelklasse','Leipzig'),
+  answer('6','Mittelklasse','Lengriess'),
+  answer('7',obMittelklasse,'Lengriess'),
+  answer('8','Oberklasse','Freiberg'),
+  answer('9','Oberklasse','Leipzig')
+}
+Info: 13 tuples computed.          
+
+
+% Aufgabe 30
+% Alle Mieternamen mit den von ihnen gebuchten Zubehör.
+project MName, MVorname, ZName (Mieter njoin Vertrag njoin gebucht njoin Zubehoer);
+
+answer(MName:string(varchar),MVorname:string(varchar),ZName:string(varchar)) ->
+{
+  answer('Maler','Nadine','Kindersitz'),
+  answer('Meier','Felix','Navigationssystem'),
+  answer('Meier','Felix','Schneeketten'),
+  answer('Müller','Christoph','Winterreifen'),
+  answer('Müller','Torsten','Kindersitz'),
+  answer('Tischler','Torsten','Kindersitz'),
+  answer('Tischler','Torsten','Winterreifen')
+}
+Info: 7 tuples computed.          
+
+
+% Aufgabe 31
+% Alle Mieternamen und ihre Stationsnummer der Mieter, die in einem Ort mit Station wohnen 
+(rename Stat (SNr, SPLZ, MOrt, SStr) (Station)) njoin Mieter;
+
+answer(Stat.SNr:string(varchar),Stat.SPLZ:string(varchar),Stat.SOrt:string(varchar),Stat.SStr:string(varchar),Mieter.MNr:string(varchar),Mieter.MName:string(varchar),Mieter.MVorname:string(varchar),Mieter.MPLZ:string(varchar),Mieter.MStr:string(varchar)) ->
+{
+  answer('1','10787','Berlin','Budapester Straße 45','9','Gärtner','Nicole','10587','Cauerstr. 23')
+}
+Info: 1 tuple computed.          
+
+
+% Aufgabe 32
+% Vertragsnummern und Namen aller Mieter, die einen Vertrag abgeschlossen haben
+project VNr, MName, MName (Vertrag njoin Mieter);
+
+answer(VNr:string(varchar),MName:string(varchar),MName:string(varchar)) ->
+{
+  answer('1','Meier','Meier'),
+  answer('10','Meier','Meier'),
+  answer('11','Sattler','Sattler'),
+  answer('12','Meier','Meier'),
+  answer('13','Gärtner','Gärtner'),
+  answer('14','Tischler','Tischler'),
+  answer('2','Müller','Müller'),
+  answer('3','Bäcker','Bäcker'),
+  answer('4','Meier','Meier'),
+  answer('5','Maler','Maler'),
+  answer('6','Müller','Müller'),
+  answer('7','Müller','Müller'),
+  answer('8','Schreiner','Schreiner'),
+  answer('9','Maler','Maler')
+}
+Info: 14 tuples computed.          
+
+
+% Aufgabe 33
+% Alle Mieternamen die Kindersitze gebucht hatten. 
+MietKind (MVorname, MName, ZName) :=
+	project MVorname, MName, ZName (Vertrag njoin gebucht njoin Zubehoer njoin Mieter);
+
+MietKind division
+	(project ZName (select ZName = 'Kindersitz' (MietKind)));
+
+answer(MietKind.MVorname:string(varchar),MietKind.MName:string(varchar)) ->
+{
+  answer('Nadine','Maler'),
+  answer('Torsten','Müller'),
+  answer('Torsten','Tischler')
+}
+Info: 3 tuples computed.          
+
+
+% Aufgabe 34
+% Für welche Vertragsnummern sind mindestens zweimal Zubehör gebucht worden?
+VerZub1 (VNr1, ZNr1) := 
+	project VNr, ZNr (gebucht);
+
+VerZub2 (VNr2, ZNr2) := VerZub1;
+
+project VNr1 (select ZNr1 <> ZNr2 and VNr1 = VNr2 (VerZub1 product VerZub2)); 
+
+answer(VNr1:string(varchar)) ->
+{
+  answer('14'),
+  answer('5')
+}
+Info: 2 tuples computed.

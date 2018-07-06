@@ -1,0 +1,37 @@
+table,th,td,thead,tfoot {
+  border-spacing: 0.25em;
+  padding: 0.3em;
+}
+table {
+  background-color: gray;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+tfoot,thead {
+  font-weight: bold;
+  background-color: yellow;
+  color: black;
+}
+tfoot {
+  text-align: right;
+}
+thead {
+  text-align: center;
+}
+th {
+  background-color: orange;
+  color: black;
+  text-align: center;
+}
+h1 {
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+h2 {
+  background-color: gray;
+  color: orange;
+  text-align: center;
+}
+

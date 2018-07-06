@@ -1,0 +1,4 @@
+﻿Aufgabe 07
+Gib die Kategorie an bei der der Tagespreis zwischen 30,00€ und 100,00€ liegt.
+onenalgebrazugeschnitten
+Ort und PLZ aller Stationen und Mieter (UNION ALL in psql = doppelte werden nicht entfernt)

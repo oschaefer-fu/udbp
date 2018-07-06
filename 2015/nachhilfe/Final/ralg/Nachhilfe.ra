@@ -1,0 +1,108 @@
+/output off
+/multiline on
+
+CREATE TABLE NachhilfeFach (FNr integer,FName varchar,Stufe integer);
+INSERT INTO NachhilfeFach VALUES (1,'Mathematik',8);
+INSERT INTO NachhilfeFach VALUES (2,'Mathematik',7);
+INSERT INTO NachhilfeFach VALUES (3,'Deutsch',8);
+INSERT INTO NachhilfeFach VALUES (4,'Deutsch',7);
+INSERT INTO NachhilfeFach VALUES (5,'Englisch',7);
+INSERT INTO NachhilfeFach VALUES (6,'NaWi',8);
+
+CREATE TABLE NachhilfeIstTutor (SNr integer,FNr integer);
+INSERT INTO NachhilfeIstTutor VALUES (2,1);
+INSERT INTO NachhilfeIstTutor VALUES (5,3);
+INSERT INTO NachhilfeIstTutor VALUES (5,4);
+INSERT INTO NachhilfeIstTutor VALUES (6,5);
+INSERT INTO NachhilfeIstTutor VALUES (8,2);
+INSERT INTO NachhilfeIstTutor VALUES (8,6);
+INSERT INTO NachhilfeIstTutor VALUES (2,1);
+INSERT INTO NachhilfeIstTutor VALUES (5,3);
+INSERT INTO NachhilfeIstTutor VALUES (5,4);
+INSERT INTO NachhilfeIstTutor VALUES (6,5);
+INSERT INTO NachhilfeIstTutor VALUES (8,2);
+INSERT INTO NachhilfeIstTutor VALUES (8,6);
+INSERT INTO NachhilfeIstTutor VALUES (13,2);
+INSERT INTO NachhilfeIstTutor VALUES (14,4);
+INSERT INTO NachhilfeIstTutor VALUES (14,2);
+
+CREATE TABLE NachhilfeOrt (RNr integer,RName varchar);
+INSERT INTO NachhilfeOrt VALUES (1,'Bibliothek');
+INSERT INTO NachhilfeOrt VALUES (2,'Sprechzimmer 1');
+INSERT INTO NachhilfeOrt VALUES (3,'Sprechzimmer 2');
+INSERT INTO NachhilfeOrt VALUES (4,'Raum 201b');
+INSERT INTO NachhilfeOrt VALUES (5,'Raum 202b');
+INSERT INTO NachhilfeOrt VALUES (6,'Raum 301a');
+
+CREATE TABLE NachhilfeSchueler (SNr integer,Vorname varchar,Name varchar,Ortsteil varchar,Mail varchar,Klasse integer);
+INSERT INTO NachhilfeSchueler VALUES (1,'Joschua','Ahrend','Staaken','JAhrend@web.de',7);
+INSERT INTO NachhilfeSchueler VALUES (2,'Franziska','Aust','Staaken','faust@istdoch.net',8);
+INSERT INTO NachhilfeSchueler VALUES (3,'Michael','Berend','Hakenfelde','michi@Berend.com',7);
+INSERT INTO NachhilfeSchueler VALUES (4,'Stefan','Bussmann','Kladow','SBussi@hotmail.com',8);
+INSERT INTO NachhilfeSchueler VALUES (5,'Jana','Dussel','Kladow','JD@haha.com',9);
+INSERT INTO NachhilfeSchueler VALUES (6,'Andreas','Depp','Altstadt','ADepp@here.com',9);
+INSERT INTO NachhilfeSchueler VALUES (7,'Jan','Ebert','Altstadt','jan@ebert.de',8);
+INSERT INTO NachhilfeSchueler VALUES (8,'Hans','Grell','Hakenfelde','H.Grell@hotmail.com',9);
+INSERT INTO NachhilfeSchueler VALUES (9,'Bianca','Frei','Gatow','frei.Bia@weg.de',8);
+INSERT INTO NachhilfeSchueler VALUES (10,'Jonas','Logo','Stresow','JLogo@yahoo.com',7);
+INSERT INTO NachhilfeSchueler VALUES (11,'Nikolai','Schulz','Stresow','NikoS@web.de',7);
+INSERT INTO NachhilfeSchueler VALUES (12,'Leila','Fink','Siemensstadt','FinkL@gmail.com',7);
+INSERT INTO NachhilfeSchueler VALUES (13,'Anna','Meinike','Siemensstadt','N.Meinike@web.de',8);
+INSERT INTO NachhilfeSchueler VALUES (14,'Michaela','Schmidt','Siemensstadt','MSchmidt@mail.de',8);
+
+CREATE TABLE NachhilfeSlot (SlotNr integer,Schuljahr integer,Kw integer,Tag varchar,Stunde integer);
+INSERT INTO NachhilfeSlot VALUES (0,2014,45,'Mon',8);
+INSERT INTO NachhilfeSlot VALUES (1,2014,45,'Mit',9);
+INSERT INTO NachhilfeSlot VALUES (2,2014,46,'Don',9);
+INSERT INTO NachhilfeSlot VALUES (3,2014,47,'Mon',7);
+INSERT INTO NachhilfeSlot VALUES (4,2015,2,'Die',7);
+INSERT INTO NachhilfeSlot VALUES (5,2015,4,'Mon',0);
+INSERT INTO NachhilfeSlot VALUES (6,2015,4,'Mon',8);
+INSERT INTO NachhilfeSlot VALUES (7,2015,6,'Don',9);
+INSERT INTO NachhilfeSlot VALUES (8,2015,6,'Don',8);
+INSERT INTO NachhilfeSlot VALUES (9,2015,7,'Mit',9);
+INSERT INTO NachhilfeSlot VALUES (10,2015,10,'Mon',7);
+INSERT INTO NachhilfeSlot VALUES (11,2015,12,'Die',9);
+
+CREATE TABLE NachhilfeStunde (StdNr integer,SNr integer,SlotNr integer,TNr integer,FNr integer,RNr integer,TypName varchar,Bewertung integer);
+INSERT INTO NachhilfeStunde VALUES (0,3,3,2,1,4,'Einzel',2);
+INSERT INTO NachhilfeStunde VALUES (1,3,7,2,1,4,'Einzel',2);
+INSERT INTO NachhilfeStunde VALUES (2,4,0,5,3,3,'Gruppe',1);
+INSERT INTO NachhilfeStunde VALUES (3,1,8,8,2,4,'Einzel',3);
+INSERT INTO NachhilfeStunde VALUES (4,8,6,6,5,1,'Gruppe',4);
+INSERT INTO NachhilfeStunde VALUES (5,1,7,13,2,2,'Gruppe',1);
+INSERT INTO NachhilfeStunde VALUES (6,10,7,13,2,2,'Gruppe',2);
+INSERT INTO NachhilfeStunde VALUES (7,11,7,13,2,2,'Gruppe',1);
+INSERT INTO NachhilfeStunde VALUES (8,11,5,13,2,2,'Gruppe',3);
+INSERT INTO NachhilfeStunde VALUES (9,10,5,13,2,2,'Gruppe',4);
+INSERT INTO NachhilfeStunde VALUES (10,10,1,13,2,2,'Gruppe',2);
+INSERT INTO NachhilfeStunde VALUES (11,10,11,13,2,3,'Gruppe',0);
+
+CREATE TABLE NachhilfeTyp (TypName varchar,Preis float);
+INSERT INTO NachhilfeTyp VALUES ('Einzel',10.00);
+INSERT INTO NachhilfeTyp VALUES ('Gruppe',5.00);
+INSERT INTO NachhilfeTyp VALUES ('Frei',0.00);
+
+CREATE TABLE NachhilfeVerfuegbar (SNr integer,SlotNr  integer);
+INSERT INTO NachhilfeVerfuegbar VALUES (2,3);
+INSERT INTO NachhilfeVerfuegbar VALUES (2,7);
+INSERT INTO NachhilfeVerfuegbar VALUES (5,0);
+INSERT INTO NachhilfeVerfuegbar VALUES (5,1);
+INSERT INTO NachhilfeVerfuegbar VALUES (5,3);
+INSERT INTO NachhilfeVerfuegbar VALUES (5,4);
+INSERT INTO NachhilfeVerfuegbar VALUES (6,2);
+INSERT INTO NachhilfeVerfuegbar VALUES (6,4);
+INSERT INTO NachhilfeVerfuegbar VALUES (6,6);
+INSERT INTO NachhilfeVerfuegbar VALUES (8,7);
+INSERT INTO NachhilfeVerfuegbar VALUES (8,8);
+INSERT INTO NachhilfeVerfuegbar VALUES (8,9);
+INSERT INTO NachhilfeVerfuegbar VALUES (13,1);
+INSERT INTO NachhilfeVerfuegbar VALUES (13,5);
+INSERT INTO NachhilfeVerfuegbar VALUES (13,7);
+INSERT INTO NachhilfeVerfuegbar VALUES (13,11);
+INSERT INTO NachhilfeVerfuegbar VALUES (14,10);
+INSERT INTO NachhilfeVerfuegbar VALUES ();
+
+/ra
+/output on
+/dbschema

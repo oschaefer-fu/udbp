@@ -1,0 +1,61 @@
+Angabe von funktionalen Abhängigkeiten
+
+Station
+SNr, SPLZ, SOrt, SStr
+
+SNr	à	SPLZ, SOrt, SStr
+SPLZ	à	SOrt
+SOrt		bestimmt funktional nichts	(ein Ort kann mehrere PLZ haben)
+SStr		bestimmt funktional nichts	(z.B. gleicher Straßenname in verschiedenen PLZ und Orten)
+
+
+Auto
+ANr, AModell, ASitzplaetze, SNr, KName
+
+ANr	à	AModell, ASitzplaetze, SNr, KName
+AModell	à	ASitzplaetze, KName
+ASitzplaetze		bestimmt funktional nichts
+SNr		bestimmt funktional nichts
+KName		bestimmt funktional nichts
+
+Kategorie
+KName, KTagespreis
+
+KName	à	KTagespreis
+KTagespreis		bestimmt funktional nichts	(unterschiedliche Kategorien könnten denselben Preis haben)
+
+
+Mieter
+MNr, MName, MVorname, MPLZ, MOrt, MStr
+
+MNr	à	MName, MVorname, MPLZ, MOrt, MStr
+MName		bestimmt funktional nichts
+MVorname		bestimmt funktional nichts
+MPLZ	à	MOrt
+MOrt		bestimmt funktional nichts
+MStr		bestimmt funktional nichts
+
+Vertrag
+VNr, SNr, Beginn, Dauer, KName, MNr
+
+VNr	à	KNr, SNr, Beginn, Dauer, MNr
+KName		bestimmt funktional nichts
+SNr		bestimmt funktional nichts	(derselbe Kunde bei unterschiedlichen Stationen)
+VBeginn		bestimmt funktional nichts
+VDauer		bestimmt funktional nichts
+MNr		bestimmt funktional nichts
+
+
+Zubehoer
+ZNr, ZName, ZPauschale, SNr
+
+ZNr	à	 ZName, ZPauschale
+ZName	à	ZNr, ZPauschale	
+ZPauschale		bestimmt funktional nichts
+
+
+gebucht
+VNR, ZNr
+
+VNr	à	ZNr
+ZNr	à	VNr

@@ -1,0 +1,26 @@
+% Versionsdatum:	17.6.2015
+% Autor: 		von D. Fröhlich, M. Möbius, R. Schönfeld
+% Thema: 		Miniwelt Autovermietung
+
+/output off
+/multiline on
+
+CREATE TABLE Mieter (MNr varchar, MName varchar, MVorname varchar, MPLZ varchar, MOrt varchar, MStr varchar);
+INSERT INTO Mieter VALUES ('1','Meier','Felix','50126','Bergheim','Hubertusstraße 2');
+INSERT INTO Mieter VALUES ('2','Müller','Christoph','14641','Nauen','Am Kanal 5');
+INSERT INTO Mieter VALUES ('3','Bäcker','Jakob','09122','Chemnitz','Müllerstraße 13');
+INSERT INTO Mieter VALUES ('4','Maler','Nadine','04103','Leipzig','Johannisallee 12');
+INSERT INTO Mieter VALUES ('5','Müller','Nadine','83661','Lengriess','Oberreiterweg 11');
+INSERT INTO Mieter VALUES ('6','Müller','Torsten','83661','Lengriess','Karwendelstraße 34');
+INSERT INTO Mieter VALUES ('7','Schreiner','Tony','09599','Freiberg','Oststraße 4');
+INSERT INTO Mieter VALUES ('8','Sattler','Sarah','01139','Dresden','Sternstraße 56a');
+INSERT INTO Mieter VALUES ('9','Gärtner','Nicole','10587','Berlin','Cauerstr. 23');
+INSERT INTO Mieter VALUES ('10','Tischler','Torsten','04249','Leipzig','Rehbacher Straße 5');
+
+/ra
+/output on
+/dbschema
+
+
+
+

@@ -1,0 +1,60 @@
+Schueler (SNr#, Vorname, Name, Ortsteil, Mail, Klasse)
+
+SNr		INTEGER
+Vorname	VARCHAR
+Name		VARCHAR
+Ortsteil	VARCHAR
+Mail		VARCHAR
+Klasse		INTEGER
+
+Fach (FNr#, FName, Stufe)
+
+FNr		INTEGER
+FName		VARCHAR
+Stufe		INTEGER
+
+Ort (RNr#, RName)
+
+RNr		INTEGER
+RName		VARCHAR
+
+Slot (SlotNr#, Schuljahr, KW, Tag, Stunde)
+
+SlotNr		INTEGER
+Schuljahr	INTEGER
+KW		INTEGER
+Tag		VARCHAR
+Stunde		INTEGER
+
+Typ (TypName#, Preis)
+
+TypName	VARCHAR
+Preis		NUMERIC
+
+istTutor (SNr#, FNr#)
+
+Foreign Key:	SNr Schueler (SNr); FNr Fach (FNr)
+
+SNr		INTEGER
+FNr		INTEGER
+
+verfuegbar (SNr#, SlotNr#)
+
+Foreign Key:	SNr Schueler (SNr); SlotNr Slot (SlotNr)
+
+SNr		INTEGER
+SlotNr		INTEGER
+
+Stunde (StdNr#, SNr, SlotNr, TNr, FNr, RNr, TypName, Bewertung)
+
+Foreign Key:	SNr Schueler (SNr); SlotNr Slot (SlotNr); FNr Fach(FNr); TNr verfuegbar(SNR);
+		RNr Ort(RNr);TypName Typ(TypName)
+
+StdNr		INTEGER
+SNr		INTEGER
+SlotNr		INTEGER
+TNr		INTEGER
+FNr		INTEGER
+RNr		INTEGER
+TypName	VARCHAR
+Bewertung	INTEGER

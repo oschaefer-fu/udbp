@@ -1,0 +1,9 @@
+Als Anwendungsrichtungen sind im wesentlichen der Internetauftritt und die Büroverwaltung denkbar. Wir haben uns für den Internetauftritt entschieden, da dieser näher an der Lebenswelt der Schüler ist. Auch wenn sie wahrscheinlich noch kein Fahrzeug gemietet haben, so sind doch z. B. Preis- bzw. Verfügbarkeitsabfragen im Netz ein vertrautes Handeln. Außerdem sind entsprechende Webseiten als Anregung leicht verfügbar.
+Die Webseiten wurden gestalterisch sehr sparsam angelegt. Somit können die Schüler hier ihre eigenen Gestaltungsideen und Erfahrungen einbringen. 
+Die Grundseite bietet einen Einstieg mit dem Notwendigsten: Titel, Texteingabe. Zeit und Datum zeigen dann schon Möglichkeiten und insbesondere die Dynamik von PHP sehr schön auf. Mit der SQL-Abfrage wird die Anbindung an eine Datenbank dargestellt, inkl. einer Andeutung der Fähigkeiten durch die "DISTINCT"-Einschränkung.
+Die Erweiterungen sind so gewählt und angelegt, dass sie sich als Grundbausteine eines Internetaustritts benutzen lassen. Wir haben uns für eine Trennung der Einzelteile entschlossen, um die notwendige Übersicht und somit Korrekturmöglichkeit zu behalten.
+
+
+
+
+

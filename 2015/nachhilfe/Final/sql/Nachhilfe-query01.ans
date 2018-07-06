@@ -1,0 +1,7 @@
+01) "Die Daten aller Schueler aus Kladow"
+ snr | vorname |   name   | ortsteil |        mail        | klasse | eltok 
+-----+---------+----------+----------+--------------------+--------+-------
+   4 | Stefan  | Bussmann | Kladow   | SBussi@hotmail.com |      8 | t
+   5 | Jana    | Dussel   | Kladow   | JD@haha.com        |      9 | t
+(2 Zeilen)
+

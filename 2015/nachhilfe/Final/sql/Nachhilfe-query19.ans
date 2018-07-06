@@ -1,0 +1,14 @@
+19) "Alle stattgefundenen Mathe-Stunden mit den Tutorennamen und der Stundenbewertung, sortiert nach Stundennummern"
+ stdnr |  name   | bewertung 
+-------+---------+-----------
+     0 | Aust    |         2
+     1 | Aust    |         2
+     3 | Grell   |         3
+     5 | Meinike |         1
+     6 | Meinike |         2
+     7 | Meinike |         1
+     8 | Meinike |         3
+     9 | Meinike |         4
+    10 | Meinike |         2
+(9 Zeilen)
+

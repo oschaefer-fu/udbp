@@ -1,0 +1,34 @@
+body {
+	background: lavendelblush;
+}
+table,th,td,thead,tfoot {
+  border-spacing: 0.25em;
+  padding: 0.3em;
+}
+table {
+  background-color: lightslategray;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+tfoot,thead {
+  font-weight: bold;
+  background-color: goldenrod;
+  color: black;
+}
+tfoot {
+  text-align: right;
+}
+thead {
+  text-align: center;
+}
+th {
+  background-color: peru;
+  color: white;
+  text-align: center;
+}
+h1 {
+  background-color: goldenrod;
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,3 @@
+﻿Aufgabe 02
+Gib alle Auto mit Kennzeichen an, die 2 Sitzplätze haben.	
+

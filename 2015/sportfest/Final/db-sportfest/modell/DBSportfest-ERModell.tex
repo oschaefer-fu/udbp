@@ -1,0 +1,113 @@
+\documentclass[pagesize,11pt,twoside]{scrartcl}
+
+\usepackage{geometry}
+\usepackage{layout}
+
+\usepackage[latin1,utf8x]{inputenc}
+
+\usepackage[ngerman]{babel}
+\usepackage[intlimits]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{pst-all}
+\usepackage{pstricks-add}
+
+
+\geometry{includehead=true,includefoot=true,height=28.6cm,width=16.5cm,headheight=2.5cm,
+  footskip=10mm,headsep=3mm,inner=2cm}
+
+\definecolor{dschungel}{cmyk}{0.99,0,0.52,0}
+\definecolor{Hinten}{cmyk}{0,0,0,0.2}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\def\FZ#1#2{#1_{\mbox{\footnotesize #2}}}
+\def\E#1{\,\mathrm{#1}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\def\Lsg#1{{\color{blue}#1}}
+\def\OL#1{\overline{#1}}
+\def\rsa{$\rightsquigarrow$}
+
+\definecolor{CEntity}{cmyk}{0,0.32,0.52,0}
+\definecolor{CRelation}{cmyk}{0.26,0,0.76,0}
+\definecolor{CAttribut}{cmyk}{0,0,1,0}
+\def\Entity#1{\rnode{#1}{\psframebox[fillcolor=CEntity,fillstyle=solid]{#1}}}
+\def\Relation#1#2#3#4#5#6{\dianode[fillcolor=CRelation,fillstyle=solid]{#1}{\parbox{1,7cm}{\centering #2}}\ncline{#1}{#3}\ncput*{#4}
+	\ncline{#1}{#5}\ncput*{#6}}
+\def\Attribut#1#2{\ovalnode[fillcolor=CAttribut,fillstyle=solid]{#1}{#1}\ncline{#1}{#2}}
+\def\Key#1#2{\ovalnode[fillcolor=CAttribut,fillstyle=solid]{#1}{\underline{#1}}\ncline{#1}{#2}}
+\def\Trafo#1#2#3{\fbox{\parbox[t]{#1}{\par{\centering\textbf{#2}\par} #3}}} % \par, weil centering nur im Absatz funktioniert
+\def\TabKopf#1#2{\multicolumn{#2}{l}{\rule{1em}{0ex}\rule{0cm}{2.73ex}\textbf{#1}}\\\hline}
+
+\begin{document}
+
+\section{ER-Modell Sportfest}
+Darstellung unserer Miniwelt im ER-Modell inklusive vollständiger Attributierung, Schlüsselangaben und 
+Komplexitäten.
+
+\psset{unit=0.8cm}
+\begin{pspicture}(-10,-10)(10,10)
+%\rput(5,-6){\Entity{Sportart} %
+%	\rput(2,-0.6){\Attribut{SPName}{Sportart}}
+%	\rput(1.5,0.6){\Key{SpID}{Sportart}}
+%	}
+\rput(-3.5,7.5){\Entity{Sportanlage} %
+	\rput(-5,-0.6){\Key{AnlagenID}{Sportanlage}}
+	\rput(-5.5,0.6){\Attribut{AnlagenName}{Sportanlage}}
+	}
+%\rput(7,-2){\Relation{istAuf}{ist auf}{Sportart}{(1:3)}{Sportanlage}{(0:$\infty$)}}
+\rput(5.5,8){\Entity{Material}
+	\rput(-1.5,1.5){\Attribut{MatAnzahl}{Material}}
+	\rput(1.5,0.8){\Attribut{MatName}{Material}}
+	\rput(1.5,-0.4){\Key{MatID}{Material}}
+	}
+\rput(2,6){\Relation{benoetigt}{benötigt}{Sportanlage}{(1:$\infty$)}{Material}{(0:$\infty$)}
+	\rput(1,-0.5){\Attribut{Anzahl}{benoetigt}}
+	}
+\rput(1,0){\Entity{Wettkampf}
+	\rput(2.5,0){\Attribut{Geschlecht}{Wettkampf}}
+	\rput(2,1){\Attribut{WettKlasse}{Wettkampf}}
+	\rput(-5,0){\Attribut{WettName}{Wettkampf}}
+	\rput(-4.5,1){\Key{WettID}{Wettkampf}}
+	\rput(1,2){\Attribut{Termin}{Wettkampf}}
+	}
+\rput(-3,4){\Relation{findetStatt}{findet statt}{Wettkampf}{(0:3)}{Sportanlage}{(1:$\infty$)}
+	\rput(-6,0){\Attribut{Dauer}{findetStatt}}
+	}
+%\rput(1,-1){\Relation{gehoert}{geh�rt zu}{Wettkampf}{(1:1)}{Sportart}{(1:$\infty$)}}
+\rput(-4,-8){\Entity{Schueler}
+	\rput(-4,2.5){\Attribut{SchGebDatum}{Schueler}}
+	\rput(-4.3,0.5){\Attribut{SchName}{Schueler}}
+	\rput(-4.5,-0.5){\Attribut{SchVorname}{Schueler}}
+	\rput(-4.3,1.5){\Key{SchID}{Schueler}}
+	\rput(-4,-1.5){\Attribut{SchGeschlecht}{Schueler}}
+	}
+\rput(-4.5,-4){\Relation{nimmtTeil}{nimmt teil}{Wettkampf}{(0:$\infty$)}{Schueler}{(3:5)}
+	\rput(-5,1){\Attribut{Platz}{nimmtTeil}}
+	\rput(-5,2){\Attribut{Ergebnis}{nimmtTeil}}
+	}
+
+\rput(6,-8){\Entity{Lehrer}
+	\rput(2,1){\Attribut{LName}{Lehrer}}
+	\rput(2,0){\Attribut{LVorname}{Lehrer}}
+	\rput(2,-1){\Key{LID}{Lehrer}}
+	}
+\rput(1,-14){\Entity{Klasse}
+	\rput(-2.5,-1){\Key{KlName}{Klasse}}
+	}
+\rput(5,-11){\Relation{betreut}{betreut}{Lehrer}{(0:1)}{Klasse}{(1:$\infty$)}}
+
+\rput(7,-4){\Relation{verantw1}{verantw1}{Lehrer}{(0:1)}{Wettkampf}{(1:$\infty$)}
+	\rput(-1.5,1.3){\Attribut{Funktion}{verantw1}}
+	}
+\rput(-3,-11){\Relation{gehtIn}{geht in}{Schueler}{(1:1)}{Klasse}{(1:$\infty$)}}
+
+\rput(1,-5){\Relation{verantw2}{verantw2}{Schueler}{(0:1)}{Wettkampf}{(1:$\infty$)}
+	\rput(-1,-1){\Attribut{Funktion}{verantw2}}
+	}
+\end{pspicture} 
+
+
+
+\end{document}

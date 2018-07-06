@@ -1,0 +1,179 @@
+Datenbank Sportfest
+
+
+Allgemeines
+
+Unsere Arbeitsgruppe hat sich für das Modell eines Sportfestes entschieden. In unserer Lehrtätigkeit
+ist zu sehen, dass sich die Sportfeste in der Vergangenheit in ihrer Durchführung stark geändert haben.
+Noch vor einiger Zeit mussten alle Schüler aller Klassen an allen vorgeschriebenen Disziplinen teilnehmen.
+Derzeit erkennen wir einen Trend, dass Schüler die Disziplinen
+nach ihren eigenen Interessen wählen können. 
+Einem solchen Trend folgt unsere Miniwelt eines Schulsporfestes.
+
+
+Beschreibung der Miniwelt Sportfest in Textform
+
+Für ein Schulsportfest der Klassenstufen 5-13 soll eine Datenbank modelliert werden.
+
+Die Wettkämpfe finden in Doppeljahrgangsstufen (5/6, 7/8, 9/10, 11/12) statt.
+Schüler der Klasse 13 und Lehrer stellen Kampfrichter und Helfer für die einzelnen Sportarten.
+Jede Klasse hat einen Lehrer als Betreuer.
+Das Sportfest findet auf verschiedenen Sportanlagen statt.
+Zu einer Anlage gehören verschiedenen Materialien in unterschiedlichen Anzahlen.
+Auf einer Anlage können mehrere Wettkämpfe stattfinden, jedoch nicht zur gleichen Zeit.
+An jeder Anlage wird verschieden lange Sport getrieben.
+Jeder Schüler nimmt an wenigstens 3 und maximal 5 Wettkämpfen teil.
+Es gibt verschiedene Sportarten.
+In jeder Sportart finden Wettkämpfe in verschiedenen Wettkampfklassen getrennt nach 
+Doppeljahrgangsstufe und Geschlecht statt.
+Die Klassenstufe eines Schülers muss zur Wettkampfklasse passen.
+Jeder Schüler wird durch Schülernummer, Name und Vorname charakterisiert.
+Jeder Lehrer wird durch Lehrernummer, Name und Vorname charakterisiert.
+Von vorhandenen Materialien werden Nummer, Bezeichnung und Anzahl erfasst.
+Eine Sportanlage ist durch ihre Nummer und ihre Bezeichnung charakterisiert.
+
+
+Didaktische Reduzierung
+
+Der Datenumfang eines realen Sportfestes überschreitet die Übersichtlichkeit.
+Wir werden auf die Doppeljahrgangsstufe 5/6 verzichten und auch die Anzahl der Schüler, 
+Wettkämpfe, Wettkampfteilnahmen und Lehrer
+gering halten.
+
+Dadurch passen alle Daten auf eine DIN A4 Seite und Abfrageergebnisse lassen sich schnell 
+auf ihre Korrektheit kontrollieren.
+Dadurch lassen sich einige Bedingungen der Miniwelt nicht mehr aufrecht erhalten.
+Z.B. nehmen nicht mehr alle Schüler an 3 bis 5 Wettkämpfen teil.
+
+
+ER-Modell Sportfest
+
+Darstellung unserer Miniwelt im ER-Modell inklusive vollständiger Attributierung, Schlüsselangaben und 
+Komplexitäten.
+siehe DB-Sportfest.pdf
+
+
+Transformation des ER-Modells in eine Menge von Relationen
+
+Für die Transformation geben wir als Teilüberschriften die verwendeten Transformationsregeln an.
+Unter den schematischen Darstellungen erscheinen die resultierenden Relationen.
+
+Transformation von 1:n Beziehungstypen
+
+Transformation von m:n Beziehungstypen
+
+siehe jeweils DB-Sportfest.pdf
+
+
+Integritätsbedingungen
+
+Statische Integritätsbedingungen
+
+Statische Bedingungen beziehen sich auf einen Datenbankzustand. Sie sind Einschränkungen und
+werden durch Prädikate bestimmt. In der Tabelle sind mögliche Wertebereiche angegeben. 
+Die Einhaltung dieser Bedingungen wird an den Programmierer des Frontends übergeben.
+
+siehe jeweils DB-Sportfest.pdf
+
+Dynamische Integritätsbedingungen
+
+Dynamische Integritätsbedingungen beziehen sich auf Auswirkungen von Datenbankzustandsänderungen.\\
+In unserer Miniwelt müssten beispielsweise alle Wettkampfteilnahmeeintäge gelöscht werden,
+wenn ein Wettkampf gelöscht wird. Das Setzen entsprechender Trigger würde den Unterrichtsrahmen sprengen 
+und wird somit von uns nicht weiter verfolgt.
+
+
+Funktionale Abhängigkeiten
+
+Für die Tabelle des Lehrers haben wir alle funktionalen Abhängigkeiten notiert. Bei der Tabelle 
+Wettkampf haben wir die ein- und zweielementigen FAs notiert, die anderen aber erspart.
+
+siehe DB.Sportfest.pdf
+ 
+
+Konkrete Umsetzung des Relationsentwurfes in einen Datenentwurf
+
+Implementierung in Relationenalgebra (DES-RA)
+
+siehe Datenstruktur Ordner "ralg"
+
+
+Implementierung in SQL (postgreSQL)
+
+siehe Datenstruktur Ordner "SQL"
+
+
+Beispielpopulationen
+
+siehe DB.Sportfest.pdf
+bzw. csv-Dateien
+
+
+Systematischer Test der Datenbank
+
+Die Datenbank haben wir systematisch mit einfachen DML-Konstrukten getestet. 
+Die Testdatei liegt im Ordner "SQL" unter dem Namen "DML-in-SQL.sql".
+
+Aufgabensequenz von einfachen bis sehr schwierigen Anfragen mit Lösungen
+
+Relationenalgebra (DES-RA)
+
+SQL (postgreSQL)
+
+Implementierung einer Sicht webbasiert in PHP
+
+Begründung und Motivation der Sicht
+
+Aus Schülersicht erschien es uns attraktiv, die Möglichkeit des Internets zu nutzen und eine webbasierte Abfrage zu gestalten.
+Um webbasiert Abfragen zu gestalten, wird in vielen Fällen PHP benutzt. PHP ist schnell erlernbar, ist kostenlos und besitzt 
+Weiterentwicklungsmöglichkeiten und Differenzierungspotential.
+
+Eine schülerrelevante Anfrage an die Datenbank wäre die nach den zu absolvierenden Wettkämpfen inklusive Zeiten und Orten.
+Diese Anfrage bietet eine Wiederholung von SQL-Abfragen und deren übersichtlichen Darstellung auf der WEB-Seite.
+
+
+Beschreibung der interaktiven Basismöglichkeiten
+
+Folgende Suchmöglichkeiten enthält unsere Abfrageseite
+
+- Eingabe des Vornamens
+- Eingabe des Nachnamens,
+- Eingabe von Vor- und Nachnamen
+- keine Eingabe
+
+Als Ergebnis wird die jeweilige Antwort auf die Suchanfrage tabellarisch ausgegeben, wobei keine Eingabe die Ausgabe aller Schüler
+mit ihren Wettkämpfen nach sich zieht.
+
+Das Beispiel befindet sich im Ordner "view" .
+
+
+Optionale Möglichkeiten
+
+Als Weiterführung könnte die Übersichtlichkeit der WEB-Seite mit einem Menü erweitert werden, welches beispielsweise
+Datenbankeingaben und weitere Abfragen per Knopfdruck zulässt.
+
+
+Didaktische und methodische Überlegungen
+
+Das Thema "Datenbanken" ist ein wesentlicher Bestandteil des Rahmenlehrplanes Informatik der gymnasialen Oberstufe in Berlin.
+Darin steht: "Am Beispiel der Entwicklung eines Datenbaksystems führen die Schüler alle Phasen des Problemlöseprozesses 
+von der Analyse der Ausgangssituation der Daten über die Modellierung einer Datenbank bis hin zu ihrer praktischen Umsetzung in einem
+ Datenbankmanagementsystem selbstständig durch."
+
+Darüber hinaus werden im Grund- und Leistungskurs (in-1, IN-1) Datenbanken mit Softwareentwicklung, wie z.B. PHP, verknüpft. 
+
+Unsere Miniwelt halten wir als exemplarisches Beispiel geeignet. Insbesondere bietet sie gute Diffenzierungsmöglichkeiten hinsichtlich 
+Verkleinerung oder Vergößerung des gewählten Miniweltausschnittes.
+
+Unsere gewählte Miniwelt halten wir vom Schwierigkeitsgrad, Umfang und Zeitbedarf realisierbar im Grund- und Leistungskurs.
+Anhand dieses Beispieles können auch theoretische Aspekte der Datenbankentwicklung vermitelt werden und so der komplette Zeitumfang 
+eines Semesters genutzt werden.
+Möglich wäre auch die Vergabe als Projekt nach theoretischer Einführung in das Thema.
+
+Im Grundkurs würden wir DES-RA nicht berücksichtigen und einen größeren Fokus auf die webbasierte Programmierung in PHP legen, jedoch empfinden wir SQL
+ als unverzichtbaren Bestandteil des Themas Datenbanken.
+
+Ausbaupotential bietet vor Allem die PHP-Anbindung. Hier wäre z.B. eine umfängliche WEB-Seite mit Möglichkeiten der Datenmanipulation
+und ergänzender Abfragen denkbar.
+
+

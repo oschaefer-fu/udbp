@@ -1,0 +1,165 @@
+/log Nachhilfe-prot.txt
+
+%1 Alle Schueler aus Kladow
+select Ortsteil = 'Kladow'(NachhilfeSchueler);
+
+%2 Die Namen aller Schueler, die noch kein OK der Eltern haben
+%- nicht moeglich in DES?
+
+%3 Die Namen aller Schueler der 9. Klasse
+project Name (select Klasse=9 (NachhilfeSchueler));
+
+%4 Die Schueler der 8. Klasse mit Ortsteil
+project Klasse,Name,Ortsteil (select Klasse=8 (NachhilfeSchueler));
+
+%5 Namen und E-Mailadressen aller Tutoren in der Altstadt
+project Name,Mail (select Ortsteil='Altstadt'(NachhilfeSchueler NJOIN NachhilfeIstTutor));
+
+%6a Tutoren fuer Mathematik Stufe 7
+select FName='Mathematik' AND Stufe =7
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeFach);
+
+%6b Tutoren fuer Mathematik
+project Name (select FNr<3 (NachhilfeIstTutor NJOIN NachhilfeSchueler));
+
+%7 Namen, Vornamen, Ortsteile aller Schueler, die keine Tutoren sind
+project Name,Vorname,Ortsteil (
+ (project Name,Vorname,Ortsteil (NachhilfeSchueler))
+	difference
+ (project Name,Vorname,Ortsteil (NachhilfeSchueler NJOIN NachhilfeIstTutor)));
+
+%8) "Alle stattgefundenen Stunden mit dem Namen des unterrichteten Fachs" - so nicht ganz möglich (deshalb Bewertung >=1)
+project StdNr,Schuljahr,Kw,Tag,Stunde,FName
+	(select Bewertung >= 1
+	(NachhilfeStunde NJOIN NachhilfeFach NJOIN NachhilfeSlot));
+
+%9)  "Die Namen aller Tutoren mit Bewertung ihrer Stunden" - Durchschnitt? 
+Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project TName,Bewertung
+	(select Bewertung >=1
+	(Tutoren NJOIN NachhilfeStunde));
+
+%10 Namen und E-Mailadressen aller Tutoren mit ihren Faechern
+Tutoren (TNr,Name,Mail):=
+	project SNr, Name, Mail
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project Name, Mail,FName, Stufe
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach);
+
+%11 Kostenauflistung nach Schülernamen - stimmt noch nicht!
+project Preis, Name
+	(select TNr <> SNr
+	(NachhilfeStunde NJOIN NachhilfeTyp NJOIN NachhilfeSchueler));
+
+%12 Einnahmen von Tutorin Meinike von Schülern
+%geht nicht
+
+
+%13 Alle von Tutor Depp angebotenen Slots
+project Name,Tag,Stunde,Kw,Schuljahr
+	(select Name = 'Depp' 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeSlot));
+
+%14 Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots
+project Name,Mail,Tag,Stunde,Kw,Schuljahr
+	(select Schuljahr = 2015 
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot));
+
+%15 Namen und E-Mailadressen aller Tutoren die Slots in KW 7, 2015 anbieten mit den entsprechenden Slots
+project Name,Mail,Tag,Stunde,Kw,Schuljahr
+	(select Schuljahr = 2015 AND Kw = 7 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeSlot));
+
+%16 Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Faechern und Stufen
+project Name,Mail,Tag,Stunde,Kw,Schuljahr,FName, Stufe
+	(select Schuljahr = 2015 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeSlot NJOIN NachhilfeIstTutor NJOIN NachhilfeFach));
+	
+%17 Die Namen aller Tutoren sortiert nach der durchschnittlichen Bewertung ihrer Stunden (absteigend)
+%geht nicht
+
+%18 Die durchschnittlichen Bewertung der Stunden von Tutor Aust
+%geht nicht
+
+%19 Alle stattgefundenen Mathe-Stunden
+Tutoren (TNr,Name):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project StdNr, Name, Bewertung
+	(select FName = 'Mathematik' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+%20 Teilnehmer in Mathe bei Meinike am Donnerstag in der 6.KW 
+Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project Name, Bewertung
+	(select TName = 'Meinike' AND FName = 'Mathematik' AND Kw=6 AND Tag = 'Don'
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach NJOIN NachhilfeSlot NJOIN NachhilfeSchueler));
+ 
+%20a) Schueler, die am Donnerstag in der 6.KW an eine Mathestunde teilnahmen (Name, Fach,Stufe,Stunde)
+project Name, FName, Stufe, Stunde
+	(select FName = 'Mathematik' AND Kw = 6 AND Tag = 'Don' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN NachhilfeSchueler NJOIN NachhilfeFach NJOIN NachhilfeSlot));
+	
+%22 Alle Nachhilfestunden für Mathe in der 6.KW
+project Name, Stufe, Tag, Stunde, Schuljahr
+	(select Kw = 6 AND FName = 'Mathematik'
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+	
+%23 Alle Nachhilfestunden die von Schüler Ahrend im Jahr 2015 besucht wurden
+project StdNr, FName, Schuljahr, Kw, Tag, Stunde
+	(select Name = 'Ahrend' AND Schuljahr = 2015 AND Bewertung >=1
+	(NachhilfeSchueler NJOIN NachhilfeStunde NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+	
+%24 Namen und E-Mailadressen aller Tutoren die am Donnerstag, 9. Stunde, 6.KW in 2015 verfügbar sind
+project Name, Mail, FName
+	(select Schuljahr = 2015 AND Kw = 6 AND Stunde = 9
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+
+	
+%25 Namen und E-Mailadressen aller Tutoren sortiert nach Ortsteil
+project Ortsteil, Name, Mail
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+	
+%26 Alle stattgefundenen Stunden
+project StdNr
+	(select Bewertung >=1
+	(NachhilfeStunde));
+
+%26a Alle nicht stattgefundenen Stunden
+project StdNr
+	(select Bewertung = 0
+	(NachhilfeStunde));
+	
+%27 Alle Tutoren
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+%28 Alle Stunden der Tutoren
+Tutoren (TNr,Name):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project StdNr, Name
+	(select Bewertung >=1
+	(NachhilfeStunde NJOIN Tutoren));
+
+%29 Alle Stunden von Meinike
+Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project StdNr, TName, FName
+	(select TName = 'Meinike' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+%30 Alle Stunden von Meinike
+Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+project StdNr,FName,Bewertung
+	(select TName = 'Meinike' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+/nolog

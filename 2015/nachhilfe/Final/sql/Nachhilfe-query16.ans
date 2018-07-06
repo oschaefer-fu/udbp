@@ -1,0 +1,21 @@
+16)"Die Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots und den angebotenen Fächern (Fachname und Stufe)"
+  name   |        mail         | tag | stunde | kw | schuljahr |   fname    | stufe 
+---------+---------------------+-----+--------+----+-----------+------------+-------
+ Dussel  | JD@haha.com         | Die |      7 |  2 |      2015 | Deutsch    |     8
+ Dussel  | JD@haha.com         | Die |      7 |  2 |      2015 | Deutsch    |     7
+ Depp    | ADepp@here.com      | Die |      7 |  2 |      2015 | Englisch   |     7
+ Depp    | ADepp@here.com      | Mon |      8 |  4 |      2015 | Englisch   |     7
+ Meinike | N.Meinike@web.de    | Mon |      0 |  4 |      2015 | Mathematik |     7
+ Aust    | faust@istdoch.net   | Don |      9 |  6 |      2015 | Mathematik |     8
+ Grell   | H.Grell@hotmail.com | Don |      9 |  6 |      2015 | Mathematik |     7
+ Grell   | H.Grell@hotmail.com | Don |      9 |  6 |      2015 | NaWi       |     8
+ Grell   | H.Grell@hotmail.com | Don |      8 |  6 |      2015 | Mathematik |     7
+ Grell   | H.Grell@hotmail.com | Don |      8 |  6 |      2015 | NaWi       |     8
+ Meinike | N.Meinike@web.de    | Don |      9 |  6 |      2015 | Mathematik |     7
+ Grell   | H.Grell@hotmail.com | Mit |      9 |  7 |      2015 | Mathematik |     7
+ Grell   | H.Grell@hotmail.com | Mit |      9 |  7 |      2015 | NaWi       |     8
+ Schmidt | MSchmidt@mail.de    | Mon |      7 | 10 |      2015 | Deutsch    |     7
+ Schmidt | MSchmidt@mail.de    | Mon |      7 | 10 |      2015 | Mathematik |     7
+ Meinike | N.Meinike@web.de    | Die |      9 | 12 |      2015 | Mathematik |     7
+(16 Zeilen)
+

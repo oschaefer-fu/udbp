@@ -1,0 +1,2 @@
+﻿Aufgabe 28
+Orte aller Mieter die nicht in einem Ort mit Station wohnen

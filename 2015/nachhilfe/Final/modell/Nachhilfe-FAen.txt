@@ -1,0 +1,46 @@
+Schueler:
+
+SNr# -> Vorname, SNr# -> Name, SNr# -> Ortsteil, SNr# -> Mail, SNr# -> Klasse, SNr# -> EltOK
+Vorname -x-> Name, Name -x-> Vorname, usw.
+
+"Mail" ist ein Schlüsselkandidat
+
+Fach:
+
+FNr# -> FName, FNr# -> Stufe
+FName -x-> FNr#, Stufe -x-> FNr#, FName -x-> Stufe, Stufe -x-> FName
+
+
+Ort:
+
+RNr# -> RName
+RName -x-> RNr#
+
+
+Slot:
+
+SlotNr# -> Schuljahr, SlotNr# -> KW, SlotNr# -> Tag, SlotNr# -> Stunde
+
+keine weiteren Abhängigkeiten
+
+Typ:
+
+TypName# -> Preis
+Preis -x-> TypName#
+
+
+istTutor:
+
+SNr# -x-> FNr#
+FNr# -x-> SNr#
+
+
+verfuegbar:
+
+SNr# -x-> SlotNr#
+SlotNr# -x-> SNr#
+
+Stunde:
+
+StdNr# -x-> SNr, StdNr# -> SlotNr, StdNr# -> TNr, StdNr# -> FNr, StdNr# -> RNr, StdNr# -> TypName, StdNr# -x-> Bewertung, StdNr# -> Status
+SNr# -x-> StdNr, SNr# -x-> Bewertung, Bewertung -x-> StdNr#, Bewertung -x-> SNr#, (StdNr#,SNr#) -> Bewertung

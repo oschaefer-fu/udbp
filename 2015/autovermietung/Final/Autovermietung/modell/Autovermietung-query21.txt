@@ -1,0 +1,3 @@
+﻿Aufgabe 21
+Wie viele Kleinwagen gibt es in Berlin?
+(Dieselbe Anfrage mit Köln läuft wegen des Umlautes übrigens ins Leere!)

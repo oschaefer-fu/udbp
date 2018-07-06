@@ -1,0 +1,11 @@
+04) "Die Namen der Schueler der 8. Klasse mit ihrem Ortsteil"
+ klasse |   name   |   ortsteil   
+--------+----------+--------------
+      8 | Aust     | Staaken
+      8 | Bussmann | Kladow
+      8 | Ebert    | Altstadt
+      8 | Frei     | Gatow
+      8 | Meinike  | Siemensstadt
+      8 | Schmidt  | Siemensstadt
+(6 Zeilen)
+

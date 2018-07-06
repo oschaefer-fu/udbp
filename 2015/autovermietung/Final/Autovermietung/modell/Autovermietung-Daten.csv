@@ -1,0 +1,110 @@
+﻿VNr;VBeginn;VDauer;MNr;SNr;KName
+1;2015-05-10;7;1;3;Kleinwagen
+2;2015-05-16;3;2;3;Kompaktklasse
+3;2015-05-12;5;3;3;Kompaktklasse
+4;2015-05-01;4;1;1;Cabrio
+5;2015-05-01;31;4;1;Mittelklasse
+6;2015-05-13;10;5;3;Mittelklasse
+7;2015-05-16;1;6;3;obMittelklasse
+8;2015-04-25;25;7;3;Oberklasse
+9;2015-06-30;30;4;1;Oberklasse
+10;2015-06-12;5;1;2;Kleinwagen
+11;2015-05-15;2;8;3;Kleinbus
+12;2015-06-03;2;1;1;Oberklasse
+13;2015-05-01;1;9;2;Cabrio
+14;2015-05-25;2;10;1;Kleinbus
+
+ANr;AModell;ASitzplaetze;KName;SNr
+B-T411;Smart Fortwo;2;Kleinwagen;1
+M-CC2856;Smart Fortwo;2;Kleinwagen;2
+K-FU1733;VW Up!;4;Kleinwagen;3
+M-RO9999;Opel Adam;4;Kleinwagen;2
+B-VX5656;VW Polo;5;Kleinwagen;1
+B-Z75483;VW Golf;5;Kompaktklasse;1
+B-VW1234;VW Golf;5;Kompaktklasse;1
+M-Y7625;VW Golf;5;Kompaktklasse;2
+M-UT319;Opel Astra;5;Kompaktklasse;2
+K-LS1487;Opel Astra;5;Kompaktklasse;3
+K-H2457;Ford Focus;5;Kompaktklasse;3
+B-PI314;VW Passat;5;Mittelklasse;1
+B-MT3577;Audi A4;5;Mittelklasse;1
+M-ED6587;BMW 3er;5;Mittelklasse;2
+M-AF1234;Ford Mondeo;5;Mittelklasse;2
+K-RE9805;Mercedes C-Klasse;5;Mittelklasse;3
+K-LJ754;Mercedes C-Klasse;5;Mittelklasse;3
+M-WQ8051;BMW 5er;5;obMittelklasse;2
+K-GH134;Aufi A6;5;obMittelklasse;3
+B-EA9623;Mercedes E-Klasse;5;obMittelklasse;1
+K-OP1769;Audi A8;5;Oberklasse;3
+M-BV888;BMW 7er;5;Oberklasse;2
+B-CR6501;Mercedes S-Klasse;5;Oberklasse;1
+B-AR7654;VW Phaeton;5;Oberklasse;1
+M-HG6398;VW Caravelle;8;Kleinbus;2
+B-ZC3761;Mercedes V-Klasse;8;Kleinbus;1
+K-LU2595;Opel Vivaro;9;Kleinbus;3
+M-T7130;BMW Z4;2;Cabrio;2
+B-G9806;VW Eos;4;Cabrio;1
+
+KName;KTagespreis
+Kleinwagen;19.99
+Kompaktklasse;29.99
+Mittelklasse;49.00
+obMittelklasse;89.00
+Oberklasse;149.00
+Kleinbus;109.00
+Cabrio;99.00
+
+SNr;SPLZ;SOrt;SStr
+1;10787;Berlin;Budapester Straße 45
+2;81671;München;Friedensstraße 22a
+3;50933;Köln;Widdersdorfer Straße 369
+
+MNr;MName;MVorname;MPLZ;MOrt;MStr
+1;Meier;Felix;50126;Bergheim;Hubertusstraße 2
+2;Müller;Christoph;14641;Nauen;Am Kanal 5
+3;Bäcker;Jakob;09122;Chemnitz;Müllerstraße 13
+4;Maler;Nadine;04103;Leipzig;Johannisallee 12
+5;Müller;Nadine;83661;Lengriess;Oberreiterweg 11
+6;Müller;Torsten;83661;Lengriess;Karwendelstraße 34
+7;Schreiner;Tony;09599;Freiberg;Oststraße 4
+8;Sattler;Sarah;01139;Dresden;Sternstraße 56a
+9;Gärtner;Nicole;10587;Berlin;Cauerstr. 23
+10;Tischler;Torsten;04249;Leipzig;Rehbacher Straße 5
+
+ZNr;ZName;ZPauschale;SNr
+101;Navigationssystem;35.00;1
+102;Navigationssystem;35.00;1
+103;Navigationssystem;35.00;2
+104;Navigationssystem;35.00;3
+201;Winterreifen;30.00;1
+202;Winterreifen;30.00;2
+203;Winterreifen;30.00;3
+301;Kindersitz;20.00;1
+302;Kindersitz;20.00;1
+303;Kindersitz;20.00;1
+304;Kindersitz;20.00;1
+305;Kindersitz;20.00;1
+306;Kindersitz;20.00;2
+307;Kindersitz;20.00;2
+309;Kindersitz;20.00;3
+401;Schneeketten;25.00;2
+
+VNr;ZNr
+1;104
+2;203
+5;301
+5;302
+5;303
+7;309
+10;401
+14;201
+14;305
+
+
+
+
+
+
+
+
+

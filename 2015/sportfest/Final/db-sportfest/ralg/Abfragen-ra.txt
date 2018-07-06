@@ -1,0 +1,480 @@
+1.Welcher Lehrer bereut die Klasse 7A?
+
+DES-RA> project LName,LVorname (select KlName='7A' (Lehrer));
+answer(LName:string(varchar(32)),LVorname:string(varchar(32))) ->
+{
+  answer('Bauer','Bernd'),
+  answer('Schmidt','Anke')
+}
+Info: 2 tuples computed. 
+ 
+2.Welcher Lehrer ist ein Stationsleiter?
+
+DES-RA> project LName,LVorname (select Funktion='Stationsleiter' (Lehrer));
+answer(LName:string(varchar(32)),LVorname:string(varchar(32))) ->
+{
+  answer('Becker','Petra'),
+  answer('Meier','Anja'),
+  answer('Meier','Juergen'),
+  answer('Schulz','Klaus')
+}
+Info: 4 tuples computed. 
+
+3. Welche Klasse gewann das Basketballturnier der Jungen?
+
+Info: 0 tuples computed.          
+DES-RA> project KlName (select WettName='Basketball' and Geschlecht='m' and Platz=1 (Schueler njoin nimmtTeil njoin Wettkampf));
+answer(KlName:string(varchar(4))) ->        
+{
+  answer('9A')
+}
+Info: 1 tuple computed.   
+
+4. Erstelle eine Tabelle mit allen Mädchen.
+
+DES-RA> project SchName,SchVorname (select SchGeschlecht='w' (Schueler));
+answer(SchName:string(varchar(32)),SchVorname:string(varchar(32))) ->
+{
+  answer('Braun','Monika'),
+  answer('Fiebich','Simona'),
+  answer('Franke','Lina'),
+  answer('Koch','Kristin'),
+  answer('Mader','Leonie'),
+  answer('Radig','Luise'),
+  answer('Weber','Chantal')
+}
+Info: 7 tuples computed.  
+
+5. Erstelle eine Tabelle mit allen Jungen geordnet nach Klassen.
+
+DES-RA> project KlName,SchID,SchName,SchVorname (select SchGeschlecht='m' (Schueler));
+answer(KlName:string(varchar(4)),SchID:number(integer),
+SchName:string(varchar(32)),SchVorname:string(varchar(32))) ->
+{
+  answer('10A',1010,'Meier','Julian'),
+  answer('10A',1011,'Meier','Julian'),
+  answer('10A',1012,'Meyer','Tom'),
+  answer('11',1013,'Scholz','Werner'),
+  answer('11',1015,'Wolf','Simon'),
+  answer('12',1016,'Zimmer','Erik'),
+  answer('13',1018,'Mutz','Gregor'),
+  answer('7A',1000,'Becker','Julian'),
+  answer('8A',1003,'Kaiser','Lukas'),
+  answer('8A',1004,'Merten','Paul'),
+  answer('8A',1005,'Keller','Lukas'),
+  answer('8A',1006,'Klein','Christian'),
+  answer('9A',1008,'Lange','Manuel'),
+  answer('9A',1009,'Lorenz','Anton')
+}
+Info: 14 tuples computed.     
+
+6. Wie viele Goldmedaillen werden benötigt?
+
+DES-RA> group_by Platz Count(*) Platz=1 (nimmtTeil);
+answer($a6:number(integer)) ->              
+{
+  answer(9)
+}
+Info: 1 tuple computed.
+
+7. Wie viele Krankmeldungen gibt es?
+
+DES-RA> group_by Funktion Funktion,Count(*) Funktion='krank' (nimmtTeil);
+answer(nimmtTeil.Funktion:string(varchar(32)),$a7:number(integer)) ->
+{
+  answer(krank,3)
+}
+Info: 1 tuple computed. 
+
+8. Wie viele Schüler sind zum 100m-Lauf gemeldet?
+
+DES-RA> group_by WettName WettName,count(WettID) WettName='100m' (nimmtTeil njoin Wettkampf);
+answer(WettName:string(varchar),$a22:number(integer)) ->
+{
+  answer('100m',6)
+}
+
+
+9. Wie viele Schüler nehmen am 100-m-Lauf teil?
+
+DES-RA> group_by WettName WettName,count(*) WettName='100m' (Wettkampf njoin nimmtTeil);
+answer(WettName:string(varchar),$a22:number(integer)) ->
+{
+  answer('100m',5)
+}
+Info: 1 tuple computed. 
+
+10. Welche Materialien werden benötigt?
+
+DES-RA> project MatName (Material njoin benoetigt);
+answer(MatName:string(varchar(32))) ->      
+{
+  answer('5 kg Kugel'),
+  answer('Basketball'),
+  answer('Fussball'),
+  answer('Massband'),
+  answer('Pfeife'),
+  answer('Startklappe'),
+  answer('Stoppuhr')
+}
+Info: 7 tuples computed.  
+
+11. Wie viele Pfeifen werden benötigt?
+
+DES-RA> group_by MatName MatName,sum(Anzahl) MatName='Pfeife' (benoetigt njoin Material);
+answer(MatName:string(varchar),$a14:number(integer)) ->
+{
+  answer('Pfeife',6)
+}
+Info: 1 tuple computed. 
+
+12. Wie viele der jeweiligen Materialien werden benötigt?
+
+DES-RA> group_by MatName MatName,sum(Anzahl) true (benoetigt njoin Material);
+answer(MatName:string(varchar(32)),$a13:number(integer)) ->
+{
+  answer('5 kg Kugel',5),
+  answer('Basketball',2),
+  answer('Fussball',2),
+  answer('Massband',4),
+  answer('Pfeife',6),
+  answer('Startklappe',2),
+  answer('Stoppuhr',6)
+}
+Info: 7 tuples computed.   
+
+13. Welcher Lehrer leitet den Wettkampf Weitsprung 7/8 w?
+
+DES-RA> project LName,LVorname (select WettName='Weitsprung' and Geschlecht='w' 
+and Funktion='Stationsleiter' (Wettkampf njoin Lehrer));
+answer(LName:string(varchar(32)),LVorname:string(varchar(32))) ->
+{
+  answer('Becker','Petra')
+}
+Info: 1 tuple computed. 
+
+14. Welche Disziplinen wurden am Sportfest angeboten?
+
+DES-RA> project WettName (Wettkampf);
+answer(Wettkampf.WettName:string(varchar(32))) ->
+{
+  answer('100m'),
+  answer('Basketball'),
+  answer('Fussball'),
+  answer('Kugel'),
+  answer('Weitsprung')
+}
+Info: 5 tuples computed.
+
+
+15. An welchem Wettkämpfen nimmt Julian Becker teil?
+
+DES-RA> project WettName (select SchName='Becker' and SchVorname='Julian' (Schueler njoin nimmtTeil njoin Wettkampf));
+answer(WettName:string(varchar(32))) ->     
+{
+  answer('Fussball'),
+  answer('Weitsprung')
+}
+Info: 2 tuples computed.
+
+16. Welcher Schüler hilft beim Wettkampf Weitsprung 7/8 w?
+
+DES-RA> project SchName,SchVorname (select WettName='Weitsprung' and WettKlasse='7/8' 
+and Geschlecht='w' and Funktion='Helfer' (Wettkampf njoin nimmtTeil njoin Schueler));
+answer(SchName:string(varchar(32)),SchVorname:string(varchar(32))) ->
+{
+  answer('Radig','Luise')
+}
+Info: 1 tuple computed.
+
+17. Welche Sportanlagen werden benötigt?
+
+DES-RA> project AnlagenID,AnlagenName (Sportanlage njoin findetStatt);
+answer(AnlagenID:number(integer),AnlagenName:string(varchar(32))) ->
+{
+  answer(10,'Weitsprung 1'),
+  answer(11,'Weitsprung 2'),
+  answer(12,'Kugelstoss 1'),
+  answer(13,'Rasenplatz 1'),
+  answer(14,'Laufbahn 1'),
+  answer(15,'Laufbahn2'),
+  answer(16,'Ballspielplatz 1'),
+  answer(17,'Ballspielplatz 2')
+}
+Info: 8 tuples computed. 
+
+18. Welche Sportanlagen werden nicht benötigt?
+
+DES-RA> project AnlagenID,AnlagenName (Sportanlage) difference 
+(project AnlagenID,AnlagenName (Sportanlage njoin findetStatt));
+answer(Sportanlage.AnlagenID:number(integer),Sportanlage.AnlagenName:string(varchar(32))) ->
+{
+  answer(18,'Turnhalle Feld 1')
+}
+Info: 1 tuple computed.    
+
+19. Auf welchen Sportanlagen beginnt um 9:00 einWettkampf?
+
+DES-RA> project AnlagenName (select Termin='09:00' (Wettkampf njoin findetStatt njoin Sportanlage));
+answer(AnlagenName:string(varchar(32))) ->  
+{
+  answer('Laufbahn 1'),
+  answer('Laufbahn2')
+}
+Info: 2 tuples computed.
+
+20. Welche Wettkämpfe haben die Schüler der 10A zu welcher Zeit und wo?
+
+DES-RA> project SchID,SchName,SchVorname,KlName,WettKlasse,Geschlecht,Termin,AnlagenName 
+(select KlName='10A' (Schueler njoin nimmtTeil njoin Wettkampf njoin findetStatt njoin Sportanlage));
+answer(SchID:number(integer),SchName:string(varchar(32)),SchVorname:string(varchar(32)),
+KlName:string(varchar),WettKlasse:string(varchar(32)),Geschlecht:string(char(1)),
+Termin:string(varchar(5)),AnlagenName:string(varchar(32))) ->
+{
+  answer(1010,'Meier','Julian','10A','9/10',m,'09:00','Laufbahn 1'),
+  answer(1010,'Meier','Julian','10A','9/10',m,'10:00','Ballspielplatz 2'),
+  answer(1011,'Meier','Julian','10A','9/10',m,'09:00','Laufbahn 1'),
+  answer(1011,'Meier','Julian','10A','9/10',m,'10:00','Ballspielplatz 2'),
+  answer(1012,'Meyer','Tom','10A','9/10',m,'09:00','Laufbahn 1'),
+  answer(1012,'Meyer','Tom','10A','9/10',m,'10:00','Ballspielplatz 2')
+}
+Info: 6 tuples computed.   
+
+21. Welche Klassen haben 1. Plätze bei Wettkämpfen?
+
+DES-RA> project KlName,WettName,WettKlasse,Geschlecht,Platz 
+(select Platz=1 (Schueler njoin nimmtTeil njoin Wettkampf));
+answer(KlName:string(varchar(4)),WettName:string(varchar(32)),
+WettKlasse:string(varchar(32)),Geschlecht:string(char(1)),Platz:number(integer)) ->
+{
+  answer('11','Kugel','11/12',m,1),
+  answer('11','Kugel','11/12',w,1),
+  answer('12','Kugel','11/12',w,1),
+  answer('7A','Fussball','7/8',m,1),
+  answer('7A','Fussball','7/8',w,1),
+  answer('7A','Weitsprung','7/8',m,1),
+  answer('9A','100m','9/10',m,1),
+  answer('9A','Basketball','9/10',m,1),
+  answer('9A','Basketball','9/10',w,1)
+}
+Info: 9 tuples computed.   
+
+22. Wie viele Schüler waren beim Sportfest als Helfer tätig?
+
+DES-RA> group_by Funktion Funktion,count(Funktion) Funktion='Helfer' (nimmtTeil);
+answer(nimmtTeil.Funktion:string(varchar(32)),$a7:number(integer)) ->
+{
+  answer('Helfer',3)
+}
+Info: 1 tuple computed.
+
+23. Wie viel Meter sprang der beste Schüler ?
+
+DES-RA> group_by WettName WettName,max(Ergebnis) WettName='Weitsprung' (nimmtTeil njoin Wettkampf);
+answer(WettName:string(varchar),$a22:number(integer)) ->
+{
+  answer('Weitsprung',450)
+}
+Info: 1 tuple computed. 
+
+24. Welche Materialien muss ein Lehrer besorgen?
+
+DES-RA> group_by LID,LName,LVorname,MatName LID,LName,LVorname,MatName,sum(Anzahl) true 
+(Lehrer njoin Wettkampf njoin findetStatt njoin benoetigt njoin Material);
+answer(LID:number(integer),LName:string(varchar(32)),LVorname:string(varchar(32)),
+MatName:string(varchar(32)),$a44:number(integer)) ->
+{
+  answer(100,'Bauer','Bernd','Massband',4),
+  answer(101,'Becker','Petra','Massband',2),
+  answer(102,'Engel','Bernd','Startklappe',1),
+  answer(102,'Engel','Bernd','Stoppuhr',3),
+  answer(103,'Fuchs','Sebastian','Startklappe',1),
+  answer(103,'Fuchs','Sebastian','Stoppuhr',3),
+  answer(104,'Hofmann','Constanze','5 kg Kugel',5),
+  answer(105,'Hofman','Conrad','5 kg Kugel',5),
+  answer(106,'Meier','Juergen','Fussball',2),
+  answer(106,'Meier','Juergen','Pfeife',2),
+  answer(107,'Meier','Anja','Basketball',2),
+  answer(107,'Meier','Anja','Pfeife',2),
+  answer(108,'Schmidt','Anke','Massband',4),
+  answer(109,'Schulz','Klaus','5 kg Kugel',5)
+}
+Info: 14 tuples computed.  
+
+25. An welchen Wettkämpfen, wo und wann, nehmen alle Schüler mit dem Vor-
+namen 'Julian' teil?
+
+DES-RA> project SchID,SchName,SchVorname,KlName,WettName,WettKlasse,
+Geschlecht,Termin,AnlagenName 
+(select SchVorname='Julian' (Schueler njoin nimmtTeil njoin Wettkampf 
+njoin findetStatt njoin Sportanlage));
+answer(SchID:number(integer),SchName:string(varchar(32)),
+SchVorname:string(varchar),KlName:string(varchar(4)),
+WettName:string(varchar(32)),WettKlasse:string(varchar(32)),
+Geschlecht:string(char(1)),Termin:string(varchar(5)),AnlagenName:string(varchar(32))) ->
+{
+  answer(1000,'Becker','Julian','7A','Fussball','7/8',m,'10:30','Rasenplatz 1'),
+  answer(1000,'Becker','Julian','7A','Weitsprung','7/8',m,'08:00','Weitsprung 1'),
+  answer(1000,'Becker','Julian','7A','Weitsprung','7/8',m,'08:00','Weitsprung 2'),
+  answer(1010,'Meier','Julian','10A','100m','9/10',m,'09:00','Laufbahn 1'),
+  answer(1010,'Meier','Julian','10A','Basketball','9/10',m,'10:00','Ballspielplatz 2'),
+  answer(1011,'Meier','Julian','10A','100m','9/10',m,'09:00','Laufbahn 1'),
+  answer(1011,'Meier','Julian','10A','Basketball','9/10',m,'10:00','Ballspielplatz 2')
+}
+Info: 7 tuples computed. 
+
+26. Welche Sportanlage ist um 9:00 Uhr frei?
+
+DES-RA> project AnlagenID,AnlagenName ((project AnlagenID 
+(select Termin<>'09:00' (Wettkampf njoin findetStatt))) union 
+((project AnlagenID (Sportanlage)) difference (project AnlagenID (findetStatt))) njoin Sportanlage);
+answer(AnlagenID:number(integer),AnlagenName:string(varchar(32))) ->
+{
+  answer(10,'Weitsprung 1'),
+  answer(11,'Weitsprung 2'),
+  answer(12,'Kugelstoss 1'),
+  answer(13,'Rasenplatz 1'),
+  answer(16,'Ballspielplatz 1'),
+  answer(17,'Ballspielplatz 2'),
+  answer(18,'Turnhalle Feld 1')
+}
+Info: 7 tuples computed.  
+Nur durch die Unterabfrage erhält man auch die Turnhalle.
+
+27. Welche Sportanlagen sind um 10 Uhr noch frei/nutzbar?
+
+DES-RA> project AnlagenName ((project AnlagenID (select Termin<>'10:00' (Wettkampf njoin findetStatt))) union ((project AnlagenID (Sportanlage)) difference (project AnlagenID (findetStatt))) njoin Sportanlage);
+answer(AnlagenName:string(varchar(32))) ->  
+{
+  answer('Ballspielplatz 1'),
+  answer('Kugelstoss 1'),
+  answer('Laufbahn 1'),
+  answer('Laufbahn2'),
+  answer('Rasenplatz 1'),
+  answer('Turnhalle Feld 1'),
+  answer('Weitsprung 1'),
+  answer('Weitsprung 2')
+}
+Info: 8 tuples computed.
+noch Fehler: Ballspielplatz1 ist um 10:00 und um 10:30 belegt. 
+Wegen letzterem taucht er in dieser Antwort auf.
+
+28. Welche Klassen belegten im Fußball den 2. Platz?
+
+DES-RA> project KlName,WettName,WettKlasse,Geschlecht,Platz 
+(select WettName='Fussball' and Platz=2 (Schueler njoin nimmtTeil njoin Wettkampf));
+answer(KlName:string(varchar(4)),WettName:string(varchar),
+WettKlasse:string(varchar(32)),Geschlecht:string(char(1)),Platz:number(integer)) ->
+{
+  answer('7A','Fussball','7/8',w,2),
+  answer('8A','Fussball','7/8',m,2)
+}
+Info: 2 tuples computed.
+
+29. Welche Schüler nehmen nur an einem Wettkampf teil und sind nicht krank?
+
+DES-RA> group_by SchID SchID,count(WettID) count(WettID)=1 (select Funktion<>'krank' (nimmtTeil));
+answer(SchID:number(integer),$a13:number(integer)) ->
+{
+  answer(1006,1),
+  answer(1013,1),
+  answer(1014,1),
+  answer(1015,1),
+  answer(1017,1),
+  answer(1018,1),
+  answer(1019,1),
+  answer(1020,1)
+}
+Info: 8 tuples computed. 
+
+30. Gib eine nach Wettkämpfen und Platzierungen sortierte Tabelle
+aller Schüler heraus.
+
+DES-RA> Platzierung:=group_by WettID,WettName,Platz,Ergebnis,SchID WettID,
+WettName,Platz,Ergebnis,SchID Funktion='Teilnehmer' (nimmtTeil njoin Wettkampf);
+DES-RA> project WettID,WettName,SchID,SchName,SchVorname,Platz,Ergebnis 
+(Platzierung njoin Schueler);
+answer(WettID:number(integer),WettName:string(varchar(32)),SchID:number(integer),
+SchName:string(varchar(32)),SchVorname:string(varchar(32)),Platz:number(integer),
+Ergebnis:number(integer)) ->
+{
+  answer(100,'Weitsprung',1000,'Becker','Julian',1,450),
+  answer(100,'Weitsprung',1003,'Kaiser','Lukas',2,440),
+  answer(100,'Weitsprung',1004,'Merten','Paul',3,415),
+  answer(100,'Weitsprung',1006,'Klein','Christian',4,390),
+  answer(101,'Weitsprung',1001,'Braun','Monika',3,340),
+  answer(101,'Weitsprung',1002,'Franke','Lina',2,365),
+  answer(102,'100m',1009,'Lorenz','Anton',1,122),
+  answer(102,'100m',1010,'Meier','Julian',2,130),
+  answer(102,'100m',1011,'Meier','Julian',3,132),
+  answer(102,'100m',1012,'Meyer','Tom',4,133),
+  answer(103,'100m',1007,'Koch','Kristin',2,130),
+  answer(104,'Kugel',1013,'Scholz','Werner',1,830),
+  answer(104,'Kugel',1015,'Wolf','Simon',2,812),
+  answer(105,'Kugel',1014,'Weber','Chantal',1,655),
+  answer(105,'Kugel',1017,'Fiebich','Simona',1,655),
+  answer(106,'Fussball',1000,'Becker','Julian',1,0),
+  answer(106,'Fussball',1003,'Kaiser','Lukas',2,0),
+  answer(106,'Fussball',1004,'Merten','Paul',2,0),
+  answer(107,'Fussball',1001,'Braun','Monika',2,0),
+  answer(107,'Fussball',1002,'Franke','Lina',1,0),
+  answer(108,'Basketball',1009,'Lorenz','Anton',1,0),
+  answer(108,'Basketball',1010,'Meier','Julian',2,0),
+  answer(108,'Basketball',1011,'Meier','Julian',2,0),
+  answer(108,'Basketball',1012,'Meyer','Tom',2,0),
+  answer(109,'Basketball',1007,'Koch','Kristin',1,0)
+}
+Info: 25 tuples computed.       
+
+31. Welche Schüler liefen die 100m zwischen 130 und 132 Zehntelsekunden?
+
+DES-RA> project SchID,SchName,SchVorname,WettName,Ergebnis 
+(select WettName='100m' and Ergebnis>124 and Ergebnis<133 (Schueler njoin nimmtTeil njoin Wettkampf));
+answer(SchID:number(integer),SchName:string(varchar(32)),SchVorname:string(varchar(32)),
+WettName:string(varchar),Ergebnis:number(integer)) ->
+{
+  answer(1007,'Koch','Kristin','100m',130),
+  answer(1010,'Meier','Julian','100m',130),
+  answer(1011,'Meier','Julian','100m',132)
+}
+Info: 3 tuples computed.
+
+32. Auf  welchen Anlagen findet der 100 m Lauf statt
+
+DES-RA> project AnlagenName (select WettName='100m' (findetStatt njoin Wettkampf njoin Sportanlage));
+answer(AnlagenName:string(varchar(32))) ->  
+{
+  answer('Laufbahn 1'),
+  answer('Laufbahn2')
+}
+Info: 2 tuples computed. /
+
+33. Wer ist bei einem Wettkampf unter einem falschen Geschlecht eingetragen?
+ 
+DES-RA> project SchName,SchVorname (select SchGeschlecht <> Geschlecht 
+(Schueler njoin nimmtTeil njoin Wettkampf));
+answer(SchName:string(varchar(32)),SchVorname:string(varchar(32))) ->
+{
+  answer('Wolf','Simon')
+}
+Info: 1 tuple computed.
+
+34. Welche nicht als Helfer eingesetzten Lehrer müssen zu welcher Zeit bei den 
+Wettkämpfen sein und welche Funktion haben sie an der jeweiligen 
+Sportanlage?
+
+DES-RA> project LName,LVorname,Funktion,AnlagenName,WettKlasse,Termin (select Funktion<>'Helfer' (Lehrer njoin Wettkampf njoin findetStatt njoin Sportanlage));
+answer(LName:string(varchar(32)),LVorname:string(varchar(32)),Funktion:string(varchar(32)),AnlagenName:string(varchar(32)),WettKlasse:string(varchar(32)),Termin:string(varchar(5))) ->
+{
+  answer('Becker','Petra','Stationsleiter','Weitsprung 1','7/8','08:20'),
+  answer('Hofmann','Constanze','Kampfrichter','Kugelstoss 1','11/12','11:00'),
+  answer('Meier','Anja','Stationsleiter','Ballspielplatz 1','7/8','10:30'),
+  answer('Meier','Juergen','Stationsleiter','Rasenplatz 1','7/8','10:30'),
+  answer('Schmidt','Anke','Schreiber','Weitsprung 1','7/8','08:00'),
+  answer('Schmidt','Anke','Schreiber','Weitsprung 2','7/8','08:00'),
+  answer('Schulz','Klaus','Stationsleiter','Kugelstoss 1','11/12','11:15')
+}
+Info: 7 tuples computed.          
+DES-RA> 
+
+

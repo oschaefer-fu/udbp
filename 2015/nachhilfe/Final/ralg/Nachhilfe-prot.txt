@@ -1,0 +1,548 @@
+
+DES-RA> %1 Alle Schueler aus Kladow
+
+
+DES-RA> select Ortsteil = 'Kladow'(NachhilfeSchueler);
+
+answer(NachhilfeSchueler.SNr:number(integer),NachhilfeSchueler.Vorname:string(varchar),NachhilfeSchueler.Name:string(varchar),NachhilfeSchueler.Ortsteil:string(varchar),NachhilfeSchueler.Mail:string(varchar),NachhilfeSchueler.Klasse:number(integer)) ->
+{
+  answer(4,'Stefan','Bussmann','Kladow','SBussi@hotmail.com',8),
+  answer(5,'Jana','Dussel','Kladow','JD@haha.com',9)
+}
+Info: 2 tuples computed.          
+
+DES-RA> %2 Die Namen aller Schueler, die noch kein OK der Eltern haben
+
+
+DES-RA> %- nicht moeglich in DES?
+
+
+DES-RA> %3 Die Namen aller Schueler der 9. Klasse
+
+
+DES-RA> project Name (select Klasse=9 (NachhilfeSchueler));
+
+answer(Name:string(varchar)) ->
+{
+  answer('Depp'),
+  answer('Dussel'),
+  answer('Grell')
+}
+Info: 3 tuples computed.          
+
+DES-RA> %4 Die Schueler der 8. Klasse mit Ortsteil
+
+
+DES-RA> project Klasse,Name,Ortsteil (select Klasse=8 (NachhilfeSchueler));
+
+answer(Klasse:number(integer),Name:string(varchar),Ortsteil:string(varchar)) ->
+{
+  answer(8,'Aust','Staaken'),
+  answer(8,'Bussmann','Kladow'),
+  answer(8,'Ebert','Altstadt'),
+  answer(8,'Frei','Gatow'),
+  answer(8,'Meinike','Siemensstadt'),
+  answer(8,'Schmidt','Siemensstadt')
+}
+Info: 6 tuples computed.          
+
+DES-RA> %5 Namen und E-Mailadressen aller Tutoren in der Altstadt
+
+
+DES-RA> project Name,Mail (select Ortsteil='Altstadt'(NachhilfeSchueler NJOIN NachhilfeIstTutor));
+
+answer(Name:string(varchar),Mail:string(varchar)) ->
+{
+  answer('Depp','ADepp@here.com')
+}
+Info: 1 tuple computed.          
+
+DES-RA> %6a Tutoren fuer Mathematik Stufe 7
+
+
+DES-RA> select FName='Mathematik' AND Stufe =7
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeFach);
+
+answer(NachhilfeSchueler.SNr:number(integer),NachhilfeSchueler.Vorname:string(varchar),NachhilfeSchueler.Name:string(varchar),NachhilfeSchueler.Ortsteil:string(varchar),NachhilfeSchueler.Mail:string(varchar),NachhilfeSchueler.Klasse:number(integer),NachhilfeIstTutor.FNr:number(integer),NachhilfeFach.FName:string(varchar),NachhilfeFach.Stufe:number(integer)) ->
+{
+  answer(8,'Hans','Grell','Hakenfelde','H.Grell@hotmail.com',9,2,'Mathematik',7),
+  answer(13,'Anna','Meinike','Siemensstadt','N.Meinike@web.de',8,2,'Mathematik',7),
+  answer(14,'Michaela','Schmidt','Siemensstadt','MSchmidt@mail.de',8,2,'Mathematik',7)
+}
+Info: 3 tuples computed.          
+
+DES-RA> %6b Tutoren fuer Mathematik
+
+
+DES-RA> project Name (select FNr<3 (NachhilfeIstTutor NJOIN NachhilfeSchueler));
+
+answer(Name:string(varchar)) ->
+{
+  answer('Aust'),
+  answer('Grell'),
+  answer('Meinike'),
+  answer('Schmidt')
+}
+Info: 4 tuples computed.          
+
+DES-RA> %7 Namen, Vornamen, Ortsteile aller Schueler, die keine Tutoren sind
+
+
+DES-RA> project Name,Vorname,Ortsteil (
+ (project Name,Vorname,Ortsteil (NachhilfeSchueler))
+	difference
+ (project Name,Vorname,Ortsteil (NachhilfeSchueler NJOIN NachhilfeIstTutor)));
+
+answer(Name:string(varchar),Vorname:string(varchar),Ortsteil:string(varchar)) ->
+{
+  answer('Ahrend','Joschua','Staaken'),
+  answer('Berend','Michael','Hakenfelde'),
+  answer('Bussmann','Stefan','Kladow'),
+  answer('Ebert','Jan','Altstadt'),
+  answer('Fink','Leila','Siemensstadt'),
+  answer('Frei','Bianca','Gatow'),
+  answer('Logo','Jonas','Stresow'),
+  answer('Schulz','Nikolai','Stresow')
+}
+Info: 8 tuples computed.          
+
+DES-RA> %8) "Alle stattgefundenen Stunden mit dem Namen des unterrichteten Fachs" - so nicht ganz möglich (deshalb Bewertung >=1)
+
+
+DES-RA> project StdNr,Schuljahr,Kw,Tag,Stunde,FName
+	(select Bewertung >= 1
+	(NachhilfeStunde NJOIN NachhilfeFach NJOIN NachhilfeSlot));
+
+answer(StdNr:number(integer),Schuljahr:number(integer),Kw:number(integer),Tag:string(varchar),Stunde:number(integer),FName:string(varchar)) ->
+{
+  answer(0,2014,47,'Mon',7,'Mathematik'),
+  answer(1,2015,6,'Don',9,'Mathematik'),
+  answer(2,2014,45,'Mon',8,'Deutsch'),
+  answer(3,2015,6,'Don',8,'Mathematik'),
+  answer(4,2015,4,'Mon',8,'Englisch'),
+  answer(5,2015,6,'Don',9,'Mathematik'),
+  answer(6,2015,6,'Don',9,'Mathematik'),
+  answer(7,2015,6,'Don',9,'Mathematik'),
+  answer(8,2015,4,'Mon',0,'Mathematik'),
+  answer(9,2015,4,'Mon',0,'Mathematik'),
+  answer(10,2014,45,'Mit',9,'Mathematik')
+}
+Info: 11 tuples computed.          
+
+DES-RA> %9)  "Die Namen aller Tutoren mit Bewertung ihrer Stunden" - Durchschnitt? 
+
+
+DES-RA> Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project TName,Bewertung
+	(select Bewertung >=1
+	(Tutoren NJOIN NachhilfeStunde));
+
+answer(TName:string(varchar),Bewertung:number(integer)) ->
+{
+  answer('Aust',2),
+  answer('Depp',4),
+  answer('Dussel',1),
+  answer('Grell',3),
+  answer('Meinike',1),
+  answer('Meinike',2),
+  answer('Meinike',3),
+  answer('Meinike',4)
+}
+Info: 8 tuples computed.          
+
+DES-RA> %10 Namen und E-Mailadressen aller Tutoren mit ihren Faechern
+
+
+DES-RA> Tutoren (TNr,Name,Mail):=
+	project SNr, Name, Mail
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project Name, Mail,FName, Stufe
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach);
+
+answer(Name:string(varchar),Mail:string(varchar),FName:string(varchar),Stufe:number(integer)) ->
+{
+  answer('Aust','faust@istdoch.net','Mathematik',8),
+  answer('Depp','ADepp@here.com','Englisch',7),
+  answer('Dussel','JD@haha.com','Deutsch',8),
+  answer('Grell','H.Grell@hotmail.com','Mathematik',7),
+  answer('Meinike','N.Meinike@web.de','Mathematik',7)
+}
+Info: 5 tuples computed.          
+
+DES-RA> %11 Kostenauflistung nach Schülernamen - stimmt noch nicht!
+
+
+DES-RA> project Preis, Name
+	(select TNr <> SNr
+	(NachhilfeStunde NJOIN NachhilfeTyp NJOIN NachhilfeSchueler));
+
+answer(Preis:number(float),Name:string(varchar)) ->
+{
+  answer(5.0,'Ahrend'),
+  answer(5.0,'Bussmann'),
+  answer(5.0,'Grell'),
+  answer(5.0,'Logo'),
+  answer(5.0,'Schulz'),
+  answer(10.0,'Ahrend'),
+  answer(10.0,'Berend')
+}
+Info: 7 tuples computed.          
+
+DES-RA> %12 Einnahmen von Tutorin Meinike von Schülern
+
+
+DES-RA> %geht nicht
+
+
+DES-RA> %13 Alle von Tutor Depp angebotenen Slots
+
+
+DES-RA> project Name,Tag,Stunde,Kw,Schuljahr
+	(select Name = 'Depp' 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeSlot));
+
+answer(Name:string(varchar),Tag:string(varchar),Stunde:number(integer),Kw:number(integer),Schuljahr:number(integer)) ->
+{
+  answer('Depp','Die',7,2,2015),
+  answer('Depp','Don',9,46,2014),
+  answer('Depp','Mon',8,4,2015)
+}
+Info: 3 tuples computed.          
+
+DES-RA> %14 Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Slots
+
+
+DES-RA> project Name,Mail,Tag,Stunde,Kw,Schuljahr
+	(select Schuljahr = 2015 
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot));
+
+answer(Name:string(varchar),Mail:string(varchar),Tag:string(varchar),Stunde:number(integer),Kw:number(integer),Schuljahr:number(integer)) ->
+{
+  answer('Aust','faust@istdoch.net','Don',9,6,2015),
+  answer('Depp','ADepp@here.com','Die',7,2,2015),
+  answer('Depp','ADepp@here.com','Mon',8,4,2015),
+  answer('Dussel','JD@haha.com','Die',7,2,2015),
+  answer('Grell','H.Grell@hotmail.com','Don',8,6,2015),
+  answer('Grell','H.Grell@hotmail.com','Don',9,6,2015),
+  answer('Grell','H.Grell@hotmail.com','Mit',9,7,2015),
+  answer('Meinike','N.Meinike@web.de','Die',9,12,2015),
+  answer('Meinike','N.Meinike@web.de','Don',9,6,2015),
+  answer('Meinike','N.Meinike@web.de','Mon',0,4,2015),
+  answer('Schmidt','MSchmidt@mail.de','Mon',7,10,2015)
+}
+Info: 11 tuples computed.          
+
+DES-RA> %15 Namen und E-Mailadressen aller Tutoren die Slots in KW 7, 2015 anbieten mit den entsprechenden Slots
+
+
+DES-RA> project Name,Mail,Tag,Stunde,Kw,Schuljahr
+	(select Schuljahr = 2015 AND Kw = 7 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeSlot));
+
+answer(Name:string(varchar),Mail:string(varchar),Tag:string(varchar),Stunde:number(integer),Kw:number(integer),Schuljahr:number(integer)) ->
+{
+  answer('Grell','H.Grell@hotmail.com','Mit',9,7,2015)
+}
+Info: 1 tuple computed.          
+
+DES-RA> %16 Namen und E-Mailadressen aller Tutoren die Slots in 2015 anbieten mit den entsprechenden Faechern und Stufen
+
+
+DES-RA> project Name,Mail,Tag,Stunde,Kw,Schuljahr,FName, Stufe
+	(select Schuljahr = 2015 
+	(NachhilfeVerfuegbar NJOIN NachhilfeSchueler NJOIN NachhilfeSlot NJOIN NachhilfeIstTutor NJOIN NachhilfeFach));
+
+answer(Name:string(varchar),Mail:string(varchar),Tag:string(varchar),Stunde:number(integer),Kw:number(integer),Schuljahr:number(integer),FName:string(varchar),Stufe:number(integer)) ->
+{
+  answer('Aust','faust@istdoch.net','Don',9,6,2015,'Mathematik',8),
+  answer('Depp','ADepp@here.com','Die',7,2,2015,'Englisch',7),
+  answer('Depp','ADepp@here.com','Mon',8,4,2015,'Englisch',7),
+  answer('Dussel','JD@haha.com','Die',7,2,2015,'Deutsch',7),
+  answer('Dussel','JD@haha.com','Die',7,2,2015,'Deutsch',8),
+  answer('Grell','H.Grell@hotmail.com','Don',8,6,2015,'Mathematik',7),
+  answer('Grell','H.Grell@hotmail.com','Don',8,6,2015,'NaWi',8),
+  answer('Grell','H.Grell@hotmail.com','Don',9,6,2015,'Mathematik',7),
+  answer('Grell','H.Grell@hotmail.com','Don',9,6,2015,'NaWi',8),
+  answer('Grell','H.Grell@hotmail.com','Mit',9,7,2015,'Mathematik',7),
+  answer('Grell','H.Grell@hotmail.com','Mit',9,7,2015,'NaWi',8),
+  answer('Meinike','N.Meinike@web.de','Die',9,12,2015,'Mathematik',7),
+  answer('Meinike','N.Meinike@web.de','Don',9,6,2015,'Mathematik',7),
+  answer('Meinike','N.Meinike@web.de','Mon',0,4,2015,'Mathematik',7),
+  answer('Schmidt','MSchmidt@mail.de','Mon',7,10,2015,'Deutsch',7),
+  answer('Schmidt','MSchmidt@mail.de','Mon',7,10,2015,'Mathematik',7)
+}
+Info: 16 tuples computed.          
+
+DES-RA> %17 Die Namen aller Tutoren sortiert nach der durchschnittlichen Bewertung ihrer Stunden (absteigend)
+
+
+DES-RA> %geht nicht
+
+
+DES-RA> %18 Die durchschnittlichen Bewertung der Stunden von Tutor Aust
+
+
+DES-RA> %geht nicht
+
+
+DES-RA> %19 Alle stattgefundenen Mathe-Stunden
+
+
+DES-RA> Tutoren (TNr,Name):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project StdNr, Name, Bewertung
+	(select FName = 'Mathematik' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+answer(StdNr:number(integer),Name:string(varchar),Bewertung:number(integer)) ->
+{
+  answer(0,'Aust',2),
+  answer(1,'Aust',2),
+  answer(3,'Grell',3),
+  answer(5,'Meinike',1),
+  answer(6,'Meinike',2),
+  answer(7,'Meinike',1),
+  answer(8,'Meinike',3),
+  answer(9,'Meinike',4),
+  answer(10,'Meinike',2)
+}
+Info: 9 tuples computed.          
+
+DES-RA> %20 Teilnehmer in Mathe bei Meinike am Donnerstag in der 6.KW 
+
+
+DES-RA> Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project Name, Bewertung
+	(select TName = 'Meinike' AND FName = 'Mathematik' AND Kw=6 AND Tag = 'Don'
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach NJOIN NachhilfeSlot NJOIN NachhilfeSchueler));
+
+answer(Name:string(varchar),Bewertung:number(integer)) ->
+{
+  answer('Ahrend',1),
+  answer('Logo',2),
+  answer('Schulz',1)
+}
+Info: 3 tuples computed.          
+
+DES-RA> %20a) Schueler, die am Donnerstag in der 6.KW an eine Mathestunde teilnahmen (Name, Fach,Stufe,Stunde)
+
+
+DES-RA> project Name, FName, Stufe, Stunde
+	(select FName = 'Mathematik' AND Kw = 6 AND Tag = 'Don' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN NachhilfeSchueler NJOIN NachhilfeFach NJOIN NachhilfeSlot));
+
+answer(Name:string(varchar),FName:string(varchar),Stufe:number(integer),Stunde:number(integer)) ->
+{
+  answer('Ahrend','Mathematik',7,8),
+  answer('Ahrend','Mathematik',7,9),
+  answer('Berend','Mathematik',8,9),
+  answer('Logo','Mathematik',7,9),
+  answer('Schulz','Mathematik',7,9)
+}
+Info: 5 tuples computed.          
+
+DES-RA> %22 Alle Nachhilfestunden für Mathe in der 6.KW
+
+
+DES-RA> project Name, Stufe, Tag, Stunde, Schuljahr
+	(select Kw = 6 AND FName = 'Mathematik'
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+
+answer(Name:string(varchar),Stufe:number(integer),Tag:string(varchar),Stunde:number(integer),Schuljahr:number(integer)) ->
+{
+  answer('Aust',8,'Don',9,2015),
+  answer('Grell',7,'Don',8,2015),
+  answer('Grell',7,'Don',9,2015),
+  answer('Meinike',7,'Don',9,2015)
+}
+Info: 4 tuples computed.          
+
+DES-RA> %23 Alle Nachhilfestunden die von Schüler Ahrend im Jahr 2015 besucht wurden
+
+
+DES-RA> project StdNr, FName, Schuljahr, Kw, Tag, Stunde
+	(select Name = 'Ahrend' AND Schuljahr = 2015 AND Bewertung >=1
+	(NachhilfeSchueler NJOIN NachhilfeStunde NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+
+answer(StdNr:number(integer),FName:string(varchar),Schuljahr:number(integer),Kw:number(integer),Tag:string(varchar),Stunde:number(integer)) ->
+{
+  answer(3,'Mathematik',2015,6,'Don',8),
+  answer(5,'Mathematik',2015,6,'Don',9)
+}
+Info: 2 tuples computed.          
+
+DES-RA> %24 Namen und E-Mailadressen aller Tutoren die am Donnerstag, 9. Stunde, 6.KW in 2015 verfügbar sind
+
+
+DES-RA> project Name, Mail, FName
+	(select Schuljahr = 2015 AND Kw = 6 AND Stunde = 9
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor NJOIN NachhilfeVerfuegbar NJOIN NachhilfeSlot NJOIN NachhilfeFach));
+
+answer(Name:string(varchar),Mail:string(varchar),FName:string(varchar)) ->
+{
+  answer('Aust','faust@istdoch.net','Mathematik'),
+  answer('Grell','H.Grell@hotmail.com','Mathematik'),
+  answer('Grell','H.Grell@hotmail.com','NaWi'),
+  answer('Meinike','N.Meinike@web.de','Mathematik')
+}
+Info: 4 tuples computed.          
+
+DES-RA> %25 Namen und E-Mailadressen aller Tutoren sortiert nach Ortsteil
+
+
+DES-RA> project Ortsteil, Name, Mail
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+answer(Ortsteil:string(varchar),Name:string(varchar),Mail:string(varchar)) ->
+{
+  answer('Altstadt','Depp','ADepp@here.com'),
+  answer('Hakenfelde','Grell','H.Grell@hotmail.com'),
+  answer('Kladow','Dussel','JD@haha.com'),
+  answer('Siemensstadt','Meinike','N.Meinike@web.de'),
+  answer('Siemensstadt','Schmidt','MSchmidt@mail.de'),
+  answer('Staaken','Aust','faust@istdoch.net')
+}
+Info: 6 tuples computed.          
+
+DES-RA> %26 Alle stattgefundenen Stunden
+
+
+DES-RA> project StdNr
+	(select Bewertung >=1
+	(NachhilfeStunde));
+
+answer(StdNr:number(integer)) ->
+{
+  answer(0),
+  answer(1),
+  answer(2),
+  answer(3),
+  answer(4),
+  answer(5),
+  answer(6),
+  answer(7),
+  answer(8),
+  answer(9),
+  answer(10)
+}
+Info: 11 tuples computed.          
+
+DES-RA> %26a Alle nicht stattgefundenen Stunden
+
+
+DES-RA> project StdNr
+	(select Bewertung = 0
+	(NachhilfeStunde));
+
+answer(StdNr:number(integer)) ->
+{
+  answer(11)
+}
+Info: 1 tuple computed.          
+
+DES-RA> %27 Alle Tutoren
+
+
+DES-RA> project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+answer(SNr:number(integer),Name:string(varchar)) ->
+{
+  answer(2,'Aust'),
+  answer(5,'Dussel'),
+  answer(6,'Depp'),
+  answer(8,'Grell'),
+  answer(13,'Meinike'),
+  answer(14,'Schmidt')
+}
+Info: 6 tuples computed.          
+
+DES-RA> %28 Alle Stunden der Tutoren
+
+
+DES-RA> Tutoren (TNr,Name):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project StdNr, Name
+	(select Bewertung >=1
+	(NachhilfeStunde NJOIN Tutoren));
+
+answer(StdNr:number(integer),Name:string(varchar)) ->
+{
+  answer(0,'Aust'),
+  answer(1,'Aust'),
+  answer(2,'Dussel'),
+  answer(3,'Grell'),
+  answer(4,'Depp'),
+  answer(5,'Meinike'),
+  answer(6,'Meinike'),
+  answer(7,'Meinike'),
+  answer(8,'Meinike'),
+  answer(9,'Meinike'),
+  answer(10,'Meinike')
+}
+Info: 11 tuples computed.          
+
+DES-RA> %29 Alle Stunden von Meinike
+
+
+DES-RA> Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project StdNr, TName, FName
+	(select TName = 'Meinike' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+answer(StdNr:number(integer),TName:string(varchar),FName:string(varchar)) ->
+{
+  answer(5,'Meinike','Mathematik'),
+  answer(6,'Meinike','Mathematik'),
+  answer(7,'Meinike','Mathematik'),
+  answer(8,'Meinike','Mathematik'),
+  answer(9,'Meinike','Mathematik'),
+  answer(10,'Meinike','Mathematik')
+}
+Info: 6 tuples computed.          
+
+DES-RA> %30 Alle Stunden von Meinike
+
+
+DES-RA> Tutoren (TNr,TName):=
+	project SNr, Name
+	(NachhilfeSchueler NJOIN NachhilfeIstTutor);
+
+
+DES-RA> project StdNr,FName,Bewertung
+	(select TName = 'Meinike' AND  Bewertung >= 1
+	(NachhilfeStunde NJOIN Tutoren NJOIN NachhilfeFach));
+
+answer(StdNr:number(integer),FName:string(varchar),Bewertung:number(integer)) ->
+{
+  answer(5,'Mathematik',1),
+  answer(6,'Mathematik',2),
+  answer(7,'Mathematik',1),
+  answer(8,'Mathematik',3),
+  answer(9,'Mathematik',4),
+  answer(10,'Mathematik',2)
+}
+Info: 6 tuples computed.          
+
+DES-RA> /nolog
+

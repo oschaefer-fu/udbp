@@ -1,0 +1,78 @@
+From: Oliver Schäfer <Oliver.Schaefer@fu-berlin.de>
+To: David Fröhlich <david-froehlich@web.de>
+Cc: 
+Bcc: 
+Subject: Re: SQL
+Reply-To: 
+In-Reply-To: <55896A6C.6010807@web.de>
+
+David Fröhlich schrieb am Tue, Jun 23, 2015 at 04:17:16PM +0200:
+> Lieber Herr Schäfer,
+> 
+> ich hänge noch bei 2 SQL selects. Vielleicht können Sie mir ja helfen:
+> 
+> 
+> 1) Vertragsnummer, Kategoriename und Ort aller Mieter die nicht in einem
+> Ort mit Station wohnen
+> 
+> Hier in RA (recht einfach)
+> project VNr, KName, MOrt
+> (	
+> 	(project MOrt (Mieter)) difference (project SOrt (Station))
+> 	njoin
+> 	Vertrag
+> 	njoin
+> 	Mieter
+> );
+> 
+> Hier zwei von vielen Versuchen:
+> SELECT VNr, KName, MOrt
+> FROM  Station NATURAL JOIN Mieter NATURAL JOIN Vertrag
+> WHERE MOrt != SORT;
+> PROBLEM:  MOrt != SORT wird NACH dem njoin gemacht.
+> 
+> SELECT MNr, KName, MOrt
+> FROM VERTRAG NATURAL JOIN Mieter
+> EXCEPT
+> SELECT MNr, KName, SOrt
+> FROM Station NATURAL JOIN VERTRAG;
+> PROBLEM: ähnlich wie oben, der njoin von Station und Vertrag,
+> Stadt die MOrt - SOrt zu rechnen wie ich möchte
+> 
+> Haben Sie eine Idee wie ich das hin bekomme? Bzw. kann man mehrere
+> selects ineinander verschachteln oder temporäre tables erstellen?
+> 
+> --
+> Das Datums Problem haben wir immer noch nicht gelöst
+> 
+> 2) Welche Kategorien sind am 2015-05-10 an der Station Nr. 3 noch frei?
+> 
+> Eine weitere Möglichkeite wäre VBeginn + INTERVAL '4', allerdings
+> unterstützt interval nur Konstanten.
+> 
+> Das hier ist das beste was ich hin bekomme:
+> Merkposten hier: Nächstes mal Enddatum wählen statt Dauer in Tagen!
+> 
+> SELECT KName
+> FROM Vertrag
+> WHERE SNr = '3' AND VBeginn > '2015-05-10'; -- AND VEnde < '2015-05-10'
+> 
+> mit VEnde als Datum wäre das supereinfach!!!
+> 
+> 
+> Falls Sie eine Lösung finden, wir haben es inzwischen aufgegeben.
+> 
+> Vielen Dank für die Hilfe
+> 
+> David Fröhlich
+> 
+
+
+
+-- 
+----------------------------------------------------------------------
+Oliver Sch"afer                               Privat  +49 30  33506545
+FU Berlin, FB Mathematik und Informatik       Fax     +49 30  33506546 
+Lehrerweiterbildung Informatik                Arbeit  +49 30  83875215 
+K"onigin-Luise-Str. 24-26, D-14195 Berlin     Mobil   +49 175  6633177
+----------------------------------------------------------------------

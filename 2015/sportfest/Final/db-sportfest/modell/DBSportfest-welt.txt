@@ -1,0 +1,37 @@
+
+Beschreibung der Miniwelt Sportfest in Textform
+
+Für ein Schulsportfest der Klassenstufen 5-13 soll eine Datenbank modelliert werden.
+
+Die Wettkämpfe finden in Doppeljahrgangsstufen (5/6, 7/8, 9/10, 11/12) statt.
+Schüler der Klasse 13 und Lehrer stellen Kampfrichter und Helfer für die einzelnen Sportarten.
+Jede Klasse hat einen Lehrer als Betreuer.
+Das Sportfest findet auf verschiedenen Sportanlagen statt.
+Zu einer Anlage gehören verschiedenen Materialien in unterschiedlichen Anzahlen.
+Auf einer Anlage können mehrere Wettkämpfe stattfinden, jedoch nicht zur gleichen Zeit.
+An jeder Anlage wird verschieden lange Sport getrieben.
+Jeder Schüler nimmt an wenigstens 3 und maximal 5 Wettkämpfen teil.
+Es gibt verschiedene Sportarten.
+In jeder Sportart finden Wettkämpfe in verschiedenen Wettkampfklassen getrennt nach 
+Doppeljahrgangsstufe und Geschlecht statt.
+Die Klassenstufe eines Schülers muss zur Wettkampfklasse passen.
+Jeder Schüler wird durch Schülernummer, Name und Vorname charakterisiert.
+Jeder Lehrer wird durch Lehrernummer, Name und Vorname charakterisiert.
+Von vorhandenen Materialien werden Nummer, Bezeichnung und Anzahl erfasst.
+Eine Sportanlage ist durch ihre Nummer und ihre Bezeichnung charakterisiert.
+
+
+Didaktische Reduzierung
+
+Der Datenumfang eines realen Sportfestes überschreitet die Übersichtlichkeit.
+Wir werden auf die Doppeljahrgangsstufe 5/6 verzichten und auch die Anzahl der Schüler, 
+Wettkämpfe, Wettkampfteilnahmen und Lehrer
+gering halten.
+
+Dadurch passen alle Daten auf eine DIN A4 Seite und Abfrageergebnisse lassen sich schnell 
+auf ihre Korrektheit kontrollieren.
+Dadurch lassen sich einige Bedingungen der Miniwelt nicht mehr aufrecht erhalten.
+Z.B. nehmen nicht mehr alle Schüler an 3 bis 5 Wettkämpfen teil.
+
+
+

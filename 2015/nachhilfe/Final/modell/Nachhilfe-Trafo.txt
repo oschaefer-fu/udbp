@@ -1,0 +1,61 @@
+Die Entitäten Schueler, Fach, Ort, Slot, Typ und Stunde werden mit ihren (flachen) Attributen zunächst in Relationen mit der gleichen Attributmenge transformiert. 
+
+
+Tutor 1..1 isa Schueler			Ein Tutor muss genau einmal in der Liste der Schueler vorkommen.
+
+Schueler 0..1 isa Tutor			Ein Schueler erscheint entweder nicht, oder genau einmal in der Liste der Tutoren.
+
+Tutor 1..n ist-Tutor Fach		Ein Tutor muss mindestens ein Fach unterrichten, es können aber auch beliebig viele sein.
+
+Fach 0..n ist-Tutor Tutor		Ein Fach kann von beliebig vielen Tutoren unterrichtet werden, muss es aber nicht.
+
+Die beiden Beziehungen werden unter Hinzunahme des Fremdschlüssels SNr# für den Subtyp Tutor zur Relation "istTutor" zusammengefasst.
+
+
+Tutor 0..n ist-verfuegbar Slot		Ein Tutor kann für beliebig viele Zeitrahmen verfügbar sein, muss es aber nicht.
+
+Slot 0..n ist-verfuegbar Tutor		In jedem Zeitrahmen erscheinen beliebig viele Tutoren oder keiner.
+
+Diese n:n Beziehung Wird in die eigenständige Relation "verfuegbar" abgebildet.
+
+
+Tutor 0..n gibt Stunde			Ein Tutor gibt keine oder beliebig viele Stunden.
+
+Stunde 1..1 gibt Tutor			Jede Stunde wird von genau einem Tutor gehalten.
+
+Die 1:n Beziehung wird transformiert, indem der Fremdschlüssel der 1-Seite (TNr) der Relation der n-Seite (Stunde) hinzugefügt wird.
+
+
+Fach 0..n zu Stunde			Zu einem Fach können beliebig viele Stunden stattfinden oder keine.
+
+Stunde 1..1 zu Fach			Jede Stunde ist genau einem Fach zugeordnet.
+
+Die 1:n Beziehung wird transformiert, indem der Fremdschlüssel der 1-Seite (FNr) der Relation der n-Seite (Stunde) hinzugefügt wird.
+
+
+Stunde 1..1 ist-vom-Typ Typ		Jede Stunde ist genau einem Typ zugordnet.
+
+Typ 0..n ist-vom-Typ Stunde		Es können beliebig viele Stunden eines Typs stattfinden oder keine.
+
+Die 1:n Beziehung wird transformiert, indem der Fremdschlüssel der 1-Seite (TypName) der Relation der n-Seite (Stunde) hinzugefügt wird.
+
+
+
+Schueler 0..n nimmt-teil Stunde		Ein Schüler kann an beliebig vielen Stunden teilnehmen, oder an keiner.
+
+Stunde 1..4 nimmt-teil Schueler		An jeder Stunde nimmt mindestens ein Schueler teil. Die Teilnehmerzahl ist auf vier Schüler begrenzt.
+
+Die 4:n Beziehung wird transformiert, indem der Fremdschlüssel der 4-Seite (SNr) der Relation der n-Seite (Stunde) hinzugefügt wird.
+Hier wurde auf eine eigene Relation nimmt-teil verzichtet. Der Schlüssel muss daher um SNr# erweitert werden.
+
+
+Stunde 1..1 findet-statt-an Ort		Jede Stunde findet an genau einem Ort statt.
+
+Ort 0..n findet-statt-an Stunde		An einem Ort können beliebig viele Stunden stattfinden oder keine.
+
+Die 1:n Beziehung wird transformiert, indem der Fremdschlüssel der 1-Seite (RNr) der Relation der n-Seite (Stunde) hinzugefügt wird.
+
+
+
+
+

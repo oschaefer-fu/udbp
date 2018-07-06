@@ -1,0 +1,132 @@
+Beispieldaten zur Nachhilfe-Datenbank (Stand: 4.Juli 2015)
+
+schueler
+ snr |  vorname  |   name   |   ortsteil   |        mail         | klasse | eltok 
+-----+-----------+----------+--------------+---------------------+--------+-------
+   1 | Joschua   | Ahrend   | Staaken      | JAhrend@web.de      |      7 | t
+   2 | Franziska | Aust     | Staaken      | faust@istdoch.net   |      8 | t
+   3 | Michael   | Berend   | Hakenfelde   | michi@Berend.com    |      7 | t
+   4 | Stefan    | Bussmann | Kladow       | SBussi@hotmail.com  |      8 | t
+   5 | Jana      | Dussel   | Kladow       | JD@haha.com         |      9 | t
+   6 | Andreas   | Depp     | Altstadt     | ADepp@here.com      |      9 | t
+   7 | Jan       | Ebert    | Altstadt     | jan@ebert.de        |      8 | t
+   8 | Hans      | Grell    | Hakenfelde   | H.Grell@hotmail.com |      9 | t
+   9 | Bianca    | Frei     | Gatow        | frei.Bia@weg.de     |      8 | t
+  10 | Jonas     | Logo     | Stresow      | JLogo@yahoo.com     |      7 | f
+  11 | Nikolai   | Schulz   | Stresow      | NikoS@web.de        |      7 | t
+  12 | Leila     | Fink     | Siemensstadt | FinkL@gmail.com     |      7 | t
+  13 | Anna      | Meinike  | Siemensstadt | N.Meinike@web.de    |      8 | t
+  14 | Michaela  | Schmidt  | Siemensstadt | MSchmidt@mail.de    |      8 | t
+(14 Zeilen)
+
+fach
+ fnr |   fname    | stufe 
+-----+------------+-------
+   1 | Mathematik |     8
+   2 | Mathematik |     7
+   3 | Deutsch    |     8
+   4 | Deutsch    |     7
+   5 | Englisch   |     7
+   6 | NaWi       |     8
+(6 Zeilen)
+
+ort
+ rnr |     rname      
+-----+----------------
+   1 | Bibliothek
+   2 | Sprechzimmer 1
+   3 | Sprechzimmer 2
+   4 | Raum 201b
+   5 | Raum 202b
+   6 | Raum 301a
+(6 Zeilen)
+
+slot
+ slotnr | schuljahr | kw | tag | stunde 
+--------+-----------+----+-----+--------
+      0 |      2014 | 45 | Mon |      8
+      1 |      2014 | 45 | Mit |      9
+      2 |      2014 | 46 | Don |      9
+      3 |      2014 | 47 | Mon |      7
+      4 |      2015 |  2 | Die |      7
+      5 |      2015 |  4 | Mon |      0
+      6 |      2015 |  4 | Mon |      8
+      7 |      2015 |  6 | Don |      9
+      8 |      2015 |  6 | Don |      8
+      9 |      2015 |  7 | Mit |      9
+     10 |      2015 | 10 | Mon |      7
+     11 |      2015 | 12 | Die |      9
+(12 Zeilen)
+
+verfuegbar
+ snr | slotnr 
+-----+--------
+   2 |      3
+   2 |      7
+   5 |      0
+   5 |      1
+   5 |      3
+   5 |      4
+   6 |      2
+   6 |      4
+   6 |      6
+   8 |      7
+   8 |      8
+   8 |      9
+  13 |      1
+  13 |      5
+  13 |      7
+  13 |     11
+  14 |     10
+(17 Zeilen)
+
+istTutor
+ snr | fnr 
+-----+-----
+   2 |   1
+   5 |   3
+   5 |   4
+   6 |   5
+   8 |   2
+   8 |   6
+  13 |   2
+  14 |   4
+  14 |   2
+(9 Zeilen)
+
+typ
+ typname | preis 
+---------+-------
+ Einzel  | 10.00
+ Gruppe  |  5.00
+ Frei    |  0.00
+(3 Zeilen)
+
+stunde
+ stdnr | snr | slotnr | tnr | fnr | rnr | typname | bewertung | status 
+-------+-----+--------+-----+-----+-----+---------+-----------+--------
+     0 |   3 |      3 |   2 |   1 |   4 | Einzel  |         2 | t
+     1 |   3 |      7 |   2 |   1 |   4 | Einzel  |         2 | t
+     2 |   4 |      0 |   5 |   3 |   3 | Gruppe  |         1 | t
+     3 |   1 |      8 |   8 |   2 |   4 | Einzel  |         3 | t
+     4 |   8 |      6 |   6 |   5 |   1 | Gruppe  |         4 | t
+     5 |   1 |      7 |  13 |   2 |   2 | Gruppe  |         1 | t
+     6 |  10 |      7 |  13 |   2 |   2 | Gruppe  |         2 | t
+     7 |  11 |      7 |  13 |   2 |   2 | Gruppe  |         1 | t
+     8 |  11 |      5 |  13 |   2 |   2 | Gruppe  |         3 | t
+     9 |  10 |      5 |  13 |   2 |   2 | Gruppe  |         4 | t
+    10 |  10 |      1 |  13 |   2 |   2 | Gruppe  |         2 | t
+    11 |  10 |     11 |  13 |   2 |   3 | Gruppe  |         0 | f
+(12 Zeilen)
+
+tutoren (View)
+ tnr |  name   
+-----+---------
+   2 | Aust
+   5 | Dussel
+   6 | Depp
+   8 | Grell
+  13 | Meinike
+  14 | Schmidt
+(6 Zeilen)l
+(6 Zeilen)
