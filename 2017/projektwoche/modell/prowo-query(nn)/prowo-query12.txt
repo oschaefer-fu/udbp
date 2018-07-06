@@ -1,0 +1,1 @@
+"12. Anzahl aller Kurse bestimmen und diese  in 'Anzahl aller Kurse' umbennennen"

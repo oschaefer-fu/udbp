@@ -1,0 +1,10 @@
+DELETE FROM vertrieb;
+DELETE FROM haendler;
+DELETE FROM nachbarschaft;
+DELETE FROM beet;
+DELETE FROM vertraeglichkeit;
+DELETE FROM gemuese;
+DELETE FROM sorten;
+DELETE FROM erfordern;
+DELETE FROM angebautes;
+DELETE FROM arbeitsschritte;

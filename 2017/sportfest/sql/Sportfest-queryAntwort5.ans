@@ -1,0 +1,16 @@
+﻿//SQL Anfragen mit Kommentaren Projekt Datenbank Sportfest
+//Anfrage5...alle Schüler, die am 800m-Lauf teilnehmen
+//select SName, Klasse from Schueler natural join Wettkaempfe where WName = '800m Lauf';
+sname   | klasse 
+-----------+--------
+ Meier     | 10
+ El Daher  | 9
+ Anger     | 10
+ Tusk      | 8
+ Schreiber | 9
+ Yükcel    | 7
+ Watt      | 10
+ Ampere    | 8
+ Eroglu    | 7
+ Sommer    | 9
+

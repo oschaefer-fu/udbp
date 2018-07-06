@@ -1,0 +1,8 @@
+SELECT * FROM fach
+fnr;fname
+1;keine
+2;Informatik
+3;Mathematik
+4;Englisch
+5;Französisch
+6;Deutsch

@@ -1,0 +1,20 @@
+% 1) Welche Gemüsearten sind in der Datenbank? 
+{A | gemuese(A)}
+% 2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?
+{A.taetigkeit|arbeitsschritte(A)}
+% 3) Wie heißen die Händler, die in Berlin ansässig sind?
+{A.hname | haendler(A) and A.ort = 'Berlin'}
+% 4) Wie heißen die Gemüsearten, die zur Familie der Blattgemuese gehören?
+{A.gname | gemuese(A) and A.familie='Blattgemuese'}
+% 13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familien an.
+{A.sname, C.gname|sorten(A) and gemuese(C) and A.gnr=C.gnr}
+% 14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an.
+{A.sname|sorten(A) and (exists B) (angebautes(B) and A.snr=B.snr)}
+% 15) Welche Abpackungen von Tigerella gibt es?
+{V.packungseinheit, V.packungsmenge|(exists S) vertrieb(V) and (sorten(S) and V.snr=S.snr and S.sname='Tigerella')}
+% 16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen.
+{S.sname|(exists A,B) sorten(S) and (beet(B) and angebautes(A) and A.bnr=2 and A.snr=S.snr)}
+% 17) Welche Händler verteiben Hokaido?
+{H.hname|(exists S,V) haendler(H) and (sorten(S) and vertrieb(V) and V.snr=S.snr and S.sname='Hokaido' and V.hnr=H.hnr)}
+% 18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer.
+{B.bnr,S.sname|(exists A) beet(B) and sorten(S) and (angebautes(A) and A.snr=S.snr and A.bnr=B.bnr)}

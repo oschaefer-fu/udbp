@@ -1,0 +1,47 @@
+Semantik der Relationen
+
+
+Im Folgenden sind einige Integritätsbedingungen zu den unterschiedlichen Relationen aufgeführt.
+
+
+- Relation Wettkaempfe:
+
+Bestimmte Wettkämpfe dürfen nur bestimmten Kategorien zugeordnet werden.
+Nicht jede Kategorie verfügt über alle Arten von Wettkämpfen.
+
+
+- Relation Teilnahme:
+
+Jeder Schüler darf  maximal nur an einem Wettkampf aus einer der vier Kategorien teilnehmen. Ein Schüler kann nicht zeitgleich an mehreren Wettkämpfen teilnehmen. 
+Ein Schüler kann nicht an Wettkämpfen anderer Klassenstufen teilnehmen.
+An jedem Wettkampf können aber mehrere Schüler einer Klasse zur gleichen Zeit teilnehmen.
+
+
+- Relation Wettkampfstaetten:
+
+Eine Wettkampfstätte muss von einem Lehrer beaufsichtigt werden. Es genügt nicht, dass ein Schüler die Wettkampfstätte betreut.
+
+
+- Relation Material:
+
+Nicht alle Materialien sind bei jedem Wettkampf einzusetzen.
+
+
+- Relation Lehrer:
+
+Ein Lehrer kann nicht zeitgleich zwei Wettkampfstätten beaufsichtigen.
+
+
+- Relation Aufsichtsunterstützung:
+
+Ein Schüler kann nicht zur selben Zeit an zwei unterschiedlichen Wettkampfstätten die Aufsicht unterstützen.
+Ein Schüler kann nicht gleichzeitig an einem Wettkampf teilnehmen und an einer Wettkampfstätte die Aufsicht unterstützen.
+
+
+- Relation Dienstleister:
+
+Ein Dienstleister kann nicht unterschiedlichen Branchen angehören.
+
+
+
+﻿

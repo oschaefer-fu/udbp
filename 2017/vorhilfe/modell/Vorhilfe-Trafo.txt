@@ -1,0 +1,41 @@
+Transformationsregeln am Bsp. unserer Miniwelt 'Vorhilfe':
+
+Transformation von Entitaätstypen: 
+Ein Entitaätstyp des ER-Modells wird in einen Relationstyp des Relationenmodells mit gleicher Attributmenge transformiert.  
+Bsp.: Raum (RNR, stock, anzP)
+
+Transformation von n:m-Beziehungstypen: 
+Der ursprüngliche Beziehungstyp im Relationenmodell wird zur eigenständigen Relation 
+und enthält sowohl die Schlüssel der beteiligten Entitäten (als Fremdschlüssel) als auch -falls vorhanden- 
+die Attribute des alten Beziehungstyps selbst. Als Schlüssel wird die  Kombination der beteiligten Fremdschlüssel verwendet. 
+Bsp.: hat (RNR (Ref. Raum (RNR), ANR  Ref. Ausstattung (ANR))
+
+Problem einer einseitig 0...* optionalen Beziehung: Sie ist nicht unterscheidbar von 1...* (Semantikverlust) 
+Bsp. vermittelt (KNR, FNR)
+
+Transformation von c:c-Beziehungstypen:  (0...1) : (0...1)
+In unserem Modell nicht vorhanden. 
+
+Transformation von 1:n-Beziehungstypen:  
+"Bei der Transformation von 1:n-Beziehungstypen werden die ER-Relationsattribute zusammen mit dem Fremdschlüssel 
+der Entität der 1-Seite der transformierten Entität der n-Seite hinzugefügt. 
+Als Schlüssel dient der jeweilige Primärschlüssel des Entitätstyps.“ 
+(Siehe Schäferskript 07 S. 51)
+
+Semantikverlust ist mgl., da die Kardinalitäten der beteiligten Entitäten verloren gehen. 
+Aus diesem Grund haben wir teilweise Integritätsbedingungen hinzugefügt. 
+Bsp.: Kurs (KNR, SID (Ref. Beziehung 'bietet an') wtag, zeit, maxP)
+ mit Integritätsbedingungscheck:
+ maxP INTEGER -- Maximale Teilnehmerzahl 
+CHECK (maxP BETWEEN 2 AND 5) DEFAULT 4. 
+
+
+Transformation von 1:1-Beziehungstypen: 
+Der Primärschlüssel einer der beiden Tabellen wird als Fremdschlüssel der anderen Relationen
+ in eine zusätzliche Spalte aufgenommen. 
+
+Bsp. Relation 'besitzt' 
+Schueler (SID, nname, vname, geb, klasse, LID (Ref. Beziehung 'ist Klassenlehrer'), email, KoNR (Ref. Beziehung 'besitzt'))
+
+
+

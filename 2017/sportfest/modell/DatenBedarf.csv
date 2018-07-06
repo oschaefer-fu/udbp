@@ -1,0 +1,10 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Bedarf;;;;;
+MNr;WKNr;Anzahl;;;
+503;305;3;;;
+501;303;2;;;
+502;308;6;;;
+

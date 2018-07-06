@@ -1,0 +1,10 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Dienstleister ;;;;;
+DNr;DName;DAdresse;Branche;;
+401;'SportundSpiel';'Ballweg';'Sportgeräte';;
+402;'EinfachLecker';'Brötchengasse';'Catering';;
+403;'GuteFahrt';'An der Autobahn';'Transport';;
+

@@ -1,0 +1,132 @@
+﻿LWB	Informatik
+UDBP	Sportfest
+
+Tabellen mit Daten 
+
+
+TABLE Schueler 
+Snr	Sname		Klasse	Geburtsdatum	Geschlecht	Schwimmnachweis 	
+90001	'Meier'		'10'		'27.11.2000'	'm'		'1'
+90002	'El Daher'	'9'		'02.05.2001'	'w'		'1'
+90003	'Anger' 	'10'		'17.09.2001'	'm'		'1'
+90004	'Tusk'		'8'		'10.04.2002'	'w'		'0'
+90005	'Schreiber'	'9'		'29.05.2001'	'm'		'1'
+90006	'Yükcel'	'7'		'25.06.2003'	'm'		'0'
+90007	'Watt'		'10'		'07.09.2000'	'm'		'1'
+90008	'Ampere'	'8'		'02.06.2002'	'w'		'1'
+90009	'Eroglu'	'7'		'11.03.2004'	'm'		'1'
+90010	'Sommer'	'9'		'04.01.2002'	'w'		'0'
+	
+
+TABLE Wettkaempfe
+WKNr 		WName			Kategorie
+2001		'800m Lauf'		'Ausdauer'
+2002		'Radfahren'		'Ausdauer'
+2003		'Kugelstoßen'		'Kraft'
+2004		'Standweitsprung'	'Kraft'
+2005		'Laufen'		'Schnelligkeit'
+2006		'25m Schwimmen'		'Schnelligkeit'
+2007		'Hochsprung'		'Koordination'
+2008		'Seilspringen'		'Koordination'
+
+
+TABLE Teilnahme 
+SNr	WKNr 	TnZeit	Ergebnis
+90001	2006	'10:00'	2							
+90002	2002	'08:00'	3
+90003	2001	'09:00'	1
+90004	2005	'13:00'	3
+90005	2004	'10:00'	3
+90006	2001	'08:00'	3
+90007	2006	'10:00'	2
+90008	2005	'13:00'	3
+90009	2001	'08:00'	3
+90010	2004	'10:00'	3
+90001	2003	'08:00'	2
+90002	2004	'10:00'	2
+90003	2003	'08:00'	2
+90004	2003	'10:00'	2
+90005	2002	'08:00'	3
+90006	2003	'12:00'	3
+90007	2003	'08:00'	2
+90008	2003	'10:00'	2
+90009	2004	'09:00'	1
+90010	2002	'08:00'	3
+90001	2006	'09:00'	2
+90002	2006	'11:00'	2
+90003	2001	'09:00'	1
+90004	2002	'09:00'	3
+90005	2006	'11:00'	2
+90006	2008	'11:00'	2
+90007	2006	'10:00'	3
+90008	2001	'11:00'	2
+90009	2006	'12:00'	3
+90010	2006	'11:00'	2
+
+
+
+TABLE Wettkampfstaetten 
+WKStNr	WKStName		WKStAdresse
+301	'Turnhalle'		'Schulstraße'
+302	'Sportplatz'		'Vereinsstraße'
+303	'Schwimmhalle'		'Badstraße'
+304	'Landschaftspark'	'Parkstrasse'
+
+
+TABLE Aufsichtsunterstuetzung
+SNr	WKStNr	UAZeit
+90007	304	'11:00'
+90001	303	'08:00'
+90003	302	'09:00'
+
+
+TABLE Lehrer
+PNr	LName			WKStNr
+10001	'Buchschmid'		304
+10002	'Zemke'			303
+10003	'El Moutahid'		302
+10004	'Hertel'		301
+
+
+TABLE Stattfinden
+WKNr	WKStNr	SFZeit
+2006	303	'10:00'
+2002	304	'08:00'
+2001	302	'09:00'
+2003	302	'11:00'
+2008	301	'12:00'
+2005	302	'13:00'
+
+
+TABLE Material
+MNr	MName		Vorratsanzahl
+501	'Kugel'			5
+502	'Springseil'		10
+503	'Stoppuhr'		10
+504	'Trillerpfeife'		20
+505	'Maßband'		5
+506	'Harken'		2
+507	'Ständer'		6
+508	'Stangen'		3
+
+
+TABLE Bedarf
+MNr	WKNr	Anzahl
+503	305	3
+501	303	2
+502	308	6
+
+
+TABLE Dienstleister 
+DNr	DName			DAdresse		Branche
+401	'SportundSpiel'		'Ballweg'		'Sportgeräte'
+402	'EinfachLecker'		'Brötchengasse'		'Catering'
+403	'GuteFahrt'		'An der Autobahn'	'Transport'
+	
+
+TABLE Betreuung
+DNr	WKStNr	Kosten
+401	302	'50.00 €'
+403	302	'150.00 €'
+402	301	'200.00 €'
+

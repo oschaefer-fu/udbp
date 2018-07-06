@@ -1,0 +1,17 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Schueler ;;;;;
+Snr;Sname;Klasse;Geburtsdatum;Geschlecht;Schwimmnachweis 
+90001;'Meier';'10';'27.11.2000';'m';'1'
+90002;'El Daher';'9';'02.05.2001';'w';'1'
+90003;'Anger' ;'10';'17.09.2001';'m';'1'
+90004;'Tusk';'8';'10.04.2002';'w';'0'
+90005;'Schreiber';'9';'29.05.2001';'m';'1'
+90006;'Yükcel';'7';'25.06.2003';'m';'0'
+90007;'Watt';'10';'07.09.2000';'m';'1'
+90008;'Ampere';'8';'02.06.2002';'w';'1'
+90009;'Eroglu';'7';'11.03.2004';'m';'1'
+90010;'Sommer';'9';'04.01.2002';'w';'0'
+

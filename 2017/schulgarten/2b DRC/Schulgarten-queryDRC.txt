@@ -1,0 +1,20 @@
+% 1) Welche Gemüsearten sind in der Datenbank?
+{A,B,C,D,E | gemuese(A,B,C,D,E)}
+% 2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?
+{B|arbeitsschritte(_, B)}
+% 3) Wie heißen die Händler, die in Berlin ansässig sind?
+{B | haendler(_, B, _, _, 'Berlin')}
+% 4) Wie heißen die Gemüsearten, die zur Familie der Blattgemuese gehören?
+{B| gemuese(_,B,'Blattgemuese',_,_)}
+% 13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familien an.
+{A, B, C |(exists X) sorten(_, A, _, X, _, _, _) and gemuese(X, B, C, _, _)}
+% 14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an.
+{A,B|(exists S)sorten(S,A,_,_,_,_,_) and angebautes(_,S,_,B)}
+% 15) Welche Abpackungen von Tigerella gibt es?
+{A,B|(exists S) vertrieb(_,S,_,A,B) and sorten(S,'Tigerella',_,_,_,_,_)}
+% 16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen.
+{B|(exists A) sorten(A,B,_,_,_,_,_) and angebautes(_,A,2,_)}
+% 17) Welche Händler verteiben Hokaido?
+{A| (exists N,X) sorten(N,'Hokaido',_,_,_,_,_) and haendler(X,A,_,_,_) and vertrieb(X,N,_,_,_)}
+% 18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer.
+{H|(exists S,B,A) haendler(A,H,_,_,_) and sorten(S,_,_,_,_,_,_) and angebautes(_,S_,B,_) and vertrieb(A,S,_,_,_) }

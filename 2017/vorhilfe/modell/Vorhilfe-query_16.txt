@@ -1,0 +1,4 @@
+-- 16. Wie viele Kurse werden am Donnerstag angeboten? *** AGG
+SELECT COUNT(kurs.KNR) AS Kurse_am_Donnerstag
+FROM Kurs 
+WHERE wtag= 'do';

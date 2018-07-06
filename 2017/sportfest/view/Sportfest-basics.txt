@@ -1,0 +1,23 @@
+﻿LWB Informatik 2015-2017
+Unterrichtsbezogenes Datenbankpraktikum SoSe17
+Gruppenarbeit (Buchschmid,El Moutahid,Hertel,Zemke)
+
+Projekt „Sportfest-Datenbank“
+
+Beschreibung der interaktiven Basismöglichkeiten
+
+Die Sicht ermöglicht derzeit die Übung mit zwei Anfragen (Teilnehmende Schülerinnen und Schüler nach Geschlecht, Teilnehmende Schülerinnen und Schüler nach Schwimmnachweis). 
+
+Die Lernenden müssen die Relationen/Tabellenstruktur der Datenbank kennen. 
+
+In einem Grafikfenster kann durch Eingabe die gewählte Anfrage und dann die entsprechende Abfrage (1. Geschlecht (m,w),2. Schwimmnachweis (j,n)) die entsprechende Anfrage an die Datenbank übergeben werden.
+
+fehlerhafte Eingaben werden angezeigt. 
+
+Als Ergebnis werden die hinterlegte SQL-Anfrage und das Abfrageergebnis dargestellt.
+
+Leider konnte eine grafische Oberfläche „Formular“ (Go/PHP) nicht umgesetzt werden, kann jedoch nachgereicht werden.
+ 
+
+
+

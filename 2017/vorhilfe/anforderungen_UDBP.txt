@@ -1,0 +1,52 @@
+﻿F.3. Schriftliche Ausarbeitung 
+Die Ausarbeitung des Berichts sollte folgende Punkte umfassen:     Modellierung 
+1. (a)  Knappe,präzisetextuelleBeschreibungderMiniweltineinfachenAussagesätzen.Doku- ment: <db>.txt, eine halbe bis eine Seite Text, ASCII-Format. 
+Thomas 
+2. (b)  Das Entity-Relationship-Modell unter Angabe aller Attribute und der Beziehungskom- plexitäten. Achten Sie darauf, dass unter den Attributen mindestens ein numerisches ist, so dass Aggregierungsanfragen möglich werden. 
+Dokument: klassische Notation, übersichtliche Handzeichnung, ggf. Scan davon in FormeinerDatei<db>-ERModell.<xxx>(mitxxx = tex, png, pdf, eps)beispiel- sweise.  
+Marten , Christoph
+3. (c)  Verbale Angabe von semantischen Bezügen, die sich im Modell nicht wiederfinden, durch Prädikate (Constraints, Integritätsbedingungen). Dokument: knapp formulierte Textprädikate in der Sprache des Modells (<db>-Semantik.txt). 
+Thomas
+(d)  Eine Angabe der im Modell vorkommenden funktionalen Abhängigkeiten in einer Datei <db>-FAen.txt.  
+
+4. (e)  Ein Relationenmodell dazu in dritter Normalform mit Angabe von Schlüsseln, Fremd- schlüsseln und Notation von Integritätsbedingungen als logische Ausdrücke in einer Datei <db>-RelMod.txt. 
+
+5. (f)  VerbaleKurzbeschreibungdesTransformationswegsunterAngabederbenutztenTrans- formationsregeln (<db>-Trafo.txt). 
+
+6. (g)  Eine kleine, gut überlegte Sammlung von weltnahen Beispieldaten zu allen Relationen in der Datenbank <db>. Die verwendeten Namen sollen plausibel, realitätsnah und paradigmatisch für eine größere Datenmenge sein. Die Auflistung der Daten sollte auf einer DIN-A4-Seite möglich sein (Format: <db>-Daten.txt und <db>-Daten.csv in Tabellenform). 
+Christoph
+7. (h)  Zur Konstruktion der Anfragen: Anordnung nach steigendem Schwierigkeitsgrad. Jede Anfrage soll möglichst eine neue Komplexitätsstufe, Methode oder Implementierung- stechnik demonstrieren. Insbesondere sollen auch Anfragen mit Negation, All- oder Existenzaussagen, Aggregatfunktionen etc. vertreten sein. Dies ist der schwierigste und kreativste Teil. 
+Alle 
+Mit anderen Worten: der Konstruktionsprozess der Anfragen orientiert sich weniger an der Semantik des Miniweltmodells, sondern viel mehr an der Demonstration der jeweiligen Sprachmittel. 
+Der Entwicklungs- und Ausleseprozess der Anfragen wird eng mit den Implementierun- gen gekoppelt sein, mindestens 20 Anfragen sollten es werden. Dokumentationsformat: <db>-query<nn>.txt, eine zusammenfassende Textdatei mit allen Anfragen in fortlaufender Nummerierung. 
+Alle? 1-20 
+
+Relationenalgebra mit DES 
+Im Einzelnen sind gesucht: 
+1. (a)  Eine Datei <db>-schema.ra mit dem Relationenschema zu <db> 
+2. (b)  <db>-<rel>.ra-Dateien mit den Daten für die einzelnen Relationen des Schemas. 
+3. (c)  Die Implementierung der Anfragen in einer kommentierten ra-Datei <db>-query.ra. Nicht alle Anfragen werden im relationenalgebraischen Kontext sinnvoll sein (solche mit Aggregatfunktionen z. B.), sie können weggelassen werden. Die Aufgabenstellung steht jeweils als Kommentar über der auswertbaren Anfrage. 
+4. (d)  Das Protokoll aller Anfrageergebnisse in einer Datei <db>-query.ans. Das geht z. B. mit einer einfachen Funktion, die alle Anfragen sequentiell auswertet und dabei die Ausgabe mit &> in eine Datei umlenkt. 
+
+
+Implementierung im Datenbankystem (PostgreSQL) 
+Im Einzelnen sind gesucht: 
+1. (a)  Der DDL-Teil: eine dokumentierte Datei Create-<db>.sql zur Anlage der Tabellen- 
+struktur einer Datenbank (oder eines Schemas) <db> in PostgreSQL. 
+Christop
+2. (b)  Eine dokumentierte Datei Drop-<db>.sql zur Beseitigung der Datenbank <db>. 
+
+3. (c)  Die Daten: zwei Dateien Insert-<db>-data.sql und Delete-<db>-data.sql, die die Probedaten mit generischen SQL-Befehlen (INSERT, DELETE) in <db> einfügen bzw. aus ihr löschen. Bitte hierzu keine PostgreSQL-spezifischen Verfahren wählen. 
+
+4. (d)  Die Anfragen: Die Implementierung aller Anfragen (numeriert!) als <db>-query.sql. Die Aufgabe steht jeweils als Kommentar über der ausführbaren Anfrage. Oft sind Alternativ-Implementierungen möglich, deren Varianten in einer Datei mit dem Na- men <db>-query-alt.sql angegeben werden können. Ein begleitender didaktisch- methodischer Kommentar zu den Anfragen und den Lösungsvarianten ist in der zusam- menfassenden Ausarbeitung erwünscht. 
+
+5. (e)  Die Protokollierung der Anfrageergebnisse in den Dateien <db>-query<nn>.ans mit- tels psql -o oder mittels des Schalters
+o <datei>. 
+
+Didaktisch-Methodisches 
+Würdigen Sie unter den Aspekten Schwierigkeitsgrad, Umfang, Zeitbedarf und Bedeut- samkeit im Kontext des Informatikunterrichts ihre bis hierher geleistete Arbeit. Welche Teile sind unverzichtbar, welche ggf. fakultativ. Haben Sie Ideen zur methodischen Umsetzung? Was wären in einer Weiterführung sinnvolle Fragestellungen? Die Antworten gehen in eine Datei <db>-did.txt 
+
+
+Ermittlung des Gesamtergebnisses 
+Jeder Kandidat muss erkennbar an mindestens einem Bewertungskriterium der Präsentation (Darstellung der Miniwelt, Anfragen in SQL und im Relationenmodell, Anwendungsprogramm) und an mindestens zwei Bewertungskriterien der schriftlichen Ausarbeitung (Qualität der Miniwelt, Modellierung, Entwurf und Population, Güte der Anfragen (SQL/RA) und Anwendungsprogramm) mitgewirkt haben. Für diese Kriterien erfolgt eine individuelle Bewertung. Zusammen mit der Bewertung der allgemeinen Aspekte ergeben sich daraus die individuellen Punktsummen und daraus die Anteile aP für die Präsentation und aA für die schriftliche Ausarbeitung. Diese Anteile ergeben im Verhältnis 1 zu 3 den Gesamtanteil a. 
+

@@ -1,0 +1,10 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Aufsichtsunterstuetzung;;;;;
+SNr;WKStNr;UAZeit;;;
+90007;304;'11:00';;;
+90001;303;'08:00';;;
+90003;302;'09:00';;;
+

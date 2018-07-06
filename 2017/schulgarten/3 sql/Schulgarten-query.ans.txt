@@ -1,0 +1,295 @@
+"----------------------------------------------------------------------------------"
+"SELECT * FROM * (WHERE *) Anfragen"
+"----------------------------------------------------------------------------------"
+
+"1) Welche Gemüsearten sind in der Datenbank?"
+
+ gnr |   gname   |        familie         | lage | schneckenbeliebtheit 
+-----+-----------+------------------------+------+----------------------
+   0 | Mangold   | Blattgemuese           |    2 |                    1
+   1 | Karotte   | Wurzelgemuese          |    2 |                    1
+   2 | Erbse     | Huelsenfrucht          |    1 |                    2
+   3 | Weisskohl | Kohlgemuese            |    1 |                    3
+   4 | Kuerbis   | Kuerbisgewaechse       |    1 |                    3
+   5 | Tomaten   | Nachtschattengewaechse |    1 |                    1
+   6 | Spinat    | Blattgemuese           |    3 |                    1
+(7 Zeilen)
+
+"2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?"
+
+ taetigkeit 
+------------
+ Aussaht
+ Pikieren
+ Pflanzen
+ Duengen
+ Ernten
+(5 Zeilen)
+
+"3) Wie heißen die Händler, die in Berlin ansässig sind?"
+
+    hname     
+--------------
+ Miray Kaymaz
+ Sanja Hauser
+(2 Zeilen)
+
+"4) Wie heißen die Gemüsearten, die zur Familie der Blattgemüse gehören?"
+
+  gname  
+---------
+ Mangold
+ Spinat
+(2 Zeilen)
+
+"5) Welche sind die Gemüsesorten, die nicht zur Familie der Blattgemüse gehören"
+
+   gname   
+-----------
+ Karotte
+ Erbse
+ Weisskohl
+ Kuerbis
+ Tomaten
+(5 Zeilen)
+
+"6) Geben Sie die Beete nach ihrer Größe sortiert an."
+
+ bnr | lage | groesse | schneckenfaktor 
+-----+------+---------+-----------------
+   1 |    1 |     1.5 |               1
+   0 |    1 |     1.8 |               1
+   2 |    1 |     2.2 |               1
+   3 |    2 |     2.2 |               2
+   4 |    3 |     2.3 |               3
+   5 |    3 |     2.3 |               3
+(6 Zeilen)
+
+"7) Geben Sie alle Beete an, deren Groesse zwischen 2 und 3 m^2 liegen."
+
+ bnr | lage | groesse | schneckenfaktor 
+-----+------+---------+-----------------
+   2 |    1 |     2.2 |               1
+   3 |    2 |     2.2 |               2
+   4 |    3 |     2.3 |               3
+   5 |    3 |     2.3 |               3
+(4 Zeilen)
+
+"8) Geben Sie die Gemüsesorten (Name und Anbaubeginn) sortiert nach frühestem Anbaubeginn an."
+
+         sname         | fruehesteranbau 
+-----------------------+-----------------
+ Matador               | 2000-02-15
+ Latio F               | 2000-02-15
+ Duwicker              | 2000-02-20
+ Hokaido               | 2000-03-01
+ Blue Banana           | 2000-03-01
+ Bunter Turban         | 2000-03-01
+ Tigerella             | 2000-03-01
+ Sibirisches Birnchen  | 2000-03-01
+ Roter Riese           | 2000-03-10
+ Zuckererbse           | 2000-03-10
+ Butterkohl Goldberg   | 2000-03-20
+ Bright Yellow         | 2000-04-01
+ Kleine Rheinlaenderin | 2000-06-20
+(13 Zeilen)
+
+"----------------------------------------------------------------------------------"
+"Anfragen mit Aggregatsfunktionen"
+"----------------------------------------------------------------------------------"
+
+"9) Geben Sie die gesamte Anbaufläche des Gartens an."
+
+ sum  
+------
+ 12.3
+(1 Zeile)
+
+"10-12) Geben Sie an, wie lang die durchschnittliche Anbaudauer der Sorten ist und geben Sie die maximale und minimale Anbaudauer an."
+
+         avg          
+----------------------
+ 135.7692307692307692
+(1 Zeile)
+
+ max 
+-----
+ 210
+(1 Zeile)
+
+ min 
+-----
+  30
+(1 Zeile)
+
+"----------------------------------------------------------------------------------"
+"Anfragen mit JOIN"
+"----------------------------------------------------------------------------------"
+
+"13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familie an."
+
+         sname         |   gname   |        familie         
+-----------------------+-----------+------------------------
+ Bright Yellow         | Mangold   | Blattgemuese
+ Roter Riese           | Karotte   | Wurzelgemuese
+ Duwicker              | Karotte   | Wurzelgemuese
+ Zuckererbse           | Erbse     | Huelsenfrucht
+ Kleine Rheinlaenderin | Erbse     | Huelsenfrucht
+ Butterkohl Goldberg   | Weisskohl | Kohlgemuese
+ Hokaido               | Kuerbis   | Kuerbisgewaechse
+ Blue Banana           | Kuerbis   | Kuerbisgewaechse
+ Bunter Turban         | Kuerbis   | Kuerbisgewaechse
+ Tigerella             | Tomaten   | Nachtschattengewaechse
+ Sibirisches Birnchen  | Tomaten   | Nachtschattengewaechse
+ Matador               | Spinat    | Blattgemuese
+ Latio F               | Spinat    | Blattgemuese
+(13 Zeilen)
+
+"14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an."
+
+         sname         | tatsaechlicheranbau 
+-----------------------+---------------------
+ Bright Yellow         | 2000-04-15
+ Roter Riese           | 2000-03-20
+ Bright Yellow         | 2000-06-15
+ Zuckererbse           | 2000-05-10
+ Kleine Rheinlaenderin | 2000-07-01
+ Duwicker              | 2000-03-20
+ Butterkohl Goldberg   | 2000-04-20
+ Hokaido               | 2000-03-15
+ Tigerella             | 2000-05-01
+ Sibirisches Birnchen  | 2000-05-01
+ Blue Banana           | 2000-03-20
+ Bunter Turban         | 2000-03-20
+ Latio F               | 2000-03-01
+(13 Zeilen)
+
+"15) Welche Abpackungen von Tigerella gibt es?"
+
+ packungsmenge | packungseinheit 
+---------------+-----------------
+             2 | m2
+(1 Zeile)
+
+"16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen."
+
+         sname         
+-----------------------
+ Bright Yellow
+ Zuckererbse
+ Kleine Rheinlaenderin
+(3 Zeilen)
+
+"17) Welche Haendler vertreiben die Gemüsesorte Hokaido."
+
+    hname     
+--------------
+ Miray Kaymaz
+(1 Zeile)
+
+"18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer."
+
+ bnr |         sname         
+-----+-----------------------
+   0 | Bright Yellow
+   1 | Roter Riese
+   1 | Duwicker
+   2 | Kleine Rheinlaenderin
+   2 | Bright Yellow
+   2 | Zuckererbse
+   3 | Bunter Turban
+   3 | Blue Banana
+   4 | Butterkohl Goldberg
+   4 | Hokaido
+   5 | Sibirisches Birnchen
+   5 | Tigerella
+   5 | Latio F
+(13 Zeilen)
+
+"19) Geben Sie an, von welchen Händlern die tatsächlich angebauten Sorten bezogen werden können."
+
+      hname      
+-----------------
+ Quan Ouyang
+ Sanja Hauser
+ Miray Kaymaz
+ Sigfried Stehle
+(4 Zeilen)
+
+"20) Geben Sie eine Liste mit den Gemuesesorten (Name und Familie) und den zugehörigen Händlern an"
+
+ hnr | snr |         sname         |   gname   |      hname      
+-----+-----+-----------------------+-----------+-----------------
+   0 |   1 | Roter Riese           | Karotte   | Miray Kaymaz
+   0 |   3 | Zuckererbse           | Erbse     | Miray Kaymaz
+   0 |   5 | Butterkohl Goldberg   | Weisskohl | Miray Kaymaz
+   0 |   6 | Hokaido               | Kuerbis   | Miray Kaymaz
+   1 |   1 | Roter Riese           | Karotte   | Sanja Hauser
+   1 |   4 | Kleine Rheinlaenderin | Erbse     | Sanja Hauser
+   1 |   5 | Butterkohl Goldberg   | Weisskohl | Sanja Hauser
+   1 |  10 | Sibirisches Birnchen  | Tomaten   | Sanja Hauser
+   1 |  11 | Matador               | Spinat    | Sanja Hauser
+   2 |   1 | Roter Riese           | Karotte   | Quan Ouyang
+   2 |   3 | Zuckererbse           | Erbse     | Quan Ouyang
+   2 |   4 | Kleine Rheinlaenderin | Erbse     | Quan Ouyang
+   2 |   5 | Butterkohl Goldberg   | Weisskohl | Quan Ouyang
+   2 |   7 | Blue Banana           | Kuerbis   | Quan Ouyang
+   2 |   8 | Bunter Turban         | Kuerbis   | Quan Ouyang
+   3 |   2 | Duwicker              | Karotte   | Sigfried Stehle
+   3 |   4 | Kleine Rheinlaenderin | Erbse     | Sigfried Stehle
+   3 |   5 | Butterkohl Goldberg   | Weisskohl | Sigfried Stehle
+   3 |  11 | Matador               | Spinat    | Sigfried Stehle
+   3 |  10 | Sibirisches Birnchen  | Tomaten   | Sigfried Stehle
+   3 |   9 | Tigerella             | Tomaten   | Sigfried Stehle
+(21 Zeilen)
+
+"----------------------------------------------------------------------------------"
+"Spezielle Anfragen an die Schulgarten-Datenbank"
+"----------------------------------------------------------------------------------"
+
+"21) Darf auf Beet Nr. 7 Spinat angebaut werden?"
+"Anmerkung: Wenn die Zahl aus der Ausgabe kleiner als 4 ist, darf das Gemüse angebaut werden"
+
+ gname | ?column? 
+-------+----------
+(0 Zeilen)
+
+"22) Welche Beete (bnr) und Gemüsesorten (gnr, gname) haben zusammen ein 'Schneckenprodukt' (Schneckenfaktor * Schneckenbeliebtheit), das kleiner gleich 4 ist - geordnet nach dem Schneckenprodukt?"
+
+ bnr | gnr |   gname   | ?column? 
+-----+-----+-----------+----------
+   1 |   5 | Tomaten   |        1
+   1 |   6 | Spinat    |        1
+   2 |   0 | Mangold   |        1
+   2 |   6 | Spinat    |        1
+   2 |   5 | Tomaten   |        1
+   0 |   5 | Tomaten   |        1
+   0 |   6 | Spinat    |        1
+   1 |   0 | Mangold   |        1
+   1 |   1 | Karotte   |        1
+   0 |   1 | Karotte   |        1
+   0 |   0 | Mangold   |        1
+   2 |   1 | Karotte   |        1
+   2 |   2 | Erbse     |        2
+   0 |   2 | Erbse     |        2
+   1 |   2 | Erbse     |        2
+   3 |   0 | Mangold   |        2
+   3 |   1 | Karotte   |        2
+   3 |   5 | Tomaten   |        2
+   3 |   6 | Spinat    |        2
+   0 |   4 | Kuerbis   |        3
+   0 |   3 | Weisskohl |        3
+   5 |   0 | Mangold   |        3
+   5 |   1 | Karotte   |        3
+   5 |   5 | Tomaten   |        3
+   5 |   6 | Spinat    |        3
+   4 |   0 | Mangold   |        3
+   4 |   1 | Karotte   |        3
+   4 |   5 | Tomaten   |        3
+   4 |   6 | Spinat    |        3
+   1 |   4 | Kuerbis   |        3
+   1 |   3 | Weisskohl |        3
+   2 |   3 | Weisskohl |        3
+   2 |   4 | Kuerbis   |        3
+(33 Zeilen)
+

@@ -1,0 +1,13 @@
+SELECT * FROM beaufsichtigt;
+knr;lid
+1;1
+2;8
+3;3
+4;9
+5;10
+6;11
+7;5
+8;6
+9;6
+10;2
+11;7

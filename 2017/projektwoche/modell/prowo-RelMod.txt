@@ -1,0 +1,12 @@
+Relationsmodell:
+
+1. Lehrer (Kuerzel:VARCHAR[4],Vorname:VARCHAR[],Nachname:VARCHAR[])						
+2. Kurs (KursID:INTEGER,Kuerzel:VARCHAR[4],Name:VARCHAR[])							
+3. Fach (FachID:INTEGER,Name:VARCHAR[])								
+4. unterrichtet (FachID:INTEGER,Kuerzel:VARCHAR[4])						
+5. Ort (OrtID:INTEGER,Name:VARCHAR[])								
+6. Schueler (SchuelerID:INTEGER,KursID:INTEGER,Vorname:VARCHAR[],Nachname:VARCHAR[],Klasse:VARCHAR[],istVerantwortlich:INTEGER)	
+7. Termin (KursID:INTEGER,OrtID:INTEGER,Tag:INTEGER,Start:INTEGER,Ende:INTEGER)
+8. Aufsicht (Kuerzel:VARCHAR[4],OrtID:INTEGER,Tag:INTEGER,Start:INTEGER,Ende:INTEGER)					
+9. Zugehoerigkeit (FachID:INTEGER,KursID:INTEGER)						
+

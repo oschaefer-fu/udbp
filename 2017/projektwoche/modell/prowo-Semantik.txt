@@ -1,0 +1,14 @@
+Integritätsbedingungen: 
+Es muss sichergestellt sein, dass bei Exkursionen sowohl die begleitenden Lehrer als auch der Kurs gleichzeitig am Ort zur gleichen Zeit sind.
+
+Weiterhin muss sichergestellt sein, dass ein Lehrer nicht zeitgleich zu einem Kurs und einer Exkursion (die nicht zu seinem Kurs gehört) eingeteilt ist. 
+
+Auch die Bedingung, dass jeder Kurs einen verantwortlichen Schüler benötigt, muss sichergestellt werden.
+
+Zudem wird die Kapazität des Ortes nicht abgebildet, d. h. es muss sichergestellt sein, dass ein Ort nicht durch mehrere Kurse gleichzeitig belegt wird.
+
+Es muss sichergestellt werden, dass die Mindestanzahl zum Zustandekommen eines Kurses zehn Schüler beträgt (aus Gründen der Übersichtlichkeit wurde dies in der Beispielpopulation nicht berücksichtigt).
+ 
+Folgendes lässt sich zudem nicht abbilden.
+Wenn zwei Kurse gleichzeitig eine Exkursion vornehmen und für beide Kurse zusätzliche begleitende Lehrer als Aufsicht eingeteilt werden, lässt sich nicht zuordnen, welcher Lehrer Kurs 1 bzw. Kurs 2 begleitet.
+

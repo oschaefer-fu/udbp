@@ -1,0 +1,13 @@
+SELECT * FROM lehrer
+lid;nname;email;kuerzel
+1;Schaefer;os@vim.org;sf
+2;Czetö;cz@aiko.net;cz
+3;Bond;james@mi5.org;bd
+4;Cooper;high@noon.us;cp
+5;Klemt;winnie2@ado.de;kl
+6;Schmitt;schmitt@gmx.de;sc
+7;Schmidt;darthvader@todesstern.de;si
+8;Boettcher;benniboe@zedat.de;boe
+9;Wolf;tflow@gmx.de;wf
+10;Chi;themroc@musichi.net;chi
+11;Schlüter;ms@ado.de;ms

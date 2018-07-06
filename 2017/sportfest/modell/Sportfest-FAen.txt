@@ -1,0 +1,37 @@
+﻿Funktionale Abhängigkeiten
+
+
+Nachfolgend sind einige Beispiele funktionaler Abhängigkeiten innerhalb der einzelnen Relationen dargestellt. Trivialer Weise sind die unterschiedlichen Attribute immer abhängig vom vorgegeben Schlüssel (z.B. SNr in der Relation Schueler). Diese werden deshalb hier nicht aufgeführt.
+
+
+
+Relation Schueler:
+			{SName, Geburtsdatum}  → {Geschlecht, Schwimmnachweis, Klasse}
+
+Durch die Kombination von Schülername und Geburtsdatum lassen sich Geschlecht, Klasse und  der Status des Schwimmnachweises von jedem Schüler eindeutig bestimmen.
+
+
+Relation Lehrer:
+			LName → {WKStNr, WKStName, WKStAdresse}
+
+Da ein Lehrer nicht gleichzeitig verschiedene Wettkampfstätten betreuen kann, bestimmt der Name der Lehrkraft eindeutig die Wettkampfstätte, die von ihr betreut wird, d.h. über den Fremdschlüssel der Wettkampfstättennummer deren Name und Adresse.
+Anders herum  bestimmt die Wettkampfstätte auch eindeutig den Namen der Lehrkraft, die sie betreut.
+
+
+Relation Wettkämpfe:
+			WName → {Kategorie}
+
+Die Wettkämpfe haben unterschiedliche Namen, wodurch sie eindeutig einer Kategorie zuzuordnen sind, diese also bestimmen. Anders herum gehören zu jeder Kategorie unterschiedliche Wettkämpfe, so dass die Kategorie nicht den Wettkampfnamen bestimmen kann.
+
+
+Relation Dienstleister:
+			DName → {DAdresse, Branche}
+
+Der Name des Dienstleisters bestimmt seine Adresse und die Branche, zu der er gehört.
+Anders herum können aber mehrere Dienstleister, der selben Branche angehören, so dass die Branche nicht den Namen des Dienstleisters bestimmen kann.
+
+
+Relation Material:
+			MName → {Vorratsanzahl}
+
+Der Materialname bestimmt die Anzahl des Vorrates des jeweiligen Materials. Umgekehrt kann die Vorratsanzahl mehrerer Materialien gleich groß sein, so dass sie nicht den Materialnamen bestimmen kann.

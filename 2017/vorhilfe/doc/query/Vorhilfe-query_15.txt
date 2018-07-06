@@ -1,0 +1,4 @@
+-- 15. Liste aller Räume, die min 30 Plätze haben. **
+SELECT * 
+FROM raum 
+WHERE anzP >= 30;

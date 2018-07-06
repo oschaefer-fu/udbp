@@ -1,0 +1,120 @@
+﻿Relationenmodell
+
+
+Aus der Transformation des ER-Modells entsteht das folgende Relationenmodell. Dabei sind die unterstrichenen Angaben die jeweiligen Schlüssel der Relation.
+
+
+
+- Schueler (SNr, SName, Klasse, Geschlecht, Schwimmnachweis)
+									→ Schlüssel: SNr
+
+- Wettkaempfe (WKNr, WName, Kategorie)
+									→ Schlüssel: WKNr
+			
+- Teilnahme (SNr, WKNr, TnZeit, Ergebnis)
+									→ Schlüssel: SNr und WKNr
+
+- Wettlampfstaetten (WKStNr, WKStName, WKStAdresse)
+									→ Schlüssel: WKStNr
+
+- Aufsichtsunterstuetzung (SNr, WKStNr, UAZeit)
+									→ Schlüssel: Snr und WKStNr
+
+- Lehrer (PNr, LName, WKStNr)
+									→ Schlüssel: PNr
+
+- Stattfinden (WKNr, WKStNr, SFZeit)
+									→ Schlüssel: WKNr und WKStNr
+
+- Material (MNr, MName, Vorratsanzahl)
+									→ Schlüssel: MNr
+
+- Bedarf (MNr, WKNr, Anzahl)
+									→ Schlüssel: MNr und WKNr
+
+- Dienstleister (DNr, DName, DAdresse, Branche)
+									→ Schlüssel: DNr
+
+- Betreuung (DNr, WKStNr, Kosten)
+									→ Schlüssel: DNr und WKStNr
+
+
+Beschreibung der Relationen
+
+Relation Schüler:
+Die Relation Schüler besteht aus den Attributen SNr, SName, Klasse, Geschlecht und
+Schwimmnachweis. Dabei setzt sich das Attribut SName aus dem Nachnamen und dem
+Vornahmen des jeweiligen Schülers*) zusammen. Jeder Schüler verfügt also über eine
+Schülernummer, hat einen Namen und ein Geburtsdatum und gehört einer bestimmten Klasse
+sowie einem bestimmten Geschlecht an. Zudem verfügt jeder Schüler über einen positiven oder
+negativen Vermerk bezüglich des Schwimmnachweises. Durch die Schülernummer (SNr) ist jeder
+Schüler eindeutig bestimmt, sie fungiert als Schlüssel.
+
+Relation Wettkaempfe:
+Die Relation Wettkämpfe umfasst die Attribute Kategorie, Wettkampfname (WName) und
+Wettkampfnummer (WNr). Durch die Wettkampfnummer ist jeder Wettkampf eindeutig bestimmt.
+Zudem gehört jeder Wettkampf maximal zu einer der vier Kategorien.
+
+Relation Teilnahme:
+Jeder Schüler kann an bis zu vier Wettkämpfen teilnehmen. Dabei darf er aber maximal nur an
+einem Wettkampf aus einer der vier Kategorien teilnehmen. Die Teilnahme erfolgt zu einer
+bestimmten Zeit und ist mit einem eindeutigen Ergebnis verbunden. Die Teilnahmezeit und das
+Ergebnis sind eindeutig durch die Kombination von Schülernummer (SNr) und Wettkampfnummer
+(WNr) bestimmt, die beide als Fremdschlüssel fungieren.
+An jedem Wettkampf können aber mehrere Schüler einer Klasse zur gleichen Zeit teilnehmen.
+
+Relation Wettkampfstaetten:
+Jede Wettkampfstätte hat einen Namen und eine Adresse, welche sich aus Straßenname,
+Straßennummer und Postleitzahl zusammensetzt. Eindeutig bestimmt wird die Wettkampfstätte
+durch ihre Wettkampfstättennummer (WKStNr), welche als Schlüssel fungiert.
+
+Relation Stattfinden:
+An jeder Wettkampfstätte können mehrere Wettkämpfe ausgetragen werden. Genau so ist es
+möglich, dass die gleichen Wettkämpfe an unterschiedlichen Wettkampfstädten stattfinden.
+Dementsprechend bestimmt die Kombination von Wettkampfnummer und
+Wettkampfstättennummer eindeutig, welcher Wettkampf zu welcher Zeit an welchem Ort
+(Wettkampfstätte) ausgetragen wird.
+
+Relation Material:
+Die Relation Material setzt sich aus den Attributen Materialnummer (Mnr), Materialname und
+Vorratsanzahl zusammen, wobei der Materialname und die vorrätige Menge eindeutig durch die
+Materialnummer (Schlüssel) bestimmt wird.
+
+Relation Bedarf:
+Die verschiedenen Wettkämpfe benötigen unterschiedliche Materialien. Dabei kann ein Wettkampf
+ohne zusätzliches Material auskommen, es können bei einem Wettkampf aber auch mehrere
+unterschiedliche Materialien benötigt werden. Anders herum können keine oder auch mehrere
+Materialien bei einem Wettkampf eingesetzt werden. Die Anzahl des Bedarfs wird dabei eindeutig
+durch die Kombination von Wettkampfnummer und Materialnummer bestimmt.
+
+Relation Lehrer:
+Die Lehrkräfte werden durch eine individuelle Personalnummer eindeutig bestimmt. Jeder Lehrer*)
+verfügt über einen Namen und kann eine Wettkampfstätte beaufsichtigen, wobei Wettkampfstätten
+von mindestens einem Lehrer beaufsichtigt werden müssen. Somit kann über die Personalnummer
+eindeutig zugeordnet werden, welche Wettkampfstätte durch welche Lehrkraft beaufsichtigt wird.
+
+Relation Aufsichtsunterstützung:
+Zusätzlich kann zu bestimmten Zeiten die Beaufsichtigung einer Wettkampfstätte durch einen
+Schüler unterstützt werden. Dabei können auch mehrere Schüler an einer Wettkampfstätte, aber
+zu unterschiedlichen Zeiten tätig sein. Die Aufsicht an einer Wettkampfstätte muss aber nicht von
+Schülern unterstützt werden. Schüler können aber auch an mehreren Wettkampfstätten eingesetzt
+werden. Die Einsatzzeit wird dabei durch die Kombination von Schülernummer und
+Wettkampfstättennummer eindeutig bestimmt.
+
+Relation Dienstleister:
+Zu den Dienstleistern gehören mehrere Firmen, die als Attribute eine Dienstleisternummer (Dnr),
+einen Namen sowie eine aus Straßennamen, Hausnummer und Postleitzahl bestehende Adresse
+haben sowie einer bestimmten Branche angehören. Die Dienstleisternummer bestimmt dabei
+sämtliche anderen Attribute eindeutig.
+
+Relation Betreuung:
+Jeder Dienstleister kann eine bestimmte Wettkampfstätte betreuen, muss dies aber nicht tun. Es
+können aber auch mehrere Dienstleister die gleiche Wettkampfstätte mit unterschiedlichen
+Angeboten betreuen. Anders herum kann jede Wettstätte durch einen oder mehrere Dienstleister
+betreut werden, kann aber auch ohne Betreuung auskommen. Wenn eine Wettkampfstätte betreut
+wird, entstehen dafür Kosten. Diese sind eindeutig durch die Kombination von Dienstleister- und
+Wettkampfstättennummer bestimmt.
+
+
+*) Der Begriff Schüler umfasst hier Schülerinnen und Schüler. Er wird lediglich der Einfachheit halber für beide Geschlechter verwendet. In gleicher Weise gilt das im
+Folgenden für den Begriff Lehrer.

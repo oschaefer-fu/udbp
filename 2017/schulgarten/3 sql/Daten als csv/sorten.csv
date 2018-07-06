@@ -1,0 +1,14 @@
+snr,sname,eigenschaften,gnr,fruehesteranbau,spaetesteranbau,anbaudauer
+0,Bright Yellow,Gelbe Stiele,0,2000-04-01,2000-06-20,210
+1,Roter Riese,"dunkelorange, mit viel Aroma und Suesse",1,2000-03-10,2000-06-30,75
+2,Duwicker,kurze Fruehkarotte,1,2000-02-20,2000-07-30,70
+3,Zuckererbse,suesser Geschmack,2,2000-03-10,2000-06-30,90
+4,Kleine Rheinlaenderin,"Hohe, alte Sorte",2,2000-06-20,2000-07-15,120
+5,Butterkohl Goldberg,"Feiner Geschmack, goldgelbe Blaetter",3,2000-03-20,2000-04-30,180
+6,Hokaido,Ein bis zwei Kilo schwere orangefarbene Fruechte,4,2000-03-01,2000-04-15,195
+7,Blue Banana,"Zigarrenfoermige, 3 Kilo schwere Fruechte",4,2000-03-01,2000-04-15,195
+8,Bunter Turban,Gut lagerfaehig,4,2000-03-01,2000-04-15,195
+9,Tigerella,"Gestreifte, mittelgrosse Fruechte",5,2000-03-01,2000-04-01,180
+10,Sibirisches Birnchen,"Birnenfoermige Fruechte, resistente Pflanze",5,2000-03-01,2000-04-01,180
+11,Matador,Schnellwuechsig,6,2000-02-15,2000-10-01,30
+12,Latio F,Resistent gegen falschen Mehltau,6,2000-02-15,2000-08-15,45

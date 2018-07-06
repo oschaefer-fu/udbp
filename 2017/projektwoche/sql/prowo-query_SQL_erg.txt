@@ -1,0 +1,303 @@
+
+1. "Liste aller Kursnamen"  
+SELECT Name FROM Kurs;
+
+answer(Kurs.Name:string) ->
+{
+  answer('Chor'),
+  answer('Datenbanken'),
+  answer('Fitnesskurs'),
+  answer('Kryptographie'),
+  answer('Mittelalterkurs'),
+  answer('Waschmittel')
+}
+Info: 6 tuples computed.  
+
+
+
+2. "Schülernamen der Klasse 8a"
+SELECT Nachname, Vorname FROM Schueler WHERE Klasse = '8a';
+
+answer(Schueler.Nachname:string,Schueler.Vorname:string) ->
+{
+  answer('Kappel','Michael'),
+  answer('Koenig','Maik'),
+  answer('Lemann','Jorgen'),
+  answer('Scholz','Kristin'),
+  answer('Schwarz','Anke')
+}
+Info: 5 tuples computed. 
+
+
+
+3. "Lehrerkürzel + Fach aller Fachverantwortlichen mit Nawi-Fach"
+SELECT Kuerzel, Name FROM Fach WHERE Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie';
+
+answer(Fach.Kuerzel:string,Fach.Name:string) ->
+{
+  answer(bec,'Physik'),
+  answer(har,'Chemie'),
+  answer(neu,'Biologie')
+}
+Info: 3 tuples computed
+
+
+
+4. "Alle Fachverantwortlichen mit jeweiligem zugehörigen Fach"
+SELECT * FROM Fach NATURAL JOIN Lehrer;
+
+answer(Fach.FachID:int,Fach.Kuerzel:string,Fach.Name:string,Lehrer.Vorname:string,Lehrer.Nachname:string) ->
+{
+  answer(1,mei,'Mathematik','Matthias','Meier'),
+  answer(2,leh,'Deutsch','Paul','Lehmann'),
+  answer(3,gol,'Englisch','Katja','Goldschmidt'),
+  answer(4,bie,'Geschichte','Daniel','Biermann'),
+  answer(5,sch,'Informatik','Jan','Schulze'),
+  answer(6,neu,'Biologie','Melanie','Neustadt'),
+  answer(7,bec,'Physik','Ines','Becker'),
+  answer(8,har,'Chemie','Klaudia','Hartmann'),
+  answer(9,wal,'Musik','Stephan','Walter'),
+  answer(10,bau,'Sport','Jennifer','Baum')
+}
+Info: 10 tuples computed.    
+
+
+
+5. "Alle Räume (und Exkursions- und Aufsichtsorte), die am Montag nicht belegt sind"
+SELECT Name FROM Ort EXCEPT SELECT Name FROM Ort NATURAL JOIN Termin WHERE Tag = 1;
+
+answer(Ort.Name:string) ->
+{
+  answer('Aula'),
+  answer('Haus'),
+  answer('Hof'),
+  answer('Museumsdorf'),
+  answer('R102'),
+  answer('R103'),
+  answer('R314')
+}
+Info: 7 tuples computed. 
+
+
+
+6. "Die Kürzel der Lehrer, die wenigstens einmal in der Woche arbeiten (Kurs, Exkursion, Aufsicht)"
+SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht;
+
+answer(Kuerzel:string) ->
+{
+  answer(adl),
+  answer(bau),
+  answer(bec),
+  answer(bie),
+  answer(bla),
+  answer(bum),
+  answer(fue),
+  answer(gol),
+  answer(har),
+  answer(leh),
+  answer(mei),
+  answer(neu),
+  answer(ric),
+  answer(sch),
+  answer(wal),
+  answer(zie)
+}
+Info: 16 tuples computed.     
+
+
+
+7. "Alle Lehrer, die nicht in der Projektwoche eingesetzt werden (nicht einmal eine Aufsicht)"
+SELECT Kuerzel FROM Lehrer EXCEPT (SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht);
+
+answer(Lehrer.Kuerzel:string) ->
+{
+  answer(ebe),
+  answer(pro)
+}
+Info: 2 tuples computed.    
+
+
+
+8. "Alle Lehrer, die im Hof Aufsicht führen"
+SELECT DISTINCT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht NATURAL JOIN Ort WHERE Name = 'Hof';
+(alternativ): SELECT Kuerzel, Nachname, Vorname FROM Lehrer NATURAL JOIN Aufsicht NATURAL JOIN Ort WHERE Name = 'Hof';
+----> Achtung! Damit bei RA und SQL das Gleiche herauskommt, muss bei SQL 'DISTINCT' ausgeführt werden.
+
+answer(Kuerzel:string) ->
+{
+  answer(bec),
+  answer(bla),
+  answer(mei),
+  answer(neu),
+  answer(wal),
+  answer(zie)
+}
+Info: 6 tuples computed.      
+
+(alternativ):
+answer(Kuerzel:string,Nachname:string,Vorname:string) ->
+{
+  answer(bec,'Becker','Ines'),
+  answer(bla,'Blau','Jonas'),
+  answer(mei,'Meier','Matthias'),
+  answer(neu,'Neustadt','Melanie'),
+  answer(wal,'Walter','Stephan'),
+  answer(zie,'Ziegler','Eric')
+}
+Info: 6 tuples computed.      
+
+
+
+9. "Eine Liste aller Schüler der Klasse 7b mit ihrem Aufenthaltsort am Donnerstag" 
+SELECT Vorname, Nachname, Ort.Name FROM Schueler NATURAL JOIN Kurs NATURAL JOIN Termin INNER JOIN Ort ON Termin.Ortid = Ort.Ortid WHERE Schueler.Klasse = '7b' AND Termin.Tag = 4;  
+
+answer(Vorname:string,Nachname:string,Name:string) ->
+{
+  answer('Brigitte','Kortig','Aula'),
+  answer('Jorgen','Diederich','Aula'),
+  answer('Klaudia','Burger','R211'),
+  answer('Leah','Engel','Aula'),
+  answer('Lukas','Faust','R102'),
+  answer('Martina','Birger','R307'),
+  answer('Sven','Schreiber','R001'),
+  answer('Thomas','Schwartz','R205')
+}
+
+10. "Alle Lehrer, die in der Woche im Museumsdorf (irgendwann) mal sind (Entweder als Kursleiter oder als Begleitung)"
+SELECT Kuerzel FROM Lehrer NATURAL JOIN AUFSICHT INNER JOIN ORT ON Aufsicht.Ortid = Ort.Ortid WHERE Ort.Name = 'Museumsdorf' UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs INNER JOIN Termin ON Kurs.Kursid = Termin.Kursid INNER JOIN Ort ON Termin.Ortid = Ort.Ortid WHERE Ort.Name = 'Museumsdorf';
+
+answer(Kuerzel:string) ->
+{
+  answer(adl),
+  answer(bie),
+  answer(har)
+}
+
+11. "Anzahl aller Kurse"
+SELECT COUNT(KursID) FROM Kurs;
+
+{
+  answer(6)
+}
+
+
+12. "Anzahl aller Kurse, Summe dabei in 'Anzahl aller Kurse' umbennennen"
+SELECT COUNT(KursID) AS Anzahl_aller_Kurse FROM Kurs;
+
+answer(Anzahl_aller_Kurse:int) ->
+{
+  answer(6)
+}
+
+
+
+13. "Klasse mit mehr als 5 Schülern"
+SELECT  Klasse, COUNT(Klasse) AS Anzahl FROM Schueler GROUP BY Klasse HAVING COUNT(Klasse)>5;
+
+answer(Schueler.Klasse:string,Anzahl:int) ->
+{
+  answer('7a',7),
+  answer('7b',8)
+}
+Info: 2 tuples computed.   
+
+
+
+14. "Übersicht Kürzel + Anzahl Aufsichten (ohne Exkursionsbegleitungen)"
+SELECT Kuerzel, COUNT(Start) AS Anzahl_Aufsichten FROM Aufsicht WHERE (Start=940 and Ende=1000) or (Start=1140 and Ende=1210) GROUP BY Kuerzel;
+
+answer(Aufsicht.Kuerzel:string,Anzahl_Aufsichten:int) ->
+{
+  answer(adl,3),
+  answer(bec,4),
+  answer(bie,1),
+  answer(bla,2),
+  answer(gol,2),
+  answer(leh,1),
+  answer(mei,2),
+  answer(neu,1),
+  answer(wal,2),
+  answer(zie,2)
+}
+Info: 10 tuples computed.  
+
+
+
+15. "Anzahl der Exkursionsbegleitungen der Lehrer"
+SELECT Kuerzel, COUNT(Start) AS Dauer_in_min FROM Aufsicht WHERE NOT (Start=940 and Ende=1000 or Start=1140 and Ende=1210) Group By Kuerzel;
+
+answer(Aufsicht.Kuerzel:string,Dauer_in_min:int) ->
+{
+  answer(adl,1),
+  answer(bie,1),
+  answer(wal,1)
+}
+Info: 3 tuples computed.          
+
+
+
+16. "Anzahl  der SuS in den jeweiligen Kursen, mit Angabe der Kursnamen"
+SELECT  Name, COUNT(KursID) FROM Schueler NATURAL JOIN Kurs GROUP BY Name;
+
+answer(Name:string,$a10:int) ->
+{
+  answer('Chor',3),
+  answer('Datenbanken',3),
+  answer('Fitnesskurs',5),
+  answer('Kryptographie',4),
+  answer('Mittelalterkurs',2),
+  answer('Waschmittel',3)
+}
+Info: 6 tuples computed.  
+
+
+
+17. "Anzahl der Schüler im 'Mittelalterkurs'"
+SELECT COUNT(SchuelerID) AS Schueler_im_Mittelalterkurs FROM Schueler NATURAL JOIN Kurs Where Kurs.Name = 'Mittelalterkurs';
+
+answer(Schueler_im_Mittelalterkurs:int) ->
+{
+  answer(2)
+}
+Info: 1 tuple computed.   
+
+
+
+18. "Übersicht der Kurse mit der Anzahl der verantwortlichen SuS"
+SELECT Kurs.Name, SUM(Schueler.istVerantwortlich) AS Anzahl_verantwortliche_SuS FROM Schueler NATURAL JOIN Kurs GROUP BY Kurs.KursID;
+
+answer(Name:string,$a10:int) ->
+{
+  answer('Mittelalterkurs',1)
+  answer('Chor',1)
+  answer('Fitnesskurs',2)
+  answer('Datenbanken',1)
+  answer('Kryptographie',3)
+  answer('Waschmittel',1)
+
+
+
+19. "Durchschnittlicher Kursstart pro Tag"
+SELECT Name, AVG(Start) AS Durchnittliche_Kursstart_pro_Tag FROM Termin NATURAL JOIN Kurs GROUP BY KursID, Name; 
+
+answer(Name:string,Durchnittliche_Kursstart_pro_Tag:float) ->
+{
+  answer('Chor',820.0),
+  answer('Datenbanken',840.0),
+  answer('Fitnesskurs',820.0),
+  answer('Kryptographie',800.0),
+  answer('Mittelalterkurs',920.0),
+  answer('Waschmittel',800.0)
+}
+Info: 6 tuples computed.    
+
+
+
+20. "Anzahl der Sportlehrer"
+SELECT COUNT(Fach.FachID) AS Anzahl_Sportlehrer FROM Lehrer NATURAL JOIN unterrichtet INNER JOIN Fach ON unterrichtet.FachID = Fach.FachID WHERE Fach.Name='Sport';
+
+answer(Anzahl_Sportlehrer:int) ->
+{
+  answer(4)
+}
+Info: 1 tuple computed.

@@ -1,0 +1,4 @@
+-- 20a. Welche Räume haben einen Beamer? ***
+SELECT rnr 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung 
+WHERE geraete ='Beamer';

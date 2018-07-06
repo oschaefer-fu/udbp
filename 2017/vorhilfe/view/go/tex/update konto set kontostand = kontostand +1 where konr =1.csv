@@ -1,0 +1,2 @@
+update konto set kontostand = kontostand +1 where konr =1
+

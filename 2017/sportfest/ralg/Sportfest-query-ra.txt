@@ -1,0 +1,33 @@
+﻿Hinweis: DES konnte leider nicht realisiert werden.
+
+RALG-Anfragen
+
+1) πSName(σSchwimmnachweis = 'ja' (Schueler))
+DES>  project SName (select Schwimmnachweis = 'ja' (Schueler));
+
+2) πWName(σKategorie = 'Koordination' (Wettkaempfe))
+DES> project WName (select Kategorie = 'Koordination' (Wettkaempfe));
+
+3) πSName(σ'2000-01-01'<Geburtsdatum<'2000-12-31' (Schueler)
+DES> project SName (select  '2000-01-01'< geburtsdatum < '2000-12-31' (Schueler));
+
+4) πWName(Wettkaempfe ⌧ Wettkampfstaetten) WKStName  = 'Sportplatz'
+DES> project WName ( Wettkaempfe njoin Wettkaempfstaetten.WKStName='Sportplatz'   Wettkaempfstaetten);
+
+5) πSName,Klasse(Schueler ⌧ Wettkaempfe) WName  = '800m_Lauf'
+DES> project SName,Klasse (Schueler njoin  Wettkaempfe.WName='800m Lauf'   Wettkaempfe);
+
+
+6) πSFZeit(Stattfinden ⌧ Wettkaempfe) WName  = 'Kugelstoßen'
+DES> project SFzeit (Stattfinden njoin  Wettkaempfe.WName='Kugelstoßen'   Wettkaempfe)
+
+7) πSName(σKlasse = '10'  UAZeit = '09:00' (Schueler ⌧ Aufsichtsunterstuetzung))
+DES> project SName (Schueler njoin  Schueler.Klasse='10' and Aufsichtsunterstuetzung.UAZeit='09:00' Aufsichtsunterstuetzung );
+
+8) πPNr,LName(σWName = 'Kugelstoßen'(Lehrer ⌧ Wettkaempfe ⌧ Wettkampfstaetten ⌧ Stattfinden)
+DES>  project PNr,LName (Lehrer njoin ( Wettkaempfe njoin Wettkaempfe.Wname = 'Kugelstoßen'  Wettkampfstaetten));
+
+9) πMName(σWKStName = 'Schwimmhalle' (Material ⌧ Wettkampfstaetten ⌧ Stattfinden)
+DES> project MName (Material njoin  (Wettkampfstaetten ( njoin Wettkampfstaetten.WKStName='Schwimmhalle'  Wettkampfstaetten));
+
+

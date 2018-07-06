@@ -1,0 +1,198 @@
+DES> {Name | 'Kurs' (_,_,Name)}; 
+
+Info: DRC statement compiled to:
+
+answer(Name) :-
+  'Kurs'(_,_,Name).
+
+answer(name:string) ->
+{
+  answer('Chor'),
+  answer('Datenbanken'),
+  answer('Fitnesskurs'),
+  answer('Kryptographie'),
+  answer('Mittelalterkurs'),
+  answer('Waschmittel')
+}
+Info: 6 tuples computed.          
+
+DES> {Nachname, Vorname | (exists Klasse) 'Schueler' (_,_,Vorname,Nachname,Klasse,_) and Klasse='8a'}; 
+
+Info: DRC statement compiled to:
+
+answer(Nachname,Vorname) :-
+  exists([Klasse],('Schueler'(_,_,Vorname,Nachname,Klasse,_),Klasse='8a')).
+
+answer(nachname:string,vorname:string) ->
+{
+  answer('Kappel','Michael'),
+  answer('Koenig','Maik'),
+  answer('Lemann','Jorgen'),
+  answer('Scholz','Kristin'),
+  answer('Schwarz','Anke')
+}
+Info: 5 tuples computed.          
+
+DES> {Kuerzel, Name | 'Fach' (_,Kuerzel,Name) and (Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie')}; 
+
+Info: DRC statement compiled to:
+
+answer(Kuerzel,Name) :-
+  'Fach'(_,Kuerzel,Name),
+  (Name='Physik'
+  ;
+   (Name='Chemie'
+   ;
+    Name='Biologie')).
+
+answer(kuerzel:string,name:string) ->
+{
+  answer(bec,'Physik'),
+  answer(har,'Chemie'),
+  answer(neu,'Biologie')
+}
+Info: 3 tuples computed.          
+
+DES> {FachID, Kuerzel, Name, Vorname, Nachname | 'Fach'(FachID,Kuerzel,Name) and 'Lehrer'(Kuerzel,Vorname,Nachname)}; 
+
+Info: DRC statement compiled to:
+
+answer(FachID,Kuerzel,Name,Vorname,Nachname) :-
+  'Fach'(FachID,Kuerzel,Name),
+  'Lehrer'(Kuerzel,Vorname,Nachname).
+
+answer(fachID:int,kuerzel:string,name:string,vorname:string,nachname:string) ->
+{
+  answer(1,mei,'Mathematik','Matthias','Meier'),
+  answer(2,leh,'Deutsch','Paul','Lehmann'),
+  answer(3,gol,'Englisch','Katja','Goldschmidt'),
+  answer(4,bie,'Geschichte','Daniel','Biermann'),
+  answer(5,sch,'Informatik','Jan','Schulze'),
+  answer(6,neu,'Biologie','Melanie','Neustadt'),
+  answer(7,bec,'Physik','Ines','Becker'),
+  answer(8,har,'Chemie','Klaudia','Hartmann'),
+  answer(9,wal,'Musik','Stephan','Walter'),
+  answer(10,bau,'Sport','Jennifer','Baum')
+}
+Info: 10 tuples computed.          
+
+DES> {Name | (exists OrtID,Tag) 'Ort'(OrtID,Name) and not 'Termin'(_,OrtID,Tag,_,_) and Tag=1}; 
+
+Info: DRC statement compiled to:
+
+answer(Name) :-
+  exists([OrtID,Tag],('Ort'(OrtID,Name),not 'Termin'(_,OrtID,Tag,_,_),Tag=1)).
+
+answer(name:string) ->
+{
+  answer('Aula'),
+  answer('Haus'),
+  answer('Hof'),
+  answer('Museumsdorf'),
+  answer('R102'),
+  answer('R103'),
+  answer('R314')
+}
+Info: 7 tuples computed.          
+
+DES> {Kuerzel | 'Lehrer'(Kuerzel,_,_) and ('Kurs'(_,Kuerzel,_) or 'Aufsicht'(Kuerzel,_,_,_,_))}; 
+
+Info: DRC statement compiled to:
+
+answer(Kuerzel) :-
+  'Lehrer'(Kuerzel,_,_),
+  ('Kurs'(_,Kuerzel,_)
+  ;
+   'Aufsicht'(Kuerzel,_,_,_,_)).
+
+answer(kuerzel:string) ->
+{
+  answer(adl),
+  answer(bau),
+  answer(bec),
+  answer(bie),
+  answer(bla),
+  answer(bum),
+  answer(fue),
+  answer(gol),
+  answer(har),
+  answer(leh),
+  answer(mei),
+  answer(neu),
+  answer(ric),
+  answer(sch),
+  answer(wal),
+  answer(zie)
+}
+Info: 16 tuples computed.          
+
+DES> {Kuerzel | 'Lehrer'(Kuerzel,_,_) and not ('Kurs'(_,Kuerzel,_) or 'Aufsicht'(Kuerzel,_,_,_,_))}; 
+
+Info: DRC statement compiled to:
+
+answer(Kuerzel) :-
+  'Lehrer'(Kuerzel,_,_),
+  not 'Kurs'(_,Kuerzel,_),
+  not 'Aufsicht'(Kuerzel,_,_,_,_).
+
+answer(kuerzel:string) ->
+{
+  answer(ebe),
+  answer(pro)
+}
+Info: 2 tuples computed.          
+
+DES> {Kuerzel, Nachname, Vorname | (exists Name,OrtID) 'Lehrer'(Kuerzel,Vorname,Nachname) and 'Aufsicht'(Kuerzel,OrtID,_,_,_) and 'Ort'(OrtID,Name) and Name='Hof'}; 
+
+Info: DRC statement compiled to:
+
+answer(Kuerzel,Nachname,Vorname) :-
+  exists([Name,OrtID],('Lehrer'(Kuerzel,Vorname,Nachname),'Aufsicht'(Kuerzel,OrtID,_,_,_),'Ort'(OrtID,Name),Name='Hof')).
+
+answer(kuerzel:string,nachname:string,vorname:string) ->
+{
+  answer(bec,'Becker','Ines'),
+  answer(bla,'Blau','Jonas'),
+  answer(mei,'Meier','Matthias'),
+  answer(neu,'Neustadt','Melanie'),
+  answer(wal,'Walter','Stephan'),
+  answer(zie,'Ziegler','Eric')
+}
+Info: 6 tuples computed.          
+
+DES> {Vorname,Nachname,Name | (exists KursID,Klasse,OrtID,Tag) 'Schueler' (_,KursID,Vorname,Nachname,Klasse,_) and 'Kurs'(KursID,_,_) and 'Termin'(KursID,OrtID,Tag,_,_) and 'Ort'(OrtID,Name) and Klasse='7b' and Tag=4}; 
+
+Info: DRC statement compiled to:
+
+answer(Vorname,Nachname,Name) :-
+  exists([KursID,Klasse,OrtID,Tag],('Schueler'(_,KursID,Vorname,Nachname,Klasse,_),'Kurs'(KursID,_,_),'Termin'(KursID,OrtID,Tag,_,_),'Ort'(OrtID,Name),Klasse='7b',Tag=4)).
+
+answer(vorname:string,nachname:string,name:string) ->
+{
+  answer('Brigitte','Kortig','Aula'),
+  answer('Jorgen','Diederich','Aula'),
+  answer('Klaudia','Burger','R211'),
+  answer('Leah','Engel','Aula'),
+  answer('Lukas','Faust','R102'),
+  answer('Martina','Birger','R307'),
+  answer('Sven','Schreiber','R001'),
+  answer('Thomas','Schwartz','R205')
+}
+Info: 8 tuples computed.          
+
+DES> {Kuerzel | (exists OrtID,Name,KursID) 'Lehrer'(Kuerzel,_,_) and 'Ort'(OrtID,Name) and ('Aufsicht'(Kuerzel,OrtID,_,_,_) or 'Kurs'(KursID,Kuerzel,_) and 'Termin'(KursID,OrtID,_,_,_)) and Name='Museumsdorf'}; 
+
+Info: DRC statement compiled to:
+
+answer(Kuerzel) :-
+  exists([OrtID,Name,KursID],('Lehrer'(Kuerzel,_,_),'Ort'(OrtID,Name),('Aufsicht'(Kuerzel,OrtID,_,_,_);'Kurs'(KursID,Kuerzel,_),'Termin'(KursID,OrtID,_,_,_)),Name='Museumsdorf')).
+
+answer(kuerzel:string) ->
+{
+  answer(adl),
+  answer(bie),
+  answer(har)
+}
+Info: 3 tuples computed.          
+
+DES> 

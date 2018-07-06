@@ -1,0 +1,18 @@
+select * from schueler;
+sid;nname;vname;geb;klasse;lid;email;konr
+1;Bär;Frieder;2002-11-11T00:00:00Z;11;1;go@luise.net;1000
+2;Schmidt;Harald;2002-10-10T00:00:00Z;11;1;aha@luise.net;1001
+3;Wolf;Hermine;2002-10-01T00:00:00Z;11;1;wo@luise.net;1002
+4;Waal;Fritz;2002-09-11T00:00:00Z;11;1;wale@luise.net;1003
+5;Gammel;Gabi;2000-08-01T00:00:00Z;12;2;gaga@luise.net;1004
+6;Schlau;Gabi;2003-07-01T00:00:00Z;10;3;schlau@luise.net;1005
+7;Gans;Gunter;2003-07-01T00:00:00Z;10;3;gg@luise.net;1006
+8;Kannicht;Thomas;2004-03-03T00:00:00Z;09;4;konzert@luise.net;1007
+9;Kurz;Susanne;2004-03-28T00:00:00Z;09;4;shorty@luise.net;1008
+10;Braumeister;Thomas;2004-04-03T00:00:00Z;09;4;lame@luise.net;1009
+11;Sabbel;Klara;2005-12-04T00:00:00Z;08;5;schlau@luise.net;1010
+12;Kunze;Max;2005-12-05T00:00:00Z;08;6;maumau@luise.net;1011
+13;Kolbe;Theresa;2005-06-07T00:00:00Z;08;6;prince@luise.net;1012
+14;Kunze;Constanze;2005-12-05T00:00:00Z;08;6;babo@luise.net;1013
+15;Witzel;Merve;2000-04-09T00:00:00Z;12;6;knaller@luise.net;1014
+16;Sonnenschein;Clara;2000-12-30T00:00:00Z;12;7;mist@luise.net;1015

@@ -1,0 +1,157 @@
+% 1) Welche Gemüsearten sind in der Datenbank?
+DES> project gnr, gname, familie, lage, schneckenbeliebtheit (gemuese)
+
+answer(gemuese.gnr:int,gemuese.gname:varchar(255),gemuese.familie:varchar(255),gemuese.lage:int,gemuese.schneckenbeliebtheit:int) ->
+{
+  answer(0,'Mangold','Blattgemuese',2,1),
+  answer(1,'Karotte','Wurzelgemuese',2,1),
+  answer(2,'Erbse','Huelsenfrucht',1,2),
+  answer(3,'Weisskohl','Kohlgemuese',1,3),
+  answer(4,'Kuerbis','Kuerbisgewaechse',1,3),
+  answer(5,'Tomaten','Nachtschattengewaechse',1,1),
+  answer(6,'Spinat','Blattgemuese',3,1)
+}
+Info: 7 tuples computed.          
+
+
+
+% 2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?
+DES> project taetigkeit (arbeitsschritte)
+ 
+answer(arbeitsschritte.taetigkeit:varchar(255)) ->
+{
+  answer('Aussaht'),
+  answer('Duengen'),
+  answer('Ernten'),
+  answer('Pflanzen'),
+  answer('Pikieren')
+}
+Info: 5 tuples computed.          
+
+
+
+% 3) Wie heißen die Händler, die in Berlin ansässig sind?
+DES> project hname (select haendler.öort='Berlin' (haendler))  
+- aus technischen gründen derzeit keine Auswertung möglich-
+
+
+
+% 4) Wie heißen die Gemüsearten, die zur Familie der Blattgemuese gehören?
+DES> project gname (select familie='Blattgemuese' (gemuese))
+
+answer(gemuese.gname:varchar(255)) ->
+
+{
+  answer('Mangold'),
+  answer('Spinat')
+}
+Info: 2 tuples computed.          
+
+
+
+% 13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familien an.
+DES> project sorten.sname, gemuese.gname, familie (sorten njoin gemuese)
+ 
+answer(sorten.sname:varchar(255),gemuese.gname:varchar(255),familie:varchar(255)) ->
+
+{
+  answer('Blue Banana','Kuerbis','Kuerbisgewaechse'),
+  answer('Bright Yellow','Mangold','Blattgemuese'),
+  answer('Bunter Turban','Kuerbis','Kuerbisgewaechse'),
+  answer('Butterkohl Goldberg','Weisskohl','Kohlgemuese'),
+  answer('Duwicker','Karotte','Wurzelgemuese'),
+  answer('Hokaido','Kuerbis','Kuerbisgewaechse'),
+  answer('Kleine Rheinlaenderin','Erbse','Huelsenfrucht'),
+  answer('Latio F','Spinat','Blattgemuese'),
+  answer('Matador','Spinat','Blattgemuese'),
+  answer('Roter Riese','Karotte','Wurzelgemuese'),
+  answer('Sibirisches Birnchen','Tomaten','Nachtschattengewaechse'),
+  answer('Tigerella','Tomaten','Nachtschattengewaechse'),
+  answer('Zuckererbse','Erbse','Huelsenfrucht')
+}
+Info: 13 tuples computed.          
+
+
+
+% 14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an.
+DES> project sorten.sname, angebautes.tatsaechlicheranbau (angebautes njoin sorten)
+
+answer(sorten.sname:varchar(255),angebautes.tatsaechlicheranbau:datetime(date)) ->
+
+{
+  answer('Blue Banana',date(2000,3,20)),
+  answer('Bright Yellow',date(2000,4,15)),
+  answer('Bright Yellow',date(2000,6,15)),
+  answer('Bunter Turban',date(2000,3,20)),
+  answer('Butterkohl Goldberg',date(2000,4,20)),
+  answer('Duwicker',date(2000,3,20)),
+  answer('Hokaido',date(2000,3,15)),
+  answer('Kleine Rheinlaenderin',date(2000,7,1)),
+  answer('Latio F',date(2000,3,1)),
+  answer('Roter Riese',date(2000,3,20)),
+  answer('Sibirisches Birnchen',date(2000,5,1)),
+  answer('Tigerella',date(2000,5,1)),
+  answer('Zuckererbse',date(2000,5,10))
+}
+Info: 13 tuples computed.          
+
+
+
+% 15) Welche Abpackungen von Tigerella gibt es?
+DES> project vertrieb.packungsmenge, vertrieb.packungseinheit (select sorten.sname = 'Tigerella' (vertrieb njoin sorten))
+
+answer(vertrieb.packungsmenge:float,vertrieb.packungseinheit:varchar(255)) ->
+
+{
+  answer(2.0,m2)
+}
+Info: 1 tuple computed.          
+
+
+
+% 16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen.
+DES> project sorten.sname (select angebautes.bnr = 2 (angebautes njoin sorten))
+ 
+answer(sorten.sname:varchar(255)) ->
+
+{
+  answer('Bright Yellow'),
+  answer('Kleine Rheinlaenderin'),
+  answer('Zuckererbse')
+}
+Info: 3 tuples computed.          
+
+
+
+% 17) Welche Händler verteiben Hokaido?
+DES> {H.hname|(exists S,V) haendler(H) and (sorten(S) and vertrieb(V) and V.snr=S.snr and S.sname='Hokaido' and V.hnr=H.hnr)}
+- aus technischen gründen derzeit keine Auswertung möglich-
+
+
+
+% 18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer.
+DES> project beet.bnr, sorten.sname (beet njoin(angebautes njoin sorten))
+
+answer(beet.bnr:int,sorten.sname:varchar(255)) ->
+{
+  answer(0,'Bright Yellow'),
+  answer(1,'Duwicker'),
+  answer(1,'Roter Riese'),
+  answer(2,'Bright Yellow'),
+  answer(2,'Kleine Rheinlaenderin'),
+  answer(2,'Zuckererbse'),
+  answer(3,'Blue Banana'),
+  answer(3,'Bunter Turban'),
+  answer(4,'Butterkohl Goldberg'),
+  answer(4,'Hokaido'),
+  answer(5,'Latio F'),
+  answer(5,'Sibirisches Birnchen'),
+  answer(5,'Tigerella')
+}
+Info: 13 tuples computed.          
+
+
+
+% 19) Geben Sie an, von welchen Händlern die tatsächlich angebauten Sorten bezogen werden können.
+DES> project hname (haendler WHERE haendler.hnr = vertrieb.hnr, vertrieb.snr = angebautes.snr product (vertrieb product angebautres))
+- aus technischen gründen derzeit keine Auswertung möglich-

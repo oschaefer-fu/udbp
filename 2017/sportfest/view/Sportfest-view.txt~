@@ -1,0 +1,20 @@
+﻿LWB Informatik 2015-2017
+Unterrichtsbezogenes Datenbankpraktikum SoSe17
+Gruppenarbeit (Buchschmid,El Moutahid,Hertel,Zemke)
+
+Projekt „Sportfest-Datenbank“
+
+Begründung und Motivation der Sicht
+
+Bislang wurden innerhalb des Projektes die Anforderungen an Datenmodellierung, Erstellung eines relationales Datenbankschema, die praktische Umsetzung in ein Datenbank-Managementsystem mittels RaspberryPi mit PostgresSQL und den entsprechenden Tabellen und Anfragen umgesetzt.
+
+Die erstellte Sicht kann von den Lernenden als Übungsmöglichkeit für die Selbstkontrolle von bislang erworbenen Kenntnissen bei der Erzeugung und Nutzung von SQL-Anfragen genutzt werden. Ausschnittsweise werden Anfragen zur Verfügung, die auch im „realen“ Betrieb der Datenbank genutzt werden.
+ 
+Mit Hilfe des Arbeitsblattes können die zu erwartenden Ergebnisse der zur Verfügung stehenden Anfragen vorab verbalisiert und schriftlich fixiert werden und dann mit dem Ergebnis der realen Datenbankabfrage verglichen werden.
+
+
+
+
+
+
+

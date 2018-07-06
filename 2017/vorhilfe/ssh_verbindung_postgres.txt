@@ -1,0 +1,29 @@
+
+Aufbau einer verschlüsselten Datenbankverbindung
+
+ Datenbank akzeptiert dadurch logins von ip-Adressen, 
+ die nicht in pg_hba.conf aufgeführt sind. 
+
+1. Auf dem server (pi) muss ein ssh laufen.
+2. Auf dem lokalen Computer:
+
+   ssh -L 63333:localhost:5432 dynpi (oder -p 61813 pi@musichi.ddns.net)
+
+	-L lauscht auf dem lokalen Port 63333 und forwarded alles nach dynpi
+	Auf dem pi wird der port 5432 (postgresql) vom localhost aus erreicht.
+
+lokaler Computer| lokaler ssh listener|<-Tunnel-> |ssh-server auf pi|    
+
+psql --> 63333    --> 63333      <-- Tunnel --> Pi@test.com --> 5432 
+
+	dynpi ist ein Eintrag in der ssh.config, der einen anderen ssh-Port 
+	(Standard 22) spezifiziert. 
+	Die Tunnel-Verbindung zum Pi ist damit aufgebaut
+	Von außen kann man sich so einwählen, ohne die pg_hba.conf zu ändern.
+3. Auf dem lokalen Computer über psql die Verbindung zum Tunnel herstellen:
+		
+		lokaler Tunnel -U = 'username' 'datenbankname' 
+
+	psql -h localhost -p 63333 -U 'pi' 'pi'
+
+	Passwort der Datenbank wird abgefragt. 

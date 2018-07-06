@@ -1,0 +1,36 @@
+﻿LWB Informatik 2015-2017
+Unterrichtsbezogenes Datenbankpraktikum SoSe17
+Gruppenarbeit (Buchschmid,El Moutahid,Hertel,Zemke)
+
+Didaktisch-Methodische Hinweise zum Projekt „Sportfest-Datenbank“
+
+Das gewählte Projekt „Sportfest-Datenbank“ kann wirklichkeitsnah in das Themengebiet - Datenbanken und Softwareentwicklung - des Informatikunterrichts Sek I/II eingebettet werden.
+
+Aus eigenen Erfahrungen sollte es möglich sein, das komplexe Thema so in Einzelbereiche aufzuteilen, dass sich Schwierigkeitsgrad (Aufgaben für Einsteiger, Fortgeschrittene oder Profis), Umfang und Zeitbedarf der Teilaufgaben (Unterricht, Projektarbeit, Projektwoche) im Unterrichtskontext differenziert steuern lassen.
+
+Folgende Inhalte wurden gemäß den Vorgaben abgebildet:
+
+	-Datenmodellierung, 
+	-Erstellung eines relationales Datenbankschema, 
+	-praktische Umsetzung in ein Datenbank-Managementsystem 
+	-Erstellung von Tabellen und Anfragen
+	-Hard- und Software für den Test- und Produktiveinsatz
+	-Anwendungsprogrammierung und Nutzerfreundlichkeit
+
+Schwerpunkte sind hierbei:
+
+	-Analyse, Modellierung und Implementation einer Datenbank auf der 	 	 Grundlage eines realen Anwendungsfalles
+	-Analyse, Wartung und Implementation einer laufenden Datenbank
+	-Einsatz von Hard- und Software für die Realisierung einer 	    	 	 	 Datenbankanwendung durch RaspberryPi mit PostgresSQL/Go/PHP
+
+Unverzichtbar sind die Anforderungsdefinitionen, die Datenmodellierung mit Hilfe des ER-Models, die Normalisierung und die Relationenalgebra. 
+
+Mit Ausnahme eines Leistungskurses und Lernenden mit entsprechendem erweiterten Anforderungsprofil könnte auf Tupel- und Domänenkalkül verzichtet werden, da hierfür sehr vertiefende theoretische Kenntnisse notwendig sind. 
+
+Anfragen in SQL und darauf bezogene Sichten tragen zum Verständnis von Datenbanken und Datenbankmanagementsysteme bei. Hier könnten die theoretischen Grundlagen und die praktische Umsetzung arbeitsteilig miteinander verbunden werden.
+
+Das Projekt eignet sich gut als Gruppenarbeit, die Teilaufgaben sind kollaborierend lösbar und den Lernenden werden die Werkzeuge für selbstgesteuertes Lernen sowie Übungsmöglichkeiten zur Selbstkontrolle von bislang erworbenem Wissen praxisnah angeboten.
+
+Arbeitsblätter könnten so gestalten werden, dass die Lernenden bestimmte Lernfortschritte zeitnah reflektieren und dokumentieren. Für z.B. ausgewählte Anfragen werden die vorab verbalisierten und schriftlich fixierten erwarteten Ergebnisse dann mit dem Ergebnis der realen Datenbankabfrage verglichen.
+
+

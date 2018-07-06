@@ -1,0 +1,7 @@
+select raum.rnr,geraete from raum natural join hat natural join ausstattung where geraete ='Sitzecke';
+rnr;geraete
+200;Sitzecke
+100;Sitzecke
+101;Sitzecke
+1;Sitzecke
+-101;Sitzecke

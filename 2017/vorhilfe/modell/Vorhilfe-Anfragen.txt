@@ -1,0 +1,120 @@
+-- 01. Auflistung aller Lehrer-Nachnamen. *
+SELECT nname 
+FROM lehrer;
+
+-- 02. Ausgabe der Daten des Lehrers "Czetö". *
+SELECT * 
+FROM lehrer 
+WHERE nname = 'Czetö';
+
+-- 03. Ausgabe der Tabelle Ausstattung. *
+SELECT * 
+FROM ausstattung;
+
+-- 04. Auflistung aller Schüler mit Vornamen 'Gabi'. *
+SELECT * 
+FROM schueler 
+WHERE vname = 'Gabi';
+
+-- 05. Liste der Räume im "1. Stock". *
+SELECT RNR 
+FROM raum 
+WHERE stock = 1; 
+
+-- 06. Welche Schüler haben kein Guthaben? (Kontostand) * 1/2
+SELECT vname,nname 
+FROM schueler NATURAL JOIN konto 
+WHERE kontostand = 0; 
+
+-- 07. Welche Schüler haben Guthaben * 1/2
+SELECT vname,nname,kontostand 
+FROM schueler NATURAL JOIN konto 
+WHERE kontostand > 0;
+
+-- 08. Wie ist die Kontonummer der Schülerin Frieder Bär? * 1/2
+SELECT vname,nname,konr 
+FROM schueler NATURAL JOIN konto 
+WHERE vname = 'Frieder' AND nname ='Bär';
+
+
+-- 09a.  Liste der Schüler, die bei WEB.de sind. **
+SELECT nname, vname 
+FROM schueler 
+WHERE email LIKE '%luise.net'; 
+
+-- 09b.  Liste der Lehrer (Kuerzel), die bei vim.org sind. - Alternative **
+SELECT nname,kuerzel 
+FROM lehrer 
+WHERE email LIKE '%vim.org';
+
+-- 10. Welche Schüler haben Guthaben (nach Größe sortiert - Beginn höchster)? **
+SELECT vname,nname,kontostand 
+FROM schueler NATURAL JOIN konto
+WHERE kontostand > 0 ORDER BY kontostand DESC;
+ 
+-- 11. Kursliste: Alle Schüler mit Vor-, Nachname,Klassenlehrer und E-Mail, die das Fach Informatik belegen **
+SELECT s.vname,s.nname,s.lid,s.email 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,
+	schueler as s, eingeschrieben AS e 
+	WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';
+
+-- 12. Welcher Schüler ist in einem bestimmten Kurs unter 16 Jahre alt? **
+SELECT * 
+FROM schueler NATURAL JOIN eingeschrieben
+WHERE age(geb) < '16 year' AND KNR = 2;
+
+-- 13. Wie viele Schüler sind im Kurs 2 eingeschrieben? **
+SELECT COUNT(sid) AS Anzahl_eingeschrieben_in_Kurs_2 
+FROM eingeschrieben 
+WHERE knr = 2;
+
+-- 14. Welcher Lehrer macht wann Aufsicht? ** 
+SELECT kuerzel, wtag, zeit
+FROM (kurs NATURAL JOIN beaufsichtigt NATURAL JOIN lehrer) ORDER BY kuerzel;
+
+-- 15. Liste aller Räume, die min 30 Plätze haben. **
+SELECT * 
+FROM raum 
+WHERE anzP >= 30;
+
+
+-- 16. Wie viele Kurse werden am Donnerstag angeboten? *** AGG
+SELECT COUNT(kurs.KNR) AS Kurse_am_Donnerstag
+FROM Kurs 
+WHERE wtag= 'do';
+
+-- 17. Wie viele Schüler haben „Mathematik“ belegt? *** AAG
+SELECT COUNT(*) AS Anzahl_schueler_Mathematik 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs) AS f, schueler as s, eingeschrieben AS e
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Mathematik'; 
+
+-- 18. Wer leitet den Kurs 'Mathematik' an welchem Tag? ***
+SELECT sk.knr, sk.vname,sk.nname AS Kursleitung_Mathematik ,sk.wtag
+FROM(schueler NATURAL JOIN kurs) AS sk,(vermittelt NATURAL JOIN fach) AS vf
+WHERE fname = 'Mathematik' AND sk.knr = vf.knr;
+
+-- 19. Wie viele Räume haben einen Beamer? ***
+SELECT COUNT( * ) AS Raeume_mit_Beamer 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung GROUP BY geraete HAVING geraete ='Beamer';
+
+-- 20a. Welche Räume haben einen Beamer? ***
+SELECT rnr 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung 
+WHERE geraete ='Beamer';
+
+-- 20b. alternativ (wenn Ausstattungsnummer von Beamer bekannt ist): **
+SELECT RNR 
+FROM raum NATURAL JOIN hat 
+WHERE ANR = 2;
+
+
+-- 21. Wieviele Plätze sind im Kurs "Informatik" noch frei? **** AGG
+-- a) Kursliste Informatik ***
+SELECT * 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,schueler as s, eingeschrieben AS e 
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';
+
+-- b) Plätze in Informatik ****
+SELECT MAX(f.maxP) - COUNT(fname) AS Freie_Plaetze_Informatik 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,schueler as s, eingeschrieben AS e 
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';

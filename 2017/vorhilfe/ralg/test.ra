@@ -1,0 +1,28 @@
+#/RA
+#1 alles aus tabelle ausstattung
+select true (ausstattung) 
+
+#2 nname aus lehrer
+project nname (lehrer)
+
+#3 lehrer mit namen 'Czetö'
+select nname='Czetö' (lehrer)
+
+#4 alle räume im ersten Stock
+project rnr (select stock=1 (raum))
+
+#5 alle räume mit Beamer
+project rnr (select geraete='Beamer' (raum njoin hat njoin ausstattung))
+
+#/DRC
+#1
+{A,B | ausstattung(A,B)}
+#2
+{B | lehrer(_,B,_,_)} 
+#3
+{}
+#4
+#5
+
+#/TPC
+#2 {X.nname | lehrer(X)};  

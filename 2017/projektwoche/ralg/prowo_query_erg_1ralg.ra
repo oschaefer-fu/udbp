@@ -1,0 +1,214 @@
+DES> project Name (Kurs); 
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Kurs'(_B,_C,A).
+
+answer(Kurs.Name:string) ->
+{
+  answer('Chor'),
+  answer('Datenbanken'),
+  answer('Fitnesskurs'),
+  answer('Kryptographie'),
+  answer('Mittelalterkurs'),
+  answer('Waschmittel')
+}
+Info: 6 tuples computed.          
+
+DES> project Nachname, Vorname (select Klasse = '8a' (Schueler)); 
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Schueler'(_C,_D,B,A,'8a',_E).
+
+answer(Schueler.Nachname:string,Schueler.Vorname:string) ->
+{
+  answer('Kappel','Michael'),
+  answer('Koenig','Maik'),
+  answer('Lemann','Jorgen'),
+  answer('Scholz','Kristin'),
+  answer('Schwarz','Anke')
+}
+Info: 5 tuples computed.          
+
+DES> project Kuerzel, Name (select Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie' (Fach)); 
+
+Info: RA expression compiled to:
+
+answer(A,B) :-
+  'Fach'(_C,A,B),
+  or(B='Physik',or(B='Chemie',B='Biologie')).
+
+answer(Fach.Kuerzel:string,Fach.Name:string) ->
+{
+  answer(bec,'Physik'),
+  answer(har,'Chemie'),
+  answer(neu,'Biologie')
+}
+Info: 3 tuples computed.          
+
+DES> Fach njoin Lehrer; 
+
+Info: RA expression compiled to:
+
+answer(A,B,C,D,E) :-
+  'Fach'(A,B,C),
+  'Lehrer'(B,D,E).
+
+answer(Fach.FachID:int,Fach.Kuerzel:string,Fach.Name:string,Lehrer.Vorname:string,Lehrer.Nachname:string) ->
+{
+  answer(1,mei,'Mathematik','Matthias','Meier'),
+  answer(2,leh,'Deutsch','Paul','Lehmann'),
+  answer(3,gol,'Englisch','Katja','Goldschmidt'),
+  answer(4,bie,'Geschichte','Daniel','Biermann'),
+  answer(5,sch,'Informatik','Jan','Schulze'),
+  answer(6,neu,'Biologie','Melanie','Neustadt'),
+  answer(7,bec,'Physik','Ines','Becker'),
+  answer(8,har,'Chemie','Klaudia','Hartmann'),
+  answer(9,wal,'Musik','Stephan','Walter'),
+  answer(10,bau,'Sport','Jennifer','Baum')
+}
+Info: 10 tuples computed.          
+
+DES> project Name (Ort) difference project Name (select Tag = 1 (Ort njoin Termin)); 
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Ort'(_B,A),
+  not answer_1_3(A).
+answer_1_3(A) :-
+  'Ort'(B,A),
+  'Termin'(_C,B,1,_D,_E).
+
+answer(Ort.Name:string) ->
+{
+  answer('Aula'),
+  answer('Haus'),
+  answer('Hof'),
+  answer('Museumsdorf'),
+  answer('R102'),
+  answer('R103'),
+  answer('R314')
+}
+Info: 7 tuples computed.          
+
+DES> project Kuerzel (Lehrer njoin Kurs) union project Kuerzel (Lehrer njoin Aufsicht); 
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Lehrer'(A,_B,_C),
+  'Kurs'(_D,A,_E).
+answer(A) :-
+  'Lehrer'(A,_B,_C),
+  'Aufsicht'(A,_D,_E,_F,_G).
+
+answer(Kuerzel:string) ->
+{
+  answer(adl),
+  answer(bau),
+  answer(bec),
+  answer(bie),
+  answer(bla),
+  answer(bum),
+  answer(fue),
+  answer(gol),
+  answer(har),
+  answer(leh),
+  answer(mei),
+  answer(neu),
+  answer(ric),
+  answer(sch),
+  answer(wal),
+  answer(zie)
+}
+Info: 16 tuples computed.          
+
+DES> project Kuerzel (Lehrer) difference (project Kuerzel (Lehrer njoin Kurs) union project Kuerzel (Lehrer njoin Aufsicht)); 
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Lehrer'(A,_B,_C),
+  not answer_1_3(A).
+answer_1_3(A) :-
+  'Lehrer'(A,_B,_C),
+  'Kurs'(_D,A,_E).
+answer_1_3(A) :-
+  'Lehrer'(A,_B,_C),
+  'Aufsicht'(A,_D,_E,_F,_G).
+
+answer(Lehrer.Kuerzel:string) ->
+{
+  answer(ebe),
+  answer(pro)
+}
+Info: 2 tuples computed.          
+
+DES> project Kuerzel, Nachname, Vorname (select Name = 'Hof' (Lehrer njoin Aufsicht njoin Ort)); 
+
+Info: RA expression compiled to:
+
+answer(A,B,C) :-
+  'Lehrer'(A,C,B),
+  'Aufsicht'(A,D,_E,_F,_G),
+  'Ort'(D,'Hof').
+
+answer(Kuerzel:string,Nachname:string,Vorname:string) ->
+{
+  answer(bec,'Becker','Ines'),
+  answer(bla,'Blau','Jonas'),
+  answer(mei,'Meier','Matthias'),
+  answer(neu,'Neustadt','Melanie'),
+  answer(wal,'Walter','Stephan'),
+  answer(zie,'Ziegler','Eric')
+}
+Info: 6 tuples computed.          
+
+DES> project Vorname, Nachname, OName (select Klasse='7b' and Tag=4 (Schueler njoin Kurs njoin Termin njoin (rename Ortneu(OrtID, OName) (Ort)))); 
+
+Info: RA expression compiled to:
+
+answer(A,B,C) :-
+  'Schueler'(_D,E,A,B,'7b',_F),
+  'Kurs'(E,_G,_H),
+  'Termin'(E,I,4,_J,_K),
+  'Ort'(I,C).
+
+answer(Vorname:string,Nachname:string,Ortneu.OName:string) ->
+{
+  answer('Brigitte','Kortig','Aula'),
+  answer('Jorgen','Diederich','Aula'),
+  answer('Klaudia','Burger','R211'),
+  answer('Leah','Engel','Aula'),
+  answer('Lukas','Faust','R102'),
+  answer('Martina','Birger','R307'),
+  answer('Sven','Schreiber','R001'),
+  answer('Thomas','Schwartz','R205')
+}
+Info: 8 tuples computed.          
+
+DES> project Kuerzel (select Name = 'Museumsdorf' (Lehrer njoin Aufsicht njoin Ort)) union project Kuerzel (select OName = 'Museumsdorf' (Lehrer njoin Kurs njoin Termin njoin (rename Ortneu(OrtID, OName) (Ort)))); 
+
+Info: RA expression compiled to:
+
+answer(A) :-
+  'Lehrer'(A,_B,_C),
+  'Aufsicht'(A,D,_E,_F,_G),
+  'Ort'(D,'Museumsdorf').
+answer(A) :-
+  'Lehrer'(A,_B,_C),
+  'Kurs'(D,A,_E),
+  'Termin'(D,F,_G,_H,_I),
+  'Ort'(F,'Museumsdorf').
+
+answer(Kuerzel:string) ->
+{
+  answer(adl),
+  answer(bie),
+  answer(har)
+}
+Info: 3 tuples computed.

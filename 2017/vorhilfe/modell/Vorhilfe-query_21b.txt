@@ -1,0 +1,5 @@
+-- b) Plätze in Informatik ****
+SELECT MAX(f.maxP) - COUNT(fname) AS Freie_Plaetze_Informatik 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,
+	  schueler as s, eingeschrieben AS e 
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';

@@ -1,0 +1,4 @@
+-- 07. Welche Schüler haben Guthaben * 1/2
+SELECT vname,nname,kontostand 
+FROM schueler NATURAL JOIN konto 
+WHERE kontostand > 0;

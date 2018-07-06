@@ -1,0 +1,16 @@
+Wesentliche funktionale Abhängigkeiten:
+
+(1) Kuerzel -> {Lehrer.Vorname,Lehrer.Nachname}
+(2) FachID -> {Fach.Name}
+(3) KursID -> {Kurs.Name,'(2)'}
+(4) SchuelerID -> {Schueler.Vorname,Schueler.Nachname,Klasse,istVerantwortlich,'(3)'}
+
+Und damit: '(4)' -> '(3)' -> '(2)'
+
+(5) OrtID -> {Ort.Name}
+
+Triviale Abhängigkeiten der Form AB->A werden nicht mit angegeben.
+
+(6) KursID,Termin.Tag, Termin.Start -> {'(5)',Termin.Ende}
+(7) OrtID, KursID, Termin.Tag, Termin.Start -> {Termin.Ende}
+(8) OrtID, KursID, Aufsicht.Tag, Aufsicht.Start -> {Aufsicht.Ende}

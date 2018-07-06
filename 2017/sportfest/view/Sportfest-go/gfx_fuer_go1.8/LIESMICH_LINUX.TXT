@@ -1,0 +1,55 @@
+﻿---------------------------------------------------------
+LINUX-ANLEITUNG FÜR DIE NUTZUNG DES PAKETS 'gfx' MIT GO
+---------------------------------------------------------
+
+Wenn Sie unter Linux in Go programmieren möchten,
+sind folgende Schritte abzuarbeiten:
+ 
+1.) Installieren Sie go in der Version 1.8.x (Download von golang.org).
+    (Sollten Sie ein 'altes' Go installiert haben, deinstallieren Sie
+    dieses bitte vorher.)
+
+2.) Installieren Sie 'geany' in einer aktuellen Version (Download von geany.org).
+    Es muss nicht die neueste sein, jedoch mindestens in Version 1.25.
+
+Das Syntax-Highlighting ist standardmäßig für .go-Dateien aktiviert.
+Mit F5 wird in Geany die Go-Datei übersetzt und ausgeführt. 
+
+Wenn Sie nun noch ein Grafikfenster brauchen, arbeiten Sie die 
+weiteren Schritte ab.
+
+3.) Überprüfen Sie, ob die Umgebungsvariable GOPATH auf ~/go gesetzt ist.
+    FAlls nicht, holen Sie das dauerhaft nach.
+
+4.) Kopieren Sie den Ordner gfx nach $GOPATH/src/ - das ist bei uns in
+    der LWB der Ordner ~/go/src/   . 
+    (Damit haben Sie die Quelltextdateien für das Paket an die richtige
+     Stelle geschoben.)
+     
+5.) Kopieren Sie das Verzeichnis fonts (als root) nach $GOROOT/    .
+    (Das ist das Installationsverzeichnis von go.)
+    Das ist bei uns in der LWB der Ordner /usr/local/go/  .
+    (Damit sind die Fonts für alle Nutzer des Systems zugänglich.)
+
+6.) Löschen Sie die alte Datei gfx.a im Verzeichnis $GOPATH/pkg/linux_386
+    (bei 32-Bit-Systemen) bzw. im Verzeichnis $GOPATH/pkg/linux_amd64 (bei
+    64-Bit-Systemen).
+
+7.) Starten Sie eine Konsole, wechseln Sie in das Verzeichnis
+    $GOPATH/src und installieren Sie das (neue) Paket gfx mit dem Befehl:
+    go install gfx
+    (Wenn keine Ausgaben erfolgen, waren Sie erfolgreich.)
+
+Nun können Sie gfx verwenden und mit Geany programmieren!
+Verwenden Sie einfach - wie in Go üblich - den GO-Befehl 
+import "gfx"
+(Die Spezifikationen der Funktionen von gfx stehen in gfx.go und sind
+über godoc "gfx" erreichbar!)
+
+
+Viel Spaß wünscht
+
+Stefan Schmidt
+Lehrerweiterbildung Informatik
+an der FU Berlin
+12.03.2017

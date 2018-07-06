@@ -1,0 +1,15 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Material;;;;;
+MNr;MName;Vorratsanzahl;;;
+501;'Kugel';5;;;
+502;'Springseil';10;;;
+503;'Stoppuhr';10;;;
+504;'Trillerpfeife';20;;;
+505;'Maßband';5;;;
+506;'Harken';2;;;
+507;'Ständer';6;;;
+508;'Stangen';3;;;
+

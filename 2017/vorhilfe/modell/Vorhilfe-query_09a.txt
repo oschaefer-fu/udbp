@@ -1,0 +1,4 @@
+-- 09a.  Liste der Schüler, die bei luise.net sind. **
+SELECT nname, vname 
+FROM schueler 
+WHERE email LIKE '%luise.net'; 

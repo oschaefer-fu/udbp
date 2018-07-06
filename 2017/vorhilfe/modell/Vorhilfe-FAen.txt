@@ -1,0 +1,9 @@
+(﻿d) (nichttriviale) Funktionale Abhängigkeiten
+
+Relation Schüler: 
+F={nname, vname, geb} → Klasse, LID, email, KoNr
+
+Relation Lehrer: 	
+F=email → kuerzel
+F=kuerzel → email
+

@@ -1,0 +1,19 @@
+Schwierigkeitsgrad
+Die Datenbank Schulgarten ist eher anspruchsvoll. Zunächst ist ein recht umfangreiches Verständnis der Materie Garten zu erwerben. Die Modellierung aus dem Text birgt manche Klippe, die durch die Lehrkraft begleitet werden sollte. Zudem ist der Umfang nicht jeder Gruppe zuzumuten (s. nächster Punkt). 
+
+Umfang
+Bedingt durch die zahlreichen Entitäten (6) und n:m-Relationen (4) ergeben sich nicht nur zahlreiche Relationen und Attribute im Relationen-Modell, sondern auch eine sehr umfangreiche Population. Dementsprechend sollte dieses Projekt nur Gruppen zugeteilt werden, die zügig arbeiten können und sich nicht von umfangreichem Datenmaterial abschrecken lassen.
+
+Zeitbedarf
+Entsprechend der letzten beiden Punkte ist klar, dass dies keine Datenbank für ein kurzes Schnupperpraktikum ist. Der Zeitbedarf wird sicherlich mehrere Wochen für die Einarbeitungszeit und die Arbeit mit den Anfragen betragen. Besonders motivierend wäre es, einen tatsächlichen Schulgarten zu modellieren. Je nachdem, wie viele Beete dieser besitzt, kann der Zeitbedarf sogar noch steigen. 
+
+Bedeutsamkeit im Kontext des Informatikunterrichts
+Die Bedeutsamkeit des Bereichs Datenbank kann dem RLP entnommen werden. Das Besondere der Datenbank Schulgarten besteht darin, dass es eine Anwendung darstellt, die etwas abseits der üblichen Datenbanken ist und damit motivierend wirken kann, etwas völlig Uninformatisches mit den Mitteln der Informatik zu modellieren. 
+
+Ideen zur methodischen Umsetzung
+Es ist auf jeden Fall zu empfehlen, diese Datenbank nicht verpflichtend für einen ganzen Kurs zu machen. Dies liegt einerseits am Anspruch (s. oben), andererseits am Thema, das für manche Schüler*innen besonders spannend, für andere besonders abschreckend sein kann.
+Je nachdem, wie viel Zeit zur Verfügung steht, kann der Modellierungsaspekt verkürzt werden, indem man das ER-Modell bzw. die Entitätstypen vorgibt. Daraus folgt allerdings, dass die Modellierungsphase wegfällt bzw. entwertet wird. Dabei ist dies ein besonders spannender Prozess, der mitunter am lehrreichsten ist. 
+
+Weiterführende Fragestellungen
+Für größere Projekte (z.B. im Rahmen einer BLL) könnte man das Projekt z.B. um das Konzept der Fruchtfolge erweitern. Auf Beeten, in denen im einen Jahr Kürbis (Starkzehrer) gewachsen ist, sollte im Folgejahr ein Schwachzehrer wachsen. 
+Auch könnte mehr Wert auf verschiedene Sichten gelegt werden (z.B. ein Arbeitskalender). Auch Vorschläge, was wo gepflanzt werden könnte, wären eine weiterführende Möglichkeit. 

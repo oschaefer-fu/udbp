@@ -1,0 +1,9 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Betreuung;;;;;
+DNr;WKStNr;Kosten;;;
+401;302;'50.00€';;;
+403;302;'150.00€';;;
+402;301;'200.00€';;;

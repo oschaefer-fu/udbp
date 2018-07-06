@@ -1,0 +1,46 @@
+﻿"SELECT * FROM * (WHERE *) Anfragen"
+"1) Welche Gemüsearten sind in der Datenbank?"
+
+"2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?"
+
+"3) Wie heißen die Händler, die in Berlin ansässig sind?"
+
+"4) Wie heißen die Gemüsearten, die zur Familie der Blattgemüse gehören?"
+
+"5) Welche sind die Gemüsesorten, die nicht zur Familie der Blattgemüse gehören"
+
+"6) Geben Sie die Beete nach ihrer Größe sortiert an."
+
+"7) Geben Sie alle Beete an, deren Groesse zwischen 2 und 3 m^2 liegen."
+
+"8) Geben Sie die Gemüsesorten (Name und Anbaubeginn) sortiert nach frühestem Anbaubeginn an."
+
+"Anfragen mit Aggregatsfunktionen"
+"9) Geben Sie die gesamte Anbaufläche des Gartens an."
+
+"10-12) Geben Sie an, wie lang die durchschnittliche Anbaudauer der Sorten ist und geben Sie die maximale und minimale Anbaudauer an."
+
+"Anfragen mit JOIN"
+"13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familie an."
+
+"14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an."
+
+"15) Welche Abpackungen von Tigerella gibt es?"
+
+"16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen."
+
+"17) Welche Haendler vertreiben die Gemüsesorte Hokaido."
+
+"18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer."
+
+"19) Geben Sie an, von welchen Händlern die tatsächlich angebauten Sorten bezogen werden können."
+
+"20) Geben Sie eine Liste mit den Gemuesesorten (Name und Familie) und den zugehörigen Händlern an"
+
+"Spezielle Anfragen an die Schulgarten-Datenbank"
+"21) Darf auf Beet Nr. 7 Spinat angebaut werden?"
+"Anmerkung: Wenn die Zahl aus der Ausgabe kleiner als 4 ist, darf das Gemüse angebaut werden"
+
+
+"22) Welche Beete (bnr) und Gemüsesorten (gnr, gname) haben zusammen ein 'Schneckenprodukt' (Schneckenfaktor * Schneckenbeliebtheit), das kleiner gleich 4 ist - geordnet nach dem Schneckenprodukt?"
+

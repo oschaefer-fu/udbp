@@ -1,0 +1,13 @@
+﻿LWB Informatik 2015-2017
+Unterrichtsbezogenes Datenbankpraktikum SoSe17
+Gruppenarbeit (Buchschmid,El Moutahid,Hertel,Zemke)
+
+Projekt „Sportfest-Datenbank“
+
+Beschreibung optionaler Möglichkeiten
+
+Die Sicht sollte durch weitere Anfragen und den Einsatz einer Anwendungsoberfläche mit z.B. php als gestalteter Unterrichtsinhalt zur Verbesserung der Usability erweiterbar gestaltet werden.
+
+
+
+

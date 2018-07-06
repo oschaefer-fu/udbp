@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="36cm" height="20cm" viewBox="-38 97 1198 774" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+	<a xlink:href="/eingabe?key=SELECT * FROM kurs">
+    <rect style="fill: #f45555" x="445.698" y="470" width="58.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="445.698" y="470" width="58.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="475.098" y="492">Kurs</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM schueler">
+    <rect style="fill: #f45555" x="743.4" y="459.3" width="81.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="743.4" y="459.3" width="81.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="784.35" y="481.3">Schüler</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM lehrer">
+    <rect style="fill: #f45555" x="105.4" y="470.3" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="105.4" y="470.3" width="74.2" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="142.5" y="492.3">Lehrer</text>
+  </a>
+  </g>
+  <g>
+	  <a xlink:href="/eingabe?key=SELECT * FROM konto">
+    <rect style="fill: #f45555" x="1069.79" y="460.9" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1069.79" y="460.9" width="66.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1103.04" y="482.9">Konto</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM schueler NATURAL JOIN  konto;">
+    <polygon style="fill: #7fe37f" points="915.514,477.17 962.464,449 1009.41,477.17 962.464,505.34 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="915.514,477.17 962.464,449 1009.41,477.17 962.464,505.34 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="909.514" y="471.17">1..1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1015.41" y="471.17">1..1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="962.464" y="481.17">besitzt</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM kurs NATURAL JOIN schueler;">
+    <polygon style="fill: #7fe37f" points="570.714,538.99 625.364,506.2 680.014,538.99 625.364,571.78 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="570.714,538.99 625.364,506.2 680.014,538.99 625.364,571.78 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="564.714" y="532.99">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="686.014" y="532.99">0..1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="625.364" y="542.99">bietet an</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM raum NATURAL JOIN findet_statt NATURAL JOIN kurs;">
+    <polygon style="fill: #7fe37f" points="409.028,377.02 475.228,337.3 541.428,377.02 475.228,416.74 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="409.028,377.02 475.228,337.3 541.428,377.02 475.228,416.74 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="479.228" y="331.3">0..4</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="479.228" y="438.74">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="475.228" y="381.02">findet_statt</text>
+  </a>
+  </g>
+  <g>
+	  <a xlink:href="/eingabe?key=SELECT * FROM raum">
+    <rect style="fill: #f45555" x="445.828" y="230.042" width="58.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="445.828" y="230.042" width="58.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="475.228" y="252.042">Raum</text>
+ </a>
+  </g>
+  <g>
+	  <a xlink:href="/eingabe?key=SELECT * FROM fach">
+    <rect style="fill: #f45555" x="330.53" y="651.568" width="58.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="330.53" y="651.568" width="58.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="359.93" y="673.568">Fach</text>
+  </a>
+  </g>
+  <g>
+	  <a xlink:href="/eingabe?key=SELECT * FROM methode">
+    <rect style="fill: #f45555" x="470.144" y="653.452" width="81.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="470.144" y="653.452" width="81.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="511.094" y="675.452">Methode</text>
+ </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT knr,nname,vname,klasse,email,konr FROM vkurs NATURAL JOIN eingeschrieben NATURAL JOIN schueler order BY sid,knr;">
+    <polygon style="fill: #7fe37f" points="549.458,441.64 623.358,397.3 697.258,441.64 623.358,485.98 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="549.458,441.64 623.358,397.3 697.258,441.64 623.358,485.98 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="543.458" y="435.64">0..5</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="703.258" y="435.64">0..4</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="623.358" y="445.64">eingeschrieben</text>
+  </a>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM lehrer NATURAL JOIN beaufsichtigt NATURAL JOIN kurs;">
+    <polygon style="fill: #7fe37f" points="220.4,487.63 290.45,445.6 360.5,487.63 290.45,529.66 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="220.4,487.63 290.45,445.6 360.5,487.63 290.45,529.66 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="214.4" y="481.63">1..4</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="366.5" y="481.63">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="290.45" y="491.63">beaufsichtigt</text>
+  </a>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="10.1074" cy="502.496" rx="46.95" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="10.1074" cy="502.496" rx="46.95" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="10.1074" y="506.496">Kuerzel</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="141.9" cy="410.654" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="141.9" cy="410.654" rx="58.5" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="141.9" y="414.654">N(ach)name</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="141.95" cy="550.676" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="141.95" cy="550.676" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="141.95" y="554.676">LId</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="130.4" y1="558.676" x2="153.5" y2="558.676"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="1101.63" cy="409.6" rx="35.4" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="1101.63" cy="409.6" rx="35.4" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1101.63" y="413.6">KoNr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1086.23" y1="417.6" x2="1117.03" y2="417.6"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="749.02" cy="377.542" rx="54.65" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="749.02" cy="377.542" rx="54.65" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="749.02" cy="377.542" rx="46.65" ry="14"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="749.02" y="381.542">V(or)name</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="842.172" cy="326.842" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="842.172" cy="326.842" rx="58.5" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="842.172" y="330.842">N(ach)name</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="783.672" cy="556.014" rx="73.9" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="783.672" cy="556.014" rx="73.9" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="783.672" y="560.014">Klasse(nstufe)</text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="784.35,495.3 784.35,516.152 783.672,516.152 783.672,537.005 "/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="626.578" cy="346.014" rx="39.25" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="626.578" cy="346.014" rx="39.25" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="626.578" y="350.014">ZeitS</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="858.95" cy="431.6" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="858.95" cy="431.6" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="858.95" y="435.6">SId</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="847.4" y1="439.6" x2="870.5" y2="439.6"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="368.708" cy="248.056" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="368.708" cy="248.056" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="368.708" y="252.056">RNr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="357.158" y1="256.056" x2="380.258" y2="256.056"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="331.334" cy="116.612" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="331.334" cy="116.612" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="331.334" y="120.612">ANr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="319.784" y1="124.612" x2="342.884" y2="124.612"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="601.708" cy="247.642" rx="62.35" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="601.708" cy="247.642" rx="62.35" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="601.708" y="251.642">Stock(werk)</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="940.342" cy="377.7" rx="73.9" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="940.342" cy="377.7" rx="73.9" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="940.342" y="381.7">Geb(urtsdatum)</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="961.018" cy="566.786" rx="39.25" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="961.018" cy="566.786" rx="39.25" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="961.018" y="570.786">email</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="364.95" cy="430.2" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="364.95" cy="430.2" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="364.95" y="434.2">KNr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="353.4" y1="438.2" x2="376.5" y2="438.2"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="1100.6" cy="540.958" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="1100.6" cy="540.958" rx="58.5" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1100.6" y="544.958">Kontostand</text>
+  </g>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM ausstattung;">
+    <rect style="fill: #f45555" x="418.628" y="99.2734" width="112.7" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="418.628" y="99.2734" width="112.7" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="474.978" y="121.273">Ausstattung</text>
+  </a>
+  </g>
+  <g>
+	  <a xlink:href="/eingabe?key=SELECT * FROM ausstattung natural join hat natural join raum">
+    <polygon style="fill: #7fe37f" points="443.398,183.728 474.948,164.798 506.498,183.728 474.948,202.658 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="443.398,183.728 474.948,164.798 506.498,183.728 474.948,202.658 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="478.948" y="158.798">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="478.948" y="224.658">0..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="474.948" y="187.728">hat</text>
+  </a>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="370.928" cy="319.584" rx="66.2" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="370.928" cy="319.584" rx="66.2" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="370.928" y="323.584">AnzP(laetze)</text>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="618.494" cy="116.512" rx="46.95" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="618.494" cy="116.512" rx="46.95" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="618.494" y="120.512">Geraete</text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="531.328,117.273 551.436,117.273 551.436,116.512 571.544,116.512 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="474.978,136.283 474.978,150.54 474.948,150.54 474.948,164.798 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="474.948,202.658 474.948,215.845 475.228,215.845 475.228,229.033 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="475.228,416.74 475.228,443.37 475.098,443.37 475.098,470 "/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 549.458,441.64 A 27.6606,27.6606 0 0 0 504.498,470"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 504.498,506 A 44.2056,44.2056 0 0 0 570.714,538.99"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 680.014,538.99 A 58.8965,58.8965 0 0 0 743.4,477.3"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 743.4,459.3 A 25.256,25.256 0 0 0 697.258,441.64"/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="220.4,487.63 200.505,487.63 200.505,488.3 180.609,488.3 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="360.5,487.63 403.099,487.63 403.099,488 445.698,488 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="142.5,506.3 142.5,519.488 141.95,519.488 141.95,532.676 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="825.3,477.3 870.407,477.3 870.407,477.17 915.514,477.17 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="400.258,248.056 423.043,248.056 423.043,248.042 445.828,248.042 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="504.628,248.042 521.489,248.042 521.489,247.642 538.35,247.642 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="475.228,266.042 475.228,267.042 475.228,336.3 475.228,337.3 "/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 866.442,377.7 A 221.532,221.532 0 0 0 784.35,459.3"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 825.3,459.3 A 53.364,53.364 0 0 0 858.95,449.6"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 961.018,548.786 A 468.372,468.372 0 0 0 825.3,495.3"/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="418.628,117.273 390.756,117.273 390.756,116.612 362.884,116.612 "/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 445.828,266.042 A 90.4262,90.4262 0 0 0 370.928,301.584"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 475.098,470 A 170.141,170.141 0 0 0 387.26,442.928"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 749.02,395.542 A 109.357,109.357 0 0 0 784.35,459.3"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 842.172,344.842 A 133.462,133.462 0 0 0 784.35,459.3"/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="203,231 203,231 "/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="191.748" cy="699.582" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="191.748" cy="699.582" rx="58.5" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="191.748" y="703.582">F(ach)Name</text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 330.53,669.568 A 199.506,199.506 0 0 0 191.748,681.582"/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="693.354" cy="714.584" rx="73.9" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="693.354" cy="714.584" rx="73.9" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="693.354" y="718.584">M(ethoden)Name</text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 105.4,488.3 A 43.1945,43.1945 0 0 0 57.0574,502.496"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 141.9,428.654 A 536.001,536.001 0 0 0 142.5,470.3"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 543.35,809.612 A 212.948,212.948 0 0 0 825.3,495.3"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 693.354,696.584 A 319.673,319.673 0 0 0 552.044,671.452"/>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM kurs NATURAL JOIN vermittelt NATURAL JOIN fach;">
+    <polygon style="fill: #7fe37f" points="313.478,588.256 371.978,553.156 430.478,588.256 371.978,623.356 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="313.478,588.256 371.978,553.156 430.478,588.256 371.978,623.356 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="375.978" y="547.156">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="375.978" y="645.356">0..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="371.978" y="592.256">vermittelt</text>
+  </a>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 445.698,506 A 126.075,126.075 0 0 0 371.978,553.156"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 371.978,623.356 A 78.8931,78.8931 0 0 0 359.93,651.568"/>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM kurs NATURAL JOIN beinhaltet NATURAL JOIN methode;">
+    <polygon style="fill: #7fe37f" points="456.798,588.714 515.298,553.614 573.798,588.714 515.298,623.814 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="456.798,588.714 515.298,553.614 573.798,588.714 515.298,623.814 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="519.298" y="547.614">1..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="519.298" y="645.814">0..*</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="515.298" y="592.714">beinhaltet</text>
+  </a>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="310.642" cy="744.848" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="310.642" cy="744.848" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="310.642" y="748.848">FNr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="299.092" y1="752.848" x2="322.192" y2="752.848"/>
+  </g>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="567.26" cy="754.262" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="567.26" cy="754.262" rx="31.55" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="567.26" y="758.262">MNr</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="555.71" y1="762.262" x2="578.81" y2="762.262"/>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 359.93,687.568 A 55.2167,55.2167 0 0 0 310.642,726.848"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 567.26,736.262 A 56.8121,56.8121 0 0 0 511.094,689.452"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 511.094,653.452 A 31.2476,31.2476 0 0 0 515.298,623.814"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 515.298,553.614 A 168.153,168.153 0 0 0 475.098,506"/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="449.8" cy="540.3" rx="35.4" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="449.8" cy="540.3" rx="35.4" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="449.8" y="544.3">wtag</text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 475.098,506 A 40.2459,40.2459 0 0 0 449.8,522.3"/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="556.904" cy="487.398" rx="35.4" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="556.904" cy="487.398" rx="35.4" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="556.904" y="491.398">maxP</text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 504.498,488 A 90.1523,90.1523 0 0 0 521.504,487.398"/>
+  <g><a xlink:href="/eingabe?key=SELECT * FROM lehrer, schueler WHERE lehrer.lid =schueler.lid;">
+    <polygon style="fill: #7fe37f" points="341.65,809.612 442.5,749.102 543.35,809.612 442.5,870.122 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="341.65,809.612 442.5,749.102 543.35,809.612 442.5,870.122 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="335.65" y="803.612">0..32</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="549.35" y="803.612">1..1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="442.5" y="813.612">ist Klassenlehrer von</text>
+  </a>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 105.4,506.3 A 192.513,192.513 0 0 0 341.65,809.612"/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="30.7556" cy="447.326" rx="39.25" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="30.7556" cy="447.326" rx="39.25" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="30.7556" y="451.326">email</text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 105.4,470.3 A 35.1078,35.1078 0 0 0 70.0056,447.326"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 623.358,397.3 A 47.1776,47.1776 0 0 0 626.578,364.014"/>
+  <g>
+    <ellipse style="fill: #f6eb65" cx="624.904" cy="615.891" rx="35.4" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="624.904" cy="615.891" rx="35.4" ry="18"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="624.904" y="619.891">Zeit</text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="625.364" y1="571.78" x2="624.904" y2="597.891"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1103.04" y1="496.9" x2="1101.65" y2="521.957"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1101.63" y1="427.6" x2="1103.04" y2="460.9"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1010.42" y1="477.943" x2="1069.79" y2="478.9"/>
+</svg>

@@ -1,0 +1,4 @@
+select raum.rnr,geraete from raum natural join hat natural join ausstattung where geraete ='Beamer';
+rnr;geraete
+300;Beamer
+-101;Beamer

@@ -1,0 +1,79 @@
+Transformation vom ER zum Relationenmodell:
+
+
+1) Zweistellige Beziehungen (1:1)
+
+
+Lehrer (PNr, LName)
+Wettkampfstaetten (WKStNr, WKStName, WKStAdresse)
+
+Es entsteht kein zusätzliches Relationsschema für den Beziehungstyp. Hier wird eine der an der Beziehung beteiligten Relationen um den Fremdschlüssel der anderen erweitert.  
+
+Relationsschema: Lehrer (Pnr, LName, WKStNr)
+Fremdschlüssel: WKStNr REFERENCES Wettkampfstaetten
+_________________________________________________________________________________________
+
+
+2) Zweistellige Beziehungen (M:N)
+
+a)
+Schueler (SNr, SName, Klasse, Geschlechte, Schwimmnachweis)
+Wettkaempfe (WKNr, WName, Kategorie)
+
+Es wird ein neues Relationsschema 'Teilnahme' für den Beziehungstyp (N:M) erzeugt.
+Fremdschlüssel ist die Kombination der Primärschlüssel der teilnehmenden Entitäten.
+
+Relationsschema: Teilnahme (SNr, WKNr, TnZeit, Ergebnis)
+Fremdschlüssel  SNr REFERENCES Schueler
+Fremdschlüssel  WKNr REFERENCES Wettkaempfe
+_________________________________________________________________________________________
+
+b)
+Schueler (SNr, SName, Klasse, Geschlechte, Schwimmnachweis)
+Wettkampfstaetten (WKStNr, WKStName, WKStAdresse)
+
+Es wird ein neues Relationsschema 'Aufsichtsunterstuetzung' für den Beziehungstyp (N:M) erzeugt.
+Fremdschlüssel ist die Kombination der Primärschlüssel der teilnehmenden Entitäten:
+
+Relationsschema: Aufsichtsunterstuetzung (SNr, WKStNr, UAZeit)
+Fremdschlüssel:  SNr REFERENCES Schueler
+Fremdschlüssel:  WKStNr REFERENCES Wettkampfstaetten
+_________________________________________________________________________________________
+
+c)
+Wettkaempfe (WKNr, WName, Kategorie)
+Wettkampfstaetten (WKStNr, WKStName, WKStAdresse)
+
+Es wird ein neues Relationsschema 'Stattfinden' für den Beziehungstyp (N:M) erzeugt.
+Fremdschlüssel ist die Kombination der Primärschlüssel der teilnehmenden Entitäten:
+
+Relationsschema:	Stattfinden (WKNr, WKStNr, SFZeit)
+Teilnehmende Entitäten:
+	Wettkaempfe mit Fremdschlüssel:  WKNr REFERENCES 
+	Wettkampfstaetten mit Fremdschlüssel:  WKStNr REFERENCES 
+_________________________________________________________________________________________
+
+d)
+Wettkaempfe (WKNr, WName, Kategorie)
+Material (MNr, MName, Vorratsanzahl)
+
+Es wird ein neues Relationsschema 'Bedarf' für den Beziehungstyp (N:M) erzeugt.
+Fremdschlüssel ist die Kombination der Primärschlüssel der teilnehmenden Entitäten:
+
+Relationsschema: Bedarf (MNr, WKNr, Anzahl)
+Teilnehmende Entitäten:
+	Wettkaempfe mit Fremdschlüssel:  WKNr REFERENCES 
+	Material mit Fremdschlüssel:  MNr REFERENCES 
+_________________________________________________________________________________________
+
+e)
+Dienstleister (DNr, DName, DAdresse, Branche)
+Wettkampfstaetten (WKStNr, WKStName, WKStAdresse)
+
+Es wird ein neues Relationsschema 'Betreuung' für den Beziehungstyp (N:M) erzeugt. Fremdschlüssel ist die Kombination der Primärschlüssel der teilnehmenden Entitäten:
+
+Relationsschema: Betreuung (DNr, WKStNr, Kosten)
+Teilnehmende Entitäten: 
+	Dienstleister mit Fremdschlüssel:  DNr REFERENCES 
+	Wettkampfstaetten mit Fremdschlüssel:  WKStNr REFERENCES 
+

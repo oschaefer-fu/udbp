@@ -1,0 +1,54 @@
+﻿
+(e) Ein Relationenmodell dazu in dritter Normalform mit Angabe von Schlüsseln, Fremd- schlüsseln und Notation von Integritätsbedingungen als logische Ausdrücke in einer Datei <db>-RelMod.txt.
+
+
+Transformationsergebnis nach dem vorliegenden ER-Modell „Vorhilfe“: 
+Als Ergebnis erhält man die folgenden 13 Relationen im Relationenmodell: 
+
+Bemerkung zur 3. NF: 
+Außer der Relation „Lehrer“ befinden sich alle Relationen in der 3.NF. Wir entschlossen uns diese so zu belassen, da in der Datenbank die  Attribute der Relation „Lehrer“ immer nur zusammenhängend vorkommen. 
+
+Konto (KoNR, Kontostand)
+Lehrer (LID, nname, email, kuerzel)
+Schueler (SID, nname, vname, geb, klasse, LID (Beziehung 'ist Klassenlehrer' geht hier auf), email, KoNR (Ref. Beziehung 'besitzt'))
+Raum (RNR, stock, anzP)
+Ausstattung (ANR, geraete)
+Kurs (KNR, SID (Beziehung ´bietet_an´ geht hier auf) wtag, zeit, maxP)
+Fach (FNR, fname)
+Methode (MNR, mname)
+hat (RNR (Ref. Raum (RNR), ANR  Ref. Ausstattung (ANR))
+findet_statt (KNR (Ref. Kurs (KNR), RNR (Ref. Raum (RNR))
+eingeschrieben (SID (Ref. Schueler (SID)), KNR (Ref. Kurs (KNR)), zeitS)
+vermittelt (KNR (Ref. Kurs(KNR), FNR Ref.Fach (FNR))
+beinhaltet (KNR (Ref. Kurs (KNR), MNR (Ref, Methode (MNR))
+beaufsichtigt (KNR Ref. Kurs (KNR), LID (Ref. Lehrer (LID))
+
+
+Notation von Integritätsbedingungen, die sich im Modell wiederfinden: 
+
+Domain- bzw. Attribut-Bedingungen 
+Diese Bedingungen sichern Beschränkungen des Wertebereiches einzelner Attribute: 
+Bsp: 	maxP INTEGER -- Maximale Teilnehmerzahl 
+CHECK (maxP BETWEEN 2 AND 5) DEFAULT 4
+oder: setzt den Beginn der KoNR auf 1000
+ALTER SEQUENCE konto_konr_seq RESTART WITH 1000
+
+
+Relationen-Bedingungen 
+Schlüsselbedingungen wie z.B. in der folgenden Form, in der die Bedingung an das Attribut angehängt wird. Finden sich z.B. in folgender Form wieder: 
+CREATE TABLE fach (
+	FNR SERIAL,
+	fname VARCHAR (50),
+PRIMARY KEY (FNR)
+);
+
+
+Referentielle Bedingungen und ihre Problem in unserer Modellierung: 
+Referentielle Bedingungen stellen semantische Bezüge zwischen Paaren von Relationen sicher. Eine Form ist z. B. die Fremdschlüsselbeziehung als Teilmengenprädikat. 
+
+sid INTEGER REFERENCES schueler(sid), -- hier geht die Beziehung (schueler -<bietet_an>- kurs) in kurs auf.
+Problematisch, wenn z.B. mehr als ein(e) Schüler(in) einen Kurs leiten möchte.
+
+
+
+

@@ -1,0 +1,1 @@
+"16. "Anzahl  der SuS in den jeweiligen Kursen, mit Angabe der Kursnamen"

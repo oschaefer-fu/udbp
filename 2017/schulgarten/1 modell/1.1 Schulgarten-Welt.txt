@@ -1,0 +1,7 @@
+﻿Miniwelt – Schulgarten
+In einem Schulgarten befinden sich Beete, auf denen Gemüse angebaut werden sollen. Die verschieden großen Beete haben unterschiedliche Lagen bzgl. der Sonneneinstrahlung und werden ungleich häufig von Schnecken heimgesucht (Schneckenfaktor). 
+Von einem Gemüse, z.B. Tomaten, gibt es vielgestaltige Sorten (Bsp: Tigerella, sibirisches Birnchen...), die sich jeweils durch besondere Eigenschaften auszeichnen. 
+Im Laufe des Jahres sind für den Anbau jeder Gemüsesorte spezifische Arbeitsschritte – von Aussaat oder Pikieren, über Pflanzen und Düngung bis hin zur Ernte – erforderlich, die in bestimmten Zeiträumen nach der Aussaat vorgesehen sind.  Der konkrete Zeitpunkt eines Arbeitsschrittes hängt somit von dem konkreten Aussaattermin ab. Jede Sorte hat für die Aussaat ein Zeitfenster mit einem frühesten und spätesten Aussaattermin. 
+Die verschiedenen Gemüse benötigen unterschiedlich viel Sonne und sind bei Schnecken mehr oder weniger beliebt. Gemüse werden in Pflanzenfamilien (Nachtschattengewächse, Kürbisgewächse…) unterteilt.
+Bestimmte Gemüsearten gedeihen nicht gut nebeneinander und sollten daher nicht auf benachbarten Beeten oder im selben Beet angebaut werden.
+Das Saatgut wird von Händlern vertrieben, die die Sorten zu unterschiedlichen Preisen und in verschiedenen Packungsgrößen anbieten. Die Angaben über die Packungsgrößen können in unterschiedlicher Weise erfolgen (Anzahl der Pflanzen, für eine Fläche oder für die Länge der Pflanzreihe).  Nicht jeder Händler vertreibt alle Sorten.

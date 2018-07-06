@@ -1,0 +1,79 @@
+﻿---------------------------------------------------------
+WINDOWS-ANLEITUNG FÜR DIE NUTZUNG DES PAKETS 'gfx' MIT GO
+---------------------------------------------------------
+
+Wenn Sie unter Windows in Go programmieren möchten,
+sind folgende Schritte abzuarbeiten:
+ 
+1.) Installieren Sie "go1.8.window-386.msi" (Download von golang.org).
+    (Sollten Sie ein 'altes' Go installiert haben, deinstallieren Sie
+    dieses bitte vorher.)
+
+2.) Installieren Sie "geany-1.29 setup.exe" (Download von geany.org)
+    oder eine andere Version, jedoch mindestens 1.25.
+
+Das Syntax-Highlighting ist standardmäßig für .go-Dateien aktiviert.
+Mit F5 wird in Geany die Go-Datei übersetzt und ausgeführt. 
+
+Wenn Sie nun noch ein Grafikfenster brauchen, arbeiten Sie die 
+weiteren Schritte ab.
+
+3.) Kopieren Sie den Ordner gfx nach C:\go\src\     . 
+    (Damit haben Sie die Quelltextdateien für das Paket an die richtige
+     Stelle geschoben.)
+
+3b) Editieren Sie die Datei C:\go\src\gfx\gfximpl.go und löschen Sie in 
+    der 11.Zeile am ZEilenende die Zeichen '-lX11'.
+
+4.) Kopieren Sie das Verzeichnis fonts nach C:\go\    .
+
+5.) Kopieren Sie die fünf dll-Dateien aus dem Ordner libs 
+    nach C:\windows\System32\ , falls Sie ein 32-Bit-Windows haben.
+    Andernfalls (64-Bit-Windows) kopieren Sie die die fünf dll-Dateien
+    nach C:\windows\sysWOW64\    .
+
+6.) Ergänzen Sie die Windows-Umgebungsvariable %PATH% um den Eintrag:
+    'C:\Go\bin'.
+    (Systemsteuerung --> System und Sicherheit--> System --> Erweiterte
+     Systemeinstellungen ---> Umgebungsvariablen --> Systemvariablen 'Path' 
+     --> Bearbeiten: Dort ergänzt man ganz am Ende
+     ';C:\Go\bin' (ohne Anführungszeichen).
+
+7.) Installieren Sie "MinGW" indem Sie die Datei "LWB_MinGW.zip" nach
+    C:\ kopieren und von dort entpacken. Alle entpackten Dateien landen
+    dann im neuen Ordner "C:\MinGW\". (Dieser Schritt ist ab Go1.5
+    notwendig, da nun GCC benötigt wird, um die 'externe' Grafikbibliothek 
+    einbinden zu können.) Sollten Sie später einmal noch etwas in MinGW
+    nachinstallieren wollen, starten Sie dafür das Programm 'mingw-get.exe'
+    im Verzeichnis C:\MinGW\bin .
+    Die Datei "LWB_MinGW.zip" finden Sie im Netz unter 
+    'ftp://ftp.mi.fu-berlin.de/lwb'.
+    (Sollten Sie MinGW bei sich schon installiert haben, lesen Sie bitte
+     die Datei "MinGW_Info.TXT".)
+
+8.) Ergänzen Sie die Windows-Umgebungsvariable %PATH% um den Eintrag:
+    'C:\MinGW\bin'.
+    (Systemsteuerung --> System und Sicherheit--> System --> Erweiterte Systemeinstellungen ---
+     ---> Umgebungsvariablen --> Systemvariablen 'Path' --> Bearbeiten:
+     Dort ergänzt man ganz am Ende ';C:\MinGW\Bin' (ohne Anführungszeichen).
+
+7.) Melden Sie sich von Windows ab und neu an.
+
+8.) Starten Sie eine Windows-Konsole, wechseln Sie in das Verzeichnis
+    C:\Go\src und installieren Sie das Paket gfx mit dem Befehl:
+    go install -a gfx
+    (Wenn keine Ausgabe erfolgt, war dies erfolgreich.)
+
+9.) Nun können Sie gfx verwenden und mit Geany programmieren!
+    Verwenden Sie einfach - wie in Go üblich - den GO-Befehl 
+    import "gfx"
+    (Die Spezifikationen der Funktionen von gfx stehen in gfx.go und sind
+     über godoc "gfx" erreichbar!)
+
+
+Viel Spaß wünscht
+
+Stefan Schmidt
+Lehrerweiterbildung Informatik
+an der FU Berlin
+12.03.2017

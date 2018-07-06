@@ -1,0 +1,4 @@
+-- 13. Wie viele Schüler sind im Kurs 2 eingeschrieben? **
+SELECT COUNT(sid) AS Anzahl_eingeschrieben_in_Kurs_2 
+FROM eingeschrieben 
+WHERE knr = 2;

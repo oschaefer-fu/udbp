@@ -1,0 +1,4 @@
+-- 02. Ausgabe der Daten des Lehrers "Czetö". *
+SELECT * 
+FROM lehrer 
+WHERE nname = 'Czetö';

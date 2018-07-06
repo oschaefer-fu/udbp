@@ -1,0 +1,3 @@
+-- 14. Welcher Lehrer macht wann Aufsicht? ** 
+SELECT kuerzel, wtag, zeit
+FROM (kurs NATURAL JOIN beaufsichtigt NATURAL JOIN lehrer) ORDER BY kuerzel;

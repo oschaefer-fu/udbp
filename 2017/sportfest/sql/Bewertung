@@ -1,0 +1,2 @@
+- In SQL-Dateien '//' statt '--' zur Einleitung von Kommentaren verwendet.
+- Drei Bedarf-inserts funktionieren nicht, verletzen Constraint (nachsehen!)

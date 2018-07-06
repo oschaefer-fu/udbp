@@ -1,0 +1,8 @@
+Es wurden vier Views ausgewählt, mit steigendem Anspruch.
+
+1) Welche Sorten sind in der Datenbank?
+2) Welche Arbeitsschritte gibt es?
+3) Was wächst auf welchem Beet?
+4) Welcher Händler bietet was an?
+
+Die ersten beiden sind nicht interaktiv. Im nächsten Punkt wird eine Auswahl mit Radio-Buttons umgesetzt, wobei die Radiobuttons noch händisch eingegeben werden müssen. Im letzten Fall wurde eine Dropdown-Auswahl gestaltet, die ihre Optionen direkt aus der Datenbank generiert. 

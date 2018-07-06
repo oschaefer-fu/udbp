@@ -1,0 +1,4 @@
+-- 05. Liste der Räume im "1. Stock". *
+SELECT RNR 
+FROM raum 
+WHERE stock = 1;

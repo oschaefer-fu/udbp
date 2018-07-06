@@ -1,0 +1,141 @@
+
+Dokumentation des Projektes Sportfest-Datenbank:
+
+
+Der Datenbank Sportfest liegt die folgende Miniwelt zugrunde, welche ein schulisches Sportfestes abbildet. 
+Da ein solches Thema für die meisten Schüler*innen zu ihrem unmittelbaren schulischen Erfahrungsbereich gehört, bietet sich das Thema für eine Projektarbeit in einem unterrichtsbezogenen Datenbankpraktikum an. Motivierend kann dabei für die Schüler*innen auch sein, dass die von ihnen Entwickelte Datenbank beim nächsten Schulfest zum Einsatz kommen kann.
+
+
+Die Miniwelt Sportfest lässt sich folgendermaßen beschreiben:
+
+An einem Schulsportfest nehmen die Schülerinnen und Schüler aller Klassen teil. Sie begeben sich dazu klassenweise und zu unterschiedlichen Zeiten an unterschiedliche Wettkampfstätten, wo die jeweiligen Wettkämpfe ausgetragen werden. 
+
+Die Wettkämpfe gehören unterschiedlichen Kategorien an: Ausdauer, Kraft, Schnelligkeit und Koordination. Sie werden zu bestimmten Zeiten an unterschiedlichen Wettkampfstätten ausgetragen. Beispielsweise können bestimmte Wettkämpfe wie Hochsprung in der schuleigenen Sporthalle und wiederum andere wie 800m-Lauf auf einem benachbarten Sportplatz stattfinden. 
+
+Jede Wettkampfstätte wird von einer Lehrkraft beaufsichtigt. Diese Lehrkraft kann zu bestimmten Zeiten von Schüler*innen in ihrer Aufsicht unterstützt werden.
+
+Des Weiteren wird jede Wettkampfstätte von einer externen Firma (Dienstleister) betreut. Diese stellt abhängig von ihrer Branchenzugehörigkeit gegen Rechnung Transportmöglichkeiten, Catering, Material oder Auf- und Abbaudienste zur Verfügung. 
+
+Bei den unterschiedlichen Wettkämpfen werden auch unterschiedliche Materialen benötigt, wie z.B. Springseile, Harken, Maßbänder usw. Wenn das vorrätige Material nicht ausreicht, könnte das benötigte Material ggf. über die entsprechenden Dienstleister bezogen werden.
+
+Für den Erhalt einer Urkunde müssen die Schüler*innen an einem Wettkampf aus jeder der vier Kategorien teilnehmen. Die Wettkampfergebnisse richten sich nach der Wettkampfart, dem Alter und dem Geschlecht. Das Erreichen einer bestimmten Punktzahl entscheidet darüber, ob es eine Sieger- oder Teilnehmerurkunde gibt. Ob die Schüler*innen am Ende eine Urkunde erhalten, hängt auch davon ab, ob sie einen Schwimmfähigkeitsnachweis haben oder nicht.
+
+
+Für die Erstellung und Anwendung einer Datenbank sind nun folgende Schritte notwendig:
+1. Erstellen eines ER-Modells
+2. Transformation des ER-Modells in ein Relationenmodell
+3. Erfassen von nicht abbildbaren Integritätsbedingungen
+4. Erstellen von aussagekräftigen Populationen/Daten
+5. Modellierung von Anfragen an das Datenbanksystem
+
+
+Das ER-Modell:
+
+Das ER-Modell muss alle wichtigen Entitäten und deren Attribute, die Beziehungen zwischen den Entitäten sowie die Komplexitäten abbilden. Im Rahmen der Miniwelt "Sportfest" sollte es folgende Entitäten umfassen:
+Schüler
+Lehrer
+Wettkämpfe
+Wettkampfstätten
+Dienstleister
+Material
+
+Die Schüler nehmen an den Wettkämpfen teil oder unterstützen ggf. die Aufsicht führenden Lehrer.
+Die Wettkämpfe werden an unterschiedlichen Wettkampfstätten ausgetragen.
+Die Wettkampfstätten werden von Dienstleistern betreut.
+Die Wettkämpfe benötigen unterschiedliche Materialien.
+
+Ein ER-Modell, welches diese Zusammenhänge abbildet findet sich im Ordner "modell" in der Datei "Stortfest-ERModell.pdf".
+
+
+
+Das Relationenmodell:
+
+Für die Implementierung der Datenbank müssen nun unterschiedliche Relationen erstellt werden. Dazu sind alle Beteiligten und ihre Beziehungen untereinander so zu erfassen, dass sie untereinander eindeutig zugeordnet und bestimmt werden können.
+
+Es ergeben sich aus dem ER-Modell die folgenden Relationen, welche im Ordner "modell" in der Datei "Stortfest-RelMod.txt" genauer erläutert werden.
+
+
+- Schueler (SNr, SName, Klasse, Geschlecht, Schwimmnachweis) 	→ Schlüssel: SNr
+
+- Wettkaempfe (WKNr, WName, Kategorie)				→ Schlüssel: WKNr
+			
+- Teilnahme (SNr, WKNr, TnZeit, Ergebnis)			→ Schlüssel: SNr und WKNr zusammen
+
+- Wettlampfstaetten (WKStNr, WKStName, WKStAdresse)		→ Schlüssel: WKStNr
+
+- Aufsichtsunterstuetzung (SNr, WKStNr, UAZeit)			→ Schlüssel: Snr und WKStNr zusammen
+
+- Lehrer (PNr, LName, WKStNr)					→ Schlüssel: PNr
+
+- Stattfinden (WKNr, WKStNr, SFZeit)				→ Schlüssel:  WKNr und WKStNr zusammen
+
+- Material (MNr, MName, Vorratsanzahl)				→ Schlüssel: MNr
+
+- Bedarf (MNr, WKNr, Anzahl)					→ Schlüssel: MNr und WKNr zusammen
+
+- Dienstleister (DNr, DName, DAdresse, Branche)			→ Schlüssel: DNr
+
+- Betreuung (DNr, WKStNr, Kosten)				→ Schlüssel:  DNr und WKStNr zusammen
+
+
+Transformationen zwischen den Modellen:
+
+Die Umwandlung vom ER-Modell zum Relationenmodell mit dem oben stehenden Ergebnis beinhaltet Transformationen, die auf zweistellige Beziehungen (M:N) und (1:1) beruhen. 
+
+Bei der (1:1) Beziehung zwischen Lehrer (PNr, LName) und Wettkampfstaetten (WKStNr, WKStName, WKStAdresse) entsteht kein zusätzliches Relationsschema für den Beziehungstyp. Hier wird eine der an der Beziehung beteiligten Relationen um den Fremdschlüssel der anderen erweitert:  
+--> Relationsschema: Lehrer (Pnr, LName, WKStNr)
+--> Fremdschlüssel: WKStNr REFERENCES Wettkampfstaetten
+
+Alle anderen Beziehungen sind vom Typ (M:N), d.h. es wird jeweils ein neues Relationsschema für den Beziehungstyp erzeugt.
+Fremdschlüssel ist dabei die Kombination der Primärschlüssel der teilnehmenden Entitäten.
+Ein Beispiel hierfür ist die Beziehung zwischen den Entitäten Schueler (SNr, SName, Klasse, Geschlechte, Schwimmnachweis)und
+Wettkaempfe (WKNr, WName, Kategorie), die das neue Relationsschema Teilnahme (SNr, WKNr, TnZeit, Ergebnis) zur Folge hat, dessen 
+Fremdschlüssel die Kombination der Primärschlüssel SNr REFERENCES Schueler und  WKNr REFERENCES Wettkaempfe ist.
+
+Eine genaue Darstellung aller Transformationen findet sich im Ordner "modell" in der Datei "Stortfest-Trafo.txt".
+
+
+
+Integritätsbedingungen und Funktionale Abhängigkeiten:
+
+Hinsichtlich der Semantik müssen gegebenfalls Integritätsbedingungen ergänzt werden, die nicht im Relationenmodell abbildbar sind. Als Beispiel dafü lassen sich folgende Integritätsbedingungen bezüglich der Schüler und ihrer Wettkampfteilnahme anführen, die im Ordner "modell" in der Datei "Stortfest-Semantik.txt" zu finden sind:
+
+- Jeder Schüler darf  maximal nur an einem Wettkampf aus einer der vier Kategorien teilnehmen. 
+- Ein Schüler kann nicht zeitgleich an mehreren Wettkämpfen teilnehmen. 
+- Ein Schüler kann nicht an Wettkämpfen anderer Klassenstufen teilnehmen.
+- An jedem Wettkampf können aber mehrere Schüler einer Klasse zur gleichen Zeit teilnehmen.
+
+Gleiches gilt für die nicht trivialen Funktionalen Abhängigkeiten. Sie werden im Ordner "modell" in der Datei "Stortfest-FAen.txt" dargestellt. Ein Beispiel für eine solche Abhängigkeit, die nich auf Basis der Schlüssel besteht, ist folgendes:
+Durch die Kombination von Schülername und Geburtsdatum lassen sich Geschlecht, Klasse und der Status des Schwimmnachweises von jedem Schüler eindeutig bestimmen, sofern man davon ausgeht, dass die Schüler alle unterschiedliche Geburtsdaten und Namen haben.
+{SName, Geburtsdatum}  → {Geschlecht, Schwimmnachweis, Klasse}
+In diesem Fall lässt sich durch die Kombination dieser Attribute eine eindeutige Zuordnung/Bestimmung der Anderen Attribute vornehmen.
+
+
+Daten:
+
+Für eine funktionierende Datenbank müssen letztlich auch entsprechende Daten in die Relationatabellen eingepflegt werden. Beispieldaten kann man im Ordner "modell" in der Datei "Stortfest-Daten.txt" finden. Darin sind sämtliche Relationstabellen vorhanden.
+
+
+Anfragen:
+
+Für die Arbeit mit der Datenbank und den Beispieldaten haben wir unterschiedliche Anfragen generiert. Diese ordnen sich nach Schwierigkeitsgrad von einfachen Selektionen, die auf einer Relation arbeiten bis hin zu Aggregatsfunktionen, welche Joins von mehreren Relationen erfordern. Diese Anfragen finden sich beispielsweise im Ordner "modell" in der Datei "Stortfest-querry-Anfragen.txt". Hier einige Beispiele dieser Anfragen und wie si in SQL "übersetzt" werden müssten:
+
+Anfrage: Welche Schüler*innen haben einen Schwimmnachweis erbracht?
+SQL:	 select SName from Schueler where Schwimmnachweis = True
+
+Anfrage: Welche Schüler*innen sind weiter gesprungen sind als Durchschnitt?
+SQL:	 select avg (ergebnis) from schueler natural join teilnahme where geburtsdatum '2001-01-01' and '2001-12-31' 
+
+
+
+Abschließend lässt sich festhalten, dass die Erstellung einer solchen Datenbank mit ihren verschiedenen Modellen, Integritätsbedingungen, Abhängigkeiten und Beziehungen eine sehr komplexe Aufgabe ist. Um so ein Praktikum mit einer Schülergruppe durchzuführen, bedarf es einersetzt motivierter Schüler und andererseits die Vermittlung umfassender Kenntnisse zu den einzelnen Bereichen. Mit Hilfe der Miniwelt "Sportfest" lässt sich dies jedoch in allen Bereichen relativ gut umsetzen.
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,4 @@
+-- 09c.  Liste der Lehrer (Name,Kuerzel,email), die bei todesstern.de sind. - Alternative **
+SELECT nname,kuerzel,email 
+FROM lehrer 
+WHERE email LIKE '%todesstern.de';

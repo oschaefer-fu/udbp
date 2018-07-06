@@ -1,0 +1,14 @@
+Relationen im Relationenmodell
+
+beet (bnr, lage, groesse, schneckenfaktor) 
+gemuese (gnr, gname, familie, lage, schneckenbeliebtheit) 
+haendler (hnr, hname, anschrift, plz, ort) 
+arbeitsschritte (anr, taetigkeit)
+
+sorten (snr, sname, eigenschaften, gnr, fruehesteranbau, spaetesteranbau, anbaudauer)  
+nachbarschaft (bnr1, bnr2) 
+vertraeglichkeit (gnr1, gnr2) 
+vertrieb (hnr, snr, preis, packungseinheit, packungsmenge) 
+erfordern (snr, anr, zeitbis) 
+
+angebautes (annr, snr, bnr, tatsaechlicheranbau)

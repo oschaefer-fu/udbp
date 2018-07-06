@@ -1,0 +1,4 @@
+-- 20b. alternativ (wenn Ausstattungsnummer von Beamer bekannt ist): **
+SELECT RNR 
+FROM raum NATURAL JOIN hat 
+WHERE ANR = 2;

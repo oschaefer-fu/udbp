@@ -1,0 +1,4 @@
+-- 10. Welche Schüler haben Guthaben (nach Größe sortiert - Beginn höchster)? **
+SELECT vname,nname,kontostand 
+FROM schueler NATURAL JOIN konto
+WHERE kontostand > 0 ORDER BY kontostand DESC;

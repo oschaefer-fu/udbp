@@ -1,0 +1,3 @@
+-- 01. Auflistung aller Lehrer-Nachnamen. *
+SELECT nname 
+FROM lehrer;

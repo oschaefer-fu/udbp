@@ -1,0 +1,33 @@
+1. Schritt: Transformation der Entitätstypen
+Alle Entitätendes ER-Modells mit ihren Attributen werden in Relationen des Relationsmodells transformiert.
+Daraus entstehen zunächst folgende Relationen: 
+
+a) Lehrer (Kuerzel,Vorname,Nachname) 					-> Primärschlüssel: Kuerzel
+b) Kurs (KursID,Name)							-> Primärschlüssel: KursID
+c) Fach (FachID,Name)							-> Primärschlüssel: FachID
+d) Ort (OrtID,Name)							-> Primärschlüssel: OrtID
+e) Schueler (SchuelerID,Vorname,Nachname,Klasse)			-> Primärschlüssel: SchuelerID
+
+2. Schritt: Transformation der Beziehungstypen
+
+1:1-Beziehungstyp: 'besucht' 		-> angehängt zu 'Kurs'
+1:1-Beziehungstyp: 'verantwortet' 	-> angehängt zu 'Fach'
+1:1-Beziehungstyp: 'findet statt' 	-> neue Entität 'Termin' 	// Die Relation hat die Attribute 'Tag','Start' und 'Ende', daher wird eine neue Entität benötigt. 	
+1:n-Beziehungstyp: 'beaufsichtigt' 	-> neue Entität 'Aufsicht'	// Die Relation hat die Attribute 'Tag','Start' und 'Ende', daher wird eine neue Entität benötigt.
+1:n-Beziehungstyp: 'belegt'		-> angehängt zu 'Schueler'
+1:n-Beziehungstyp: 'gehört zu'		-> neue Entität 'Zugehoerigkeit'
+m:n-Beziehungstyp: 'unterrichtet' 	-> neue Entität 'unterrichtet'
+
+
+3. Schritt: Transformationsergebnis
+
+1. Lehrer (Kuerzel,Vorname,Nachname)						-> Primärschlüssel: Kuerzel
+2. Kurs (KursID,Kuerzel,Name)							-> Primärschlüssel: KursID;			Fremdschlüssel: Kuerzel
+3. Fach (FachID,Name)								-> Primärschlüssel: FachID
+4. unterrichtet (FachID,Kuerzel)						-> Primärschlüssel: Kuerzel,FachID
+5. Ort (OrtID,Name)								-> Primärschlüssel: OrtID
+6. Schueler (SchuelerID,KursID,Vorname,Nachname,Klasse,istVerantwortlich)	-> Primärschlüssel: SchuelerID; 		Fremdschlüssel: KursID
+7. Termin (KursID,OrtID,Tag,Start,Ende)						-> Primärschlüssel: KursID,OrtID,Tag,Start
+8. Aufsicht (Kuerzel,OrtID,Tag,Start,Ende)					-> Primärschlüssel: Kuerzel,OrtID,Tag,Start
+9. Zugehoerigkeit (FachID,KursID)						-> Primärschlüssel: FachID,KursID
+

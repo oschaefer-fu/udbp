@@ -1,0 +1,15 @@
+﻿Miniwelt einer Vorhilfebörse
+
+Vorhilfe ist besser als Nachhilfe!
+In einer Vorhilfeminiwelt gibt es SchülerInnen, die Vorhilfestunden suchen und SchülerInnen, die Vorhilfestunden anbieten. 
+Ein(e) Lehrer(in) beaufsichtigt bis zu vier Vorhilfegruppen von SchülernInnen in einem Raum der Schule. Die Räume haben unterschiedliche Ausstattungen. 
+Die Vorhilfekurse finden im Mittagsblock der Schule an allen Wochentagen statt, ausnahmsweise gibt es auch eine Blocksession am Samstag. 
+Für ihre Stunden bekommen die SchülerInnen für das Unterrichten 4 Punkte, für das Nehmen von Vorhilfe 1 Punkt, auf ihrem Konto gutgeschrieben. 
+Es werden Kurse mit Fachbezug angeboten, es besteht weiterhin die Möglichkeit spezielle Prüfungsvorbereitungskurse (Abitur, MSA) zu belegen. Eine Kombination von beiden Möglichkeiten ist gestattet.
+SchülerInnen sollten nicht mehr als 4 SchülerInnen unterrichten. 
+
+Zusätzlich mögliche Integritätsbedingungen:  
+SchülerInnen sollten maximal 2 Angebote in der Woche anbieten können. Ab einem SchülerInnen sollte der Kurs erst stattfinden. Maximal sollten vier Kurse gleichzeitig in einem Raum stattfinden können. 
+
+
+

@@ -1,0 +1,120 @@
+Schulgarten Datenbank
+Im Folgenden soll ein Gesamtüberblick über die Datenbank „Schulgarten“ gegeben werden. Die Darstellung folgt in großen Teilen der Ordnerstruktur, um ein möglichst einfaches Arbeiten zu ermöglichen. 
+1.	Modell
+1.1 Beschreibung des abzubildenden Weltausschnitts
+Miniwelt – Schulgarten
+In einem Schulgarten befinden sich Beete, auf denen Gemüse angebaut werden sollen. Die verschieden großen Beete haben unterschiedliche Lagen bzgl. der Sonneneinstrahlung und werden ungleich häufig von Schnecken heimgesucht (Schneckenfaktor). 
+Von einem Gemüse, z.B. Tomaten, gibt es vielgestaltige Sorten (Bsp: Tigerella, sibirisches Birnchen...), die sich jeweils durch besondere Eigenschaften auszeichnen. 
+Im Laufe des Jahres sind für den Anbau jeder Gemüsesorte spezifische Arbeitsschritte – von Aussaat oder Pikieren, über Pflanzen und Düngung bis hin zur Ernte – erforderlich, die in bestimmten Zeiträumen nach der Aussaat vorgesehen sind.  Der konkrete Zeitpunkt eines Arbeitsschrittes hängt somit von dem konkreten Aussaattermin ab. Jede Sorte hat für die Aussaat ein Zeitfenster mit einem frühesten und spätesten Aussaattermin. 
+Die verschiedenen Gemüse benötigen unterschiedlich viel Sonne und sind bei Schnecken mehr oder weniger beliebt. Gemüse werden in Pflanzenfamilien (Nachtschattengewächse, Kürbisgewächse…) unterteilt.
+Bestimmte Gemüsearten gedeihen nicht gut nebeneinander und sollten daher nicht auf benachbarten Beeten oder im selben Beet angebaut werden.
+Das Saatgut wird von Händlern vertrieben, die die Sorten zu unterschiedlichen Preisen und in verschiedenen Packungsgrößen anbieten. Die Angaben über die Packungsgrößen können in unterschiedlicher Weise erfolgen (Anzahl der Pflanzen, für eine Fläche oder für die Länge der Pflanzreihe).  Nicht jeder Händler vertreibt alle Sorten.
+1.2 ER-Modell
+Eine beispielhafte Modellierung des Schulgartens in einem ER-Modell zeigt die Abbildung (nächste Seite). 
+	1.3 Semantik
+-	Auf einem Beet dürfen nur Gemüse angebaut werden, die sich miteinander vertragen.
+-	Auf benachbarten Beeten dürfen nur Gemüse angebaut werden, die sich miteinander vertragen. 
+-	Auf einem Beet dürfen nur Gemüse angebaut werden, deren Lage mit der Lage des Beetes übereinstimmt. 
+-	Der tatsächliche Anbaubeginn von „Angebautes“ muss zwischen dem „frühster Anbaubeginn“ und „spätester Anbaubeginn“ der Sorte liegen.
+-	Hat ein Beet einen hohen Schneckenfaktor, so sollten dort nur Sorten angebaut werden, die eine geringe Beliebtheit bei Schnecken haben. Ist der Schneckenfaktor gering, so ist es egal.
+-	Nicht jede Sorte erfordert alle Arbeitsschritte.
+ 
+
+
+
+ 1.4 Funktionale Abhängigkeiten
+Alle Relationen, die aus Entitätstypen hervorgegangen sind, haben als Attribut eine eindeutige Nummer, die gleichzeitig den Schlüssel darstellt. Insofern sie in anderen Relationen auftauchen, wird ausschließlich auf diesen Schlüssel Bezuggenommen, sodass keine Update-Anomalien auftauchen sollten. 
+Dieser Schlüssel ist ein künstlich hinzugefügtes Attribut. Insbesondere wurden auch bereits vorhandene Schlüssel (z.B. GName), die bereits alle anderen Attribute funktional bestimmen, nicht als Schlüssel gewählt, sodass Umbenennungen kein Problem darstellen. Dies verletzt zwar die BC-Normalform, hat aber große praktische Vorteile. 
+Ansonsten wurde bei allen Relationen darauf geachtet, dass keine Überschneidungen dergestalt auftauchen, dass weitere funktionale Abhängigkeiten bestehen oder Nullwerte auftauchen können. 
+Die Relationen aus dem ER-Modell besitzen in unserem Relationenmodell keine eigenen Schlüssel, wenn sie durch die beiden beteiligten Schlüssel der Entitäten eindeutig bestimmt sind (in unserem Modell gibt es keine ternären oder n-ären Relationen). . Ausnahme ist dabei die Relation „erfordern“, die nicht eindeutig durch die beiden Fremdschlüssel bestimmt ist, da z.B. eine konkrete Pflanze mehrfach gedüngt wird. Daher wurde das Attribut „Zeit bis“ als zusätzlicher Schlüssel aufgenommen. Für alle Relationen, die mit Fremdschlüsseln funktionieren, gilt: Wird eine von den „Fremdschlüssel“-Entitäten gelöscht, hat auch die davonabhängige Entität keine Daseinsberechtigung mehr.
+Triviale funktionale Abhängigkeiten
+Nicht in die Betrachtung einflossen Abhängigkeiten wie „Postleitzahl bestimmt funktional Ort“. Hier wäre es auch denkbar, dass dies gar nicht so funktional abhängig ist (z.B. 10551 ? „Berlin“ versus 10551 ? „Berlin-Moabit“).
+	1.5 Relationen-Modell
+1)	beet (bnr, lage, groesse, schneckenfaktor) 
+2)	gemuese (gnr, gname, familie, lage, schneckenbeliebtheit) 
+3)	haendler (hnr, hname, anschrift, plz, ort) 
+4)	arbeitsschritte (anr, taetigkeit)
+5)	sorten (snr, sname, eigenschaften, gnr, fruehesteranbau, spaetesteranbau, anbaudauer)  
+6)	nachbarschaft (bnr1, bnr2) 
+7)	vertraeglichkeit (gnr1, gnr2) 
+8)	vertrieb (hnr, snr, preis, packungseinheit, packungsmenge) 
+9)	erfordern (snr, anr, zeitbis) 
+10)	angebautes (annr, snr, bnr, tatsaechlicheranbau)
+	1.6 Transformation des ER-Modells in das RelMod
+Zunächst haben wir alle Entitätstypen mit ihren zugehörigen Attributen in Relationen umgewandelt (Angebautes, Beet, Sorten, Gemuese, Arbeitsschritte, Haendler).
+Die 1:n Relationen (wächst auf, ist, gehört zu) wurden jeweils dem Entitätstyp (und damit der Relation im Relationenmodell) auf der 1-Seite hinzugefügt (samt ihrer Attribute). Konkret heißt das, dass statt der Relation "wächst auf" aus dem ER-Modell der Entitätstyp "Angebautes" ein zusätzliches Attribut, in diesem Fall den Fremdschlüssel BNr, erhält. Analog wurde "ist" ebenfalls zu "Angebautes" dergestalt hinzugefügt, dass "Angebautes" ein weiteres Attribut erhält (SNr). Analog für "gehört zu". Keine unserer 1:n-Relationen hat ein Attribut, sodass dies nicht berücksichtigt werden musste - dies wäre dann ein weiteres Attribut beim Entitätstypen auf der 1-Seite geworden.
+Die n:m Relationen müssen in eigene Relationen umgewandelt werden. Dies betrifft bei uns: "benachbart", "erfordern", "vertreibt", "verträgt sich". Sie erhalten als Schlüssel mindestens die beiden Schlüssel der beteiligten Entitätstypen. Können dieselben Entitäten mehrfach über die Relation verbunden sein (wie z.B. bei "erfordern", wenn eine "Sorte" mehrfach "Düngen" erfordert), reicht dies nicht aus und ein weiteres Attribut muss zum Schlüssel hinzugefügt werden. Attribute der Relation im ER-Modell werden einfach als Attribute in das Relationenmodell übernommen. 
+Die reflexiven Relationen "benachbart" und "verträgt sich" wurden so mit Daten gefüllt, dass stets zwei korrespondierende Tupel eingefügt werden: Gibt es (1,2), muss man auch (2,1) einpflegen. Dies vereinfacht die Abfragen mit SQL. Bei Datenbanken außerhalb des didaktischen Kontexts ist dies nicht sinnvoll, da alle möglichen Arten von Anomalien auftauchen könnten.
+
+	1.7 Daten als Datei
+Aus Platzgründen wird hier auf die entsprechende Datei verwiesen.
+1.8 Fragen
+Einfache SELECT FROM WHERE Anfragen
+1) Welche Gemüsearten sind in der Datenbank?
+2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?
+3) Wie heißen die Händler, die in Berlin ansässig sind?
+4) Wie heißen die Gemüsearten, die zur Familie der Blattgemüse gehören?
+5) Welche sind die Gemüsesorten, die nicht zur Familie der Blattgemüse gehören?
+6) Geben Sie die Beete nach ihrer Größe sortiert an.
+7) Geben Sie alle Beete an, deren Groesse zwischen 2 und 3 m^2 liegen.
+8) Geben Sie die Gemüsesorten (Name und Anbaubeginn) sortiert nach frühestem Anbaubeginn an.
+
+Anfragen mit Aggregatsfunktionen
+9) Geben Sie die gesamte Anbaufläche des Gartens an.
+10-12) Geben Sie an, wie lang die durchschnittliche Anbaudauer der Sorten ist und geben Sie die maximale und minimale Anbaudauer an.
+
+Anfragen mit JOIN
+13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familie an.
+14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an.
+15) Welche Abpackungen von Tigerella gibt es?
+16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen.
+17) Welche Haendler vertreiben die Gemüsesorte Hokaido.
+18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer.
+19) Geben Sie an, von welchen Händlern die tatsächlich angebauten Sorten bezogen werden können.
+20) Geben Sie eine Liste mit den Gemuesesorten (Name und Familie) und den zugehörigen Händlern an
+
+Spezielle Anfragen an die Schulgarten-Datenbank
+21) Darf auf Beet Nr. 7 Spinat angebaut werden?
+Anmerkung: Wenn die Zahl aus der Ausgabe kleiner als 4 ist, darf das Gemüse angebaut werden
+22) Welche Beete (bnr) und Gemüsesorten (gnr, gname) haben zusammen ein 'Schneckenprodukt' (Schneckenfaktor * Schneckenbeliebtheit), das kleiner gleich 4 ist - geordnet nach dem Schneckenprodukt?
+
+2.	Relationenalgebra (DES – Datalog Educational System)
+In den Ordnern 2a bis 2c befinden sich in der jeweiligen Sprache ausgewählte Fragen. Die Anfrageergebnisse sind in 2a gespeichert und identisch mit denen, die bei 2b und 2c zu erwarten sind. 
+3.	SQL
+In diesem Ordner befinden sich Dateien mit sprechenden Namen, die direkt in psql genutzt werden können. 
+4.	Didaktisch-methodische Überlegungen
+4.1 Didaktisch-methodische Überlegungen
+In aller Kürze ein Überblick hinsichtlich verschiedener zu berücksichtigender Aspekte:
+Schwierigkeitsgrad
+Die Datenbank Schulgarten ist eher anspruchsvoll. Zunächst ist ein recht umfangreiches Verständnis der Materie Garten zu erwerben. Die Modellierung aus dem Text birgt manche Klippe, die durch die Lehrkraft begleitet werden sollte. Zudem ist der Umfang nicht jeder Gruppe zuzumuten (s. nächster Punkt). 
+Umfang
+Bedingt durch die zahlreichen Entitäten (6) und n:m-Relationen (4) ergeben sich nicht nur zahlreiche Relationen und Attribute im Relationen-Modell, sondern auch eine sehr umfangreiche Population. Dementsprechend sollte dieses Projekt nur Gruppen zugeteilt werden, die zügig arbeiten können und sich nicht von umfangreichem Datenmaterial abschrecken lassen.
+
+
+Zeitbedarf
+Entsprechend der letzten beiden Punkte ist klar, dass dies keine Datenbank für ein kurzes Schnupperpraktikum ist. Der Zeitbedarf wird sicherlich mehrere Wochen für die Einarbeitungszeit und die Arbeit mit den Anfragen betragen. Besonders motivierend wäre es, einen tatsächlichen Schulgarten zu modellieren. Je nachdem, wie viele Beete dieser besitzt, kann der Zeitbedarf sogar noch steigen. 
+Bedeutsamkeit im Kontext des Informatikunterrichts
+Die Bedeutsamkeit des Bereichs Datenbank kann dem RLP entnommen werden. Das Besondere der Datenbank Schulgarten besteht darin, dass es eine Anwendung darstellt, die etwas abseits der üblichen Datenbanken ist und damit motivierend wirken kann, etwas völlig Uninformatisches mit den Mitteln der Informatik zu modellieren. 
+Ideen zur methodischen Umsetzung
+Es ist auf jeden Fall zu empfehlen, diese Datenbank nicht verpflichtend für einen ganzen Kurs zu machen. Dies liegt einerseits am Anspruch (s. oben), andererseits am Thema, das für manche Schüler*innen besonders spannend, für andere besonders abschreckend sein kann.
+Je nachdem, wie viel Zeit zur Verfügung steht, kann der Modellierungsaspekt verkürzt werden, indem man das ER-Modell bzw. die Entitätstypen vorgibt. Daraus folgt allerdings, dass die Modellierungsphase wegfällt bzw. entwertet wird. Dabei ist dies ein besonders spannender Prozess, der mitunter am lehrreichsten ist. 
+Weiterführende Fragestellungen
+Für größere Projekte (z.B. im Rahmen einer BLL) könnte man das Projekt z.B. um das Konzept der Fruchtfolge erweitern. Auf Beeten, in denen im einen Jahr Kürbis (Starkzehrer) gewachsen ist, sollte im Folgejahr ein Schwachzehrer wachsen. 
+Auch könnte mehr Wert auf verschiedene Sichten gelegt werden (z.B. ein Arbeitskalender). Auch Vorschläge, was wo gepflanzt werden könnte, wären eine weiterführende Möglichkeit.
+
+
+5.	View
+5.1 Beschreibung und Motivation des Views
+Es wurden vier Views ausgewählt, mit steigendem Anspruch.
+1) Welche Sorten sind in der Datenbank?
+2) Welche Arbeitsschritte gibt es?
+3) Was wächst auf welchem Beet?
+4) Welcher Händler bietet was an?
+Die ersten beiden sind nicht interaktiv. Im nächsten Punkt wird eine Auswahl mit Radio-Buttons umgesetzt, wobei die Radiobuttons noch händisch eingegeben werden müssen. Im letzten Fall wurde eine Dropdown-Auswahl gestaltet, die ihre Optionen direkt aus der Datenbank generiert. 
+Der genannte Quelltext kann als Beispiel herausgegeben werden, um analoge Anfragen zu bauen. 
+5.2 Webserver-Verzeichnisinhalt
+Die PHP-Dateien liegen verwendungsfertig in einem Ordner. Lediglich in conn.inc.php muss die Adresse des Webservers angepasst werden. 
+
+
+
+

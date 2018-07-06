@@ -1,0 +1,6 @@
+-- 17. Wie viele Schüler haben 'Mathematik' belegt? *** AAG
+SELECT COUNT(*) AS Anzahl_schueler_Mathematik 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs) AS f,
+	  schueler as s, eingeschrieben AS e
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Mathematik'; 
+

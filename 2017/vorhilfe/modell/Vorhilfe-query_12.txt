@@ -1,0 +1,4 @@
+-- 12. Welcher Schüler ist in Kurs 2 unter 16 Jahre alt? **
+SELECT nname,vname,geb,klasse 
+FROM schueler NATURAL JOIN eingeschrieben
+WHERE age(geb) < '16 year' AND KNR = 2;

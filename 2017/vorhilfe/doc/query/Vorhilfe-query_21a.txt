@@ -1,0 +1,7 @@
+-- 21. Wieviele Plätze sind im Kurs "Informatik" noch frei? **** AGG
+-- a) Kursliste Informatik ***
+SELECT vname,nname,email,fname 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,
+	  schueler as s, eingeschrieben AS e 
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';
+

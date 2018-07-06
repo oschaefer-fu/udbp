@@ -1,0 +1,56 @@
+﻿Projekt Datenbank Sportfest
+
+Die erstellten Anfragen an die Sportfest-Datenbank wurden in einfach, mittelschwere und schwer eingeteilt:
+
+Für einfache Anfragen ist mindestens die Selektion auf einer Relationen notwendig.
+
+ 	Welche Schüler*innen haben einen Schwimmnachweis erbracht ?
+
+	Welche Wettkämpfe sind aus dem Bereich Koordination ?
+
+	Welche Schüler*innen sind im Jahr 2000 geboren worden ?
+
+	Welche  Schüler*innen aus dem Jahrgang 2002 haben keinen Schwimmnachweis?
+
+
+Für mittelschwere Anfragen sind die Selektion auf mehreren Relationen und einfache Joins nötig
+
+	Welche Wettkämpfe, finden auf dem Sportplatz statt?
+
+	Welche Schüler*innen nehmen  am 800m-Lauf teil ?
+
+	Welche Wettkämpfe finden um 10:00 Uhr statt ?
+
+	Wann findet der Wettkampf Kugelstoßen statt ?
+
+	Welche Dienstleister unterstützen die Wettkampfstätte Sportplatz ?
+
+	Welche Schüler*innen helfen um 9:00 Uhr bei der Aufsicht ?
+
+Für schwere Anfragen sind Selektionen, Projektionen und Aggregatfunktionen auf mehreren Relationen sowie mehrfache Joins nötig
+	
+	Welcher Lehrer beaufsichtigt Kugelstoßen ?
+
+	Welche  Schüler*innen befinden sich um 13:00 Uhr auf dem Sportplatz ?
+
+	Welche Materialien werden in welcher Anzahl  beim Kugelstoßen gebraucht ?
+
+	Welche Materialien werden in der  Wettkampfstätte Schwimmhalle benötigt ?
+
+	Welche Schüler*innen betreuen Standweitsprung ?
+
+	Wie viele Schülerinnen nehmen am Radfahren teil ?
+
+	Wann ist Klasse 8 beim Wettbewerb 800m-Lauf ?
+
+	Wann ist Klasse 8 an der Wettkampfstätte Landschaftspark ?
+
+	Welche Schüler*innen aus dem Jahrgang 2000 haben im 800m-Lauf weniger als 	3 Punkte erzielt ?
+
+	Welches durchschnittliches Ergebnis haben alle im Jahr 2001 geborenen 	Schüler*innen ? 
+
+	Welche Schüler*innen sind weiter gesprungen sind als Durchschnitt ?
+
+	Welcher Schüler*innen nehmen an welchen Wettkämpfen teil ?
+
+

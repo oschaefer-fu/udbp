@@ -1,0 +1,11 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Lehrer;;;;;
+PNr;LName;WKStNr;;;
+10001;'Buchschmid';304;;;
+10002;'Zemke';303;;;
+10003;'El Moutahid';302;;;
+10004;'Hertel';301;;;
+

@@ -1,0 +1,7 @@
+-- 11. Kursliste: 
+-- Alle Schüler mit Vor-, Nachname,Klassenlehrer und E-Mail, 
+-- die das Fach Informatik belegen **
+SELECT s.vname,s.nname,s.lid,s.email 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,
+	schueler as s, eingeschrieben AS e 
+	WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';

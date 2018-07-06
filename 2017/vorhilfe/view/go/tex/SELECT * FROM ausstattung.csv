@@ -1,0 +1,11 @@
+SELECT * FROM ausstattung
+anr;geraete
+1;Tafel
+2;Beamer
+3;Computer
+4;OH-Projektor
+5;Fernseher
+6;Whiteboard
+7;Smartboard
+8;Waschbecken
+9;Sitzecke

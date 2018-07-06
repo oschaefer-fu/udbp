@@ -1,0 +1,42 @@
+﻿Sportfest-Datenbank SQL Anfragen
+1.	select SName from Schueler  where Schwimmnachweis = True
+
+2.	select WName from Wettkämpfe where Kategorie = 'Koordination'
+
+3.	select SName from Schüler where Geburtsdatum between '2000-01-01' and '2000-12-31'
+
+4.	select SName from Schueler  where Schwimmnachweis = True
+
+5.	select WName from Wettkaempfe natural join Wettkampfstaetten where WKStName = 'Sportplatz' 
+
+6.	select SName from Schueler natural join Wettkaempfe where WName = '800m Lauf'
+
+7.	select WName from Wettkaempfe natural join Stattfinden where SFZeit = '10:00'
+
+8.	select SFZeit from Stattfinden natural join Wettkaempfe where WName = 'Kugelstoßen'
+
+9.	select DName from Dienstleister natural join Wettkampfstaetten where WKStName = 'Sportplatz'
+
+10.	select SName from Schueler natural join Aufsichtsunterstuetzung where UAZeit = '09:00'
+
+11.	select LName from Lehrer natural join Wettkaempfe natural join 	Wettkampfstaetten natural join	Stattfinden where WName = 'Kugelstoßen'
+
+12.	select SName from Schüler natural join Teilnahme natural join 	Wettkampfstaetten where WKStName = 'Sportplatz' and TnZeit = '13:00'
+
+13.	select MName, anzahl from Material natural join Bedarf natural join Wettkaempfe where WName = 'Kugelstoßen'
+
+14.	select MName from Material natural join Bedarf natural join Wettkampfstaetten natural join Stattfinden where WKStName = 'Schwimmhalle'
+
+15.	select SName from Schueler natural join Aufsichtsunterstuetzung natural join Wettkaempfe natural join Wettkampfstaetten natural join stattfinden where WName = 'Standweitsprung'
+
+16.	select count (geschlecht) from Schueler natural join Wettkaempfe natural 	join teilnahme where 	WName = 'Radfahren' and geschlecht = 'w'
+
+17.	select TnZeit from Schueler natural join Teilnahme natural join 	Wettkaempfe where WName = 	'Laufen' and Klasse = '8'
+
+18.	select TnZeit from Teilnehme natural join Schueler join Wettkampfstaetten 	where Klasse = '8' and 	WKStName = 'Landschaftspark'
+
+19.	select SName from Schueler natural join Teilnahme natural join Wettkaempfe 	where Geburtsdatum 	between '2000-01-01' and '2000-12-31' and WName = 	'800m Lauf' and Ergebnis between 0 and 2
+
+20.	select avg (ergebnis) from schueler natural join teilnahme where 	geburtsdatum '2001-01-01' and 	'2001-12-31' 
+
+21.	select sname, wname from schueler natural join teilnahme natural join 	wettkaempfe

@@ -1,0 +1,15 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Wettkaempfe;;;;;
+WKNr ;WName;Kategorie;;;
+2001;'800m Lauf';'Ausdauer';;;
+2002;'Radfahren';'Ausdauer';;;
+2003;'Kugelstoßen';'Kraft';;;
+2004;'Standweitsprung';'Kraft';;;
+2005;'Laufen';'Schnelligkeit';;;
+2006;'25m Schwimmen';'Schnelligkeit';;;
+2007;'Hochsprung';'Koordination';;;
+2008;'Seilspringen';'Koordination';;;
+

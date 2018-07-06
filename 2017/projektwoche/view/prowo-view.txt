@@ -1,0 +1,3 @@
+Das Formular01 ermöglicht es für einen beliebigen Schüler neben der Angabe seiner Klasse auch seinen belegten Kurs, den Kursleiter sowie ggf. dessen Verantwortlichkeit für den Kurs anzuzeigen. Dies kann zum Beispiel in der Realität zur Verwendung kommen, wenn ein "vergesslicher" Schüler seine Kursbelegung erfragen möchte. 
+
+Das Formular02 ermöglicht es für jeden gewählten Ort eine Übersicht der Lehrkräfte anzuzeigen, die wenigstens einmal an diesem Ort im Rahmen der Projektwoche anwesend waren.Dies kann zum Beispiel dafür genutzt werden, um bei etwaigen Problemen die verantwortliche Lehrkraft zu ermitteln. 

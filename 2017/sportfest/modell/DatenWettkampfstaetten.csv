@@ -1,0 +1,11 @@
+﻿LWB;Informatik;;;;
+UDBP;Sportfest;;;;
+Tabellen mit Daten ;;;;;
+;;;;;
+TABLE Wettkampfstaetten ;;;;;
+WKStNr;WKStName;WKStAdresse;;;
+301;'Turnhalle';'Schulstraße';;;
+302;'Sportplatz';'Vereinsstraße';;;
+303;'Schwimmhalle';'Badstraße';;;
+304;'Landschaftspark';'Parkstrasse';;;
+

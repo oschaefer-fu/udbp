@@ -1,0 +1,7 @@
+
+Auf einem Beet dürfen nur Gemüse angebaut werden, die sich miteinander vertragen.
+Auf benachbarten Beeten dürfen nur Gemüse angebaut werden, die sich miteinander vertragen. 
+Auf einem Beet dürfen nur Gemüse angebaut werden, deren Lage mit der Lage des Beetes übereinstimmt. 
+Der tatsächliche Anbaubeginn von „Angebautes“ muss zwischen dem „frühster Anbaubeginn“ und „spätester Anbaubeginn“ der Sorte liegen.
+Hat ein Beet einen hohen Schneckenfaktor, so sollten dort nur Sorten angebaut werden, die eine geringe Beliebtheit bei Schnecken haben. Ist der Schneckenfaktor gering, so ist es egal.
+Nicht jede Sorte erfordert alle Arbeitsschritte. 

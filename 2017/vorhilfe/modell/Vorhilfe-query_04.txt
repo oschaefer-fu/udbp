@@ -1,0 +1,4 @@
+-- 04. Auflistung aller Schüler mit Vornamen 'Gabi'. *
+SELECT * 
+FROM schueler 
+WHERE vname = 'Gabi';

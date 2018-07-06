@@ -1,0 +1,8 @@
+gnr,gname,familie,lage,schneckenbeliebtheit
+0,Mangold,Blattgemuese,2,1
+1,Karotte,Wurzelgemuese,2,1
+2,Erbse,Huelsenfrucht,1,2
+3,Weisskohl,Kohlgemuese,1,3
+4,Kuerbis,Kuerbisgewaechse,1,3
+5,Tomaten,Nachtschattengewaechse,1,1
+6,Spinat,Blattgemuese,3,1

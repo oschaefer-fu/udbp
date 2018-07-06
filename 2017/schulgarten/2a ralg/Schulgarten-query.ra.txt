@@ -1,0 +1,22 @@
+% 1) Welche Gemüsearten sind in der Datenbank?
+project gnr, gname, familie, lage, schneckenbeliebtheit (gemuese)
+% 2) Wie heißen die Arbeitsschritte, die im Garten verrichtet werden müssen?
+project taetigkeit (arbeitsschritte)
+% 3) Wie heißen die Händler, die in Berlin ansässig sind?
+project hname (select haendler.öort='Berlin' (haendler)) 
+% 4) Wie heißen die Gemüsearten, die zur Familie der Blattgemuese gehören?
+project gname (select familie='Blattgemuese' (gemuese))
+ 
+% 13) Geben Sie die Namen der Gemüsesorten mit ihren zugehörigen Gemüsearten und deren Familien an.
+project sorten.sname, gemuese.gname, familie (sorten njoin gemuese)
+% 14) Geben Sie die Namen und den tatsächlichen Anbaubeginn der angebauten Pflanzen an.
+project sorten.sname, angebautes.tatsaechlicheranbau (angebautes njoin sorten)
+% 15) Welche Abpackungen von Tigerella gibt es?
+project vertrieb.packungsmenge, vertrieb.packungseinheit (select sorten.sname = 'Tigerella' (vertrieb njoin sorten))
+% 16) Geben Sie die Namen der Gemüsesorten an, die auf Beet 2 wachsen.
+project sorten.sname (select angebautes.bnr = 2 (angebautes njoin sorten))
+% 18) Geben Sie eine Liste der auf den Beeten wachsenden Gemüsesorten (bnr, sname) an - sortiert nach Beetnummer.
+project beet.bnr, sorten.sname (beet njoin(angebautes njoin sorten))
+% 19) Geben Sie an, von welchen Händlern die tatsächlich angebauten Sorten bezogen werden können.
+project hname (haendler WHERE haendler.hnr = vertrieb.hnr, vertrieb.snr = angebautes.snr product (vertrieb product angebautres))
+

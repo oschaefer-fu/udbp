@@ -1,0 +1,4 @@
+-- 09b.  Liste der Lehrer (Kuerzel), die bei vim.org sind. - Alternative **
+SELECT nname,kuerzel 
+FROM lehrer 
+WHERE email LIKE '%vim.org';

@@ -1,0 +1,32 @@
+(c)   Verbale Angabe von semantischen Bezügen, die sich im Modell nicht wiederfinden, durch Prädikate (Constraints, Integritätsbedingungen). Dokument: knapp formulierte Textprädikate in der Sprache des Modells (<db>-Semantik.txt). 
+
+
+Integritätsbedingungen bzgl. der Datenbank „Vorhilfe“ 
+
+Statische Integritätsbedingungen: 
+- Tupelbedingungen: nicht vorhanden.
+
+- Relationen-Bedingungen: 
+Aggregatbedingungen: nicht vorhanden
+Rekursive Bedingungen: nicht vorhanden
+
+Wird z.B. ein Raum mit Beamer gesucht und wurde dieser Raum von einer anderen Gruppe schon gebucht, die auch einen Beamer braucht, kommt es zu einem Konflikt, weil mehr als eine Gruppe diesen Raum buchen könnte. 
+
+Ein weiteres Problem stellt die mögliche zeitgleiche Teilnahme der SchülerInnen an mehreren Kursen dar, bzw. könnten die SchülerInnen auch zeitgleich zwei Kurse leiten. Ebenso wäre es möglich einen Kurs zu leiten und sich in diesen einzuschreiben. 
+
+Zwei LehrerInnen könnten denselben Kurs beaufsichtigen.
+
+Max. 4 Kurse können zur selben Zeit im selben Raum stattfinden. 
+
+Blockkurse werden nur über den Wochentag (Sa) abgefangen. 
+
+Wenn keine SchülerInnen in einen Kurs eingeschrieben wurde, findet der Kurs nicht statt. - Wird nicht abgefangen, kann aber durch eine entsprechende Anfrage gelöst werden.
+
+Bewusste Inkaufnahme des Semantikverlustes bei der einseitig optionalen 0..* Beziehung bei den Relationen vermittelt und beinhaltet, damit bei Kurs Methoden oder Fächer kombiniert werden können. Damit ist es auch möglich, dass ein Kurs weder Methode noch Fach vermittelt bzw. beinhaltet.
+ 
+geprüfte Integrität: s. Datei 'RelMod.txt'
+
+
+Dynamische Integritätsbedingungen 
+
+TRIGGER  z.B. wenn alle SchülerInnen ein anderes Bewertungssystem bekommen sollten, müssten mittels Trigger die Konten ein Update bekommen. 

@@ -1,0 +1,6 @@
+SELECT * FROM methode
+mnr;mname
+1;keine
+2;ABI
+3;MSA
+4;Präsentation

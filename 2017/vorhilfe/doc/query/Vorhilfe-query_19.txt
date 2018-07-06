@@ -1,0 +1,4 @@
+-- 19. Wie viele Räume haben einen Beamer? ***
+SELECT COUNT( * ) AS Raeume_mit_Beamer 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung 
+GROUP BY geraete HAVING geraete ='Beamer';

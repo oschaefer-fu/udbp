@@ -1,0 +1,1238 @@
+\documentclass[fleqn]{scrartcl}
+% Kommentieren Sie die folgende Zeile aus um das Einbinden von Grafiken zu ermöglichen (.png, .jpg)
+%\usepackage[pdftex]{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[german]{babel}
+% Kommentieren Sie die folgende Zeile ein um KEINE Umlaute zu ermöglichen
+\usepackage[utf8]{inputenc}
+%Für Codes
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor,fancyvrb}
+
+
+\usepackage{amssymb}
+%Tabellen
+\usepackage{caption, booktabs,colortbl}
+%\usepackage[table]{xcolor}
+%\usepackage{colortbl}% f?ie Hintergrundfarbe einzelner Zellen in Tabellen
+%--Definition der Farben ----------
+%\colorlet{tablesubheadcolor}{gray!40}
+%\colorlet{tableheadcolor}{gray!25}
+%\colorlet{tableblackheadcolor}{black!60}
+
+
+\lstdefinestyle{sql}{%
+basicstyle=\color{black}\small\ttfamily\fontseries{l},%
+identifierstyle=\normalsize\ttfamily\fontseries{l},%
+commentstyle=\slshape,%
+keywordstyle=\color{black}\bfseries,%
+extendedchars=true,%
+texcl=true,%
+%
+showstringspaces=false,%
+keepspaces=true,%
+literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{\ss}1,%
+inputencoding=utf8,%
+resetmargins=false% true: indentation in enumerate not used
+}
+
+
+
+\newcommand{\SQLStyle}{%
+\lstset{%
+style=sql,%
+commentstyle=\footnotesize,%
+firstnumber=auto,%
+basewidth={0.5em,0.4em},%
+fancyvrb=true,%
+texcl=false,% Dadurch werden alle Leerzeichen wie eingegeben verarbeitet
+language=SQL%,
+}}
+
+
+
+
+\newcommand{\readSQLlines}[3]{%
+  \definecolor{listingbackground}{HTML}{FFFFC8}%
+  \SQLStyle
+  \lstinputlisting[%
+    framexleftmargin=5pt,%
+    xleftmargin=5pt,%
+    framesep=7pt,%
+    captionpos=b,%
+    backgroundcolor=\color{listingbackground},%
+    aboveskip=10pt,%
+    belowskip=10pt,%
+    rulesep=5pt,%
+    frame=tb,%
+    name=#1,%
+    firstline=#2,%
+    lastline=#3]{#1}
+}
+
+\newcommand{\readSQLfile}[1]{%
+  \definecolor{listingbackground}{HTML}{FFFFC8}%
+  \SQLStyle
+  \lstinputlisting[%
+    framexleftmargin=5pt,%
+    xleftmargin=5pt,%
+    framesep=7pt,%
+    captionpos=b,%
+    backgroundcolor=\color{listingbackground},%
+    aboveskip=10pt,%
+    belowskip=10pt,%
+    rulesep=5pt,%
+    frame=tb,%
+    name=#1]{#1}
+}
+
+%\addtolength\textheight{2.1cm}
+
+% Das Dokument beginnt hier
+\begin{document}
+\title{Eine Vorhilfe-Datenbank für Schulen\\ \\  \checkmark $\mathcal{V}$ \\ \\  Vorhilfe ist besser als Nachhilfe!}
+\author{Thomas Wolf\\tomflow@gmx.de\and Christoph Chi\\c.chi@fu-berlin.de\and Marten Schlüter\\schluetermarten@googlemail.com\and Ben Boettcher\\boettcher.ben@t-online.de}
+\maketitle
+\tableofcontents
+% Erstelle eine Hauptüberschrift
+\section{Datenbank Vorhilfe Dokumentation}
+\subsection{Miniwelt einer Vorhilfebörse} 
+Vorhilfe ist besser als Nachhilfe!
+In einer Vorhilfeminiwelt gibt es SchülerInnen, die Vorhilfestunden suchen und SchülerInnen, die Vorhilfestunden anbieten. 
+Ein(e) Lehrer(in) beaufsichtigt bis zu vier Vorhilfegruppen von SchülernInnen in einem Raum der Schule. Die Räume haben unterschiedliche Ausstattungen. 
+Die Vorhilfekurse finden im Mittagsblock der Schule an allen Wochentagen statt, ausnahmsweise gibt es auch eine Blocksession am Samstag. 
+Für ihre Stunden bekommen die SchülerInnen für das Unterrichten 4 Punkte, für das Nehmen von Vorhilfe 1 Punkt, auf ihrem Konto gutgeschrieben. 
+Es werden Kurse mit Fachbezug angeboten, es besteht weiterhin die Möglichkeit spezielle Prüfungsvorbereitungskurse (Abitur, MSA) zu belegen. Eine Kombination von beiden Möglichkeiten ist gestattet.
+SchülerInnen sollten nicht mehr als 4 SchülerInnen unterrichten. 
+
+Zusätzlich mögliche Integritätsbedingungen:  
+SchülerInnen sollten maximal 2 Angebote in der Woche anbieten können. Ab einem SchülerInnen sollte der Kurs erst stattfinden. Maximal sollten vier Kurse gleichzeitig in einem Raum stattfinden können. 
+
+\section{Integritätsbedingungen bzgl. der Datenbank 'Vorhilfe'} 
+(c) Verbale Angabe von semantischen Bezügen, die sich im Modell nicht wiederfinden, durch Prädikate (Constraints, Integritätsbedingungen). Dokument: knapp formulierte Textprädikate in der Sprache des Modells (<db>-Semantik.txt). 
+
+\subsection{Statische Integritätsbedingungen} 
+\begin{itemize}
+\item Tupelbedingungen: nicht vorhanden.
+\item Relationen-Bedingungen: 
+\item Aggregatbedingungen: nicht vorhanden
+\item Rekursive Bedingungen: nicht vorhanden
+
+\item Wird z.B. ein Raum mit Beamer gesucht und wurde dieser Raum von einer anderen Gruppe schon gebucht, die auch einen Beamer braucht, kommt es zu einem Konflikt, weil mehr als eine Gruppe diesen Raum buchen könnte. 
+
+\item Ein weiteres Problem stellt die mögliche zeitgleiche Teilnahme der SchülerInnen an mehreren Kursen dar, bzw. könnten die SchülerInnen auch zeitgleich zwei Kurse leiten. Ebenso wäre es möglich einen Kurs zu leiten und sich in diesen einzuschreiben. 
+
+\item Zwei LehrerInnen könnten denselben Kurs beaufsichtigen.
+
+\item Max. 4 Kurse können zur selben Zeit im selben Raum stattfinden. 
+
+\item Blockkurse werden nur über den Wochentag (Sa) abgefangen. 
+
+\item Wenn keine SchülerInnen in einen Kurs eingeschrieben wurde, findet der Kurs nicht statt. - Wird nicht abgefangen, kann aber durch eine entsprechende Anfrage gelöst werden.
+
+\item Bewusste Inkaufnahme des Semantikverlustes bei der einseitig optionalen 0..* Beziehung bei den Relationen vermittelt und beinhaltet, damit bei Kurs Methoden oder Fächer kombiniert werden können. Damit ist es auch möglich, dass ein Kurs weder Methode noch Fach vermittelt bzw. beinhaltet.
+ 
+\item geprüfte Integrität: s. Datei 'RelMod.txt'
+
+\end{itemize}
+\subsection{Dynamische Integritätsbedingungen} 
+
+TRIGGER  z.B. wenn alle SchülerInnen ein anderes Bewertungssystem bekommen sollten, 
+müssten mittels Trigger die Konten ein Update bekommen. 
+
+\section{ nichttriviale Funktionale Abhängigkeiten (d) }
+
+\subsection{Relation Schüler} 
+ \[F=\{nname, vname, geb\} \rightarrow Klasse, LID, email, KoNr \]
+
+\subsection{Relation Lehrer}	
+\[F=email \rightarrow kuerzel\]
+\[F=kuerzel \rightarrow email\]
+
+\section{Relationenmodell (e)}
+(e) Ein Relationenmodell dazu in dritter Normalform mit Angabe von Schlüsseln, Fremdschlüsseln und Notation von Integritätsbedingungen als logische Ausdrücke in einer Datei <db>-RelMod.txt.
+
+Transformationsergebnis nach dem vorliegenden ER-Modell „Vorhilfe“: 
+Als Ergebnis erhält man die folgenden 13 Relationen im Relationenmodell: 
+
+Bemerkung zur 3. NF: 
+Außer der Relation "Lehrer" befinden sich alle Relationen in der 3.NF. Wir entschlossen uns diese so zu belassen, da in der Datenbank die  Attribute der Relation „Lehrer“ immer nur zusammenhängend vorkommen. 
+\begin{enumerate}
+\item Konto (KoNR, Kontostand)
+\item Lehrer (LID, nname, email, kuerzel)
+\item Schueler (SID, nname, vname, geb, klasse, LID (Beziehung 'ist Klassenlehrer' geht hier auf), email, KoNR (Ref. Beziehung 'besitzt'))
+\item Raum (RNR, stock, anzP)
+\item Ausstattung (ANR, geraete)
+\item Kurs (KNR, SID (Beziehung 'bietet\_an' geht hier auf) wtag, zeit, maxP)
+\item Fach (FNR, fname)
+\item Methode (MNR, mname)
+\item hat (RNR (Ref. Raum (RNR), ANR  Ref. Ausstattung (ANR))
+\item findet\_statt (KNR (Ref. Kurs (KNR), RNR (Ref. Raum (RNR))
+\item eingeschrieben (SID (Ref. Schueler (SID)), KNR (Ref. Kurs (KNR)), zeitS)
+\item vermittelt (KNR (Ref. Kurs(KNR), FNR Ref.Fach (FNR))
+\item beinhaltet (KNR (Ref. Kurs (KNR), MNR (Ref, Methode (MNR))
+\item beaufsichtigt (KNR Ref. Kurs (KNR), LID (Ref. Lehrer (LID))
+\end{enumerate}
+
+\section{Notation von Integritätsbedingungen, die sich im Modell wiederfinden} 
+
+\subsection{Domain- bzw. Attribut-Bedingungen} 
+Diese Bedingungen sichern Beschränkungen des Wertebereiches einzelner Attribute: 
+
+Beispiel: 	
+\readSQLlines{Create-Vorhilfe.sql}{50}{60}
+
+Relationen-Bedingungen 
+Schlüsselbedingungen wie z.B. in der folgenden Form, in der die Bedingung an das Attribut angehängt wird. 
+Finden sich z.B. in folgender Form wieder: 
+\readSQLlines{Create-Vorhilfe.sql}{61}{65}
+
+Referentielle Bedingungen und ihre Problem in unserer Modellierung: 
+Referentielle Bedingungen stellen semantische Bezüge zwischen Paaren von Relationen sicher. 
+Eine Form ist z. B. die Fremdschlüsselbeziehung als Teilmengenprädikat. 
+
+\readSQLlines{Create-Vorhilfe.sql}{52}{53}
+Problematisch, wenn z.B. mehr als ein(e) Schüler(in) einen Kurs leiten möchte.
+
+\section{Transformationsregeln am Beispiel unserer Miniwelt 'Vorhilfe'}
+
+\subsection{Transformation von Entitätstypen} 
+Ein Entitätstyp des ER-Modells wird in einen Relationstyp des Relationenmodells mit gleicher Attributmenge transformiert.  
+
+Beispiel:
+\[ Raum\; (RNR, stock, anzP)\]
+
+\subsection{Transformation von n:m-Beziehungstypen} 
+Der ursprüngliche Beziehungstyp im Relationenmodell wird zur eigenständigen Relation 
+und enthält sowohl die Schlüssel der beteiligten Entitäten (als Fremdschlüssel) als auch -falls vorhanden- 
+die Attribute des alten Beziehungstyps selbst. Als Schlüssel wird die  Kombination der beteiligten Fremdschlüssel verwendet. 
+
+Beispiel:
+
+\[ hat\; (RNR (Ref. Raum (RNR), ANR  Ref. Ausstattung (ANR))\]
+
+\subsection{Problem einer einseitig 0...* optionalen Beziehung}
+ Sie ist nicht unterscheidbar von 1...* (Semantikverlust) 
+
+Beispiel:
+
+\[ vermittelt\; (KNR, FNR)\]
+
+\subsection{Transformation von c:c-Beziehungstypen}
+(0...1) : (0...1) In unserem Modell nicht vorhanden. 
+
+\subsection{Transformation von 1:n-Beziehungstypen}  
+"Bei der Transformation von 1:n-Beziehungstypen werden die ER-Relationsattribute zusammen mit dem Fremdschlüssel 
+der Entität der 1-Seite der transformierten Entität der n-Seite hinzugefügt. 
+Als Schlüssel dient der jeweilige Primärschlüssel des Entitätstyps.“ 
+(Siehe Schäferskript 07 S. 51)
+
+Semantikverlust ist mgl., da die Kardinalitäten der beteiligten Entitäten verloren gehen. 
+Aus diesem Grund haben wir teilweise Integritätsbedingungen hinzugefügt. 
+
+Beispiel (s.o.): 
+
+\readSQLlines{Create-Vorhilfe.sql}{50}{60}
+
+\subsection{Transformation von 1:1-Beziehungstypen} 
+Der Primärschlüssel einer der beiden Tabellen wird als Fremdschlüssel der anderen Relationen
+ in eine zusätzliche Spalte aufgenommen. 
+
+Beispiel:  Relation 'besitzt' 
+\readSQLlines{Create-Vorhilfe.sql}{24}{34}
+Schueler (SID, nname, vname, geb, klasse, LID (Ref. Beziehung 'ist Klassenlehrer'), email, KoNR (Ref. Beziehung 'besitzt'))
+
+
+\section{Didaktisch-Methodisches}
+\subsection{ Relevanz von Datenbanken für  die Gesellschaft und das Leben} 
+
+Im Alltag triff man mehr oder weniger bewusst auf Datenbanken. Hierfür soll ein Bewusstsein geschaffen werden.  
+Methodische Überlegung: Unterschied zwischen Tabellen und DB vermitteln.
+
+
+\subsection{Thema des RLPs}
+
+„Am Beispiel der Entwicklung eines Datenbanksystems führen die Schülerinnen und Schüler alle Phasen des Problemlöseprozesses von der Analyse der Ausgangssituation zur Erfassung der Daten über die Modellierung einer Datenbank bis hin zu ihrer praktischen Umsetzung in einem Datenbankmanagementsystem selbstständig durch.“
+Rahmenlehrplan Sek.II Seite 19. 
+
+\subsection{ER-Modellierung / Miniwelt} 
+Umsetzungsmöglichkeiten: 
+Ausgehend von der Beschreibung der Miniwelt wird ein gemeinsames ER-Modell entwickelt, wobei die Kardinalitäten hierbei sinnvoll eingearbeitet/thematisiert werden. 
+Bei kürzerem Zeitumfang besteht die Möglichkeit das vorgegebene ER-Modell nachzuvollziehen und im Anschluss in ein Relationenmodell umzuwandeln. 
+
+\subsection{Transformation in ein Relationenmodell u. Regeln mit methodischen Überlegungen zur Normalform, Redundanz und Anomalien}
+
+Nach der Umwandlung der Entitäten in ein Relationenmodell werden die Beziehungen umgewandelt. Hierbei sollten insbesondere die Kardinalitäten und deren „Auflösung“ in Relationen thematisiert werden. Anomalien und Redundanzen könnten aufgegriffen werden, um den Vorteil von Normalformen herauszuarbeiten. 
+Semantikverlust kann inhaltlich erörtert werden (siehe Semantik.txt).
+
+\subsection{Detaillierte method. did. Überlegungen der Umsetzung von differenzierten Anfragen}
+Anfangs sollte eine Datenbank, befüllt mit Populationen, vorgegeben werden. Erst wenn das Erstellen von Anfragen in allen drei Schwierigkeitsstufen beherrscht wird, sollten die Schüler und Schülerinnen selbst Datenbanken erstellen dürfen.
+
+Um im Unterricht eine ausreichende Differenzierung gewährleisten zu können, haben wir Anfragen mit unterschiedlichen Schwierigkeitsstufen entwickelt. Den Grundlagen der Progression folgend steigt der Schwierigkeitsgrad mit der Anzahl der Sterne, die unsere vier Schwierigkeitsstufen repräsentieren.
+In der Einführungsphase beschränken sich die Ein-Sterneanfragen hauptsächlich auf die Operatoren SELECT, FROM und WHERE. Anfragen mit eineinhalb Sternen enthalten zusätzlich NATURAL JOIN Verbindungen. Diese Anfragen eignen sich für sehr leistungsstarke Schüler und Schülerinnen, denen die einfachen Anfragen in der Einführungsphase zu leicht erscheinen. Denkbar ist ebenfalls, die Schüler und Schülerinnen selbst einfache Anfragen entwickeln zu lassen, die nur mit diesen genannten Operatoren auskommen dürfen.
+
+Nach der Einführungsphase folgen die komplexeren Abfragen. Die Zwei-Sterneanfragen, die den Großteil unserer Anfragen bilden,  sollten mindestens einen zusätzlichen Befehl wie beispielsweise: ORDER BY, AS, LIKE, ASC, WHERE NOT oder NOT enthalten; jedoch üblicherweise immer nur EINEN neuen Befehl zusätzlich. Ausnahmsweise kann auch schon mal ein COUNT Befehl verwendet werden.  Leistungsstarke Schüler und Schülerinnen können sich die Befehle über die Hilfefunktion bzw. im Internet mit Hilfe von Syntaxbeispielen selbst erarbeiten. In der Regel aber, sollten die Bedeutung und Verwendung aller unbekannten Operatoren vom Lehrer oder Lehrerin vorgeführt werden.
+
+Dagegen zeichnen sich die Drei-Sterneanfragen im Allgemeinen durch die Verwendung mehrerer JOINs aus bzw. beziehen in einzelnen Fällen Aggregatfunktionen (u.a. MAX, COUNT) mit ein. Auch Unteranfragen sollten möglich sein. Diese Anfragen sind schon sehr komplex und möglicherweise nicht von jedem Schüler bzw. jeder Schülerin selbstständig zu lösen. Jedoch sollte jeder mind. eine Drei-Sterneanfrage ohne zusätzliche Hilfe bauen können.
+
+Die Vier-Sterneanfrage ist nur sehr leistungsstarken Schülern bzw. Schülerinnen vorbehalten.
+
+Insgesamt liegt der Schwerpunkt auf den Zwei-Sterneanfragen, daher haben wir für diese Schwierigkeitsstufe die meisten Anfragen erstellt. An dieser Stelle werden auch die meisten neuen Befehle eingeführt.
+
+Nicht alle Anfragen sind für ein didaktisch sinnvolles Vorgehen im Unterricht notwendig. Möglicherweise erscheinen einigen Schülern und Schülerinnen die Ein-Sterneanfragen zu einfach und von den fünf angebotenen kann eine Auswahl bearbeitet werden. Ebenfalls sollte die Vier-Sterneanfrage fakultativ sein, da die Komplexität entsprechend hoch ist. Aufgrund der Variabilität und Vielfältigkeit sollten von den verbleibenden Schwierigkeitsstufen (sowohl Zwei- als auch Drei-Sterneanfragen) keine Anfragen weglassen. 
+
+Eine mögliche Erweiterung wäre die selbstständige Erstellung einer Datenbank nach einem vorgegebenen ER-Modell. Entsprechend der unterschiedlichen Lerngruppen bzw. Stundenzahl (Wahlpflichtkurs, Oberstufenkurse u.ä.) kann die Arbeit mit der Datenbank aufgrund der aufbauenden Schwierigkeitsgrade zeitlich erweitert bzw. ergänzt werden. Sollte nur ein kurzer Einblick in die Arbeit mit einer Datenbank erfolgen, genügen die fünf Anfragen mit dem geringsten Schwierigkeitsgrad (Ein-Sterneanfragen). Ein solcher Zugang ist auch für eine Einführung in SQL ab der 10. Klasse geeignet. 
+
+Spielraum für eine unterschiedliche Methodik bietet sich dann, wenn die Schüler und Schülerinnen selbst Anfragen für ihren Banknachbarn entwickeln sollen. Dazu bieten sich Gruppenarbeiten an, die arbeitsteilig (Anfragen, Erstellung einer DB, skizzieren eines ER Modells) vorgehen. Frontaler wäre die Vorgabe der dargestellten Anfragen durch den Lehrer, die jeder Schüler bzw. jede Schülerin sukzessive lösen soll. Die Lösungen könnten anschließend diskutiert bzw. verglichen werden. Langfristige Projekte könnten die bestehende Datenbank erweitern, um sie auf die speziellen Gegebenheiten der jeweiligen Schule anzupassen und auch dort einsatzbereit zu machen. 
+
+Vorhilfe ist besser als Nachhilfe
+\section{Kommentar zu den Views}
+Die Go-Datei views.go implementiert einen Webserver auf dem Port (localhost:) 8080, der über einen beliebigen Browser aufgerufen werden kann.
+Nach Aufruf des Wurzelverzeichnisses wird eine Auswahlmaske gezeigt, über die die einzelnen Optionen aufgerufen werden kann.
+ 
+
+Die View enthält weitere Möglichkeiten, die nur von starken (Leistungs-) Kursen realisiert werden könnten. Wenn Go
+die Programmiersprache der Wahl ist und SVG beherrscht wird, wäre die Implementierung aber möglich. 
+Sie enthält auch ein Formular, in das beliebige Anfragen eingegeben werden können, die dann als html-formatierte Tabelle ausgegeben werden.
+Die Anfragen dürfen nicht mehr als 12 Attribute ausgeben, sonst werden sie nicht dargestellt (erweiterbar, aber nicht sinnvoll).
+
+Danach wird das SVG-Bild des ER-Modells gezeigt, das verweissensitive Links als Anfragen enthält.
+Die Tabelle der Anfrage ist auch als csv-Datei im tex-Verzeichnis des Viewordners abgespeichert. 
+Bei den beiden Abfragen mit UPDATE wird keine Tabelle geliefert.
+
+\subsection{View lehrer}
+Diese View ist für den aufsichtführenden Lehrer bestimmt. Der Lehrer kann über diese View den Kontostand eines Schülers nach 
+Angabe der Kontonummer erhöhen.
+\subsection{View cafeteria}
+In der Cafeteria haben die Bediensteten Zugriff aus diese View. Nach Eingabe der Kontonummer wird dem Schüler ein Punkt vom Konto abgezogen.
+Er kann sich dafür einen Tee kaufen. 
+\subsection{View schuelersucht}
+Mit dieser View kann ein Schüler nach einem Raum suchen, der bestimmte Ausstattungsmerkmale besitzt. 
+(Schüler benötigt Beamer für Präsentationen etc.)
+
+\section{Anfragen in RA, DRC und TRC}
+  
+\subsection{Auflistung aller Lehrernamen}
+\subsubsection{RA}
+\[ \pi_{nname}(schueler) \]
+\subsubsection{DRC}
+\[ \{nname | (\exists SID) (\exists vname) (\exists geb) (\exists klasse) (\exists LID)(schueler(SID,vname,geb,klasse,LID)\} \]
+\subsubsection{TRC}
+\[ \{t|\exists s (schueler(s)) \wedge t[nname] = s[nname]\} \]
+\subsubsection{DES}
+\[ project\; nname (lehrer) \]
+
+\subsection{Ausgabe der Daten des Lehrers `Czetö`}
+\subsubsection{RA}
+\[ \sigma_{nname=`Czetö`}(lehrer) \]
+\subsubsection{DRC}
+\[ \{LID,nname,email,kuerzel| (lehrer(LID,nname,email,kuerzel, nname =`Czetö`)\} \]
+\subsubsection{TRC}
+\[ \{t| (lehrer(t)) \wedge t[nname] = `Czetö`\} \]
+
+\subsection{Liste der Räume im 1.Stock}
+\subsubsection{RA}
+\[ \pi_{RNR}(\sigma_{stock=1}(raum)) \]
+\subsubsection{DRC}
+\[ \{RNR |(\exists stock)(\exists anzP) (raum(RNR,stock,anzP) \wedge stock=1)\} \]
+\subsubsection{TRC}
+\[ \{t|\exists r (raum (r)  \wedge t[RNR] = r[RNR] \wedge r[stock]=1 \} \]
+\subsubsection{DES}
+\[ project\; RNR (select\;stock=1(raum)) \]
+
+\subsection{Ausgabe der Tabelle 'Ausstattung'}
+\subsubsection{RA}
+\[ ausstattung \]
+\subsubsection{DRC}
+\[ \{ANR,geraete|(ausstattung(ANR,geraete))\}\]
+\subsubsection{TRC}
+\[ \{t|ausstattung(t)\} \]
+
+\subsection{Welche Räume haben einen Beamer?}
+\subsubsection{RA}
+\[ \pi_{RNR}(\sigma_{geraete='Beamer'} ( raum \bowtie (hat \bowtie ausstattung ))) \]
+\subsubsection{DRC}
+\[ \{ RNR|(\exists stock)(\exists anzP )(\exists ANR )(\exists geraete)\]
+\[(raum(RNR,stock,anzP) \wedge hat (RNR,ANR) \wedge \] 
+\[ ausstattung(ANR,geraete) \wedge geraete = 'Beamer')\}  \]
+
+\subsubsection{TRC}
+ 
+\[\{ t|(\exists r )(\exists h )(\exists a )(raum(r) \wedge hat(h) \wedge ausstattung(a)\] 
+
+\[\wedge t[RNR]=r[RNR] \wedge a[geraete] = 'Beamer')\}\]
+
+
+\section{Relationen des ER-Modells}
+\subsection{Entitäten}
+\subsubsection{Tabelle: ausstattung}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+ausstattung
+}\\\midrule
+\rowcolor{yellow!30}anr & geraete  \\\midrule
+1& Tafel  \\ 
+2& Beamer  \\ 
+3& Computer  \\ 
+4& OH-Projektor  \\ 
+5& Fernseher  \\ 
+6& Whiteboard  \\ 
+7& Smartboard  \\ 
+8& Waschbecken  \\ 
+9& Sitzecke  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: fach}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+fach
+}\\\midrule
+\rowcolor{yellow!30}fnr & fname  \\\midrule
+1& keine  \\ 
+2& Informatik  \\ 
+3& Mathematik  \\ 
+4& Englisch  \\ 
+5& Französisch  \\ 
+6& Deutsch  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: konto}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+konto
+}\\\midrule
+\rowcolor{yellow!30}konr & kontostand  \\\midrule
+1000& 0  \\ 
+1001& 10  \\ 
+1002& 3  \\ 
+1003& 1  \\ 
+1004& 3  \\ 
+1005& 4  \\ 
+1006& 1  \\ 
+1007& 0  \\ 
+1008& 2  \\ 
+1009& 3  \\ 
+1010& 8  \\ 
+1011& 0  \\ 
+1012& 10  \\ 
+1013& 2  \\ 
+1014& 8  \\ 
+1015& 4  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: kurs}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{5}{|c|}{
+kurs
+}\\\midrule
+\rowcolor{yellow!30}knr & sid  & wtag  & zeit  & maxp  \\\midrule
+1& 1 & mo & 0000-01-01T12:30:00Z & 4  \\ 
+2& 1 & di & 0000-01-01T12:15:00Z & 4  \\ 
+3& 2 & mo & 0000-01-01T12:30:00Z & 4  \\ 
+4& 2 & mi & 0000-01-01T12:30:00Z & 4  \\ 
+5& 3 & do & 0000-01-01T12:00:00Z & 4  \\ 
+6& 3 & di & 0000-01-01T13:00:00Z & 4  \\ 
+7& 4 & mi & 0000-01-01T12:15:00Z & 4  \\ 
+8& 4 & fr & 0000-01-01T13:30:00Z & 4  \\ 
+9& 4 & di & 0000-01-01T14:00:00Z & 4  \\ 
+10& 7 & di & 0000-01-01T14:00:00Z & 4  \\ 
+11& 8 & mi & 0000-01-01T14:30:00Z & 4  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: lehrer}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+lehrer
+}\\\midrule
+\rowcolor{yellow!30}lid & nname  & email  & kuerzel  \\\midrule
+1& Schaefer & os@vim.org & sf  \\ 
+2& Czetö & cz@aiko.net & cz  \\ 
+3& Bond & james@mi5.org & bd  \\ 
+4& Cooper & high@noon.us & cp  \\ 
+5& Klemt & winnie2@ado.de & kl  \\ 
+6& Schmitt & schmitt@gmx.de & sc  \\ 
+7& Schmidt & darthvader@todesstern.de & si  \\ 
+8& Boettcher & benniboe@zedat.de & boe  \\ 
+9& Wolf & tflow@gmx.de & wf  \\ 
+10& Chi & themroc@musichi.net & chi  \\ 
+11& Schlüter & ms@ado.de & ms  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: methode}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+methode
+}\\\midrule
+\rowcolor{yellow!30}mnr & mname  \\\midrule
+1& keine  \\ 
+2& ABI  \\ 
+3& MSA  \\ 
+4& Präsentation  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: raum}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+raum
+}\\\midrule
+\rowcolor{yellow!30}rnr & stock  & anzp  \\\midrule
+400& 4 & 8  \\ 
+401& 4 & 13  \\ 
+402& 4 & 19  \\ 
+403& 4 & 21  \\ 
+300& 3 & 20  \\ 
+301& 3 & 32  \\ 
+200& 2 & 20  \\ 
+201& 2 & 32  \\ 
+202& 2 & 30  \\ 
+203& 2 & 13  \\ 
+100& 1 & 16  \\ 
+101& 1 & 25  \\ 
+102& 1 & 28  \\ 
+103& 1 & 10  \\ 
+1& 0 & 23  \\ 
+-101& -1 & 25  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: schueler}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{8}{|c|}{
+schueler
+}\\\midrule
+\rowcolor{yellow!30}sid & nname  & vname  & geb  & klasse  & lid  & email  & konr  \\\midrule
+1& Bär & Frieder & 2002-11-11T00:00:00Z & 11 & 1 & go@luise.net & 1000  \\ 
+2& Schmidt & Harald & 2002-10-10T00:00:00Z & 11 & 1 & aha@luise.net & 1001  \\ 
+3& Wolf & Hermine & 2002-10-01T00:00:00Z & 11 & 1 & wo@luise.net & 1002  \\ 
+4& Waal & Fritz & 2002-09-11T00:00:00Z & 11 & 1 & wale@luise.net & 1003  \\ 
+5& Gammel & Gabi & 2000-08-01T00:00:00Z & 12 & 2 & gaga@luise.net & 1004  \\ 
+6& Schlau & Gabi & 2003-07-01T00:00:00Z & 10 & 3 & schlau@luise.net & 1005  \\ 
+7& Gans & Gunter & 2003-07-01T00:00:00Z & 10 & 3 & gg@luise.net & 1006  \\ 
+8& Kannicht & Thomas & 2004-03-03T00:00:00Z & 09 & 4 & konzert@luise.net & 1007  \\ 
+9& Kurz & Susanne & 2004-03-28T00:00:00Z & 09 & 4 & shorty@luise.net & 1008  \\ 
+10& Braumeister & Thomas & 2004-04-03T00:00:00Z & 09 & 4 & lame@luise.net & 1009  \\ 
+11& Sabbel & Klara & 2005-12-04T00:00:00Z & 08 & 5 & schlau@luise.net & 1010  \\ 
+12& Kunze & Max & 2005-12-05T00:00:00Z & 08 & 6 & maumau@luise.net & 1011  \\ 
+13& Kolbe & Theresa & 2005-06-07T00:00:00Z & 08 & 6 & prince@luise.net & 1012  \\ 
+14& Kunze & Constanze & 2005-12-05T00:00:00Z & 08 & 6 & babo@luise.net & 1013  \\ 
+15& Witzel & Merve & 2000-04-09T00:00:00Z & 12 & 6 & knaller@luise.net & 1014  \\ 
+16& Sonnenschein & Clara & 2000-12-30T00:00:00Z & 12 & 7 & mist@luise.net & 1015  \\ 
+\bottomrule
+\end{tabular}
+
+
+
+\subsection{Beziehungen} 
+\subsubsection{Tabelle: hat;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+hat;
+}\\\midrule
+\rowcolor{yellow!30}rnr & anr  \\\midrule
+400& 1  \\ 
+400& 3  \\ 
+400& 4  \\ 
+401& 1  \\ 
+401& 8  \\ 
+402& 7  \\ 
+402& 3  \\ 
+402& 4  \\ 
+402& 6  \\ 
+403& 1  \\ 
+300& 1  \\ 
+300& 2  \\ 
+300& 3  \\ 
+301& 1  \\ 
+301& 4  \\ 
+200& 3  \\ 
+200& 9  \\ 
+200& 8  \\ 
+201& 1  \\ 
+202& 1  \\ 
+203& 1  \\ 
+100& 5  \\ 
+100& 4  \\ 
+100& 9  \\ 
+101& 5  \\ 
+101& 4  \\ 
+101& 9  \\ 
+102& 7  \\ 
+102& 3  \\ 
+103& 7  \\ 
+103& 3  \\ 
+1& 1  \\ 
+1& 9  \\ 
+-101& 1  \\ 
+-101& 2  \\ 
+-101& 4  \\ 
+-101& 8  \\ 
+-101& 9  \\ 
+\bottomrule
+\end{tabular}
+
+
+\subsubsection{Tabelle: findet\_statt;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+findet\_statt;
+}\\\midrule
+\rowcolor{yellow!30}knr & rnr  \\\midrule
+1& 300  \\ 
+2& 300  \\ 
+3& 301  \\ 
+4& 301  \\ 
+5& 201  \\ 
+6& 301  \\ 
+7& 301  \\ 
+8& 200  \\ 
+9& 403  \\ 
+10& 1  \\ 
+11& -101  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: beaufsichtigt;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+beaufsichtigt;
+}\\\midrule
+\rowcolor{yellow!30}knr & lid  \\\midrule
+1& 1  \\ 
+2& 8  \\ 
+3& 3  \\ 
+4& 9  \\ 
+5& 10  \\ 
+6& 11  \\ 
+7& 5  \\ 
+8& 6  \\ 
+9& 6  \\ 
+10& 2  \\ 
+11& 7  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: eingeschrieben;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+eingeschrieben;
+}\\\midrule
+\rowcolor{yellow!30}sid & knr  & zeits  \\\midrule
+4& 1 & 0000-01-01T14:57:59.421899Z  \\ 
+5& 1 & 0000-01-01T14:57:59.421899Z  \\ 
+6& 1 & 0000-01-01T14:57:59.421899Z  \\ 
+9& 5 & 0000-01-01T14:57:59.421899Z  \\ 
+8& 5 & 0000-01-01T14:57:59.421899Z  \\ 
+5& 6 & 0000-01-01T14:57:59.421899Z  \\ 
+6& 6 & 0000-01-01T14:57:59.421899Z  \\ 
+5& 2 & 0000-01-01T14:57:59.468874Z  \\ 
+7& 2 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 2 & 0000-01-01T14:57:59.468874Z  \\ 
+9& 2 & 0000-01-01T14:57:59.468874Z  \\ 
+9& 3 & 0000-01-01T14:57:59.468874Z  \\ 
+4& 3 & 0000-01-01T14:57:59.468874Z  \\ 
+5& 4 & 0000-01-01T14:57:59.468874Z  \\ 
+4& 4 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 7 & 0000-01-01T14:57:59.468874Z  \\ 
+10& 7 & 0000-01-01T14:57:59.468874Z  \\ 
+12& 7 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 8 & 0000-01-01T14:57:59.468874Z  \\ 
+11& 8 & 0000-01-01T14:57:59.468874Z  \\ 
+13& 8 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 9 & 0000-01-01T14:57:59.468874Z  \\ 
+6& 9 & 0000-01-01T14:57:59.468874Z  \\ 
+5& 9 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 10 & 0000-01-01T14:57:59.468874Z  \\ 
+5& 10 & 0000-01-01T14:57:59.468874Z  \\ 
+15& 10 & 0000-01-01T14:57:59.468874Z  \\ 
+8& 11 & 0000-01-01T14:57:59.468874Z  \\ 
+5& 11 & 0000-01-01T14:57:59.468874Z  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: vermittelt;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+vermittelt;
+}\\\midrule
+\rowcolor{yellow!30}knr & fnr  \\\midrule
+1& 2  \\ 
+2& 3  \\ 
+3& 4  \\ 
+4& 6  \\ 
+5& 5  \\ 
+6& 3  \\ 
+7& 6  \\ 
+8& 4  \\ 
+9& 1  \\ 
+10& 3  \\ 
+11& 5  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle: beinhaltet;}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+beinhaltet;
+}\\\midrule
+\rowcolor{yellow!30}knr & mnr  \\\midrule
+1& 1  \\ 
+2& 2  \\ 
+3& 2  \\ 
+4& 2  \\ 
+5& 3  \\ 
+6& 3  \\ 
+7& 3  \\ 
+8& 3  \\ 
+9& 3  \\ 
+9& 4  \\ 
+10& 1  \\ 
+11& 1  \\ 
+\bottomrule
+\end{tabular}
+
+\subsection{Anfragen in aufsteigendem Schwierigkeitsgrad}
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 01: SELECT nname FROM lehrer;
+}
+\readSQLfile{./query/Vorhilfe-query_01.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+SELECT nname 
+FROM lehrer;
+}\\\midrule
+\rowcolor{yellow!30}nname \\\midrule
+Schaefer \\ 
+Czetö \\ 
+Bond \\ 
+Cooper \\ 
+Klemt \\ 
+Schmitt \\ 
+Schmidt \\ 
+Boettcher \\ 
+Wolf \\ 
+Chi \\ 
+Schlüter \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 02: SELECT * 
+FROM lehrer 
+WHERE nname = 'Czetö';
+}
+\readSQLfile{./query/Vorhilfe-query_02.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+SELECT * 
+FROM lehrer 
+WHERE nname = 'Czetö';
+
+}\\\midrule
+\rowcolor{yellow!30}lid & nname  & email  & kuerzel  \\\midrule
+2& Czetö & cz@aiko.net & cz  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 03 : SELECT * 
+FROM ausstattung;}
+\readSQLfile{./query/Vorhilfe-query_03.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+SELECT * 
+FROM ausstattung;
+}\\\midrule
+\rowcolor{yellow!30}anr & geraete  \\\midrule
+1& Tafel  \\ 
+2& Beamer  \\ 
+3& Computer  \\ 
+4& OH-Projektor  \\ 
+5& Fernseher  \\ 
+6& Whiteboard  \\ 
+7& Smartboard  \\ 
+8& Waschbecken  \\ 
+9& Sitzecke  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 04: SELECT * FROM schueler WHERE vname = 'Gabi';
+}
+\readSQLfile{./query/Vorhilfe-query_04.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{8}{|c|}{
+SELECT * FROM schueler WHERE vname = 'Gabi';
+
+}\\\midrule
+\rowcolor{yellow!30}sid & nname  & vname  & geb  & klasse  & lid  & email  & konr  \\\midrule
+5& Gammel & Gabi & 2000-08-01T00:00:00Z & 12 & 2 & gaga@luise.net & 1004  \\ 
+6& Schlau & Gabi & 2003-07-01T00:00:00Z & 10 & 3 & schlau@luise.net & 1005  \\ 
+\bottomrule
+\end{tabular}
+
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 05: SELECT RNR FROM raum WHERE stock = 1;
+}
+\readSQLfile{./query/Vorhilfe-query_05.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+SELECT RNR FROM raum WHERE stock = 1;
+
+}\\\midrule
+\rowcolor{yellow!30}rnr \\\midrule
+100 \\ 
+101 \\ 
+102 \\ 
+103 \\ 
+\bottomrule
+\end{tabular}
+
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 06 : SELECT vname,nname FROM schueler NATURAL JOIN konto WHERE kontostand = 0; 
+}
+\readSQLfile{./query/Vorhilfe-query_06.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+SELECT vname,nname FROM schueler NATURAL JOIN konto WHERE kontostand = 0; 
+}\\\midrule
+\rowcolor{yellow!30}vname & nname  \\\midrule
+Frieder& Bär  \\ 
+Thomas& Kannicht  \\ 
+Max& Kunze  \\ 
+\bottomrule
+\end{tabular}
+
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 07: SELECT vname,nname,kontostand FROM Schueler NATURAL JOIN konto WHERE kontostand > 0;}
+\readSQLfile{./query/Vorhilfe-query_07.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT vname,nname,kontostand FROM Schueler 
+
+}\\
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+NATURAL JOIN konto WHERE kontostand > 0;
+
+}\\\midrule
+\rowcolor{yellow!30}vname & nname  & kontostand  \\\midrule
+Harald& Schmidt & 10  \\ 
+Hermine& Wolf & 3  \\ 
+Fritz& Waal & 1  \\ 
+Gabi& Gammel & 3  \\ 
+Gabi& Schlau & 4  \\ 
+Gunter& Gans & 1  \\ 
+Susanne& Kurz & 2  \\ 
+Thomas& Braumeister & 3  \\ 
+Klara& Sabbel & 8  \\ 
+Theresa& Kolbe & 10  \\ 
+Constanze& Kunze & 2  \\ 
+Merve& Witzel & 8  \\ 
+Clara& Sonnenschein & 4  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 08: SELECT vname,nname,konr FROM schueler NATURAL JOIN konto WHERE vname = 'Frieder' AND nname ='Bär';
+}
+\readSQLfile{./query/Vorhilfe-query_08.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT vname,nname,konr FROM schueler NATURAL JOIN konto
+}\\
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+WHERE vname = 'Frieder' AND nname ='Bär';
+}\\\midrule
+\rowcolor{yellow!30}vname & nname  & konr  \\\midrule
+Frieder& Bär & 1000  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 09a: SELECT nname, vname FROM schueler WHERE email LIKE '\%luise.net'; 
+}
+\readSQLfile{./query/Vorhilfe-query_09a.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+SELECT nname, vname FROM schueler WHERE email LIKE '\%luise.net'; 
+}\\\midrule
+\rowcolor{yellow!30}nname & vname  \\\midrule
+Bär& Frieder  \\ 
+Schmidt& Harald  \\ 
+Wolf& Hermine  \\ 
+Waal& Fritz  \\ 
+Gammel& Gabi  \\ 
+Schlau& Gabi  \\ 
+Gans& Gunter  \\ 
+Kannicht& Thomas  \\ 
+Kurz& Susanne  \\ 
+Braumeister& Thomas  \\ 
+Sabbel& Klara  \\ 
+Kunze& Max  \\ 
+Kolbe& Theresa  \\ 
+Kunze& Constanze  \\ 
+Witzel& Merve  \\ 
+Sonnenschein& Clara  \\ 
+\bottomrule
+\end{tabular}
+
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage-09b: SELECT nname,kuerzel FROM lehrer WHERE email LIKE '\%vim.org';}
+\readSQLfile{./query/Vorhilfe-query_09b.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{2}{|c|}{
+SELECT nname,kuerzel FROM lehrer WHERE email LIKE '\%vim.org';
+}\\\midrule
+\rowcolor{yellow!30}nname & kuerzel  \\\midrule
+Schaefer& sf  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 9c: SELECT nname,kuerzel,email FROM lehrer 
+WHERE email LIKE '\%todesstern.de';}
+\readSQLfile{./query/Vorhilfe-query_09c.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT nname,kuerzel,email FROM lehrer 
+WHERE email LIKE '\%todesstern.de';
+}\\\midrule
+\rowcolor{yellow!30}nname & kuerzel  & email  \\\midrule
+Schmidt& si & darthvader@todesstern.de  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 10 : SELECT vname,nname,kontostand FROM schueler NATURAL JOIN konto WHERE kontostand > 0 ORDER BY kontostand DESC;}
+\readSQLfile{./query/Vorhilfe-query_10.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT vname,nname,kontostand FROM schueler NATURAL JOIN konto
+}\\
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+WHERE kontostand > 0 ORDER BY kontostand DESC;
+}\\
+\midrule
+\rowcolor{yellow!30}vname & nname  & kontostand  \\\midrule
+Harald& Schmidt & 10  \\ 
+Theresa& Kolbe & 10  \\ 
+Klara& Sabbel & 8  \\ 
+Merve& Witzel & 8  \\ 
+Clara& Sonnenschein & 4  \\ 
+Gabi& Schlau & 4  \\ 
+Gabi& Gammel & 3  \\ 
+Thomas& Braumeister & 3  \\ 
+Hermine& Wolf & 3  \\ 
+Susanne& Kurz & 2  \\ 
+Constanze& Kunze & 2  \\ 
+Fritz& Waal & 1  \\ 
+Gunter& Gans & 1  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 11 : SELECT s.vname,s.nname,s.lid,s.email
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,schueler as s, eingeschrieben AS e WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';}
+\readSQLfile{./query/Vorhilfe-query_11.txt}	
+	
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+SELECT s.vname,s.nname,s.lid,s.email
+}\\
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,
+}\\
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+schueler as s, eingeschrieben AS e 
+}\\
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';
+}\\
+\midrule
+\rowcolor{yellow!30}vname & nname  & lid  & email  \\\midrule
+Fritz& Waal & 1 & wale@luise.net  \\ 
+Gabi& Gammel & 2 & gaga@luise.net  \\ 
+Gabi& Schlau & 3 & schlau@luise.net  \\ 
+Thomas& Kannicht & 4 & konzert@luise.net  \\ 
+Gabi& Gammel & 2 & gaga@luise.net  \\ 
+Merve& Witzel & 6 & knaller@luise.net  \\ 
+Thomas& Kannicht & 4 & konzert@luise.net  \\ 
+Gabi& Gammel & 2 & gaga@luise.net  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 12: SELECT nname,vname,geb,klasse 
+FROM schueler NATURAL JOIN eingeschrieben
+WHERE age(geb) < '16 year' AND KNR = 2;}
+\readSQLfile{./query/Vorhilfe-query_12.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+SELECT nname,vname,geb,klasse 
+}\\
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+FROM schueler NATURAL JOIN eingeschrieben
+}\\
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+WHERE age(geb) < '16 year' AND KNR = 2;
+}\\
+\midrule
+\rowcolor{yellow!30}nname & vname  & geb  & klasse  \\\midrule
+Gans& Gunter & 2003-07-01T00:00:00Z & 10  \\ 
+Kannicht& Thomas & 2004-03-03T00:00:00Z & 09  \\ 
+Kurz& Susanne & 2004-03-28T00:00:00Z & 09  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 13: SELECT COUNT(sid) AS Anzahl\_eingeschrieben\_in\_Kurs\_2 FROM eingeschrieben WHERE knr = 2;}
+\readSQLfile{./query/Vorhilfe-query_13.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+SELECT COUNT(sid) AS Anzahl\_eingeschrieben\_in\_Kurs\_2 
+}\\
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+ FROM eingeschrieben WHERE knr = 2;
+}\\
+\midrule
+\rowcolor{yellow!30}anzahl\_eingeschrieben\_in\_kurs\_2 \\\midrule
+4 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 14: SELECT kuerzel, wtag, zeit FROM (kurs NATURAL JOIN beaufsichtigt NATURAL JOIN lehrer) ORDER BY kuerzel;}
+\readSQLfile{./query/Vorhilfe-query_14.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT kuerzel, wtag, zeit
+}\\
+
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+FROM (kurs NATURAL JOIN beaufsichtigt NATURAL JOIN lehrer)
+}\\
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+ORDER BY kuerzel;
+}\\
+\midrule
+\rowcolor{yellow!30}kuerzel & wtag  & zeit  \\\midrule
+bd& mo & 0000-01-01T12:30:00Z  \\ 
+boe& di & 0000-01-01T12:15:00Z  \\ 
+chi& do & 0000-01-01T12:00:00Z  \\ 
+cz& di & 0000-01-01T14:00:00Z  \\ 
+kl& mi & 0000-01-01T12:15:00Z  \\ 
+ms& di & 0000-01-01T13:00:00Z  \\ 
+sc& fr & 0000-01-01T13:30:00Z  \\ 
+sc& di & 0000-01-01T14:00:00Z  \\ 
+sf& mo & 0000-01-01T12:30:00Z  \\ 
+si& mi & 0000-01-01T14:30:00Z  \\ 
+wf& mi & 0000-01-01T12:30:00Z  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 15: SELECT * FROM raum WHERE anzP >= 30;}
+\readSQLfile{./query/Vorhilfe-query_15.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{3}{|c|}{
+SELECT * FROM raum WHERE anzP >= 30;
+}\\\midrule
+\rowcolor{yellow!30}rnr & stock  & anzp  \\\midrule
+301& 3 & 32  \\ 
+201& 2 & 32  \\ 
+202& 2 & 30  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 16: SELECT COUNT(kurs.KNR) AS Kurse\_am\_Donnerstag FROM Kurs WHERE wtag= 'do';}
+\readSQLfile{./query/Vorhilfe-query_16.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+Vorhilfe-Anfrage 16
+}\\\midrule
+\rowcolor{yellow!30}kurse\_am\_donnerstag \\\midrule
+1 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 17: SELECT COUNT(*) AS Anzahl\_schueler\_Mathematik 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs) AS f, schueler as s, eingeschrieben AS e WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Mathematik';}
+\readSQLfile{./query/Vorhilfe-query_17.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+Vorhilfe-Anfrage 17
+}\\\midrule
+\rowcolor{yellow!30}anzahl\_schueler\_mathematik \\\midrule
+6 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 18: SELECT sk.knr, sk.vname,sk.nname AS Kursleitung\_Mathematik ,sk.wtag
+FROM(schueler NATURAL JOIN kurs) AS sk,(vermittelt NATURAL JOIN fach) AS vf
+WHERE fname = 'Mathematik' AND sk.knr = vf.knr;}
+\readSQLfile{./query/Vorhilfe-query_18.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+Vorhilfe-Anfrage 18
+}\\\midrule
+\rowcolor{yellow!30}knr & vname  & kursleitung\_mathematik  & wtag  \\\midrule
+2& Frieder & Bär & di  \\ 
+6& Hermine & Wolf & di  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 19: SELECT COUNT( * ) AS Raeume\_mit\_Beamer 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung GROUP BY geraete HAVING geraete ='Beamer';}
+\readSQLfile{./query/Vorhilfe-query_19.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+Vorhilfe-Anfrage 19
+}\\\midrule
+\rowcolor{yellow!30}raeume\_mit\_beamer \\\midrule
+2 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 20a: SELECT rnr FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung WHERE geraete ='Beamer';}
+\readSQLfile{./query/Vorhilfe-query_20a.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+Vorhilfe-Anfrage 20a
+}\\\midrule
+\rowcolor{yellow!30}rnr \\\midrule
+300 \\ 
+-101 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 20b: SELECT RNR FROM raum NATURAL JOIN hat 
+WHERE ANR = 2;}
+\readSQLfile{./query/Vorhilfe-query_20b.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+SELECT RNR FROM raum NATURAL JOIN hat 
+WHERE ANR = 2;
+}\\\midrule
+\rowcolor{yellow!30}rnr \\\midrule
+300 \\ 
+-101 \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 21a: SELECT vname,nname,email,fname 
+FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,schueler as s, eingeschrieben AS e WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik';}
+\readSQLfile{./query/Vorhilfe-query_21a.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{4}{|c|}{
+Vorhilfe-Anfrage 21a
+}\\\midrule
+\rowcolor{yellow!30}vname & nname  & email  & fname  \\\midrule
+Fritz& Waal & wale@luise.net & Informatik  \\ 
+Gabi& Gammel & gaga@luise.net & Informatik  \\ 
+Gabi& Schlau & schlau@luise.net & Informatik  \\ 
+Thomas& Kannicht & konzert@luise.net & Informatik  \\ 
+Gabi& Gammel & gaga@luise.net & Informatik  \\ 
+Merve& Witzel & knaller@luise.net & Informatik  \\ 
+Thomas& Kannicht & konzert@luise.net & Informatik  \\ 
+Gabi& Gammel & gaga@luise.net & Informatik  \\ 
+\bottomrule
+\end{tabular}
+
+\subsubsection{Tabelle aus Vorhilfe-Anfrage 21b: SELECT MAX(f.maxP) - COUNT(fname) AS Freie\_Plaetze\_Informatik FROM ((fach  NATURAL JOIN vermittelt) NATURAL JOIN kurs ) AS f,schueler as s,eingeschrieben AS e WHERE e.sid = s.sid AND f.knr = e.knr AND fname = 'Informatik'
+}
+\readSQLfile{./query/Vorhilfe-query_21b.txt}	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\toprule
+\rowcolor{green!20}
+\multicolumn{1}{|c|}{
+Vorhilfe-Anfrage 21b
+}\\\midrule
+\rowcolor{yellow!30}freie\_plaetze\_informatik \\\midrule
+1 \\ 
+\bottomrule
+\end{tabular}
+
+
+\lstlistoflistings
+
+% Liest die gesamte Datei ein
+%\readSQLfile{test.sql}
+
+% Liest nur die Zeilen im angegebenen Bereich ein
+%\readSQLlines{test.sql}{24}{26}
+%\readSQLfile{alleanfragen.sql}
+
+
+ 
+
+% Kommentieren Sie die folgenden beiden Zeilen aus um die Bibliographie einzubinden
+%\bibliographystyle{alpha}
+%\bibliography{document}
+
+\end{document}

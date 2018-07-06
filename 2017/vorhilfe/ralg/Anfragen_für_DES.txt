@@ -1,0 +1,80 @@
+--- 00001  Auflistung aller Lehrer-Nachnamen  *
+
+SQL:
+SELECT nname 
+FROM lehrer;
+
+RA:
+project nname (lehrer);
+
+DRC:
+{B | lehrer(_,B,_,_)};      // alternativ:  {X | (exists W)(exists Y)(exists Z) (lehrer(W,X,Y,Z))};
+
+TRC:
+{T.nname | lehrer(T)};
+
+
+------------------------------------------------------------------------
+--- 00002  Ausgabe der Daten des Lehrers 'Czetö' *
+
+SQL:
+SELECT * 
+FROM lehrer 
+WHERE nname = 'Czetö';
+
+RA:
+select nname = 'Czetö'(lehrer);
+
+DRC:
+{W,X,Y,Z | (lehrer(W,X,Y,Z) and X = 'Czetö'};
+
+TRC:
+{T.LID, T.nname, T.email, T.kuerzel | lehrer(T) and T.nname = 'Czetö' };
+
+------------------------------------------------------------------------
+--- 3.  Welche Räume liegen im 1. Stock? *
+
+SQL:
+SELECT RNR 
+FROM raum 
+WHERE stock = 1; 
+
+RA:
+project RNR (select stock = 1 (raum));
+
+DRC:
+{X | (exists Y)(exists Z) (raum (X,Y,Z) and Y = 1)};
+
+TRC:
+{T.RNR | raum(T) and T.stock = 1};
+
+------------------------------------------------------------------------
+--- 00003  Ausgabe der Tabelle Ausstattung *
+SQL:
+SELECT * 
+FROM ausstattung;
+
+RA:
+(ausstattung)     // ??????????????????????????????
+
+DRC:
+{A,B | ausstattung(A,B)};
+
+TRC:
+{X.ANR, X.geraete | ausstattung (X)};
+
+------------------------------------------------------------------------
+---  13. In welchen Räumen gibt es einen Beamer?
+SQL:
+SELECT RNR 
+FROM raum NATURAL JOIN hat NATURAL JOIN ausstattung
+WHERE geraete = 'Beamer';
+
+RA:
+projekt RNR (select geraete = 'Beamer' (raum njoin (hat njoin ausstattung)));
+
+DRC:
+{A | (exists B)(exists C)(exists D)(exists E) (raum(A,B,C) and hat(A,D) and ausstattung(D,E) and E = 'Beamer')};
+
+TRC:
+{X.RNR | raum(X) and hat(Y) and ausstattung(Z) and Z.geraete = 'Beamer'};

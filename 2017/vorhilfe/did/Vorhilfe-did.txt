@@ -1,0 +1,44 @@
+Didaktisch-Methodisches
+
+
+1. Relevanz von Datenbanken für  die Gesellschaft und das Leben 
+
+Im Alltag triff man mehr oder weniger bewusst auf Datenbanken. Hierfür soll ein Bewusstsein geschaffen werden.  
+Methodische Überlegung: Unterschied zwischen Tabellen und DB vermitteln.
+
+
+2. Thema des RLPs
+
+„Am Beispiel der Entwicklung eines Datenbanksystems führen die Schülerinnen und Schüler alle Phasen des Problemlöseprozesses von der Analyse der Ausgangssituation zur Erfassung der Daten über die Modellierung einer Datenbank bis hin zu ihrer praktischen Umsetzung in einem Datenbankmanagementsystem selbstständig durch.“
+Rahmenlehrplan Sek.II Seite 19. 
+
+3. ER-Modellierung / Miniwelt 
+Umsetzungsmöglichkeiten: 
+Ausgehend von der Beschreibung der Miniwelt wird ein gemeinsames ER-Modell entwickelt, wobei die Kardinalitäten hierbei sinnvoll eingearbeitet/thematisiert werden. 
+Bei kürzerem Zeitumfang besteht die Möglichkeit das vorgegebene ER-Modell nachzuvollziehen und im Anschluss in ein Relationenmodell umzuwandeln. 
+
+4. Transformation in ein Relationenmodell u. Regeln mit methodischen Überlegungen zur Normalform, Redundanz und Anomalien
+
+Nach der Umwandlung der Entitäten in ein Relationenmodell werden die Beziehungen umgewandelt. Hierbei sollten insbesondere die Kardinalitäten und deren „Auflösung“ in Relationen thematisiert werden. Anomalien und Redundanzen könnten aufgegriffen werden, um den Vorteil von Normalformen herauszuarbeiten. 
+Semantikverlust kann inhaltlich erörtert werden (siehe Semantik.txt).
+
+5. Detaillierte method. did. Überlegungen der Umsetzung von differenzierten Anfragen
+Anfangs sollte eine Datenbank, befüllt mit Populationen, vorgegeben werden. Erst wenn das Erstellen von Anfragen in allen drei Schwierigkeitsstufen beherrscht wird, sollten die Schüler und Schülerinnen selbst Datenbanken erstellen dürfen.
+
+Um im Unterricht eine ausreichende Differenzierung gewährleisten zu können, haben wir Anfragen mit unterschiedlichen Schwierigkeitsstufen entwickelt. Den Grundlagen der Progression folgend steigt der Schwierigkeitsgrad mit der Anzahl der Sterne, die unsere vier Schwierigkeitsstufen repräsentieren.
+In der Einführungsphase beschränken sich die Ein-Sterneanfragen hauptsächlich auf die Operatoren SELECT, FROM und WHERE. Anfragen mit eineinhalb Sternen enthalten zusätzlich NATURAL JOIN Verbindungen. Diese Anfragen eignen sich für sehr leistungsstarke Schüler und Schülerinnen, denen die einfachen Anfragen in der Einführungsphase zu leicht erscheinen. Denkbar ist ebenfalls, die Schüler und Schülerinnen selbst einfache Anfragen entwickeln zu lassen, die nur mit diesen genannten Operatoren auskommen dürfen.
+
+Nach der Einführungsphase folgen die komplexeren Abfragen. Die Zwei-Sterneanfragen, die den Großteil unserer Anfragen bilden,  sollten mindestens einen zusätzlichen Befehl wie beispielsweise: ORDER BY, AS, LIKE, ASC, WHERE NOT oder NOT enthalten; jedoch üblicherweise immer nur EINEN neuen Befehl zusätzlich. Ausnahmsweise kann auch schon mal ein COUNT Befehl verwendet werden.  Leistungsstarke Schüler und Schülerinnen können sich die Befehle über die Hilfefunktion bzw. im Internet mit Hilfe von Syntaxbeispielen selbst erarbeiten. In der Regel aber, sollten die Bedeutung und Verwendung aller unbekannten Operatoren vom Lehrer oder Lehrerin vorgeführt werden.
+
+Dagegen zeichnen sich die Drei-Sterneanfragen im Allgemeinen durch die Verwendung mehrerer JOINs aus bzw. beziehen in einzelnen Fällen Aggregatfunktionen (u.a. MAX, COUNT) mit ein. Auch Unteranfragen sollten möglich sein. Diese Anfragen sind schon sehr komplex und möglicherweise nicht von jedem Schüler bzw. jeder Schülerin selbstständig zu lösen. Jedoch sollte jeder mind. eine Drei-Sterneanfrage ohne zusätzliche Hilfe bauen können.
+
+Die Vier-Sterneanfrage ist nur sehr leistungsstarken Schülern bzw. Schülerinnen vorbehalten.
+
+Insgesamt liegt der Schwerpunkt auf den Zwei-Sterneanfragen, daher haben wir für diese Schwierigkeitsstufe die meisten Anfragen erstellt. An dieser Stelle werden auch die meisten neuen Befehle eingeführt.
+
+Nicht alle Anfragen sind für ein didaktisch sinnvolles Vorgehen im Unterricht notwendig. Möglicherweise erscheinen einigen Schülern und Schülerinnen die Ein-Sterneanfragen zu einfach und von den fünf angebotenen kann eine Auswahl bearbeitet werden. Ebenfalls sollte die Vier-Sterneanfrage fakultativ sein, da die Komplexität entsprechend hoch ist. Aufgrund der Variabilität und Vielfältigkeit sollten von den verbleibenden Schwierigkeitsstufen (sowohl Zwei- als auch Drei-Sterneanfragen) keine Anfragen weglassen. 
+
+Eine mögliche Erweiterung wäre die selbstständige Erstellung einer Datenbank nach einem vorgegebenen ER-Modell. Entsprechend der unterschiedlichen Lerngruppen bzw. Stundenzahl (Wahlpflichtkurs, Oberstufenkurse u.ä.) kann die Arbeit mit der Datenbank aufgrund der aufbauenden Schwierigkeitsgrade zeitlich erweitert bzw. ergänzt werden. Sollte nur ein kurzer Einblick in die Arbeit mit einer Datenbank erfolgen, genügen die fünf Anfragen mit dem geringsten Schwierigkeitsgrad (Ein-Sterneanfragen). Ein solcher Zugang ist auch für eine Einführung in SQL ab der 10. Klasse geeignet. 
+
+Spielraum für eine unterschiedliche Methodik bietet sich dann, wenn die Schüler und Schülerinnen selbst Anfragen für ihren Banknachbarn entwickeln sollen. Dazu bieten sich Gruppenarbeiten an, die arbeitsteilig (Anfragen, Erstellung einer DB, skizzieren eines ER Modells) vorgehen. Frontaler wäre die Vorgabe der dargestellten Anfragen durch den Lehrer, die jeder Schüler bzw. jede Schülerin sukzessive lösen soll. Die Lösungen könnten anschließend diskutiert bzw. verglichen werden. Langfristige Projekte könnten die bestehende Datenbank erweitern, um sie auf die speziellen Gegebenheiten der jeweiligen Schule anzupassen und auch dort einsatzbereit zu machen. 
+Vorhilfe ist besser als Nachhilfe

@@ -1,0 +1,28 @@
+BUG-REPORT
+----------
+
+Mit dieser Version von gfx gibt es eine Änderung in den Signaturen
+der Funktionen 'TastaturLesen1' und 'TastaturpufferLesen1'.
+
+Die Änderungen wurden notwendig, da unser Kollege Herr Oliver Schäfer
+einen echten Bug in den beiden Funktionen gefunden hat: Es gab verschiedene
+Tastendruckmöglichkeiten, die alle denselben Tastencode geliefert haben.
+
+Hintergrund:
+Die Annahme, dass eine Taste auf der Tastatur durch einen uint8-Wert 
+repräsentiert werden kann, ist falsch! Man benötigt dafür einen uint16-Wert!
+
+Daher ändern sich die Signaturen zwingend auf:
+
+func TastaturLesen1() (taste uint16, gedrueckt uint8, tiefe uint16)
+                       ^^^^^^^^^^^^
+                       ----NEU-----
+
+func TastaturpufferLesen1() (taste uint16, gedrueckt uint8, tiefe uint16)
+                             ^^^^^^^^^^^^
+                             ----NEU-----
+
+Stefan Schmidt
+LWB Informatik
+12.03.2017
+

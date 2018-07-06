@@ -1,0 +1,162 @@
+
+1. "Liste aller Kursnamen"  
+ra:  project Name (Kurs);
+TRC: {X | 'Kurs'(X)};
+DRC: {Name | 'Kurs' (_,_,Name)};
+SQL: SELECT Name FROM Kurs;
+
+{
+  answer('Chor'),
+  answer('Datenbanken'),
+  answer('Fitnesskurs'),
+  answer('Kryptographie'),
+  answer('Mittelalterkurs'),
+  answer('Waschmittel')
+}
+
+2. "Schülernamen der Klasse 8a"
+ra:  project Nachname, Vorname (select Klasse = '8a' (Schueler));
+TRC: {X.Nachname,X.Vorname | 'Schueler'(X) and X.Klasse='8a'};
+DRC: {Nachname, Vorname | (exists Klasse) 'Schueler' (_,_,Vorname,Nachname,Klasse,_) and Klasse='8a'};
+SQL: SELECT Nachname, Vorname FROM Schueler WHERE Klasse = '8a';
+
+{
+  answer('Kappel','Michael'),
+  answer('Koenig','Maik'),
+  answer('Lemann','Jorgen'),
+  answer('Scholz','Kristin'),
+  answer('Schwarz','Anke')
+}
+
+3. "Lehrerkürzel + Fach aller Fachverantwortlichen mit Nawi-Fach"
+ra:  project Kuerzel, Name (select Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie' (Fach));
+TRC: {X.Kuerzel,X.Name | 'Fach'(X) and (X.Name='Physik' or X.Name='Chemie' or X.Name='Biologie')};
+DRC: {Kuerzel, Name | 'Fach' (_,Kuerzel,Name) and (Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie')};
+SQL: SELECT Kuerzel, Name FROM Fach WHERE Name = 'Physik' or Name = 'Chemie' or Name = 'Biologie';
+
+{
+  answer(bec,'Physik'),
+  answer(har,'Chemie'),
+  answer(neu,'Biologie')
+}
+
+4. "Alle Fachverantwortlichen mit jeweiligem zugehörigen Fach"
+ra:  Fach njoin Lehrer;
+TRC: {X,Y.Vorname,Y.Nachname | 'Fach'(X) and 'Lehrer'(Y) and X.Kuerzel=Y.Kuerzel};
+DRC: {FachID, Kuerzel, Name, Vorname, Nachname | 'Fach'(FachID,Kuerzel,Name) and 'Lehrer'(Kuerzel,Vorname,Nachname)};
+SQL: SELECT * FROM Fach NATURAL JOIN Lehrer;
+
+{
+  answer(1,mei,'Mathematik','Matthias','Meier'),
+  answer(2,leh,'Deutsch','Paul','Lehmann'),
+  answer(3,gol,'Englisch','Katja','Goldschmidt'),
+  answer(4,bie,'Geschichte','Daniel','Biermann'),
+  answer(5,sch,'Informatik','Jan','Schulze'),
+  answer(6,neu,'Biologie','Melanie','Neustadt'),
+  answer(7,bec,'Physik','Ines','Becker'),
+  answer(8,har,'Chemie','Klaudia','Hartmann'),
+  answer(9,wal,'Musik','Stephan','Walter'),
+  answer(10,bau,'Sport','Jennifer','Baum')
+}
+
+5. "Alle Räume (und Exkursions- und Aufsichtsorte), die am Montag nicht belegt sind"
+ra:  project Name (Ort) difference project Name (select Tag = 1 (Ort njoin Termin));
+TRC: {X.Name | (exists Y) 'Ort'(X) and 'Termin'(Y) and not Y.Tag=1}; 
+DRC: {Name | (exists OrtID,Tag) 'Ort'(OrtID,Name) and not 'Termin'(_,OrtID,Tag,_,_) and Tag=1};
+SQL: SELECT Name FROM Ort EXCEPT SELECT Name FROM Ort NATURAL JOIN Termin WHERE Tag = 1;
+
+{
+  answer('Aula'),
+  answer('Haus'),
+  answer('Hof'),
+  answer('Museumsdorf'),
+  answer('R102'),
+  answer('R103'),
+  answer('R314')
+}
+
+6. "Die Kürzel der Lehrer, die wenigstens einmal in der Woche arbeiten (Kurs, Exkursion, Aufsicht)"
+ra:  project Kuerzel (Lehrer njoin Kurs) union project Kuerzel (Lehrer njoin Aufsicht);
+TRC: {X.Kuerzel | (exists Y,Z) 'Lehrer'(X) and 'Kurs'(Y) and 'Aufsicht'(Z) and (X.Kuerzel=Y.Kuerzel or X.Kuerzel=Z.Kuerzel)};
+DRC: {Kuerzel | 'Lehrer'(Kuerzel,_,_) and ('Kurs'(_,Kuerzel,_) or 'Aufsicht'(Kuerzel,_,_,_,_))}; 
+SQL: SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht;
+
+{
+  answer(adl),
+  answer(bau),
+  answer(bec),
+  answer(bie),
+  answer(bla),
+  answer(bum),
+  answer(fue),
+  answer(gol),
+  answer(har),
+  answer(leh),
+  answer(mei),
+  answer(neu),
+  answer(ric),
+  answer(sch),
+  answer(wal),
+  answer(zie)
+}
+
+7. "Alle Lehrer, die nicht in der Projektwoche eingesetzt werden (nicht einmal eine Aufsicht)"
+ra:  project Kuerzel (Lehrer) difference (project Kuerzel (Lehrer njoin Kurs) union project Kuerzel (Lehrer njoin Aufsicht));
+TRC: {X.Kuerzel | 'Lehrer'(X) and not (exists Y,Z) 'Kurs'(Y) and 'Aufsicht'(Z) and (X.Kuerzel=Z.Kuerzel or X.Kuerzel=Y.Kuerzel)};
+DRC: {Kuerzel | 'Lehrer'(Kuerzel,_,_) and not ('Kurs'(_,Kuerzel,_) or 'Aufsicht'(Kuerzel,_,_,_,_))};
+SQL: SELECT Kuerzel FROM Lehrer EXCEPT (SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht);
+
+{
+  answer(ebe),
+  answer(pro)
+}
+
+8. "Alle Lehrer, die im Hof Aufsicht führen"
+ra:  project Kuerzel, Nachname, Vorname (select Name = 'Hof' (Lehrer njoin Aufsicht njoin Ort));
+TRC: {X.Kuerzel,X.Nachname,X.Vorname | 'Lehrer'(X) and (exists Y,Z) 'Aufsicht'(Y) and 'Ort'(Z) and X.Kuerzel = Y.Kuerzel and Y.OrtID = Z.OrtID and Z.Name='Hof'};
+DRC: {Kuerzel, Nachname, Vorname | (exists Name,OrtID) 'Lehrer'(Kuerzel,Vorname,Nachname) and 'Aufsicht'(Kuerzel,OrtID,_,_,_) and 'Ort'(OrtID,Name) and Name='Hof'};
+SQL: SELECT DISTINCT Kuerzel FROM Lehrer NATURAL JOIN Aufsicht NATURAL JOIN Ort WHERE Name = 'Hof';
+SQL(alternativ): SELECT Kuerzel, Nachname, Vorname FROM Lehrer NATURAL JOIN Aufsicht NATURAL JOIN Ort WHERE Name = 'Hof';
+----> Achtung! Damit bei RA und SQL das Gleiche herauskommt, muss bei SQL 'DISTINCT' ausgeführt werden.
+
+{
+  answer(bec,'Becker','Ines'),
+  answer(bla,'Blau','Jonas'),
+  answer(mei,'Meier','Matthias'),
+  answer(neu,'Neustadt','Melanie'),
+  answer(wal,'Walter','Stephan'),
+  answer(zie,'Ziegler','Eric')
+}
+
+9. "Eine Liste aller Schüler der Klasse 7b mit ihrem Aufenthaltsort am Donnerstag" 
+ra:  project Vorname, Nachname, OName (select Klasse='7b' and Tag=4 (Schueler njoin Kurs njoin Termin njoin (rename Ortneu(OrtID, OName) (Ort))));
+TRC: {X.Vorname,X.Nachname,U.Name | 'Schueler'(X) and 'Ort'(U) and (exists Y,Z) 'Kurs'(Y) and 'Termin'(Z) and X.KursID=Y.KursID and Y.KursID=Z.KursID and Z.OrtID=U.OrtID and X.Klasse='7b' and Z.Tag=4};
+DRC {Vorname,Nachname,Name | (exists KursID,Klasse,OrtID,Tag) 'Schueler' (_,KursID,Vorname,Nachname,Klasse,_) and 'Kurs'(KursID,_,_) and 'Termin'(KursID,OrtID,Tag,_,_) and 'Ort'(OrtID,Name) and Klasse='7b' and Tag=4};
+SQL: SELECT Vorname, Nachname, Ort.Name FROM Schueler NATURAL JOIN Kurs NATURAL JOIN Termin INNER JOIN Ort ON Termin.Ortid = Ort.Ortid WHERE Schueler.Klasse = '7b' AND Termin.Tag = 4; 
+
+{
+  answer('Brigitte','Kortig','Aula'),
+  answer('Jorgen','Diederich','Aula'),
+  answer('Klaudia','Burger','R211'),
+  answer('Leah','Engel','Aula'),
+  answer('Lukas','Faust','R102'),
+  answer('Martina','Birger','R307'),
+  answer('Sven','Schreiber','R001'),
+  answer('Thomas','Schwartz','R205')
+}
+
+10. "Alle Lehrer, die in der Woche im Museumsdorf (irgendwann) mal sind (Entweder als Kursleiter oder als Begleitung)"
+ra:  project Kuerzel (select Name = 'Museumsdorf' (Lehrer njoin Aufsicht njoin Ort)) union project Kuerzel (select OName = 'Museumsdorf' (Lehrer njoin Kurs njoin Termin njoin (rename Ortneu(OrtID, OName) (Ort))));
+TRC: {X.Kuerzel | (exists Y, Z, U, V) 'Lehrer'(X) and 'Aufsicht'(Y) and 'Ort'(Z) and 'Kurs'(U) and 'Termin'(V) and (X.Kuerzel=Y.Kuerzel and Y.OrtID=Z.OrtID and Z.Name='Museumsdorf' or X.Kuerzel=U.Kuerzel and U.KursID=V.KursID and V.OrtID=Z.OrtID and Z.Name='Museumsdorf')};
+DRC: {Kuerzel | (exists OrtID,Name,KursID) 'Lehrer'(Kuerzel,_,_) and 'Ort'(OrtID,Name) and ('Aufsicht'(Kuerzel,OrtID,_,_,_) or 'Kurs'(KursID,Kuerzel,_) and 'Termin'(KursID,OrtID,_,_,_)) and Name='Museumsdorf'};
+SQL: SELECT Kuerzel FROM Lehrer NATURAL JOIN AUFSICHT INNER JOIN ORT ON Aufsicht.Ortid = Ort.Ortid WHERE Ort.Name = 'Museumsdorf' 
+UNION SELECT Kuerzel FROM Lehrer NATURAL JOIN Kurs INNER JOIN Termin ON Kurs.Kursid = Termin.Kursid INNER JOIN Ort ON Termin.Ortid = Ort.Ortid
+WHERE Ort.Name = 'Museumsdorf';
+
+{
+  answer(adl),
+  answer(bie),
+  answer(har)
+}
+
+

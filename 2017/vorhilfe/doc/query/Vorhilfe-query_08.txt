@@ -1,0 +1,4 @@
+-- 08. Wie ist die Kontonummer der Schülerin Frieder Bär? * 1/2
+SELECT vname,nname,konr 
+FROM schueler NATURAL JOIN konto 
+WHERE vname = 'Frieder' AND nname ='Bär';

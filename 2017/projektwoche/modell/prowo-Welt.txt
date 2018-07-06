@@ -1,0 +1,13 @@
+--- Miniweltbeschreibung DB-Projektwoche ---
+Die Datenbank verwaltet die Kurse im Rahmen der jährlichen Projektwoche. 
+Jeder Kurs ist genau einem  Unterrichtsfach zugeordnet, nicht alle Fächer bieten jedoch Kurse an.
+Jedes Fach hat genau einen Fachverantwortlichen. Jeder Fachverantwortliche ist nur für ein Fach zuständig.
+
+Ein Kurs wird von einer Lehrkraft durchgeführt, nicht alle Lehrkräfte bieten Kurse an. 
+Die Kurse finden von Montag bis Freitag statt. Pro Tag finden diese an genau einem Ort in der Schule oder an einem außerschulischen Ort statt. Die Kurse können an unterschiedlichen Tagen auch zu unterschiedlichen Zeiten beginnen und enden.
+
+Zwei Lehrkräfte werden in den Pausen zudem an verschiedenen Stellen im Schulhaus zur Aufsicht eingesetzt. Die Aufsicht kann sich auch auf die Begleitung von Exkursionen der Kurse beziehen. 
+Alle Schüler besuchen genau einen Kurs. Einge Schülerinnen und Schüler sind verantwortlich für einen Kurs und unterstützen die Lehrkräfte bei der Bewerbung.
+
+
+

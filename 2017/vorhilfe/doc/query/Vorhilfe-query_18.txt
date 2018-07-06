@@ -1,0 +1,4 @@
+-- 18. Wer leitet den Kurs 'Mathematik' an welchem Tag? ***
+SELECT sk.knr, sk.vname,sk.nname AS Kursleitung_Mathematik ,sk.wtag
+FROM(schueler NATURAL JOIN kurs) AS sk,(vermittelt NATURAL JOIN fach) AS vf
+WHERE fname = 'Mathematik' AND sk.knr = vf.knr;

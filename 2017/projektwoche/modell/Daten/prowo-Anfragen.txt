@@ -1,0 +1,44 @@
+Anfragen ohne Aggregatsfunktionen
+
+1. "Liste aller Kursnamen"  
+
+2. "Schuelernamen der Klasse 8a"
+
+3. "Lehrerkuerzel + Fach aller Fachverantwortlichen mit Nawi-Fach"
+
+4. "Alle Fachverantwortlichen mit jeweiligem zugehoerigen Fach"
+
+5. "Alle Raeume (und Exkursions- und Aufsichtsorte), die am Montag nicht belegt sind"
+
+6. "Die Kuerzel der Lehrer, die wenigstens einmal in der Woche arbeiten (Kurs, Exkursion, Aufsicht)"
+
+7. "Alle Lehrer, die nicht in der Projektwoche eingesetzt werden (nicht einmal eine Aufsicht)"
+
+8. "Alle Lehrer, die im Hof Aufsicht fuehren"
+
+9. "Eine Liste aller Schueler der Klasse 7b mit ihrem Aufenthaltsort am Donnerstag" 
+
+10. "Alle Lehrer, die irgendwann in der Woche im Museumsdorf sind (Entweder als Kursleiter oder als Begleitung)"
+
+
+Anfragen mit Aggregatsfunktionen
+
+11. "Anzahl aller Kurse"
+
+12. "Anzahl aller Kurse bestimmen und diese  in 'Anzahl aller Kurse' umbennennen"
+
+13. "Klasse(n) mit mehr als 5 Schülern"
+
+14. "Übersicht der Lehrerkürzel, inklusive Anzahl der Aufsichten (ohne Exkursionsbegleitungen)"
+
+15. "Anzahl der Exkursionsbegleitungen der Lehrer"
+
+16. "Anzahl  der SuS in den jeweiligen Kursen, mit Angabe der Kursnamen"
+
+17. "Anzahl der Schüler im 'Mittelalterkurs'"
+
+18. "Übersicht der Kurse mit der Anzahl der verantwortlichen SuS"
+
+19. "Durchschnittlicher Kursstart pro Tag"
+
+20. "Anzahl der Sportlehrer"
